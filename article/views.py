@@ -94,7 +94,7 @@ def tagDetail(request, tag):
     temp = Tag.objects.get(name=tag)  # 获取全部的Article对象
     # articles = Article.objects.filter(tags=tag)
     articles = temp.article_set.all()
-    paginator = Paginator(articles,6)
+    paginator = Paginator(articles, 6)
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)

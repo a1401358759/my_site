@@ -236,7 +236,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+figure, figcaption, footer, header,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -248,7 +248,7 @@ time, mark, audio, video {
 }
 
 article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section { display: block; }
+footer, header, menu, nav, section { display: block; }
 
 body { line-height: 1; }
 
@@ -304,7 +304,7 @@ html,
 body { font-size: 100%; }
 
 body {
-  background: #f2f2f2 url("assets/img/background.png");
+  /*background: #f2f2f2 url("assets/img/background.png");*/
   color: #4e4e4e;
   padding: 0;
   margin: 0;
@@ -621,8 +621,8 @@ sub { bottom: -0.25em; }
 
 #header { 
   margin-bottom: 20px;
-  background: url("bg.jpg");
-	background-size:100%;
+  background: url("2.jpg");
+    background-size:100%;
 }
 
 #header .container { padding: 0 40px; }
@@ -1317,7 +1317,7 @@ position:relative;
   padding-top: 20px; 
   line-height: 1.5;
 
-  background: #eaeaea url("assets/img/footer-background.png");
+  background: url("2.jpg");
   -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
@@ -1710,7 +1710,7 @@ button {
   background: -moz-linear-gradient(top, #eee, #e6e6e6);
   border: 1px solid #bbbbbb;
   border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
-  border-color: #eee, #eee, #d4d4d4;
+  border-color: #eee #eee #d4d4d4;
   filter:progid:dximagetransform.microsoft.gradient(startColorstr="#ffffffff", endColorstr="#ffe6e6e6", GradientType=0);
   filter:progid:dximagetransform.microsoft.gradient(enabled=false);
   *zoom:1;
@@ -2074,22 +2074,22 @@ button.black:active {
 /* Retina Images */
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
-       only screen and (-moz-min-device-pixel-ratio: 1.3),
+       /*only screen and (-moz-min-device-pixel-ratio: 1.3),*/
        only screen and (-o-min-device-pixel-ratio: 13/10),
        only screen and (min-resolution: 120dpi) {
   body {
-    background-image: url("assets/img/background@2x.png");
+    /*background-image: url("assets/img/background@2x.png");*/
     background-size: 100px 100px;
   }
 
   #footer {
-    background-image: url("assets/img/footer-background@2x.png");
+    /*background-image: url("assets/img/footer-background@2x.png");*/
     background-size: 100px 100px;
   }
 
   .post-format-indicator,
   .post-format-indicator .entry-format {
-    background-image: url("assets/img/post-format-icons@2x.png");
+    /*background-image: url("assets/img/post-format-icons@2x.png");*/
     background-size: 250px 150px;
   }
 }
@@ -2134,7 +2134,7 @@ float:right;
 .curent{
 width:30px;
 height:30px;
-footerfooter
+/*footerfooter*/
 }
 
 
