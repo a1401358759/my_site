@@ -59,7 +59,7 @@ $(function () {
             <div class="container">
                 <div id="logo">
                     <h1 id="site-title">
-                        <a href="http://www.Daniel.com/" rel="home">Daniel的小站</a>
+                        <a href="{% url 'home' %}" rel="home">Daniel的小站</a>
                     </h1>
                     <span id="site-description">倚天照海花无数，流水高山心自知</span>
                 </div>
@@ -86,14 +86,15 @@ $(function () {
                     </div>
                 </nav>
             <div id="nav2">
-        <ul>
-            <li><a href="{% url 'home'%}">首页</a></li>
-            <li><a href="{% url 'archive'%}">文章归档</a></li>
-            <li><a href="{% url 'message'%}">给我留言</a></li>
-            <li><a href="{% url 'about'%}">关于我</a></li>
-        </ul>
-    </div>
+                <ul>
+                    <li><a href="{% url 'home'%}">首页</a></li>
+                    <li><a href="{% url 'archive'%}">文章归档</a></li>
+                    <li><a href="{% url 'message'%}">给我留言</a></li>
+                    <li><a href="{% url 'about'%}">关于我</a></li>
+                </ul>
+            </div>
         </header>
+
         <div id="main" class="container">
             <div id="content-sidebar-wrap">
                 <div id="content">
