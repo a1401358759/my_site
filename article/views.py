@@ -49,7 +49,6 @@ def detail(request, year, month, day, id):
 
 
 def archive_month(request, year, month):
-    
     is_arch_month = True
     articles = Article.objects.filter(publish_time__year=year).filter(publish_time__month=month)  # 当前日期下的文章列表
     paginator = Paginator(articles,6)
@@ -165,8 +164,8 @@ def blog_search(request):  # 实现对文章标题的搜索
             return render(request, 'blog/index.html')
         else:
             articles = Article.objects.filter(title__icontains = s)
-            if len(articles) == 0 :
-                error=True
+            if len(articles) == 0:
+                error = True
 
     return render_to_response('blog/index.html', locals(), context_instance=RequestContext(request))
     # return redirect('/')

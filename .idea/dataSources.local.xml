@@ -3,7 +3,9 @@
   <component name="dataSourceStorageLocal">
     <data-source name="Django default" uuid="c1c80da5-a870-4103-b3f3-f7e6f21978cf">
       <auth-required>false</auth-required>
-      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Sqlite (Xerial) - identifier.sqlite" uuid="5778fede-4699-4882-bb21-316eb87f0b26">
+      <secret-storage>master_key</secret-storage>
     </data-source>
   </component>
 </project>

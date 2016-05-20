@@ -5,9 +5,9 @@ from collections import OrderedDict
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=30)
-    email = models.EmailField(blank=True)
-    website = models.URLField(blank=True)
+    name = models.CharField(max_length=30, verbose_name='姓名')
+    email = models.EmailField(blank=True, verbose_name='邮件')
+    website = models.URLField(blank=True, verbose_name='个人网站')
 
     def __unicode__(self):
         return self.name
@@ -28,8 +28,8 @@ class TagManager(models.Manager):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=20,blank=True)
-    creat_time = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=20, blank=True, verbose_name='标签名')
+    creat_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     objects = models.Manager()
     tag_list = TagManager()
 
@@ -85,7 +85,7 @@ class ArticleManager(models.Model):
         post_date = Article.objects.dates('publish_time', 'month')
         # post_date = post_date.reverse()
 
-        post_date_article=[]
+        post_date_article = []
         for i in range(len(post_date)):
             post_date_article.append([])
 
@@ -102,13 +102,13 @@ class ArticleManager(models.Model):
 
 
 class Article(models.Model):  # 文章
-    title = models.CharField(max_length=100)
-    author = models.ForeignKey(Author)
-    tags = models.ManyToManyField(Tag, blank=True)  # 标签
-    classification = models.ForeignKey(Classification)  # 分类
-    content = models.TextField(blank=True, null=True)
-    publish_time = models.DateTimeField(auto_now_add=True)
-    count = models.IntegerField(default=0)  # 文章点击数,但未实现统计文章点击数的功能
+    title = models.CharField(max_length=100, verbose_name='标题')
+    author = models.ForeignKey(Author, verbose_name='作者')
+    tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')  # 标签
+    classification = models.ForeignKey(Classification, verbose_name='分类')  # 分类
+    content = models.TextField(blank=True, null=True, verbose_name='评论')
+    publish_time = models.DateTimeField(auto_now_add=True, verbose_name='发表时间')
+    count = models.IntegerField(default=0, verbose_name='文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器
   

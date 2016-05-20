@@ -1,6 +1,5 @@
 from django.contrib import admin
-
-from article.models import Author,Tag,Classification,Article
+from article.models import *
 # Register your models here.
 # from django_summernote.admin import SummernoteModelAdmin
 admin.site.register(Author)
@@ -10,7 +9,7 @@ admin.site.register(Classification)
 
 # class ArticleAdmin(SummernoteModelAdmin):
 #     pass
-# admin.site.register(Article,ArticleAdmin)
+# admin.site.register(Article, ArticleAdmin)
 
 
 class ArticleAdmin(admin.ModelAdmin):
