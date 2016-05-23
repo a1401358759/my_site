@@ -42,7 +42,9 @@
 
         <!-- visitor counts -->
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+        <style>
+            .cur{ background-image: url("/static/css/2.jpg"); font-weight:bolder;}
+        </style>
     </head>
 
 <script>
@@ -134,6 +136,17 @@ $(function () {
 
     <script>
         var navigation = responsiveNav("#nav2");
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".nav a").each(function(){
+                $this = $(this);
+                if($this[0].href==String(window.location)){
+                    $this.addClass("cur");
+                }
+            });
+        });
     </script>
     </body>
 </html>
