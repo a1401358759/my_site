@@ -14,7 +14,7 @@ from django.core import serializers
 def home(request):
     is_home = True
     articles = Article.objects.all()
-    paginator = Paginator(articles, 6)  # 每个页面最多显示6篇文章
+    paginator = Paginator(articles, 5)  # 每个页面最多显示6篇文章
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)
@@ -24,7 +24,7 @@ def home(request):
         articles = paginator.page(paginator.num_pages)
 
     # 显示最新发布的前10篇文章
-    # ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
 
     classification = Classification.class_list.get_Class_list()  # 分类,以及对应的数目
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -39,7 +39,7 @@ def detail(request, year, month, day, id):
     except Article.DoesNotExist:
         raise Http404
 
-    # ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
 
     classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -60,7 +60,7 @@ def archive_month(request, year, month):
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
 
-    # ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()  
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
@@ -81,7 +81,7 @@ def classfiDetail(request, classfi):
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
 
-    # ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
@@ -103,7 +103,7 @@ def tagDetail(request, tag):
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
 
-    # ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
 
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -113,7 +113,7 @@ def tagDetail(request, tag):
 
 
 def about(request):
-    # ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
@@ -123,7 +123,7 @@ def about(request):
 
 def archive(request):
     archive = Article.date_list.get_Article_OnArchive()
-    ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
@@ -152,7 +152,7 @@ class RSSFeed(Feed):
 def blog_search(request):  # 实现对文章标题的搜索
    
     is_search = True
-    # ar_newpost = Article.objects.order_by('-publish_time')[:10]
+    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
