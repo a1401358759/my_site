@@ -32,7 +32,8 @@
         <script type="text/javascript">
              window.onload = SyntaxHighlighter.all();
         </script>
-            <!-- jqcloud -->
+
+        <!-- jqcloud -->
         <script src="{{ STATIC_URL }}lib/jqcloud-1.0.4.js"></script>
             <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/jqcloud.css">
 
@@ -41,7 +42,7 @@
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/responsive-nav.css">
 
         <!-- visitor counts -->
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+{#        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>#}
         <style>
             .cur{ background-image: url("/static/css/2.jpg"); font-weight:bolder;}
         </style>
@@ -116,12 +117,8 @@ $(function () {
             <div id="footer-content">
                 <div class="container">
                     <div style="max-width:500px;">
-                        <div id="copyright">Daniel © 2016
-                        <!--Site count -->
-                        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : "    http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255435139'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255435139%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-
-                        <span id="busuanzi_container_site_pv" style='display:none;'></span>
-                        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                        <div id="copyright">
+                            Designed by Daniel © 2016
                         </div>
                     </div>
                 </div>
@@ -132,12 +129,12 @@ $(function () {
     </div> <!-- #wrap -->
 
     <!-- visitor  count -->
-    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+{#    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>#}
 
     <script>
         var navigation = responsiveNav("#nav2");
     </script>
-
+<!--导航栏选中改变样式-->
     <script type="text/javascript">
         $(document).ready(function(){
             $(".nav a").each(function(){
