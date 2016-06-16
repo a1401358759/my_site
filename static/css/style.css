@@ -358,7 +358,7 @@ h5 { font-size: 1.1em; }
 h6 { font-size: 1em; }
 
 a { 
-  color: #2185c5; 
+  color: #2185c5;
   text-decoration: none; 
   line-height: inherit; 
 }
@@ -698,7 +698,7 @@ sub { bottom: -0.25em; }
 .nav ul li:hover,
 #header-widget ul.menu li:hover { 
   visibility: inherit; 
-  background: #236688;
+  background: #ffdc89;
 }
 
 .nav ul li:hover a,
