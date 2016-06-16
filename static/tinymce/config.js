@@ -1,19 +1,16 @@
-tinymce.init({
-    selector: "textarea",
-    //width: 800,
+tinyMCE.init({
+    selector: 'textarea',
+    theme : "modern",
     height: 300,
-    forced_root_block: false,
-    //language: 'zh_CN',
     plugins: [
-        "advlist autolink lists link image charmap print preview anchor sh4tinymce",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime table contextmenu paste"
+        "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+        "table contextmenu directionality emoticons template textcolor paste fullpage textcolor save"
     ],
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter" +
-    " alignright alignjustify | bullist numlist outdent indent | preview link sh4tinymce image | fontsizeselect fontselect"
+    //language: 'zh_CN',
+    menubar: false,
+    toolbar_items_size: 'small',
+    toolbar1: " save undo redo | cut copy paste | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: " searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media code | inserttime preview | forecolor backcolor",
+    oolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft"
 });
-
-           
-           
-
-
