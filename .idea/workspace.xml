@@ -2,60 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69648276-c250-4bf8-b02e-6d8299c22deb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/langs/readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/langs/zh_CN.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/fonts/sh4tinymce.dev.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/fonts/sh4tinymce.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/fonts/sh4tinymce.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/fonts/sh4tinymce.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/fonts/sh4tinymce.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/langs/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/langs/fr_FR.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/plugin.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/tinymce/plugins/sh4tinymce/style/style.css" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.eot" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.ttf" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.woff" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.eot" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.ttf" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.woff" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/config.js" afterPath="$PROJECT_DIR$/static/tinymce/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/anchor/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/anchor/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/autolink/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/autolink/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/autoresize/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/autoresize/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/bbcode/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/bbcode/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/charmap/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/charmap/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/contextmenu/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/contextmenu/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/fullscreen/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/fullscreen/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/image/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/image/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/importcss/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/importcss/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/legacyoutput/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/legacyoutput/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/link/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/link/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/lists/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/lists/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/media/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/media/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/noneditable/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/noneditable/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/pagebreak/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/pagebreak/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/paste/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/paste/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/preview/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/preview/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/save/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/save/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/searchreplace/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/searchreplace/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/spellchecker/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/spellchecker/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/tabfocus/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/tabfocus/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/table/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/table/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/template/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/template/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/textcolor/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/textcolor/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/visualblocks/css/visualblocks.css" afterPath="$PROJECT_DIR$/static/tinymce/plugins/visualblocks/css/visualblocks.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/plugins/wordcount/plugin.min.js" afterPath="$PROJECT_DIR$/static/tinymce/plugins/wordcount/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/content.inline.min.css" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/content.inline.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/content.min.css" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/content.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.svg" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce-small.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.svg" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/fonts/tinymce.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/skin.ie7.min.css" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/skin.ie7.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/skins/lightgray/skin.min.css" afterPath="$PROJECT_DIR$/static/tinymce/skins/lightgray/skin.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/themes/modern/theme.min.js" afterPath="$PROJECT_DIR$/static/tinymce/themes/modern/theme.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/tinymce/tinymce.min.js" afterPath="$PROJECT_DIR$/static/tinymce/tinymce.min.js" />
     </list>
     <ignored path="my_site.iws" />
@@ -91,30 +39,8 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/tinymce/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34615386">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tinymce.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/tinymce/tinymce.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43808" column="26" selection-start-line="43808" selection-start-column="26" selection-end-line="43808" selection-end-column="26" />
-              <folding>
-                <marker date="1466069120445" expanded="true" signature="1127545:1127746" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tinymce.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/tinymce/tinymce.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="3339" selection-start-line="12" selection-start-column="3339" selection-end-line="12" selection-end-column="3339" />
+            <state vertical-scroll-proportion="0.20769231">
+              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -215,24 +141,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="my_site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="my_site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="my_site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -908,7 +816,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#15#66#0" expanded="true" />
+            <element signature="e#15#66#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -947,7 +855,7 @@
         <state vertical-scroll-proportion="-4.4307694">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -957,23 +865,23 @@
         <state vertical-scroll-proportion="0.52087915">
           <caret line="335" column="0" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/tinymce/tinymce.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="3339" selection-start-line="12" selection-start-column="3339" selection-end-line="12" selection-end-column="3339" />
+        <state vertical-scroll-proportion="-1.3729978">
+          <caret line="12" column="3859" selection-start-line="12" selection-start-column="3859" selection-end-line="12" selection-end-column="3859" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/tinymce/tinymce.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43808" column="26" selection-start-line="43808" selection-start-column="26" selection-end-line="43808" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.05934066">
+          <caret line="43779" column="16" selection-start-line="43779" selection-start-column="16" selection-end-line="43779" selection-end-column="16" />
           <folding>
             <marker date="1466069120445" expanded="true" signature="1127545:1127746" placeholder="..." />
           </folding>
@@ -982,8 +890,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/tinymce/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34615386">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.20769231">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
           <folding />
         </state>
       </provider>
