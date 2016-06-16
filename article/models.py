@@ -106,7 +106,7 @@ class Article(models.Model):  # 文章
     author = models.ForeignKey(Author, verbose_name='作者')
     tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')  # 标签
     classification = models.ForeignKey(Classification, verbose_name='分类')  # 分类
-    content = models.TextField(blank=True, null=True, verbose_name='评论')
+    content = models.TextField(blank=True, null=True, verbose_name='文章内容')
     publish_time = models.DateTimeField(auto_now_add=True, verbose_name='发表时间')
     count = models.IntegerField(default=0, verbose_name='文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
     objects = models.Manager()  # 默认的管理器
@@ -127,7 +127,7 @@ class Article(models.Model):  # 文章
     def get_before_article(self):  # 返回当前文章的前一篇文章
         temp = Article.objects.order_by('id')
         cur = Article.objects.get(id=self.id)
-        count=0
+        count = 0
         for i in temp:
             if i.id == cur.id:
                 index = count
