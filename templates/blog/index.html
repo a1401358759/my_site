@@ -52,8 +52,8 @@
 		 		{{article.author}}
  			</span>
 		  	<span class="comments-link">
-				<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-  				<span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
+				<a class="entry-format" href="{{ article.get_absolute_url }}"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+  				<span class="ds-thread-count" data-thread-key="{{article.id}}"></span></a>
 			</span>
         </div>
 					
