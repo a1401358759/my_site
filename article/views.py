@@ -177,3 +177,6 @@ def message(request):
     date_list = Article.date_list.get_Article_onDate()
     return render_to_response('blog/message.html', locals(), context_instance=RequestContext(request))
 
+
+def love(request):
+    return render(request, 'blog/index1.html')
