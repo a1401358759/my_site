@@ -7,20 +7,20 @@
                     <h4 class="panel-title" style="margin-left:10px; margin-bottom: -10px; line-height: 40px; font-weight: bolder; color: #FFFFFF; font-size: larger;">登录</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="/love" method="post" data-parsley-validate="true" id="verify_user_form">
+                    <form class="form-horizontal" action="/love" method="post" id="verify_user_form">
                         {% csrf_token %}
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" style="font-size: smaller;"><i class="fa fa-asterisk" style="color: red;"></i>用户:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="name" id="name" class="form-control input-sm" data-parsley-required="true"/>
+                                    <input type="text" required="required" name="name" id="name" class="form-control input-sm">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" style="font-size: smaller;"><i class="fa fa-asterisk" style="color: red;"></i>密码:</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="pw" id="pw" class="form-control input-sm" data-parsley-required="true"/>
+                                    <input type="password" required="required" name="pw" id="pw" class="form-control input-sm">
                                 </div>
                             </div>
                         </div>
