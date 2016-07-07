@@ -186,4 +186,4 @@ def love(request):
     if name == 'maomao' and pw == 'nn':
         return render(request, 'blog/index1.html')
     else:
-        return HttpResponseRedirect('/')
+        return render(request, 'blog/404.htm')
