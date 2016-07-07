@@ -19,5 +19,5 @@ urlpatterns = patterns('',
     url(r'^article/(?P<year>\d{4})/(?P<month>\d{1,2})/$', 'article.views.archive_month', name="archive_month"),  # 按月归档
     url(r'^articleClassfi/(?P<classfi>\w+)/$', 'article.views.classfiDetail', name="classfiDetail"),  # 每个分类页下面的文章
     url(r'^articleTag/(?P<tag>\w+)/$', 'article.views.tagDetail', name="tagDetail"),  # 每个标签页下面的文章
-    url(r'^love$', 'article.views.love')
+    url(r'^love/?$', 'article.views.love')
 )

@@ -7,6 +7,7 @@ from django.http import Http404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.syndication.views import Feed  # 订阅RSS
 import json
+from django.http import HttpResponseRedirect
 from django.core import serializers
 
 
@@ -163,7 +164,7 @@ def blog_search(request):  # 实现对文章标题的搜索
         if not s:
             return render(request, 'blog/index.html')
         else:
-            articles = Article.objects.filter(title__icontains = s)
+            articles = Article.objects.filter(title__icontains=s)
             if len(articles) == 0:
                 error = True
 
@@ -179,4 +180,10 @@ def message(request):
 
 
 def love(request):
-    return render(request, 'blog/index1.html')
+    params = request.GET
+    name = params['name']
+    pw = params['pw']
+    if name == 'maomao' and pw == 'nn':
+        return render(request, 'blog/index1.html')
+    else:
+        return HttpResponseRedirect('/')

@@ -10,14 +10,18 @@
         <!-- Bootstrap core CSS -->
         <link href="{{ STATIC_URL }}lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ STATIC_URL }}lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
-
+        <link href="{{ STATIC_URL }}jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}parsley/src/parsley.css" rel="stylesheet" />
         <!-- Custom styles for this template -->
         <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
 
         <!--jquery  -->
         <script src="{{ STATIC_URL }}lib/jquery.js"></script>
         <script src="{{ STATIC_URL }}lib/scorllup.js"></script>
-
+        <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
+        <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
         <!--SyntaxHighter-->
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/shCore.css">
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/shThemeRDark.css">
@@ -70,7 +74,7 @@ $(function () {
                     <a href="http://www.weibo.com"><i style="position:relative;left:-2px;" class="icon-weibo icon-large"></i></a>
                     <a href="https://github.com/a1401358759"> <i style="position:relative;left:-2px;" class="icon-github icon-large"></i></a>
                     <a href="{% url 'RSS' %}"><i style="position:relative;left:-2px;" class="icon-rss icon-large"></i></a>
-                    <a href="/love" target="_blank"><i style="position:relative;left:-2px;" class="icon-heart icon-large"></i></a>
+                    <a href="javascript:void (0)" onclick="verify_user()"><i style="position:relative;left:-2px;" class="icon-heart icon-large"></i></a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -127,11 +131,8 @@ $(function () {
             </div>
         </footer>
     </center>
-    </div> <!-- #wrap -->
-
-    <!-- visitor  count -->
-{#    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>#}
-
+    </div>
+    {% include "blog/verify_user.html" %}
     <script>
         var navigation = responsiveNav("#nav2");
     </script>
@@ -145,6 +146,10 @@ $(function () {
                 }
             });
         });
+
+        function verify_user(){
+            $("#verify_user").modal('show')
+        }
     </script>
     </body>
 </html>
