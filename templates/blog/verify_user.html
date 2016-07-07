@@ -7,7 +7,8 @@
                     <h4 class="panel-title" style="margin-left:10px; margin-bottom: -10px; line-height: 40px; font-weight: bolder; color: #FFFFFF; font-size: larger;">验证登录用户</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="/love" method="get" data-parsley-validate="true" id="verify_user_form">
+                    <form class="form-horizontal" action="/love" method="post" data-parsley-validate="true" id="verify_user_form">
+                        {% csrf_token %}
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="name" style="font-size: smaller;"><i class="fa fa-asterisk" style="color: red;"></i>用户:</label>
@@ -34,6 +35,7 @@
         <div class="col-md-4"></div>
     </div>
 </div>
+
 <!--<script type="text/javascript">
     $("#verify_user_form").submit(function(){
         var name = $("#name").val();

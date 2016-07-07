@@ -180,7 +180,7 @@ def message(request):
 
 
 def love(request):
-    params = request.GET
+    params = request.POST
     name = params['name']
     pw = params['pw']
     if name == 'maomao' and pw == 'nn':
