@@ -40,7 +40,7 @@
         </div><!-- .entry-content -->
 
         <footer class="entry-meta">
-            <div class="fenlei">
+            <div class="fenlei" style="margin: 7px;">
                 <span class="entry-categories">
                     <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
                     <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
@@ -53,14 +53,19 @@
                 </span>
             </div>
 
-        <!-- JiaThis Button BEGIN -->
-            <div class="jiathis_style" style="float:right;">
-                <span class="jiathis_txt">分享到：</span>
-                <a class="jiathis_button_qzone">QQ空间</a>
-                <a class="jiathis_button_tsina">新浪微博</a>
-                <a class="jiathis_button_weixin">微信</a>
-            </div>
-        <!-- JiaThis Button END -->
+        <!-- duoshuo share Button BEGIN -->
+            <div style="margin-left: 355px;" class="ds-share" data-thread-key="{{ article.id }}" data-title="{{ article.title }}" data-url="{{ article.get_absolute_url }}" data-content="{{ article.content }}">
+                <div class="ds-share-inline">
+                    <ul  class="ds-share-icons-16">
+                        <li><small style="color: slategray">分享到:</small></li>
+                        <li><small><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></small></li>
+                        <li><small><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></small></li>
+                        <li><small><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></small></li>
+                        <li><small><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></small></li>
+                    </ul>
+                </div>
+             </div>
+        <!-- duoshuo share Button END -->
         </footer>
     </div>
 </div>
