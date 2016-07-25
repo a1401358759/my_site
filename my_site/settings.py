@@ -100,6 +100,9 @@ ADMINS = {
    ('Daniel', '1401358759@qq.com'),
 
 }
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+        'django.core.context_processors.request',
+)
 
 TEMPLATES = [
     {

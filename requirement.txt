@@ -3,5 +3,5 @@ Django==1.8.7
 django-appconf==1.0.1
 django-grappelli==2.6.4
 django-staticfiles==1.2.1
-pytz==2015.2
+pytz
 six==1.9.0
