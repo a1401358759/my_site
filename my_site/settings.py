@@ -13,7 +13,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -100,9 +99,6 @@ ADMINS = {
    ('Daniel', '1401358759@qq.com'),
 
 }
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-        'django.core.context_processors.request',
-)
 
 TEMPLATES = [
     {
