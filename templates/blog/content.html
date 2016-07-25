@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{article.title}}|Daniel的小站
+    {{article.title}}
 {% endblock %}
 {% block path %}
     <a href = "{% url 'home' %}">当前位置&nbsp;:&nbsp;首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
