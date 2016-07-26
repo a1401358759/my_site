@@ -14,7 +14,74 @@
             </h6>
         </div>
     </div>
-   
+    <div>
+        <section id="recent-comments" class="widget widget_recent_comments">
+            <h4 style="margin-top: -10px; margin-left: -10px;">近期留言:</h4>
+            <ol>
+                {% for message in messages%}
+                    <li><span style="color: red">{{ message.name }}</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><textarea class="form-control">{{ message.content|safe }}</textarea></li>
+                {% endfor %}
+            </ol>
+        </section>
+    </div>
+    共 <button type="button" class="btn-sm btn-default" disabled="disabled">{{ messages | length }}</button> 条留言
+
+    <form style="margin-top: 15px;" class="form-horizontal" id="message_form" method="post">
+    {% csrf_token %}
+        <div class="row form-inline">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <input type="text" placeholder="姓名(必填)" required="required" name="name" id="name" class="form-control input-sm" style="width: 348px;">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6">
+                    <input type="email" placeholder="邮箱(必填)" required="required" name="email" id="email" class="form-control input-sm" style="width: 348px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <textarea name="messages" id="messages" placeholder="留言内容(必填)" required="required" class="form-control" rows="8" style="resize: none;"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-default" onclick="create_messages()">确定</button>
+        </div>
+    </form>
+
+<script type="text/javascript">
+    function create_messages() {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var messages = $('#messages').val();
+        if (name.length != 0 && email.length != 0 && messages.length != 0) {
+            $.ajax({
+                url: '/create/messages',
+                type: 'POST',
+                dataType: 'json',
+                data: add_csrf_token({
+                    'name': name,
+                    'email': email,
+                    'messages': messages
+                }),
+                success: function (data) {
+                    if (data['success'] == true) {
+                        alert(data['message']);
+                        window.location.reload()
+                    } else {
+                        alert(data['message']);
+                    }
+                }
+            })
+        }else{
+            alert('请填写数据！')
+        }
+    }
+</script>
 {% endblock %}
 
 {% block side %}

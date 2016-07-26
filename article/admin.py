@@ -5,6 +5,7 @@ from article.models import *
 admin.site.register(Author)
 admin.site.register(Tag)
 admin.site.register(Classification)
+admin.site.register(Messages)
 
 
 # class ArticleAdmin(SummernoteModelAdmin):

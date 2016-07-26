@@ -1,17 +1,22 @@
 # coding:utf-8
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from article.models import Article, Tag, Classification
+from article.models import Article, Tag, Classification, Messages
 from django.http import Http404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.syndication.views import Feed  # 订阅RSS
 import json
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect
 from django.core import serializers
 
 
 # Create your views here.
+def render_json(data, status=200):
+    return HttpResponse(json.dumps(data), content_type="text/json", status=status)
+
+
 def home(request):
     is_home = True
     articles = Article.objects.all()
@@ -173,6 +178,7 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
+    messages = Messages.objects.all()
     classification = Classification.class_list.get_Class_list()  
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
@@ -187,3 +193,17 @@ def love(request):
         return render(request, 'blog/index1.html')
     else:
         return render(request, 'blog/404.htm')
+
+
+def create_messages(request):
+    params = request.POST
+    name = params['name']
+    email = params['email']
+    messages = params['messages']
+    Messages.create_message(
+        name=name,
+        email=email,
+        content=messages
+    )
+    return render_json({'success': True, 'message': '留言成功！'})
+

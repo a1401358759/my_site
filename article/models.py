@@ -13,6 +13,26 @@ class Author(models.Model):
         return self.name
 
 
+class Messages(models.Model):
+    name = models.CharField(max_length=30, verbose_name='姓名')
+    email = models.EmailField(max_length=30, verbose_name='邮件')
+    content = models.TextField(max_length=200, verbose_name='个人网站')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.name
+
+    @classmethod
+    def create_message(cls, name, email, content):
+        obj = Messages(
+            name=name,
+            email=email,
+            content=content,
+        )
+        obj.save()
+        return obj
+
+
 class TagManager(models.Manager):
     def get_Tag_list(self):                 # 返回文章标签列表, 每个标签以及对应的文章数目
         tags = Tag.objects.all()
