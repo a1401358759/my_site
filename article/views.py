@@ -178,7 +178,7 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
-    messages = Messages.objects.all()
+    messages = Messages.objects.all().reverse()
     classification = Classification.class_list.get_Class_list()  
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
@@ -200,14 +200,11 @@ def create_messages(request):
     name = params['name']
     email = params['email']
     messages = params['messages']
-    message = Messages.objects.filter(email=email)
-    if len(message) == 0:
-        Messages.create_message(
-            name=name,
-            email=email,
-            content=messages
-        )
-        return render_json({'success': True, 'message': '留言成功！'})
-    else:
-        return render_json({'warning': True, 'error': '邮箱已存在！'})
+    Messages.create_message(
+        name=name,
+        email=email,
+        content=messages
+    )
+    return render_json({'success': True, 'message': '留言成功！'})
+
 

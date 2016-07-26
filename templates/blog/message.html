@@ -1,30 +1,17 @@
 {% extends "base.html" %}
 {% block title %}
-    给我留言
+    留言板
 {% endblock %}
 {% block path %}
-    <a href = "{% url 'home'%}">当前位置&nbsp;:&nbsp;首页&nbsp;</a>»&nbsp;给我留言
+    <a href = "{% url 'home'%}">当前位置&nbsp;:&nbsp;首页&nbsp;</a>»&nbsp;留言板
 {% endblock %}
 {% block content %}
-    <div class="archive">
-        <div id="archives">
-            <h6>
-                Hi:<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎访问我的博客，你可以在下面留下你的足迹。^_^
-            </h6>
-        </div>
-    </div>
     <div>
         <section id="recent-comments" class="widget widget_recent_comments">
-            <h4 style="margin-top: -10px; margin-left: -10px;">近期留言:</h4>
-            <ol>
-                {% for message in messages%}
-                    <li><span style="color: red">{{ message.name }} ({{ message.email }})</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><p>{{ message.content|safe }}</p></li>
-                {% endfor %}
-            </ol>
+            <h6 style="margin-top: -10px; margin-left: -10px;">主人寄语</h6>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size: smaller">欢迎访问我的博客，你可以在下面留下你的足迹.^_^</span>
         </section>
     </div>
-    共 <button type="button" class="btn-sm btn-default" disabled="disabled">{{ messages | length }}</button> 条留言
 
     <form style="margin-top: 15px;" class="form-horizontal" id="message_form" method="post">
     {% csrf_token %}
@@ -48,10 +35,22 @@
             </div>
         </div>
 
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-default" onclick="create_messages()" style="margin-right: -15px;">确定</button>
-        </div>
+        <button type="submit" class="btn btn-default" onclick="create_messages()">发表</button>
     </form>
+    <hr/>
+        留言({{ messages | length }})
+    <hr/>
+    <div style="margin-top: 30px; margin-left: 10px;">
+        <section>
+            <h5 style="margin-top: -10px; margin-left: -10px;">近期留言:</h5>
+            <ul>
+                {% for message in messages%}
+                    <li type="circle"><span style="color: red">{{ message.name }} [{{ message.email }}]</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><p style="text-indent: 2em">{{ message.content|safe }}</p></li>
+                    <hr/>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
 
 <script type="text/javascript">
     function create_messages() {
@@ -73,9 +72,7 @@
                     if (data['success'] == true) {
                         alert(data['message']);
                         window.location.reload()
-                    } else if (data['warning'] == true) {
-                        alert(data['error']);
-                    }else {
+                    }else{
                         alert(data['message']);
                     }
                 }

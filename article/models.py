@@ -15,9 +15,9 @@ class Author(models.Model):
 
 class Messages(models.Model):
     name = models.CharField(max_length=30, verbose_name='姓名')
-    email = models.EmailField(max_length=30, verbose_name='邮件')
+    email = models.EmailField(max_length=30, verbose_name='邮箱')
     content = models.TextField(max_length=200, verbose_name='留言')
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='留言时间')
 
     def __unicode__(self):
         return self.name

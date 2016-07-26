@@ -5,12 +5,14 @@ from article.models import *
 admin.site.register(Author)
 admin.site.register(Tag)
 admin.site.register(Classification)
-admin.site.register(Messages)
+# admin.site.register(Messages)
 
 
 # class ArticleAdmin(SummernoteModelAdmin):
 #     pass
 # admin.site.register(Article, ArticleAdmin)
+class MessagesAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'content', 'created_at')
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -20,6 +22,6 @@ class ArticleAdmin(admin.ModelAdmin):
             '/static/tinymce/config.js',
         )
 admin.site.register(Article, ArticleAdmin)
-     
+admin.site.register(Messages, MessagesAdmin)
 
 
