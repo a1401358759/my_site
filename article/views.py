@@ -200,10 +200,14 @@ def create_messages(request):
     name = params['name']
     email = params['email']
     messages = params['messages']
-    Messages.create_message(
-        name=name,
-        email=email,
-        content=messages
-    )
-    return render_json({'success': True, 'message': '留言成功！'})
+    message = Messages.objects.filter(email=email)
+    if len(message) == 0:
+        Messages.create_message(
+            name=name,
+            email=email,
+            content=messages
+        )
+        return render_json({'success': True, 'message': '留言成功！'})
+    else:
+        return render_json({'warning': True, 'error': '邮箱已存在！'})
 

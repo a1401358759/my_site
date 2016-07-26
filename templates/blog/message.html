@@ -19,7 +19,7 @@
             <h4 style="margin-top: -10px; margin-left: -10px;">近期留言:</h4>
             <ol>
                 {% for message in messages%}
-                    <li><span style="color: red">{{ message.name }}</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><textarea class="form-control">{{ message.content|safe }}</textarea></li>
+                    <li><span style="color: red">{{ message.name }} ({{ message.email }})</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><textarea class="form-control input-sm">{{ message.content|safe }}</textarea></li>
                 {% endfor %}
             </ol>
         </section>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="modal-footer">
-            <button type="submit" class="btn btn-default" onclick="create_messages()">确定</button>
+            <button type="submit" class="btn btn-default" onclick="create_messages()" style="margin-right: -15px;">确定</button>
         </div>
     </form>
 
@@ -60,6 +60,7 @@
         var messages = $('#messages').val();
         if (name.length != 0 && email.length != 0 && messages.length != 0) {
             $.ajax({
+                async: false,
                 url: '/create/messages',
                 type: 'POST',
                 dataType: 'json',
@@ -72,13 +73,15 @@
                     if (data['success'] == true) {
                         alert(data['message']);
                         window.location.reload()
-                    } else {
+                    } else if (data['warning'] == true) {
+                        alert(data['error']);
+                    }else {
                         alert(data['message']);
                     }
                 }
             })
         }else{
-            alert('请填写数据！')
+            alert('数据不能为空！')
         }
     }
 </script>
