@@ -19,7 +19,7 @@
             <h4 style="margin-top: -10px; margin-left: -10px;">近期留言:</h4>
             <ol>
                 {% for message in messages%}
-                    <li><span style="color: red">{{ message.name }} ({{ message.email }})</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><textarea class="form-control input-sm">{{ message.content|safe }}</textarea></li>
+                    <li><span style="color: red">{{ message.name }} ({{ message.email }})</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><p>{{ message.content|safe }}</p></li>
                 {% endfor %}
             </ol>
         </section>
