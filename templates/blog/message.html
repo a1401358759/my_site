@@ -59,7 +59,7 @@
                 {% for message in messages%}
                     <li>
                         <div><img src="/static/css/head.png" height="40px" width="40px" style="border-radius: 40px;"></div>
-                        <span style="color: #4398ed" href="javascript:;">{{ message.name }}</span>
+                        <span style="color: #4398ed">{{ message.name }}</span>
                         <span id="messages_time"><i class="glyphicon glyphicon-calendar"></i> {{ message.created_at }}</span>
                         <br/><br/>
                         <p>{{ message.content|safe }}</p>
