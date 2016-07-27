@@ -13,7 +13,7 @@
         </section>
     </div>
 
-    <form style="margin-top: 15px;" class="form-horizontal" id="message_form" method="post">
+    <form style="margin-top: 15px;" class="form-horizontal" id="message_form">
     {% csrf_token %}
         <div class="row form-inline">
             <div class="form-group">
@@ -42,11 +42,16 @@
     <hr/>
     <div style="margin-top: 30px; margin-left: 10px;">
         <section>
-            <h5 style="margin-top: -10px; margin-left: -10px;">近期留言:</h5>
+            <h5 style="margin-top: -10px; margin-left: -10px; color: #4398ed"><i class="glyphicon glyphicon-comment"></i> 近期留言</h5>
             <ul>
                 {% for message in messages%}
-                    <li type="circle"><span style="color: red">{{ message.name }} [{{ message.email }}]</span> 在 <span style="color: green">{{ message.created_at }}</span> 留言说：<br/><p style="text-indent: 2em">{{ message.content|safe }}</p></li>
-                    <hr/>
+                    <li type="circle" style="list-style: none; border-bottom: 1px dashed #e5e5e5; padding: 13px 0 11px;">
+                        <div style="float: left; margin-right: 10px; margin-top: -5px;"><img src="/static/css/head.png" height="40px" width="40px" style="border-radius: 40px;"></div>
+                        <span style="color: #4398ed">{{ message.name }}</span>
+                        <span style="float: right; font-size: smaller; color: silver; margin-top: 4px;"><i class="glyphicon glyphicon-calendar"></i> {{ message.created_at }}</span>
+                        <br/><br/>
+                        <p style="text-indent: 3.5em; word-break: break-all; word-wrap: break-word;">{{ message.content|safe }}</p>
+                    </li>
                 {% endfor %}
             </ul>
         </section>
@@ -81,6 +86,7 @@
             alert('数据不能为空！')
         }
     }
+
 </script>
 {% endblock %}
 
