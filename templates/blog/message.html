@@ -49,7 +49,7 @@
     </form>
 
     <hr/>
-        留言({{ messages | length }})
+        留言({{ messages_num | length }})
     <hr/>
 
     <div id="set_messages">
@@ -67,6 +67,27 @@
                 {% endfor %}
             </ul>
         </section>
+    </div>
+
+    <div class="page-navigation" style="text-align: right;">
+        {% if messages|length < 1 %}
+           <h5 style="color: silver;">暂无留言</h5>
+        {% else %}
+            {% if messages.has_previous %}
+                <a class="before page-numbers" title='上一页' href='?page={{ messages.previous_page_number }}'><span>上一页</span></a>
+            {% endif %}
+            {% for page in messages.paginator.page_range %}
+                {% if page == messages.number %}
+                    <a style="background:rgba(0,128,255,.5);" title="当前页:{{ page }}"><span class=" ">{{ page }}</span></a>
+                {% else %}
+                    <a class='paginator' href="?page={{ page }}" title="{{ page }}"><span class="pagenum">{{ page }}</span></a>
+                {% endif %}
+            {% endfor %}
+            {% if messages.has_next %}
+                <a class="next page-numbers" title='下一页' href='?page={{ messages.next_page_number }}'><span>下一页</span></a>
+            {% endif %}
+        {% endif %}
+        <div class="clearfix"></div>
     </div>
 
     <script type="text/javascript">
