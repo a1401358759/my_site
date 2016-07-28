@@ -7,7 +7,7 @@ from django.http import Http404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.syndication.views import Feed  # 订阅RSS
 import json
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 from django.http import HttpResponseRedirect
 from django.core import serializers
 
@@ -57,7 +57,7 @@ def detail(request, year, month, day, id):
 def archive_month(request, year, month):
     is_arch_month = True
     articles = Article.objects.filter(publish_time__year=year).filter(publish_time__month=month)  # 当前日期下的文章列表
-    paginator = Paginator(articles,6)
+    paginator = Paginator(articles, 6)
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)
@@ -78,7 +78,7 @@ def classfiDetail(request, classfi):
     is_classfi = True
     temp = Classification.objects.get(name=classfi)  # 获取全部的Article对象
     articles = temp.article_set.all()
-    paginator = Paginator(articles,6)
+    paginator = Paginator(articles, 6)
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)
@@ -205,7 +205,7 @@ def love(request):
         return render(request, 'blog/404.htm')
 
 
-@csrf_exempt
+@require_POST
 def create_messages(request):
     params = request.POST
     name = params['name']
