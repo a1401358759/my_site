@@ -57,7 +57,7 @@ def detail(request, year, month, day, id):
 def archive_month(request, year, month):
     is_arch_month = True
     articles = Article.objects.filter(publish_time__year=year).filter(publish_time__month=month)  # 当前日期下的文章列表
-    paginator = Paginator(articles, 6)
+    paginator = Paginator(articles, 5)
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)
@@ -78,7 +78,7 @@ def classfiDetail(request, classfi):
     is_classfi = True
     temp = Classification.objects.get(name=classfi)  # 获取全部的Article对象
     articles = temp.article_set.all()
-    paginator = Paginator(articles, 6)
+    paginator = Paginator(articles, 5)
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)
@@ -100,7 +100,7 @@ def tagDetail(request, tag):
     temp = Tag.objects.get(name=tag)  # 获取全部的Article对象
     # articles = Article.objects.filter(tags=tag)
     articles = temp.article_set.all()
-    paginator = Paginator(articles, 6)
+    paginator = Paginator(articles, 5)
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)
@@ -162,7 +162,6 @@ def blog_search(request):  # 实现对文章标题的搜索
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
-
     error = False
     if 's' in request.GET:
         s = request.GET['s']

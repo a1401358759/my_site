@@ -76,6 +76,8 @@
         {% if messages|length < 1 %}
            <h5 style="color: silver;">暂无留言</h5>
         {% else %}
+            <span style="color: silver; float: left; font-size: smaller;">从 1 到 {{ messages|length }} / 共 {{ messages_num|length }} 条留言</span>
+            <div class="clearfix"></div>
             {% if messages.has_previous %}
                 <a class="before page-numbers" title='上一页' href='?page={{ messages.previous_page_number }}'><span>前一页</span></a>
             {% endif %}

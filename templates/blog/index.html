@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block title %}
-   {% if is_home %}
-       Daniel的小站
-   {% endif%}
-   {% if is_arch_month %}
-       {{year}}年 | {{month}}月
-   {% endif%}
-   {% if is_classfi  %}
-       {{classfi}}
-   {% endif%}
-   {% if is_tag  %}
-       {{tag}}
-   {% endif%}
+    {% if is_home %}
+        Daniel的小站
+    {% endif%}
+    {% if is_arch_month %}
+        {{year}}年 | {{month}}月
+    {% endif%}
+    {% if is_classfi  %}
+        {{classfi}}
+    {% endif%}
+    {% if is_tag  %}
+        {{tag}}
+    {% endif%}
+    {% if  is_search  %}
+        查找有关{{s}}的文章
+    {% endif%}
 {% endblock %}
 {% block path %} 
    {% if is_home %}
@@ -94,7 +97,7 @@
         {% endfor%}
     {% endif %}
 
-    {% include "blog/_paginator.html" %}
+    {% include 'blog/_paginator.html' %}
 
 {% endblock %}
 
