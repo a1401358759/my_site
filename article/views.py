@@ -179,14 +179,14 @@ def blog_search(request):  # 实现对文章标题的搜索
 def message(request):
     messages_num = Messages.objects.all()
     messages = Messages.objects.order_by('-created_at')
-    paginator = Paginator(messages, 5)  # 每个页面最多显示5篇文章
-    page_num = request.GET.get('page')
-    try:
-        messages = paginator.page(page_num)
-    except PageNotAnInteger:
-        messages = paginator.page(1)
-    except EmptyPage:
-        messages = paginator.page(paginator.num_pages)
+    # paginator = Paginator(messages, 5)  # 每个页面最多显示5篇文章
+    # page_num = request.GET.get('page')
+    # try:
+    #     messages = paginator.page(page_num)
+    # except PageNotAnInteger:
+    #     messages = paginator.page(1)
+    # except EmptyPage:
+    #     messages = paginator.page(paginator.num_pages)
 
     classification = Classification.class_list.get_Class_list()  
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
