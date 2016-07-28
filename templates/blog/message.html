@@ -44,12 +44,13 @@
                 <textarea name="messages" id="messages" placeholder="留言内容(必填)" required="required" class="form-control" rows="8" style="resize: none;"></textarea>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-default" onclick="create_messages()">发表</button>
+        <div style="text-align: right; margin-top: -10px;">
+            <button type="submit" class="btn btn-default" onclick="create_messages()">发表</button>
+        </div>
     </form>
 
-    <hr/>
-        留言({{ messages_num | length }})
+    
+    留言({{ messages_num | length }})
     <hr/>
 
     <div id="set_messages">
