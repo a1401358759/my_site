@@ -20,7 +20,7 @@ def render_json(data, status=200):
 def home(request):
     is_home = True
     articles = Article.objects.all()
-    paginator = Paginator(articles, 5)  # 每个页面最多显示6篇文章
+    paginator = Paginator(articles, 5)  # 每个页面最多显示5篇文章
     page_num = request.GET.get('page')
     try:
         articles = paginator.page(page_num)
@@ -178,7 +178,7 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
-    messages = Messages.objects.all().reverse()
+    messages = Messages.objects.order_by('-created_at')
     classification = Classification.class_list.get_Class_list()  
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
