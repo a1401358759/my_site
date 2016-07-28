@@ -36,7 +36,7 @@ def home(request):
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()  # 按月归档,以及对应的文章数目
   
-    return render_to_response('blog/index.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/index.html', locals())
 
 
 def detail(request, year, month, day, id):
@@ -51,7 +51,7 @@ def detail(request, year, month, day, id):
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
 
-    return render_to_response('blog/content.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/content.html', locals())
 
 
 def archive_month(request, year, month):
@@ -71,7 +71,7 @@ def archive_month(request, year, month):
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
     
-    return render_to_response('blog/index.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/index.html', locals())
 
 
 def classfiDetail(request, classfi):
@@ -92,7 +92,7 @@ def classfiDetail(request, classfi):
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
         
-    return render_to_response('blog/index.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/index.html', locals())
 
 
 def tagDetail(request, tag):
@@ -115,7 +115,7 @@ def tagDetail(request, tag):
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
      
-    return render_to_response('blog/index.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/index.html', locals())
 
 
 def about(request):
@@ -134,7 +134,7 @@ def archive(request):
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
 
-    return render_to_response('blog/archive.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/archive.html', locals())
 
 
 class RSSFeed(Feed):
@@ -173,7 +173,7 @@ def blog_search(request):  # 实现对文章标题的搜索
             if len(articles) == 0:
                 error = True
 
-    return render_to_response('blog/index.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/index.html', locals())
     # return redirect('/')
 
 
@@ -192,7 +192,7 @@ def message(request):
     classification = Classification.class_list.get_Class_list()  
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
-    return render_to_response('blog/message.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/message.html', locals())
 
 
 def love(request):

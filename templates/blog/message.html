@@ -60,8 +60,10 @@
                 {% for message in messages%}
                     <li>
                         <div><img src="/static/css/head.png" height="40px" width="40px" style="border-radius: 40px;"></div>
+                        <div class="clearfix"></div>
                         <span style="color: #4398ed">{{ message.name }}</span>
                         <span id="messages_time"><i class="glyphicon glyphicon-calendar"></i> {{ message.created_at }}</span>
+                        <div class="clearfix"></div>
                         <br/><br/>
                         <p>{{ message.content|safe }}</p>
                     </li>
@@ -75,7 +77,7 @@
            <h5 style="color: silver;">暂无留言</h5>
         {% else %}
             {% if messages.has_previous %}
-                <a class="before page-numbers" title='上一页' href='?page={{ messages.previous_page_number }}'><span>上一页</span></a>
+                <a class="before page-numbers" title='上一页' href='?page={{ messages.previous_page_number }}'><span>前一页</span></a>
             {% endif %}
             {% for page in messages.paginator.page_range %}
                 {% if page == messages.number %}
@@ -85,7 +87,7 @@
                 {% endif %}
             {% endfor %}
             {% if messages.has_next %}
-                <a class="next page-numbers" title='下一页' href='?page={{ messages.next_page_number }}'><span>下一页</span></a>
+                <a class="next page-numbers" title='下一页' href='?page={{ messages.next_page_number }}'><span>后一页</span></a>
             {% endif %}
         {% endif %}
         <div class="clearfix"></div>
