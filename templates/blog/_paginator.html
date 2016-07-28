@@ -2,7 +2,7 @@
 <div class="page-navigation">
       
 {% if articles|length < 1 %}
-   <h3>暂无文章</h3>
+   <h5 style="color: silver;">暂无文章</h5>
 {% else %}
    	{% if articles.has_previous %}
 		<a class="before page-numbers" title='上一页' href='?page={{ articles.previous_page_number }}'><span>上一页</span></a>
