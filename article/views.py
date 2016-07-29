@@ -20,16 +20,16 @@ def render_json(data, status=200):
 def home(request):
     is_home = True
     articles = Article.objects.all()
-    paginator = Paginator(articles, 5)  # 每个页面最多显示5篇文章
-    page_num = request.GET.get('page')
-    try:
-        articles = paginator.page(page_num)
-    except PageNotAnInteger:
-        articles = paginator.page(1)
-    except EmptyPage:
-        articles = paginator.page(paginator.num_pages)
+    # paginator = Paginator(articles, 5)  # 每个页面最多显示5篇文章
+    # page_num = request.GET.get('page')
+    # try:
+    #     articles = paginator.page(page_num)
+    # except PageNotAnInteger:
+    #     articles = paginator.page(1)
+    # except EmptyPage:
+    #     articles = paginator.page(paginator.num_pages)
 
-    # 显示最新发布的前10篇文章
+    # 显示最新发布的前5篇文章
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
 
     classification = Classification.class_list.get_Class_list()  # 分类,以及对应的数目
@@ -57,15 +57,6 @@ def detail(request, year, month, day, id):
 def archive_month(request, year, month):
     is_arch_month = True
     articles = Article.objects.filter(publish_time__year=year).filter(publish_time__month=month)  # 当前日期下的文章列表
-    paginator = Paginator(articles, 5)
-    page_num = request.GET.get('page')
-    try:
-        articles = paginator.page(page_num)
-    except PageNotAnInteger:
-        articles = paginator.page(1)
-    except EmptyPage:
-        articles = paginator.page(paginator.num_pages)
-
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()  
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -78,15 +69,6 @@ def classfiDetail(request, classfi):
     is_classfi = True
     temp = Classification.objects.get(name=classfi)  # 获取全部的Article对象
     articles = temp.article_set.all()
-    paginator = Paginator(articles, 5)
-    page_num = request.GET.get('page')
-    try:
-        articles = paginator.page(page_num)
-    except PageNotAnInteger:
-        articles = paginator.page(1)
-    except EmptyPage:
-        articles = paginator.page(paginator.num_pages)
-
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -100,15 +82,6 @@ def tagDetail(request, tag):
     temp = Tag.objects.get(name=tag)  # 获取全部的Article对象
     # articles = Article.objects.filter(tags=tag)
     articles = temp.article_set.all()
-    paginator = Paginator(articles, 5)
-    page_num = request.GET.get('page')
-    try:
-        articles = paginator.page(page_num)
-    except PageNotAnInteger:
-        articles = paginator.page(1)
-    except EmptyPage:
-        articles = paginator.page(paginator.num_pages)
-
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
 
     classification = Classification.class_list.get_Class_list()    
@@ -173,22 +146,11 @@ def blog_search(request):  # 实现对文章标题的搜索
                 error = True
 
     return render(request, 'blog/index.html', locals())
-    # return redirect('/')
 
 
 def message(request):
-    messages_num = Messages.objects.all()
     messages = Messages.objects.order_by('-created_at')
-    # paginator = Paginator(messages, 5)  # 每个页面最多显示5篇文章
-    # page_num = request.GET.get('page')
-    # try:
-    #     messages = paginator.page(page_num)
-    # except PageNotAnInteger:
-    #     messages = paginator.page(1)
-    # except EmptyPage:
-    #     messages = paginator.page(paginator.num_pages)
-
-    classification = Classification.class_list.get_Class_list()  
+    classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
     return render(request, 'blog/message.html', locals())
