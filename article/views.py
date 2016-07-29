@@ -93,6 +93,7 @@ def tagDetail(request, tag):
 
 def about(request):
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
+    articles = Article.objects.all()
     classification = Classification.class_list.get_Class_list()    
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
@@ -101,6 +102,7 @@ def about(request):
 
 
 def archive(request):
+    articles = Article.objects.all()
     archive = Article.date_list.get_Article_OnArchive()
     ar_newpost = Article.objects.order_by('-publish_time')[:5]
     classification = Classification.class_list.get_Class_list()    
@@ -136,8 +138,8 @@ def blog_search(request):  # 实现对文章标题的搜索
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
     error = False
-    if 's' in request.GET:
-        s = request.GET['s']
+    if 's' in request.POST:
+        s = request.POST['s']
         if not s:
             return render(request, 'blog/index.html')
         else:
@@ -149,6 +151,7 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
+    articles = Article.objects.all()
     messages = Messages.objects.order_by('-created_at')
     classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目

@@ -43,7 +43,7 @@
     {% if error %}
   	    <h4 style="color: silver;">没有相关文章题目</h4>
     {% else %}
-        <ul  id="itemContainer">
+        <span id="itemContainer">
             {% for article in articles %}
                 <div class="archive">
                     <div id="archives">
@@ -58,8 +58,10 @@
                                     {{article.author}}
                                 </span>
                                 <span class="comments-link">
-                                    <a class="entry-format" href="{{ article.get_absolute_url }}"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                                    <span class="ds-thread-count" data-thread-key="{{article.id}}"></span></a>
+                                    <a class="entry-format" href="{{ article.get_absolute_url }}">
+                                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                        <span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
+                                    </a>
                                 </span>
                             </div>
 
@@ -97,7 +99,7 @@
                 </div>
             {% endfor%}
             <div class="holder"></div>
-        </ul>
+        </span>
 
     {% endif %}
     <script type="text/javascript">

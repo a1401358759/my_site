@@ -12,9 +12,9 @@
             <div class="archive">
                 <div id="archives">
                     <h3 class='al_year' >{{key.year}}年{{key.month}}月 </h3>
-                    <ul  class="al_month_list">
-                        {% for i in value reversed %}
-                            <li><a href="{{i.get_absolute_url}}"> <span style="position:absolute;">{{i.publish_time.month}}月{{i.publish_time.day}}日&nbsp; &nbsp;</span>  <span class="liaspan" style="position:absolute; left:130px;">{{i}}</span> </li>
+                    <ul class="al_month_list">
+                        {% for i in value %}
+                            <li><a href="{{i.get_absolute_url}}"> <span style="position:absolute;">{{i.publish_time.month}}月{{i.publish_time.day}}日&nbsp; &nbsp;</span>  <span class="liaspan" style="position:absolute; left:130px;">{{i}}</span></a> </li>
                         {% endfor %}
                     </ul>
                 </div>
