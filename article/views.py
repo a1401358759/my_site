@@ -2,7 +2,7 @@
 from django.shortcuts import render, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from article.models import Article, Tag, Classification, Messages
+from article.models import Article, Tag, Classification, Messages, OwnerMessage
 from django.http import Http404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.syndication.views import Feed  # 订阅RSS
@@ -152,6 +152,7 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 def message(request):
     articles = Article.objects.all()
+    own_messages = OwnerMessage.objects.all()
     messages = Messages.objects.order_by('-created_at')
     classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目

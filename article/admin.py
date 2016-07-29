@@ -13,6 +13,17 @@ admin.site.register(Classification)
 # admin.site.register(Article, ArticleAdmin)
 class MessagesAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'content', 'created_at')
+
+    class Media:
+        js = (
+            '/static/tinymce/tinymce.min.js',
+            '/static/tinymce/config.js',
+        )
+
+
+class OwnerMessageAdmin(admin.ModelAdmin):
+    list_display = ('message', 'created_at')
+
     class Media:
         js = (
             '/static/tinymce/tinymce.min.js',
@@ -28,5 +39,5 @@ class ArticleAdmin(admin.ModelAdmin):
         )
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Messages, MessagesAdmin)
-
+admin.site.register(OwnerMessage, OwnerMessageAdmin)
 

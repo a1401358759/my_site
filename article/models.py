@@ -33,6 +33,14 @@ class Messages(models.Model):
         return obj
 
 
+class OwnerMessage(models.Model):
+    message = models.TextField(verbose_name='寄语')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+
+    def __unicode__(self):
+        return self.message
+
+
 class TagManager(models.Manager):
     def get_Tag_list(self):                 # 返回文章标签列表, 每个标签以及对应的文章数目
         tags = Tag.objects.all()

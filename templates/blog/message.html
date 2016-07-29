@@ -19,7 +19,7 @@
     <div>
         <section id="recent-comments" class="widget widget_recent_comments">
             <h6 style="margin-top: -10px; margin-left: -10px;">主人寄语</h6>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size: smaller">欢迎访问我的博客，你可以在下面留下你的足迹.^_^</span>
+            <span style="font-size: smaller; text-indent: 2em;">{% for own_message in own_messages %}{{ own_message.message|safe }}{% endfor %}</span>
         </section>
     </div>
 
