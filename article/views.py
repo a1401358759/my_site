@@ -154,6 +154,7 @@ def message(request):
     articles = Article.objects.all()
     own_messages = OwnerMessage.objects.all()
     messages = Messages.objects.order_by('-created_at')
+    messages_num = Messages.objects.all()
     classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
