@@ -469,3 +469,106 @@ Running migrations:
   INFO [50e92938] Running /usr/bin/env echo "Branch master (at 01ebcb67e08495ed2ba32219b1a7b34271276b76) deployed as release 20160801040721 by yxf" >> /home/cloud/my_site/revisions.log on 172.16.11.17
  DEBUG [50e92938] Command: cd /home/cloud/my_site/releases && /usr/bin/env echo "Branch master (at 01ebcb67e08495ed2ba32219b1a7b34271276b76) deployed as release 20160801040721 by yxf" >> /home/cloud/my_site/revisions.log
   INFO [50e92938] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-08-01 12:10:44 +0800 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [44a21c2d] Running /usr/bin/env mkdir -p /tmp/my_site/ on 172.16.11.17
+ DEBUG [44a21c2d] Command: /usr/bin/env mkdir -p /tmp/my_site/
+  INFO [44a21c2d] Finished in 0.396 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/my_site/git-ssh.sh 0.0%
+  INFO Uploading /tmp/my_site/git-ssh.sh 100.0%
+  INFO [125b997c] Running /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh on 172.16.11.17
+ DEBUG [125b997c] Command: /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh
+  INFO [125b997c] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO [5f685eba] Running /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git on 172.16.11.17
+ DEBUG [5f685eba] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git )
+ DEBUG [5f685eba] 	3f3c3216ec7fc0bf93eb7b24a86ed66276fed417	refs/heads/develop
+669303a05379587bb1cffe57c8af4aa05089337d	refs/heads/master
+  INFO [5f685eba] Finished in 8.372 seconds with exit status 0 (successful).
+  INFO [dc2cef3d] Running /usr/bin/env mkdir -p /home/cloud/my_site/shared /home/cloud/my_site/releases on 172.16.11.17
+ DEBUG [dc2cef3d] Command: /usr/bin/env mkdir -p /home/cloud/my_site/shared /home/cloud/my_site/releases
+  INFO [dc2cef3d] Finished in 0.013 seconds with exit status 0 (successful).
+ DEBUG [ec646d92] Running [ -f /home/cloud/my_site/current/REVISION ] on 172.16.11.17
+ DEBUG [ec646d92] Command: [ -f /home/cloud/my_site/current/REVISION ]
+ DEBUG [ec646d92] Finished in 0.009 seconds with exit status 0 (successful).
+ DEBUG [9186555e] Running /usr/bin/env cat /home/cloud/my_site/current/REVISION 2>/dev/null on 172.16.11.17
+ DEBUG [9186555e] Command: /usr/bin/env cat /home/cloud/my_site/current/REVISION 2>/dev/null
+ DEBUG [9186555e] 	01ebcb67e08495ed2ba32219b1a7b34271276b76
+ DEBUG [9186555e] Finished in 0.010 seconds with exit status 0 (successful).
+ DEBUG [0fe083dc] Running [ -f /home/cloud/my_site/repo/HEAD ] on 172.16.11.17
+ DEBUG [0fe083dc] Command: [ -f /home/cloud/my_site/repo/HEAD ]
+ DEBUG [0fe083dc] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/cloud/my_site/repo
+ DEBUG [c62abb5b] Running if test ! -d /home/cloud/my_site/repo; then echo "Directory does not exist '/home/cloud/my_site/repo'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [c62abb5b] Command: if test ! -d /home/cloud/my_site/repo; then echo "Directory does not exist '/home/cloud/my_site/repo'" 1>&2; false; fi
+ DEBUG [c62abb5b] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO [0fd94e17] Running /usr/bin/env git remote update --prune on 172.16.11.17
+ DEBUG [0fd94e17] Command: cd /home/cloud/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [0fd94e17] 	Fetching origin
+ DEBUG [0fd94e17] 	From github.com:a1401358759/my_site
+ DEBUG [0fd94e17] 	   01ebcb6..669303a  master     -> master
+  INFO [0fd94e17] Finished in 8.824 seconds with exit status 0 (successful).
+ DEBUG [843e5299] Running if test ! -d /home/cloud/my_site/repo; then echo "Directory does not exist '/home/cloud/my_site/repo'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [843e5299] Command: if test ! -d /home/cloud/my_site/repo; then echo "Directory does not exist '/home/cloud/my_site/repo'" 1>&2; false; fi
+ DEBUG [843e5299] Finished in 0.009 seconds with exit status 0 (successful).
+  INFO [6124ee17] Running /usr/bin/env mkdir -p /home/cloud/my_site/releases/20160801041053 on 172.16.11.17
+ DEBUG [6124ee17] Command: cd /home/cloud/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env mkdir -p /home/cloud/my_site/releases/20160801041053 )
+  INFO [6124ee17] Finished in 0.012 seconds with exit status 0 (successful).
+  INFO [b01c56e6] Running /usr/bin/env git archive master | tar -x -f - -C /home/cloud/my_site/releases/20160801041053 on 172.16.11.17
+ DEBUG [b01c56e6] Command: cd /home/cloud/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git archive master | tar -x -f - -C /home/cloud/my_site/releases/20160801041053 )
+  INFO [b01c56e6] Finished in 0.158 seconds with exit status 0 (successful).
+ DEBUG [7d49eaf4] Running if test ! -d /home/cloud/my_site/repo; then echo "Directory does not exist '/home/cloud/my_site/repo'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [7d49eaf4] Command: if test ! -d /home/cloud/my_site/repo; then echo "Directory does not exist '/home/cloud/my_site/repo'" 1>&2; false; fi
+ DEBUG [7d49eaf4] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [be25dd9e] Running /usr/bin/env git rev-list --max-count=1 master on 172.16.11.17
+ DEBUG [be25dd9e] Command: cd /home/cloud/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [be25dd9e] 	669303a05379587bb1cffe57c8af4aa05089337d
+ DEBUG [be25dd9e] Finished in 0.009 seconds with exit status 0 (successful).
+ DEBUG [b0e908dd] Running if test ! -d /home/cloud/my_site/releases/20160801041053; then echo "Directory does not exist '/home/cloud/my_site/releases/20160801041053'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [b0e908dd] Command: if test ! -d /home/cloud/my_site/releases/20160801041053; then echo "Directory does not exist '/home/cloud/my_site/releases/20160801041053'" 1>&2; false; fi
+ DEBUG [b0e908dd] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [f3e1a546] Running /usr/bin/env echo "669303a05379587bb1cffe57c8af4aa05089337d" >> REVISION on 172.16.11.17
+ DEBUG [f3e1a546] Command: cd /home/cloud/my_site/releases/20160801041053 && /usr/bin/env echo "669303a05379587bb1cffe57c8af4aa05089337d" >> REVISION
+  INFO [f3e1a546] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO [67577ee3] Running ln -s /home/cloud/my_site/log /home/cloud/my_site/releases/20160801041053/log on 172.16.11.17
+ DEBUG [67577ee3] Command: ln -s /home/cloud/my_site/log /home/cloud/my_site/releases/20160801041053/log
+  INFO [67577ee3] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [26d65ebc] Running cp /home/cloud/my_site/uwsgi.ini /home/cloud/my_site/releases/20160801041053 on 172.16.11.17
+ DEBUG [26d65ebc] Command: cp /home/cloud/my_site/uwsgi.ini /home/cloud/my_site/releases/20160801041053
+  INFO [26d65ebc] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [0a804e16] Running if test ! -d /home/cloud/my_site/releases/20160801041053; then echo "Directory does not exist '/home/cloud/my_site/releases/20160801041053'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [0a804e16] Command: if test ! -d /home/cloud/my_site/releases/20160801041053; then echo "Directory does not exist '/home/cloud/my_site/releases/20160801041053'" 1>&2; false; fi
+ DEBUG [0a804e16] Finished in 0.005 seconds with exit status 0 (successful).
+  INFO [e4ec5742] Running /usr/bin/env python manage.py migrate on 172.16.11.17
+ DEBUG [e4ec5742] Command: cd /home/cloud/my_site/releases/20160801041053 && /usr/bin/env python manage.py migrate
+ DEBUG [e4ec5742] 	Operations to perform:
+  Synchronize unmigrated apps: staticfiles, bootstrap_admin, messages
+  Apply all migrations: admin, article, contenttypes, auth, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+  Installing custom SQL...
+Running migrations:
+  No migrations to apply.
+  INFO [e4ec5742] Finished in 0.343 seconds with exit status 0 (successful).
+  INFO [987da942] Running /usr/bin/env ln -s /home/cloud/my_site/releases/20160801041053 /home/cloud/my_site/releases/current on 172.16.11.17
+ DEBUG [987da942] Command: /usr/bin/env ln -s /home/cloud/my_site/releases/20160801041053 /home/cloud/my_site/releases/current
+  INFO [987da942] Finished in 0.008 seconds with exit status 0 (successful).
+  INFO [49fea607] Running /usr/bin/env mv /home/cloud/my_site/releases/current /home/cloud/my_site on 172.16.11.17
+ DEBUG [49fea607] Command: /usr/bin/env mv /home/cloud/my_site/releases/current /home/cloud/my_site
+  INFO [49fea607] Finished in 0.007 seconds with exit status 0 (successful).
+ DEBUG [02dd81af] Running /usr/bin/env ls -xtr /home/cloud/my_site/releases on 172.16.11.17
+ DEBUG [02dd81af] Command: /usr/bin/env ls -xtr /home/cloud/my_site/releases
+ DEBUG [02dd81af] 	20160801031128	20160801032348	20160801035533	20160801040510	20160801040721
+20160801041053
+ DEBUG [02dd81af] Finished in 0.008 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 6 deployed releases on 172.16.11.17
+  INFO [6cc993ea] Running /usr/bin/env rm -rf /home/cloud/my_site/releases/20160801031128 on 172.16.11.17
+ DEBUG [6cc993ea] Command: /usr/bin/env rm -rf /home/cloud/my_site/releases/20160801031128
+  INFO [6cc993ea] Finished in 0.034 seconds with exit status 0 (successful).
+ DEBUG [ec178e61] Running if test ! -d /home/cloud/my_site/releases; then echo "Directory does not exist '/home/cloud/my_site/releases'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [ec178e61] Command: if test ! -d /home/cloud/my_site/releases; then echo "Directory does not exist '/home/cloud/my_site/releases'" 1>&2; false; fi
+ DEBUG [ec178e61] Finished in 0.005 seconds with exit status 0 (successful).
+  INFO [57305af2] Running /usr/bin/env echo "Branch master (at 669303a05379587bb1cffe57c8af4aa05089337d) deployed as release 20160801041053 by yxf" >> /home/cloud/my_site/revisions.log on 172.16.11.17
+ DEBUG [57305af2] Command: cd /home/cloud/my_site/releases && /usr/bin/env echo "Branch master (at 669303a05379587bb1cffe57c8af4aa05089337d) deployed as release 20160801041053 by yxf" >> /home/cloud/my_site/revisions.log
+  INFO [57305af2] Finished in 0.009 seconds with exit status 0 (successful).
