@@ -18,27 +18,10 @@ namespace :deploy do
     end
   end
 
-  after :updated, :minify do
-    if fetch(:stage).to_s != "master"
-      on roles(:all) do
-        execute "for file in `find #{fetch(:release_path)}/static/css/*.css`;do cleancss -o $file $file > /dev/null 2>&1; done"
-        execute "for file in `find #{fetch(:release_path)}/static/js/*.js`;do uglifyjs -c -m -o $file $file > /dev/null 2>&1; done"
-      end
-    end
-  end
-
   after :updated, :migrate do
     on roles(:db) do
       within fetch(:release_path) do
         execute :python, "manage.py migrate"
-      end
-    end
-  end
-
-  after :published, :restart do
-    on roles(:web) do
-      within "#{fetch :deploy_to}/current" do
-        execute :bash, "runserver.sh restart-web"
       end
     end
   end
