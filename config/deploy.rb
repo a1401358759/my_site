@@ -14,7 +14,7 @@ namespace :deploy do
   after :updated, :config_files do
     on roles(:all) do
       execute "ln -s #{fetch(:deploy_to)}/log #{fetch(:release_path)}/log"
-      execute "cp /home/cloud/my_site/uwsgi.ini #{fetch(:release_path)}"
+      execute "cp /home/cloud/config/uwsgi.ini #{fetch(:release_path)}"
     end
   end
 
