@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /bin/sh
 BASE_DIR=`dirname $0`
 WORK_DIR=`pwd`/$BASE_DIR
 LOG_DIR=$BASE_DIR/log

@@ -1031,3 +1031,105 @@ Running migrations:
   INFO [488514f6] Running /usr/bin/env bash runserver.sh restart-web on 172.16.11.17
  DEBUG [488514f6] Command: cd /root/my_site/current && /usr/bin/env bash runserver.sh restart-web
  DEBUG [488514f6] 	bash: runserver.sh: No such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-08-25 14:34:37 +0800 cap master deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [415fdbdb] Running /usr/bin/env mkdir -p /tmp/my_site/ on 172.16.11.17
+ DEBUG [415fdbdb] Command: /usr/bin/env mkdir -p /tmp/my_site/
+  INFO [415fdbdb] Finished in 0.393 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/my_site/git-ssh.sh 0.0%
+  INFO Uploading /tmp/my_site/git-ssh.sh 100.0%
+  INFO [fdce2517] Running /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh on 172.16.11.17
+ DEBUG [fdce2517] Command: /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh
+  INFO [fdce2517] Finished in 0.010 seconds with exit status 0 (successful).
+  INFO [2f32da14] Running /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git on 172.16.11.17
+ DEBUG [2f32da14] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git )
+ DEBUG [2f32da14] 	3f3c3216ec7fc0bf93eb7b24a86ed66276fed417	refs/heads/develop
+6f97c1c9076944599d7fb2e7da52a0b2928e774b	refs/heads/master
+  INFO [2f32da14] Finished in 12.173 seconds with exit status 0 (successful).
+  INFO [aa2f348c] Running /usr/bin/env mkdir -p /root/my_site/shared /root/my_site/releases on 172.16.11.17
+ DEBUG [aa2f348c] Command: /usr/bin/env mkdir -p /root/my_site/shared /root/my_site/releases
+  INFO [aa2f348c] Finished in 0.008 seconds with exit status 0 (successful).
+ DEBUG [c6217fbd] Running [ -f /root/my_site/current/REVISION ] on 172.16.11.17
+ DEBUG [c6217fbd] Command: [ -f /root/my_site/current/REVISION ]
+ DEBUG [c6217fbd] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [284ea0dc] Running /usr/bin/env cat /root/my_site/current/REVISION 2>/dev/null on 172.16.11.17
+ DEBUG [284ea0dc] Command: /usr/bin/env cat /root/my_site/current/REVISION 2>/dev/null
+ DEBUG [284ea0dc] 	d4626c8a26bd14a05b1a0643fd98659a86af817f
+ DEBUG [284ea0dc] Finished in 0.008 seconds with exit status 0 (successful).
+ DEBUG [243ebf51] Running [ -f /root/my_site/repo/HEAD ] on 172.16.11.17
+ DEBUG [243ebf51] Command: [ -f /root/my_site/repo/HEAD ]
+ DEBUG [243ebf51] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /root/my_site/repo
+ DEBUG [744646e2] Running if test ! -d /root/my_site/repo; then echo "Directory does not exist '/root/my_site/repo'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [744646e2] Command: if test ! -d /root/my_site/repo; then echo "Directory does not exist '/root/my_site/repo'" 1>&2; false; fi
+ DEBUG [744646e2] Finished in 0.005 seconds with exit status 0 (successful).
+  INFO [5e5f03dd] Running /usr/bin/env git remote update --prune on 172.16.11.17
+ DEBUG [5e5f03dd] Command: cd /root/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [5e5f03dd] 	Fetching origin
+ DEBUG [5e5f03dd] 	From github.com:a1401358759/my_site
+ DEBUG [5e5f03dd] 	   d4626c8..6f97c1c  master     -> master
+  INFO [5e5f03dd] Finished in 18.484 seconds with exit status 0 (successful).
+ DEBUG [2f660be9] Running if test ! -d /root/my_site/repo; then echo "Directory does not exist '/root/my_site/repo'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [2f660be9] Command: if test ! -d /root/my_site/repo; then echo "Directory does not exist '/root/my_site/repo'" 1>&2; false; fi
+ DEBUG [2f660be9] Finished in 0.005 seconds with exit status 0 (successful).
+  INFO [95510826] Running /usr/bin/env mkdir -p /root/my_site/releases/20160825063450 on 172.16.11.17
+ DEBUG [95510826] Command: cd /root/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env mkdir -p /root/my_site/releases/20160825063450 )
+  INFO [95510826] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO [b92eddba] Running /usr/bin/env git archive master | tar -x -f - -C /root/my_site/releases/20160825063450 on 172.16.11.17
+ DEBUG [b92eddba] Command: cd /root/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git archive master | tar -x -f - -C /root/my_site/releases/20160825063450 )
+  INFO [b92eddba] Finished in 0.133 seconds with exit status 0 (successful).
+ DEBUG [882ffe72] Running if test ! -d /root/my_site/repo; then echo "Directory does not exist '/root/my_site/repo'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [882ffe72] Command: if test ! -d /root/my_site/repo; then echo "Directory does not exist '/root/my_site/repo'" 1>&2; false; fi
+ DEBUG [882ffe72] Finished in 0.005 seconds with exit status 0 (successful).
+ DEBUG [23b922df] Running /usr/bin/env git rev-list --max-count=1 master on 172.16.11.17
+ DEBUG [23b922df] Command: cd /root/my_site/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [23b922df] 	6f97c1c9076944599d7fb2e7da52a0b2928e774b
+ DEBUG [23b922df] Finished in 0.008 seconds with exit status 0 (successful).
+ DEBUG [1c9db57a] Running if test ! -d /root/my_site/releases/20160825063450; then echo "Directory does not exist '/root/my_site/releases/20160825063450'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [1c9db57a] Command: if test ! -d /root/my_site/releases/20160825063450; then echo "Directory does not exist '/root/my_site/releases/20160825063450'" 1>&2; false; fi
+ DEBUG [1c9db57a] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO [0cb8de41] Running /usr/bin/env echo "6f97c1c9076944599d7fb2e7da52a0b2928e774b" >> REVISION on 172.16.11.17
+ DEBUG [0cb8de41] Command: cd /root/my_site/releases/20160825063450 && /usr/bin/env echo "6f97c1c9076944599d7fb2e7da52a0b2928e774b" >> REVISION
+  INFO [0cb8de41] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [dbb8a9e0] Running ln -s /root/my_site/shared/log /root/my_site/releases/20160825063450/log on 172.16.11.17
+ DEBUG [dbb8a9e0] Command: ln -s /root/my_site/shared/log /root/my_site/releases/20160825063450/log
+  INFO [dbb8a9e0] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [9bce8b3e] Running cp /root/my_site-config/gunicorn.conf /root/my_site/releases/20160825063450 on 172.16.11.17
+ DEBUG [9bce8b3e] Command: cp /root/my_site-config/gunicorn.conf /root/my_site/releases/20160825063450
+  INFO [9bce8b3e] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [2178be88] Running if test ! -d /root/my_site/releases/20160825063450; then echo "Directory does not exist '/root/my_site/releases/20160825063450'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [2178be88] Command: if test ! -d /root/my_site/releases/20160825063450; then echo "Directory does not exist '/root/my_site/releases/20160825063450'" 1>&2; false; fi
+ DEBUG [2178be88] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO [e5553d47] Running /usr/bin/env python manage.py migrate on 172.16.11.17
+ DEBUG [e5553d47] Command: cd /root/my_site/releases/20160825063450 && /usr/bin/env python manage.py migrate
+ DEBUG [e5553d47] 	Operations to perform:
+  Synchronize unmigrated apps: staticfiles, bootstrap_admin, messages
+  Apply all migrations: admin, article, contenttypes, auth, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+  Installing custom SQL...
+Running migrations:
+  No migrations to apply.
+  INFO [e5553d47] Finished in 0.359 seconds with exit status 0 (successful).
+  INFO [7505d8e8] Running /usr/bin/env ln -s /root/my_site/releases/20160825063450 /root/my_site/releases/current on 172.16.11.17
+ DEBUG [7505d8e8] Command: /usr/bin/env ln -s /root/my_site/releases/20160825063450 /root/my_site/releases/current
+  INFO [7505d8e8] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO [1da1787f] Running /usr/bin/env mv /root/my_site/releases/current /root/my_site on 172.16.11.17
+ DEBUG [1da1787f] Command: /usr/bin/env mv /root/my_site/releases/current /root/my_site
+  INFO [1da1787f] Finished in 0.006 seconds with exit status 0 (successful).
+ DEBUG [78100af7] Running if test ! -d /root/my_site/current; then echo "Directory does not exist '/root/my_site/current'" 1>&2; false; fi on 172.16.11.17
+ DEBUG [78100af7] Command: if test ! -d /root/my_site/current; then echo "Directory does not exist '/root/my_site/current'" 1>&2; false; fi
+ DEBUG [78100af7] Finished in 0.004 seconds with exit status 0 (successful).
+  INFO [b5d896ec] Running /usr/bin/env bash runserver.sh restart-web on 172.16.11.17
+ DEBUG [b5d896ec] Command: cd /root/my_site/current && /usr/bin/env bash runserver.sh restart-web
+ DEBUG [b5d896ec] 	Start Gunicorn Server
+ DEBUG [b5d896ec] 	Traceback (most recent call last):
+ DEBUG [b5d896ec] 	  File "/usr/lib/python2.7/dist-packages/gunicorn/app/base.py", line 52, in load_config_from_file
+ DEBUG [b5d896ec] 	    execfile_(filename, cfg, cfg)
+ DEBUG [b5d896ec] 	  File "/root/my_site/current/./gunicorn.conf", line 9
+ DEBUG [b5d896ec] 	    ~
+ DEBUG [b5d896ec] 	                                                                   ^
+ DEBUG [b5d896ec] 	SyntaxError: invalid syntax
+ DEBUG [b5d896ec] 	Failed to read config file: /root/my_site/current/./gunicorn.conf
