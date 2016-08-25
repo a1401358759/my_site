@@ -1335,3 +1335,48 @@ Running migrations:
                                                                    ^
 SyntaxError: invalid syntax
  DEBUG [9de9f117] 	Failed to read config file: /root/my_site/current/./gunicorn.conf
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-08-25 15:42:07 +0800 cap master deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [12f4d9ea] Running /usr/bin/env mkdir -p /tmp/my_site/ on 172.16.11.17
+ DEBUG [12f4d9ea] Command: /usr/bin/env mkdir -p /tmp/my_site/
+  INFO [12f4d9ea] Finished in 32.668 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/my_site/git-ssh.sh 0.0%
+  INFO Uploading /tmp/my_site/git-ssh.sh 100.0%
+  INFO [3546be10] Running /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh on 172.16.11.17
+ DEBUG [3546be10] Command: /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh
+  INFO [3546be10] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [79836fe5] Running /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git on 172.16.11.17
+ DEBUG [79836fe5] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git )
+ DEBUG [79836fe5] 	/usr/bin/env: git
+ DEBUG [79836fe5] 	: No such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-08-25 16:00:19 +0800 cap master deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [9bb04063] Running /usr/bin/env mkdir -p /tmp/my_site/ on 172.16.11.17
+ DEBUG [9bb04063] Command: /usr/bin/env mkdir -p /tmp/my_site/
+  INFO [9bb04063] Finished in 23.586 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/my_site/git-ssh.sh 0.0%
+  INFO Uploading /tmp/my_site/git-ssh.sh 100.0%
+  INFO [d65404e5] Running /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh on 172.16.11.17
+ DEBUG [d65404e5] Command: /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh
+  INFO [d65404e5] Finished in 0.007 seconds with exit status 0 (successful).
+  INFO [dfd966b7] Running /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git on 172.16.11.17
+ DEBUG [dfd966b7] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git )
+ DEBUG [dfd966b7] 	/usr/bin/env: git
+ DEBUG [dfd966b7] 	: No such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-08-25 16:06:09 +0800 cap master deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [d38a1402] Running /usr/bin/env mkdir -p /tmp/my_site/ on 172.16.11.17
+ DEBUG [d38a1402] Command: /usr/bin/env mkdir -p /tmp/my_site/
+  INFO [d38a1402] Finished in 19.418 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/my_site/git-ssh.sh 0.0%
+  INFO Uploading /tmp/my_site/git-ssh.sh 100.0%
+  INFO [a389897c] Running /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh on 172.16.11.17
+ DEBUG [a389897c] Command: /usr/bin/env chmod +rx /tmp/my_site/git-ssh.sh
+  INFO [a389897c] Finished in 0.006 seconds with exit status 0 (successful).
+  INFO [20be7aef] Running /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git on 172.16.11.17
+ DEBUG [20be7aef] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/my_site/git-ssh.sh" ; /usr/bin/env git ls-remote --heads git@github.com:a1401358759/my_site.git )
+ DEBUG [20be7aef] 	/usr/bin/env: git
+ DEBUG [20be7aef] 	: No such file or directory

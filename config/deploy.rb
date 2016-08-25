@@ -15,14 +15,6 @@ namespace :deploy do
     end
   end
 
-  after :updated, :migrate do
-    on roles(:db) do
-      within fetch(:release_path) do
-        execute :python, "manage.py migrate"
-      end
-    end
-  end
-
   after :published, :restart_web do
     on roles(:web) do
       within "#{fetch :deploy_to}/current" do
