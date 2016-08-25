@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from my_site import config
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -20,8 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'p-2_9jdgcawck*piav1d(kq-!((g#8#riop01(^5ilnl6f(ram'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = config.DEBUG
+SITE_DOMAIN = config.SITE_DOMAIN
 ALLOWED_HOSTS = ['*']
 
 
@@ -66,6 +67,13 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config.EMAIL['host']
+EMAIL_PORT = 25
+EMAIL_HOST_USER = config.EMAIL['user']
+EMAIL_HOST_PASSWORD = config.EMAIL['password']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -120,7 +128,52 @@ TEMPLATES = [
     },
 ]
 
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[%(levelname)s %(asctime)s] %(process)d: %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': '%s/log/%s.log' % (BASE_DIR, config.RUNNING_ENVIRONMENT),
+            'when': 'D',
+            'backupCount': 10,
+            'formatter': 'default',
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
 
 
 
