@@ -1,3 +1,4 @@
+# coding: utf-8
 """
 Django settings for my_site project.
 
@@ -8,7 +9,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)# -*- coding: UTF-8 -*-
 import os
 from my_site import config
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -39,6 +40,15 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'article',
 )
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': '管理系统',
+    'LIST_PER_PAGE': 10,
+    'MENU': (
+        'sites',
+        {'app': 'article', 'label': u'博文管理'},
+    ),
+}
 
 from django.conf import global_settings
 
