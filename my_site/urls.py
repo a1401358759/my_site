@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     url(r'^articleTag/(?P<tag>\w+)/$', 'article.views.tagDetail', name="tagDetail"),  # 每个标签页下面的文章
     url(r'^love/?$', 'article.views.love'),
     url(r'^create/messages$', 'article.views.create_messages', name='create_messages'),
+    url(r'^ueditor/', include('DjangoUeditor.urls')),
 )

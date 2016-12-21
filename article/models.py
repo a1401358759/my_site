@@ -2,6 +2,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from collections import OrderedDict
+from DjangoUeditor.models import UEditorField
 
 
 class Author(models.Model):
@@ -16,7 +17,8 @@ class Author(models.Model):
 class Messages(models.Model):
     name = models.CharField(max_length=30, verbose_name='姓名')
     email = models.EmailField(max_length=30, verbose_name='邮箱')
-    content = models.TextField(max_length=200, verbose_name='留言')
+    content = UEditorField(max_length=200, verbose_name='留言', width=600,
+                           imagePath="/static/media/", toolbars='full')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='留言时间')
 
     def __unicode__(self):
@@ -34,7 +36,8 @@ class Messages(models.Model):
 
 
 class OwnerMessage(models.Model):
-    message = models.TextField(verbose_name='寄语')
+    message = UEditorField(verbose_name='寄语', width=600,
+                           imagePath="/static/media/", toolbars='full')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     def __unicode__(self):
@@ -125,7 +128,7 @@ class ArticleManager(models.Model):
       
         dicts = OrderedDict()
         for i in range(len(post_date)):
-            dicts.setdefault(post_date[i],post_date_article[i])
+            dicts.setdefault(post_date[i], post_date_article[i])
         return dicts
 
 
@@ -134,7 +137,8 @@ class Article(models.Model):  # 文章
     author = models.ForeignKey(Author, verbose_name='作者')
     tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')  # 标签
     classification = models.ForeignKey(Classification, verbose_name='分类')  # 分类
-    content = models.TextField(blank=True, null=True, verbose_name='文章内容')
+    content = UEditorField(blank=True, null=True, verbose_name='文章内容', width=600,
+                           imagePath="/static/media/", toolbars='full')
     publish_time = models.DateTimeField(auto_now_add=True, verbose_name='发表时间')
     count = models.IntegerField(default=0, verbose_name='文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
     objects = models.Manager()  # 默认的管理器
