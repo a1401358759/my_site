@@ -1,3 +1,4 @@
 *.pyc
 log
 .idea
+my_site/*.pyc
