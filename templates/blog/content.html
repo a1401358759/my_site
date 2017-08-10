@@ -1,87 +1,78 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{article.title}}
+  {{ article.title }}
 {% endblock %}
 {% block path %}
-    当前位置&nbsp;:&nbsp;<a href = "{% url 'home' %}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
+  当前位置&nbsp;:&nbsp;<a href = "{% url 'home' %}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
 {% endblock %} 
 {% block content %}
 
 <div class="archive">
-    <div id="archives">
-        <header class="entry-header">
-            <div class="entry-info">
-                <span class="entry-date">
-                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                    {{article.publish_time.year}}年{{article.publish_time.month}}月{{article.publish_time.day}}日
-                </span>
+  <div id="archives">
+    <header class="entry-header">
+      <div class="entry-info">
+        <span class="entry-date">
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          {{ article.publish_time|date:'Y年m月d日' }}
+        </span>
 
-                <span class="author vcard">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    {{article.author}}
-                </span>
+        <span class="author vcard">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          {{ article.author }}
+        </span>
 
-                <span class="comments-link">
-                    <span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
-                </span>
-            </div>
-            <h1 class="entry-title">
-                {{article.title}}
-            </h1>
+        <span class="comments-link">
+          <span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
+        </span>
+      </div>
+      <h1 class="entry-title">
+        {{ article.title }}
+      </h1>
 
-            <div class="post-format-indicator">
-                <a class="entry-format" href="{{ article.get_absolute_url }}"></a>
-            </div>
-        </header>
-        <div>
-            {{ article.content|safe }}
-            <div class="clearfix"></div>
-        </div><!-- .entry-content -->
+      <div class="post-format-indicator">
+        <a class="entry-format" href="{{ article.get_absolute_url }}"></a>
+      </div>
+    </header>
+    <div>
+      {{ article.content|safe }}
+      <div class="clearfix"></div>
+    </div><!-- .entry-content -->
 
-        <footer class="entry-meta">
-            <div class="fenlei" style="margin: 7px;">
-                <span class="entry-categories">
-                    <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-                    <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
-                </span>
-                <span class="entry-tags">
-                    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
-                    {% for i in article.get_tags %}
-                        <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}</a>
-                    {% endfor %}
-                </span>
-            </div>
-
-        <!-- duoshuo share Button BEGIN -->
-            <div style="margin-left: 355px;" class="ds-share" data-thread-key="{{ article.id }}" data-title="{{ article.title }}" data-url="{{ article.get_absolute_url }}" data-content="{{ article.content }}">
-                <div class="ds-share-inline">
-                    <ul  class="ds-share-icons-16">
-                        <li><small style="color: slategray">分享到:</small></li>
-                        <li><small><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></small></li>
-                        <li><small><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></small></li>
-                        <li><small><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></small></li>
-                        <li><small><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></small></li>
-                    </ul>
-                </div>
-             </div>
-        <!-- duoshuo share Button END -->
-        </footer>
+    <footer class="entry-meta">
+      <div class="fenlei" style="margin: 7px;">
+        <span class="entry-categories">
+          <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+          <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
+        </span>
+        <span class="entry-tags">
+          <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+          {% for i in article.get_tags %}
+            <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}</a>
+          {% endfor %}
+        </span>
+      </div>
+    </footer>
     </div>
 </div>
-    {% if article.get_before_article %}
-        {% with before=article.get_before_article %}
-            <p class="p2">下一篇 <a href="{{ before.get_absolute_url }}">{{before}} </a></p>
-        {% endwith %}
-    {% endif %}
+{% if article.get_before_article %}
+  {% with before=article.get_before_article %}
+    <p class="p2">下一篇 <a href="{{ before.get_absolute_url }}">{{ before }} </a></p>
+  {% endwith %}
+{% endif %}
 
-    {% if article.get_after_article %}
-        {% with after=article.get_after_article %}
-            <p class="p1">上一篇 <a href="{{ after.get_absolute_url }}">{{after}} </a></p>
-        {% endwith %}
-    {% endif %}
+{% if article.get_after_article %}
+  {% with after=article.get_after_article %}
+    <p class="p1">上一篇 <a href="{{ after.get_absolute_url }}">{{ after }} </a></p>
+  {% endwith %}
+{% endif %}
 
-    {% include "blog/_comments.html" %}
+<!-- 打赏 -->
+<div id="cyReward" role="cylabs" data-use="reward" sid="{{ article.id }}" style="text-align: center;"></div>
+
+<!-- 评论框 -->
+{% include "blog/_comments.html" %}
+
 {% endblock %}
 
 {% block side %}

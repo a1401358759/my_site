@@ -1,7 +1,7 @@
 
 <section id="search" class="widget widget_search">
 	<form role="search" method="post" class="search-form" action="/search/">
-        {% csrf_token %}
+    {% csrf_token %}
 		<input value="" name="s" class="s query" placeholder="查找文章" type="text">
 		<button type="submit" class="search-submit"><span style="font-size:20px" class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 		<div class="clearfix"></div>
@@ -11,46 +11,31 @@
 <section id="text" class="widget widget_text">
 	<h3 class="widget-title">新浪微博</h3>			
 	<div class="textwidget">
-	    <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2734584944&verifier=42b4a725&dpc=1">
+    <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2734584944&verifier=42b4a725&dpc=1">
 
-        </iframe>
+    </iframe>
 	</div>				
 </section>
 				
 <section id="archives" class="widget widget_archive">
-    <h3 class="widget-title">文章归档</h3>
-    <ul>
-        {% if date_list %}
-            {% for x,y in date_list %}
-                <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月({{y}})</a></li>
-            {% endfor %}
-	    {% endif %}
-    </ul>
+  <h3 class="widget-title">文章归档</h3>
+  <ul>
+    {% if date_list %}
+      {% for x, y in date_list %}
+        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月({{y}})</a></li>
+      {% endfor %}
+    {% endif %}
+  </ul>
 </section>
-
-{#<section id="recent-articles" class="widget widget_recent_articles">#}
-{#    <h3 class="widget-title">热评文章</h3>#}
-{#    <ul class="ds-top-threads" data-range="monthly" data-num-items="5"></ul>#}
-{#</section>#}
-
-<section id="recent-articles" class="widget widget_recent_articles">
-    <h3 class="widget-title">最近访客</h3>
-    <ul class="ds-recent-visitors"></ul>
-</section>
-
-{#<section id="recent-comments" class="widget widget_recent_comments">#}
-{#	<h3 class="widget-title">近期评论</h3>#}
-{#    <ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></ul>#}
-{#</section>#}
 
 <section id="categories" class="widget widget_categories">
 	<h3 class="widget-title">分类目录</h3>		
 	<ul>
-	    {% if classification %}
-            {% for x,y in classification %}
-                <li><a href="{% url 'classfiDetail' classfi=x %}">{{x}}({{y}})</a></li>
-            {% endfor %}
-	    {% endif %}				
+    {% if classification %}
+      {% for x,y in classification %}
+        <li><a href="{% url 'classfiDetail' classfi=x %}">{{x}}({{y}})</a></li>
+      {% endfor %}
+    {% endif %}
 	</ul>			
 </section>
 				
@@ -60,39 +45,28 @@
 </section>
 
 <section id="linkcat" class="widget widget_links">
-	<h3 class="widget-title">友情链接</h3>
+  <h3 class="widget-title">友情链接</h3>
 	<ul class="xoxo blogroll">
-		<li><a href="http://www.codingbo.com/" target="_blank">柳博Coder</a></li>
-        <li><a href="http://mooc.guokr.com/" target="_blank" >MOOC学院</a></li>
-        <li><a href="http://www.0xffffff.org/" target="_blank">浅墨的部落格</a></li>
-        <li><a href="http://zh.lucida.me/" target="_blank">Lucida算法</a></li>
-        <li><a href="http://imququ.com/" target="_blank">Jerry Qu</a></li>
-    </ul>
+    <li><a href="http://www.codingbo.com/" target="_blank">柳博Coder</a></li>
+    <li><a href="http://mooc.guokr.com/" target="_blank" >MOOC学院</a></li>
+    <li><a href="http://www.0xffffff.org/" target="_blank">浅墨的部落格</a></li>
+    <li><a href="http://zh.lucida.me/" target="_blank">Lucida算法</a></li>
+    <li><a href="http://imququ.com/" target="_blank">Jerry Qu</a></li>
+  </ul>
 </section>
 
 <script type="text/javascript">
-    var list = {{ tagCloud|safe}};
-    var word_array = new Array();
-    for(i in list)
-    {
-        var temp = list[i][0];
-        word_array.push({text:list[i][0],weight:list[i][1],link:"/articleTag/"+temp});
-    }
+  var list = {{ tagCloud|safe }};
+  var word_array = new Array();
+  for(i in list)
+  {
+    var temp = list[i][0];
+    word_array.push({text:list[i][0],weight:list[i][1],link:"/articleTag/"+temp});
+  }
 
-    $(function() {
-        $("#example").jQCloud(word_array);
-    });
+  $(function() {
+    $("#example").jQCloud(word_array);
+  });
 </script>
-
-  
-<script type="text/javascript">
-    var duoshuoQuery = {short_name:"yxf-1993"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';
-        ds.async = true;
-        ds.src = 'http://static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
+<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cyt5STTrc"></script>

@@ -1,13 +1,9 @@
 # coding:utf-8
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from article.views import RSSFeed
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'my_site.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'article.views.home', name="home"),  # 主页
     url(r'^about$', 'article.views.about', name="about"),  # 关于我
@@ -22,4 +18,4 @@ urlpatterns = patterns('',
     url(r'^love/?$', 'article.views.love'),
     url(r'^create/messages$', 'article.views.create_messages', name='create_messages'),
     url(r'^ueditor/', include('DjangoUeditor.urls')),
-)
+]

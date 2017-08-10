@@ -1,16 +1,16 @@
-<!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="{{ article.id }}" data-title="{{ article.title }}" data-url="{{ article.get_absolute_url }}"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<!--畅言PC版-->
+<div id="SOHUCS" sid="{{ article.id }}"></div>
+<script charset="utf-8" type="text/javascript" src="/static/changyan.js" ></script>
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"yxf-1993"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-<!-- 多说公共JS代码 end -->
+  window.changyan.api.config({
+    appid: 'cyt5STTrc',
+    conf: 'prod_2cd3e2798964d1d91c61c46a0a22f7b9'
+  });
+</script>
+
+<!-- https://changyan.sohu.com/upload/changyan.js -->
+
+{#<!-- 友言 BEGIN -->#}
+{#<div id="uyan_frame"></div>#}
+{#<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2141259"></script>#}
+{#<!-- UY END -->#}

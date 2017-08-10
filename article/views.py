@@ -98,7 +98,7 @@ def about(request):
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
 
-    return render_to_response('blog/about.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'blog/about.html', locals())
 
 
 def archive(request):
