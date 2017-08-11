@@ -55,18 +55,24 @@
     </footer>
     </div>
 </div>
-{% if article.get_before_article %}
-  {% with before=article.get_before_article %}
-    <p class="p2">下一篇 <a href="{{ before.get_absolute_url }}">{{ before }} </a></p>
-  {% endwith %}
-{% endif %}
 
-{% if article.get_after_article %}
-  {% with after=article.get_after_article %}
-    <p class="p1">上一篇 <a href="{{ after.get_absolute_url }}">{{ after }} </a></p>
-  {% endwith %}
-{% endif %}
+<div style="float: left;">
+  {% if article.get_after_article %}
+    {% with after=article.get_after_article %}
+      <p class="p1">上一篇 <a href="{{ after.get_absolute_url }}">{{ after }} </a></p>
+    {% endwith %}
+  {% endif %}
+</div>
+<br/>
+<div style="float: left; {% if article.get_after_article %}margin-left: -188px;{% endif %}">
+  {% if article.get_before_article %}
+    {% with before=article.get_before_article %}
+      <p class="p2">下一篇 <a href="{{ before.get_absolute_url }}">{{ before }} </a></p>
+    {% endwith %}
+  {% endif %}
+</div>
 
+<div style="margin-top: 50px;"></div>
 <!-- 打赏 -->
 <div id="cyReward" role="cylabs" data-use="reward" sid="{{ article.id }}" style="text-align: center;"></div>
 
