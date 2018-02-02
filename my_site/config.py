@@ -2,7 +2,7 @@ DEBUG = True
 
 RUNNING_ENVIRONMENT = 'Develop'
 
-SITE_DOMAIN = "http://127.0.0.1:9010"
+SITE_DOMAIN = "http://127.0.0.1:8000"
 
 # DATABASE = {
 #     'database': 'cdn_portal',
@@ -17,5 +17,3 @@ EMAIL = {
     'user': '',
     'password': ''
 }
-
-
