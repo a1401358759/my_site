@@ -1,18 +1,12 @@
 # coding:utf-8
 from django.shortcuts import render, HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
 from article.models import Article, Tag, Classification, Messages, OwnerMessage
 from django.http import Http404
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.syndication.views import Feed  # 订阅RSS
 import json
 from django.views.decorators.http import require_POST
-from django.http import HttpResponseRedirect
-from django.core import serializers
 
 
-# Create your views here.
 def render_json(data, status=200):
     return HttpResponse(json.dumps(data), content_type="text/json", status=status)
 
@@ -35,7 +29,7 @@ def home(request):
     classification = Classification.class_list.get_Class_list()  # 分类,以及对应的数目
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()  # 按月归档,以及对应的文章数目
-  
+
     return render(request, 'blog/index.html', locals())
 
 
@@ -58,10 +52,10 @@ def archive_month(request, year, month):
     is_arch_month = True
     articles = Article.objects.filter(publish_time__year=year).filter(publish_time__month=month)  # 当前日期下的文章列表
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()  
+    classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
-    
+
     return render(request, 'blog/index.html', locals())
 
 
@@ -70,10 +64,10 @@ def classfiDetail(request, classfi):
     temp = Classification.objects.get(name=classfi)  # 获取全部的Article对象
     articles = temp.article_set.all()
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()    
+    classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
-        
+
     return render(request, 'blog/index.html', locals())
 
 
@@ -84,17 +78,17 @@ def tagDetail(request, tag):
     articles = temp.article_set.all()
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
 
-    classification = Classification.class_list.get_Class_list()    
+    classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
-     
+
     return render(request, 'blog/index.html', locals())
 
 
 def about(request):
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
     articles = Article.objects.all()
-    classification = Classification.class_list.get_Class_list()    
+    classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
 
@@ -105,7 +99,7 @@ def archive(request):
     articles = Article.objects.all()
     archive = Article.date_list.get_Article_OnArchive()
     ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()    
+    classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
 
@@ -131,10 +125,10 @@ class RSSFeed(Feed):
 
 
 def blog_search(request):  # 实现对文章标题的搜索
-   
+
     is_search = True
     # ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()    
+    classification = Classification.class_list.get_Class_list()
     tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_Article_onDate()
     error = False
@@ -183,5 +177,3 @@ def create_messages(request):
         content=messages
     )
     return render_json({'success': True, 'message': '留言成功！'})
-
-

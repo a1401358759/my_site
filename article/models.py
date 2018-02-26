@@ -1,6 +1,5 @@
 # coding:utf-8
 from django.db import models
-from django.core.urlresolvers import reverse
 from collections import OrderedDict
 from DjangoUeditor.models import UEditorField
 
@@ -91,7 +90,7 @@ class Classification(models.Model):
     name = models.CharField(max_length=25)
     objects = models.Manager()  # 默认的管理器
     class_list = ClassManager()  # 自定义的管理器
-      
+
     def __unicode__(self):
         return self.name
 
@@ -125,7 +124,7 @@ class ArticleManager(models.Model):
             curmonth = post_date[i].month
             tempArticle = Article.objects.filter(publish_time__year=curyear).filter(publish_time__month=curmonth)
             post_date_article[i] = tempArticle
-      
+
         dicts = OrderedDict()
         for i in range(len(post_date)):
             dicts.setdefault(post_date[i], post_date_article[i])
@@ -143,19 +142,20 @@ class Article(models.Model):  # 文章
     count = models.IntegerField(default=0, verbose_name='文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器
-  
+
     @models.permalink
     def get_absolute_url(self):
         return ('detail', (), {
-           'year': self.publish_time.year,
-           'month': self.publish_time.strftime('%m'),
-           'day': self.publish_time.strftime('%d'),
-           'id': self.id})
-     
+            'year': self.publish_time.year,
+            'month': self.publish_time.strftime('%m'),
+            'day': self.publish_time.strftime('%d'),
+            'id': self.id
+        })
+
     def get_tags(self):  # 返回一个文章对应的所有标签
         tag = self.tags.all()
         return tag
-           
+
     def get_before_article(self):  # 返回当前文章的前一篇文章
         temp = Article.objects.order_by('id')
         cur = Article.objects.get(id=self.id)
@@ -167,13 +167,13 @@ class Article(models.Model):  # 文章
             else:
                 count += 1
         if index != 0:
-            return temp[index-1]
+            return temp[index - 1]
 
     def get_after_article(self):  # 返回当前文章的后一篇文章
         temp = Article.objects.order_by('id')
-        max = len(temp)-1
+        max = len(temp) - 1
         cur = Article.objects.get(id=self.id)
-        count=0
+        count = 0
         for i in temp:
             if i.id == cur.id:
                 index = count
@@ -181,15 +181,10 @@ class Article(models.Model):  # 文章
             else:
                 count += 1
         if index != max:
-            return temp[index+1]
+            return temp[index + 1]
 
     def __unicode__(self):
         return self.title
 
     class Meta:
         ordering = ['-publish_time']
-
-
-      
-
-
