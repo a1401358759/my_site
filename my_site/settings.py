@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'article',
     'DjangoUeditor',
+    'django_crontab'
 )
 
 SUIT_CONFIG = {
@@ -186,3 +187,7 @@ LOGGING = {
         },
     }
 }
+
+CRONJOBS = [
+    ('*/1 * * * *', 'article.cron.test')
+]
