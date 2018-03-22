@@ -4,3 +4,6 @@
 
 def test():
     print '520'
+
+
+test()

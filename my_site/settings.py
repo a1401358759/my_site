@@ -189,5 +189,5 @@ LOGGING = {
 }
 
 CRONJOBS = [
-    ('*/1 * * * *', 'article.cron.test')
+    ('*/1 * * * *', 'article.cron.test', '>>/log/test.log')
 ]
