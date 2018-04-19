@@ -33,3 +33,5 @@ six==1.9.0
 traitlets==4.3.2
 urllib3==1.22
 wcwidth==0.1.7
+django-redis-cache==1.7.1
+django-redis==4.4.2
