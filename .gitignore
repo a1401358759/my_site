@@ -2,3 +2,4 @@
 log
 .idea
 my_site/*.pyc
+local_settings.py

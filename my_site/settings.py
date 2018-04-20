@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)# -*- coding: UTF-8 -*-
 import os
+from django.utils.termcolors import colorize
 from my_site import config
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -203,3 +204,10 @@ LOGGING = {
 CRONJOBS = [
     ('*/1 * * * *', 'article.cron.test', '>>/log/test.log')
 ]
+
+# import local settings
+try:
+    from .local_settings import *
+    print colorize(text='local_settings imported.', fg='yellow')
+except ImportError:
+    pass
