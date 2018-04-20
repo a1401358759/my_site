@@ -105,7 +105,7 @@ class ArticleManager(models.Model):
         for i in range(len(post_date)):
             curyear = post_date[i].year
             curmonth = post_date[i].month
-            tempArticle = Article.objects.filter(publish_time__year=curyear).filter(publish_time__month=curmonth)
+            tempArticle = Article.objects.filter(publish_time__year=curyear, publish_time__month=curmonth)
             tempNum = len(tempArticle)
             date_list[i].append(post_date[i])
             date_list[i].append(tempNum)
@@ -122,7 +122,7 @@ class ArticleManager(models.Model):
         for i in range(len(post_date)):
             curyear = post_date[i].year
             curmonth = post_date[i].month
-            tempArticle = Article.objects.filter(publish_time__year=curyear).filter(publish_time__month=curmonth)
+            tempArticle = Article.objects.filter(publish_time__year=curyear, publish_time__month=curmonth)
             post_date_article[i] = tempArticle
 
         dicts = OrderedDict()

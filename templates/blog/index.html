@@ -17,11 +17,11 @@
     查找有关{{s}}的文章
   {% endif %}
 {% endblock %}
-{% block path %} 
+{% block path %}
   {% if is_home %}
     当前位置&nbsp;：&nbsp;首页
   {% endif%}
-   
+
   {% if is_arch_month %}
     当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;按月归档&nbsp;:  &nbsp;{{year}} 年 {{month}} 月
   {% endif%}
@@ -104,11 +104,11 @@
         last: '尾页',
         previous: '上页',
         next : '下页',
-        perPage : 5, //每页显示数据为多少行
-        startPage: 1, //起始页
-        startRange : 2, //开始页码为2个
-        midRange : 3, //最多显示几个页码页码,其余用..代替
-        ndRange: 2, //结束页码为2个
+        perPage : 5,  // 每页显示数据为多少行
+        startPage: 1,  // 起始页
+        startRange : 2,  // 开始页码为2个
+        midRange : 3,  // 最多显示几个页码页码,其余用..代替
+        ndRange: 2,  // 结束页码为2个
         keyBrowse : true
       });
     });
@@ -119,4 +119,3 @@
 {% block side %}
 	{% include "blog/_side.html" %}
 {% endblock %}
-

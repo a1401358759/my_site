@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap_pagination',
     'article',
     'DjangoUeditor',
     'django_crontab'
@@ -130,11 +131,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-ADMINS = {
-
-   ('Daniel', '1401358759@qq.com'),
-
-}
+ADMINS = {('Daniel', '1401358759@qq.com')}
 
 TEMPLATES = [
     {
