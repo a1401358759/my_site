@@ -27,11 +27,11 @@ def home(request):
     #     articles = paginator.page(paginator.num_pages)
 
     # 显示最新发布的前5篇文章
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
+    # new_post = Article.objects.order_by('-publish_time')[:5]
 
-    classification = Classification.class_list.get_Class_list()  # 分类,以及对应的数目
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()  # 按月归档,以及对应的文章数目
+    classification = Classification.class_list.get_classify_list()  # 分类,以及对应的数目
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()  # 按月归档,以及对应的文章数目
 
     return render(request, 'blog/index.html', locals())
 
@@ -42,11 +42,11 @@ def detail(request, year, month, day, id):
     except Article.DoesNotExist:
         raise Http404
 
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
+    # new_post = Article.objects.order_by('-publish_time')[:5]
 
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
 
     return render(request, 'blog/content.html', locals())
 
@@ -54,10 +54,10 @@ def detail(request, year, month, day, id):
 def archive_month(request, year, month):
     is_arch_month = True
     articles = Article.objects.filter(publish_time__year=year, publish_time__month=month)  # 当前日期下的文章列表
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    # new_post = Article.objects.order_by('-publish_time')[:5]
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
 
     return render(request, 'blog/index.html', locals())
 
@@ -66,10 +66,10 @@ def classfiDetail(request, classfi):
     is_classfi = True
     temp = Classification.objects.get(name=classfi)  # 获取全部的Article对象
     articles = temp.article_set.all()
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    # new_post = Article.objects.order_by('-publish_time')[:5]
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
 
     return render(request, 'blog/index.html', locals())
 
@@ -79,32 +79,32 @@ def tagDetail(request, tag):
     temp = Tag.objects.get(name=tag)  # 获取全部的Article对象
     # articles = Article.objects.filter(tags=tag)
     articles = temp.article_set.all()
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
+    # new_post = Article.objects.order_by('-publish_time')[:5]
 
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
 
     return render(request, 'blog/index.html', locals())
 
 
 def about(request):
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
+    # new_post = Article.objects.order_by('-publish_time')[:5]
     articles = Article.objects.order_by('-publish_time')
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
 
     return render(request, 'blog/about.html', locals())
 
 
 def archive(request):
     articles = Article.objects.order_by('-publish_time')
-    archive = Article.date_list.get_Article_OnArchive()
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    archive = Article.date_list.get_article_by_archive()
+    # new_post = Article.objects.order_by('-publish_time')[:5]
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
 
     return render(request, 'blog/archive.html', locals())
 
@@ -114,26 +114,29 @@ class RSSFeed(Feed):
     link = "feeds/posts/"
     description = "RSS feed - blog posts"
 
-    def items(self):
+    @classmethod
+    def items(cls):
         return Article.objects.order_by('-publish_time')
 
     def item_title(self, item):
         return item.title
 
-    def item_pubdate(self, item):
+    @classmethod
+    def item_pubdate(cls, item):
         return item.publish_time
 
-    def item_description(self, item):
+    @classmethod
+    def item_description(cls, item):
         return item.content
 
 
 def blog_search(request):  # 实现对文章标题的搜索
 
     is_search = True
-    # ar_newpost = Article.objects.order_by('-publish_time')[:5]
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    # new_post = Article.objects.order_by('-publish_time')[:5]
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
     error = False
     if 's' in request.POST:
         s = request.POST['s']
@@ -152,9 +155,9 @@ def message(request):
     own_messages = OwnerMessage.objects.all()
     messages = Messages.objects.order_by('-created_at')
     messages_num = Messages.objects.all()
-    classification = Classification.class_list.get_Class_list()
-    tagCloud = json.dumps(Tag.tag_list.get_Tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
-    date_list = Article.date_list.get_Article_onDate()
+    classification = Classification.class_list.get_classify_list()
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    date_list = Article.date_list.get_article_by_date()
     return render(request, 'blog/message.html', locals())
 
 

@@ -1,4 +1,5 @@
 # coding:utf-8
+
 from django.db import models
 from collections import OrderedDict
 from DjangoUeditor.models import UEditorField
@@ -44,7 +45,9 @@ class OwnerMessage(models.Model):
 
 
 class TagManager(models.Manager):
-    def get_Tag_list(self):                 # 返回文章标签列表, 每个标签以及对应的文章数目
+
+    @classmethod
+    def get_tag_list(cls):                 # 返回文章标签列表, 每个标签以及对应的文章数目
         tags = Tag.objects.all()
         tag_list = []
         for i in range(len(tags)):
@@ -54,12 +57,13 @@ class TagManager(models.Manager):
             posts = temp.article_set.all()      # 获取当前标签下的所有文章
             tag_list[i].append(tags[i].name)
             tag_list[i].append(len(posts))
+
         return tag_list
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=20, blank=True, verbose_name='标签名')
-    creat_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     objects = models.Manager()
     tag_list = TagManager()
 
@@ -73,17 +77,19 @@ class Tag(models.Model):
 
 
 class ClassManager(models.Manager):
-    def get_Class_list(self):  # 返回文章分类列表, 每个分类以及对应的文章数目
-        classf = Classification.objects.all()  # 获取所有的分类
-        class_list = []
-        for i in range(len(classf)):
-            class_list.append([])
-        for i in range(len(classf)):
-            temp = Classification.objects.get(name=classf[i])  # 获取当前分类
+
+    @classmethod
+    def get_classify_list(cls):  # 返回文章分类列表, 每个分类以及对应的文章数目
+        classify = Classification.objects.all()  # 获取所有的分类
+        classify_list = []
+        for i in range(len(classify)):
+            classify_list.append([])
+        for i in range(len(classify)):
+            temp = Classification.objects.get(name=classify[i])  # 获取当前分类
             posts = temp.article_set.all()  # 获取当前分类下的所有文章
-            class_list[i].append(classf[i])
-            class_list[i].append(len(posts))
-        return class_list
+            classify_list[i].append(classify[i])
+            classify_list[i].append(len(posts))
+        return classify_list
 
 
 class Classification(models.Model):
@@ -96,34 +102,41 @@ class Classification(models.Model):
 
 
 class ArticleManager(models.Model):
-    def get_Article_onDate(self):  # 实现文章的按月归档, 返回 月份以及对应的文章数  如: [[2015.5,5],[2015.4,5]] ,
+
+    @classmethod
+    def get_article_by_date(cls):  # 实现文章的按月归档, 返回 月份以及对应的文章数  如: [[2015.5,5],[2015.4,5]] ,
         post_date = Article.objects.dates('publish_time', 'month')
-        # post_date = post_date.reverse() # 将post_date逆置,使之按月份递减的顺序排布
+        post_date = post_date.reverse()  # 将post_date逆置,使之按月份递减的顺序排布
         date_list = []
         for i in range(len(post_date)):
             date_list.append([])
         for i in range(len(post_date)):
-            curyear = post_date[i].year
-            curmonth = post_date[i].month
-            tempArticle = Article.objects.filter(publish_time__year=curyear, publish_time__month=curmonth)
-            tempNum = len(tempArticle)
+            current_year = post_date[i].year
+            current_month = post_date[i].month
+            temp_article = Article.objects.filter(publish_time__year=current_year, publish_time__month=current_month)
+            temp_num = len(temp_article)
             date_list[i].append(post_date[i])
-            date_list[i].append(tempNum)
+            date_list[i].append(temp_num)
         return date_list
 
-    def get_Article_OnArchive(self):  # 返回一个字典,一个时间点,对应一个文章列表
+    @classmethod
+    def get_article_by_archive(cls):  # 返回一个字典,一个时间点,对应一个文章列表
+        """
+
+        :rtype: object
+        """
         post_date = Article.objects.dates('publish_time', 'month')
-        # post_date = post_date.reverse()
+        post_date = post_date.reverse()
 
         post_date_article = []
         for i in range(len(post_date)):
             post_date_article.append([])
 
         for i in range(len(post_date)):
-            curyear = post_date[i].year
-            curmonth = post_date[i].month
-            tempArticle = Article.objects.filter(publish_time__year=curyear, publish_time__month=curmonth)
-            post_date_article[i] = tempArticle
+            current_year = post_date[i].year
+            current_month = post_date[i].month
+            temp_article = Article.objects.filter(publish_time__year=current_year, publish_time__month=current_month)
+            post_date_article[i] = temp_article
 
         dicts = OrderedDict()
         for i in range(len(post_date)):
@@ -157,6 +170,7 @@ class Article(models.Model):  # 文章
         return tag
 
     def get_before_article(self):  # 返回当前文章的前一篇文章
+        index = 0
         temp = Article.objects.order_by('id')
         cur = Article.objects.get(id=self.id)
         count = 0
@@ -170,8 +184,9 @@ class Article(models.Model):  # 文章
             return temp[index - 1]
 
     def get_after_article(self):  # 返回当前文章的后一篇文章
+        index = 0
         temp = Article.objects.order_by('id')
-        max = len(temp) - 1
+        max_num = len(temp) - 1
         cur = Article.objects.get(id=self.id)
         count = 0
         for i in temp:
@@ -180,7 +195,7 @@ class Article(models.Model):  # 文章
                 break
             else:
                 count += 1
-        if index != max:
+        if index != max_num:
             return temp[index + 1]
 
     def __unicode__(self):
