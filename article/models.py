@@ -46,8 +46,7 @@ class OwnerMessage(models.Model):
 
 class TagManager(models.Manager):
 
-    @classmethod
-    def get_tag_list(cls):                 # 返回文章标签列表, 每个标签以及对应的文章数目
+    def get_tag_list(self):                 # 返回文章标签列表, 每个标签以及对应的文章数目
         tags = Tag.objects.all()
         tag_list = []
         for i in range(len(tags)):
