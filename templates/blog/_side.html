@@ -39,11 +39,6 @@
 	</ul>
 </section>
 
-<!--<section id="tag_cloud" class="widget widget_tag_cloud">
-	<h3 class="widget-title">标签云</h3>
-    <div id="example" style="width: 286px; height: 286px;margin-left:-20px;"></div>
-</section>-->
-
 <section id="new_post" class="widget widget_categories">
   <h3 class="widget-title">最近文章</h3>
   <ul>
@@ -53,6 +48,11 @@
       {% endfor %}
     {% endif %}
   </ul>
+</section>
+
+<section id="tag_cloud" class="widget widget_tag_cloud">
+  <h3 class="widget-title">标签云</h3>
+    <div id="example" style="width: 286px; height: 286px;margin-left:-20px;"></div>
 </section>
 
 <section id="linkcat" class="widget widget_links">
@@ -67,17 +67,17 @@
 </section>
 
 <script type="text/javascript">
-  // var list = {{ tag_cloud|safe }};
-  // var word_array = new Array();
-  // for(i in list)
-  // {
-  //   var temp = list[i][0];
-  //   word_array.push({text:list[i][0],weight:list[i][1],link:"/articleTag/"+temp});
-  // }
+  var list = {{ tag_cloud|safe }};
+  var word_array = new Array();
+  for(i in list)
+  {
+    var temp = list[i][0];
+    word_array.push({text:list[i][0],weight:list[i][1],link:"/articleTag/"+temp});
+  }
 
-  // $(function() {
-  //   $("#example").jQCloud(word_array);
-  // });
+  $(function() {
+    $("#example").jQCloud(word_array);
+  });
 </script>
 <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
 <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cyt5STTrc"></script>
