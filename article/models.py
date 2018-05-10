@@ -14,7 +14,7 @@ class Author(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "文章作者"
+        verbose_name_plural = "文章作者"
 
 
 class Messages(models.Model):
@@ -28,7 +28,7 @@ class Messages(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "读者留言"
+        verbose_name_plural = "读者留言"
 
     @classmethod
     def create_message(cls, name, email, content):
@@ -50,7 +50,7 @@ class OwnerMessage(models.Model):
         return self.message
 
     class Meta:
-        verbose_name = "主人寄语"
+        verbose_name_plural = "主人寄语"
 
 
 class TagManager(models.Manager):
@@ -84,7 +84,7 @@ class Tag(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "文章标签"
+        verbose_name_plural = "文章标签"
 
 
 class ClassManager(models.Manager):
@@ -112,7 +112,7 @@ class Classification(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "文章分类"
+        verbose_name_plural = "文章分类"
 
 
 class ArticleManager(models.Model):
@@ -217,4 +217,4 @@ class Article(models.Model):  # 文章
 
     class Meta:
         ordering = ['-publish_time']
-        verbose_name = "文章"
+        verbose_name_plural = "文章"
