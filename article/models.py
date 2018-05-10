@@ -1,4 +1,4 @@
-# coding:utf-8
+# coding: utf-8
 
 from django.db import models
 from collections import OrderedDict
@@ -13,6 +13,9 @@ class Author(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "文章作者"
+
 
 class Messages(models.Model):
     name = models.CharField(max_length=30, verbose_name='姓名')
@@ -23,6 +26,9 @@ class Messages(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "读者留言"
 
     @classmethod
     def create_message(cls, name, email, content):
@@ -42,6 +48,9 @@ class OwnerMessage(models.Model):
 
     def __unicode__(self):
         return self.message
+
+    class Meta:
+        verbose_name = "主人寄语"
 
 
 class TagManager(models.Manager):
@@ -74,6 +83,9 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "文章标签"
+
 
 class ClassManager(models.Manager):
 
@@ -98,6 +110,9 @@ class Classification(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "文章分类"
 
 
 class ArticleManager(models.Model):
@@ -202,3 +217,4 @@ class Article(models.Model):  # 文章
 
     class Meta:
         ordering = ['-publish_time']
+        verbose_name = "文章"
