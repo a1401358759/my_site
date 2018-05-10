@@ -56,10 +56,9 @@
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/responsive-nav.css">
 
   <script type="text/javascript" src="{{ STATIC_URL }}js/public.js"></script>
-  <!-- visitor counts -->
-{#        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>#}
+
   <style>
-    .cur{font-weight:bolder; font-size: larger;}
+    .cur{font-weight:bolder;}
   </style>
 </head>
 
@@ -92,7 +91,6 @@ $(function () {
       <nav class="nav nav-primary">
         <div class="container">
           <ul id="menu-%e9%a6%96%e9%a1%b5" class="menu sf-js-enabled sf-shadow">
-
             <li id="menu-item-43" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-43">
               <a href="{% url 'home'%}">首页</a></li>
             <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45">
@@ -155,6 +153,7 @@ $(function () {
         $this = $(this);
         if($this[0].href==String(window.location)){
           $this.addClass("cur");
+          $this.css("color", "blue");
         }
       });
     });
@@ -164,11 +163,11 @@ $(function () {
     }
 
     (function(){
-    var appid = 'cyt5STTrc';
-    var conf = '28f93e777e4486046d3b5173915e80f6';
-    var width = window.innerWidth || document.documentElement.clientWidth;
-    if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
+      var appid = 'cyt5STTrc';
+      var conf = '28f93e777e4486046d3b5173915e80f6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
   </script>
 </body>
 </html>
