@@ -672,7 +672,7 @@ sub { bottom: -0.25em; }
 #header-widget .menu a {
   display: block;
   position: relative;
-  padding: 12px 10px;
+  padding: 12px 11px;
   text-decoration: none;
   color: #6f6f6f;
 }
