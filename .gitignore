@@ -2,5 +2,5 @@
 log
 .idea
 my_site/*.pyc
-local_settings.py
+my_site/local_settings.py
 dump.rdb
