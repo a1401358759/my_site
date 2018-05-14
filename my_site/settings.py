@@ -1,4 +1,5 @@
-# coding: utf-8
+# -*- coding: UTF-8 -*-
+
 """
 Django settings for my_site project.
 
@@ -9,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)# -*- coding: UTF-8 -*-
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 import os
 from django.utils.termcolors import colorize
 from my_site import config
@@ -31,8 +33,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-    # 'bootstrap_admin',
-    # 'suit',
     'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,16 +46,6 @@ INSTALLED_APPS = (
     'django_crontab'
 )
 
-# SUIT_CONFIG = {
-#     'ADMIN_NAME': '管理系统',
-#     'LIST_PER_PAGE': 10,
-#     'MENU': (
-#         'sites',
-#         {'app': 'article', 'label': u'博文管理'},
-#     ),
-# }
-
-# from django.conf import global_settings
 
 BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
@@ -78,13 +68,6 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 MYSQLDB_CONNECT_TIMEOUT = 1
 DATABASES = {
