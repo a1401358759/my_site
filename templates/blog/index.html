@@ -24,19 +24,19 @@
   {% endif%}
 
   {% if is_arch_month %}
-    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;按月归档&nbsp;:  &nbsp;{{year}} 年 {{month}} 月
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;按月归档&nbsp;:&nbsp;{{year}}年{{month}}月
   {% endif%}
 
   {% if  is_classfi  %}
-    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;  {{classfi}}
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;{{classfi}}
   {% endif%}
 
   {% if  is_tag  %}
-    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;标签&nbsp;:&nbsp;  {{tag}}
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;标签&nbsp;:&nbsp;{{tag}}
   {% endif%}
 
   {% if  is_search  %}
-    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;搜索&nbsp;:&nbsp;{{s}}  {{tag}}
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;搜索&nbsp;:&nbsp;{{s}}{{tag}}
   {% endif%}
 {% endblock %}
 
