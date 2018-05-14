@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load bootstrap_pagination %}
 
 {% block title %}
   {% if is_home %}
@@ -92,28 +93,17 @@
           </div>
         </div>
       {% endfor%}
-      <div class="holder"></div>
+      <div class="pull-right">
+        {% bootstrap_paginate articles url_extra_args=params range=10 show_first_last="true" %}
+      </div>
     </span>
 
   {% endif %}
   <script type="text/javascript">
     $(function(){
-      $("div.holder").jPages({
-        containerID : "itemContainer",
-        first: '首页',
-        last: '尾页',
-        previous: '上页',
-        next : '下页',
-        perPage : 5,  // 每页显示数据为多少行
-        startPage: 1,  // 起始页
-        startRange : 2,  // 开始页码为2个
-        midRange : 3,  // 最多显示几个页码页码,其余用..代替
-        ndRange: 2,  // 结束页码为2个
-        keyBrowse : true
-      });
+
     });
   </script>
-{#    {% include 'blog/_paginator.html' %}#}
 {% endblock %}
 
 {% block side %}

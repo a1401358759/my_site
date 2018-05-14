@@ -5,7 +5,7 @@ from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
 from django.shortcuts import HttpResponse, render
 from django.views.decorators.http import require_POST
-
+from utils.paginate import paginate
 from article.models import Article, Classification, Messages, OwnerMessage, Tag
 
 
@@ -16,14 +16,9 @@ def render_json(data, status=200):
 def home(request):
     is_home = True
     articles = Article.objects.order_by("-publish_time")
-    # paginator = Paginator(articles, 5)  # 每个页面最多显示5篇文章
-    # page_num = request.GET.get('page')
-    # try:
-    #     articles = paginator.page(page_num)
-    # except PageNotAnInteger:
-    #     articles = paginator.page(1)
-    # except EmptyPage:
-    #     articles = paginator.page(paginator.num_pages)
+    page_num = request.GET.get("page") or 1
+    page_size = request.GET.get("page_size") or 5
+    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     # 显示最新发布的前5篇文章
     new_post = Article.objects.order_by('-publish_time')[:10]

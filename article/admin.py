@@ -1,13 +1,15 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
 from article.models import *
 # from django_summernote.admin import SummernoteModelAdmin
-admin.site.register(Author)
-admin.site.register(Tag)
-admin.site.register(Classification)
 
 
 class MessagesAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'content', 'created_at')
+    list_per_page = 10
+    search_fields = ['name', 'email']
+    list_filter = ['created_at', ]
 
     # class Media:
     #     js = (
@@ -27,7 +29,10 @@ class OwnerMessageAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'author', 'publish_time')
+    list_per_page = 10
+    search_fields = ['title', 'tags__name', 'classification__name']  # 含有外键必须指定外键的字段
+    list_filter = ['publish_time', ]
 
     # class Media:
     #     js = (
@@ -39,4 +44,6 @@ class ArticleAdmin(admin.ModelAdmin):
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Messages, MessagesAdmin)
 admin.site.register(OwnerMessage, OwnerMessageAdmin)
-
+admin.site.register(Author)
+admin.site.register(Tag)
+admin.site.register(Classification)
