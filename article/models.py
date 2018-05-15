@@ -218,3 +218,16 @@ class Article(models.Model):  # 文章
     class Meta:
         ordering = ['-publish_time']
         verbose_name_plural = "文章"
+
+
+class Links(models.Model):  # 友情链接
+    name = models.CharField(max_length=50, verbose_name='链接名称')
+    link = models.CharField(max_length=100, verbose_name='链接地址')
+    weights = models.SmallIntegerField(default=10, verbose_name='权重', blank=True, null=True)
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "友情链接"
