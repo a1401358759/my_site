@@ -41,10 +41,15 @@ class ArticleAdmin(admin.ModelAdmin):
     #     )
 
 
+class LinksAdmin(admin.ModelAdmin):
+    list_display = ('name', 'link', 'created_time')
+    list_per_page = 10
+
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Messages, MessagesAdmin)
 admin.site.register(OwnerMessage, OwnerMessageAdmin)
+admin.site.register(Links, LinksAdmin)
 admin.site.register(Author)
 admin.site.register(Tag)
 admin.site.register(Classification)
-admin.site.register(Links)

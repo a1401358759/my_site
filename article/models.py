@@ -6,29 +6,29 @@ from DjangoUeditor.models import UEditorField
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=30, verbose_name='姓名')
-    email = models.EmailField(blank=True, verbose_name='邮件')
-    website = models.URLField(blank=True, verbose_name='个人网站')
+    name = models.CharField(max_length=30, verbose_name=u'姓名')
+    email = models.EmailField(blank=True, verbose_name=u'邮件')
+    website = models.URLField(blank=True, verbose_name=u'个人网站')
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = "文章作者"
+        verbose_name_plural = u"文章作者"
 
 
 class Messages(models.Model):
-    name = models.CharField(max_length=30, verbose_name='姓名')
-    email = models.EmailField(max_length=30, verbose_name='邮箱')
-    content = UEditorField(max_length=200, verbose_name='留言', width=600,
+    name = models.CharField(max_length=30, verbose_name=u'姓名')
+    email = models.EmailField(max_length=30, verbose_name=u'邮箱')
+    content = UEditorField(max_length=200, verbose_name=u'留言', width=600,
                            imagePath="/static/media/", toolbars='full')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='留言时间')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=u'留言时间')
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = "读者留言"
+        verbose_name_plural = u"读者留言"
 
     @classmethod
     def create_message(cls, name, email, content):
@@ -42,15 +42,15 @@ class Messages(models.Model):
 
 
 class OwnerMessage(models.Model):
-    message = UEditorField(verbose_name='寄语', width=600,
+    message = UEditorField(verbose_name=u'寄语', width=600,
                            imagePath="/static/media/", toolbars='full')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
 
     def __unicode__(self):
         return self.message
 
     class Meta:
-        verbose_name_plural = "主人寄语"
+        verbose_name_plural = u"主人寄语"
 
 
 class TagManager(models.Manager):
@@ -70,8 +70,8 @@ class TagManager(models.Manager):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=20, blank=True, verbose_name='标签名')
-    creat_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    name = models.CharField(max_length=20, blank=True, verbose_name=u'标签名')
+    creat_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
     objects = models.Manager()
     tag_list = TagManager()
 
@@ -84,7 +84,7 @@ class Tag(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = "文章标签"
+        verbose_name_plural = u"文章标签"
 
 
 class ClassManager(models.Manager):
@@ -112,7 +112,7 @@ class Classification(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = "文章分类"
+        verbose_name_plural = u"文章分类"
 
 
 class ArticleManager(models.Model):
@@ -159,14 +159,14 @@ class ArticleManager(models.Model):
 
 
 class Article(models.Model):  # 文章
-    title = models.CharField(max_length=100, verbose_name='标题')
-    author = models.ForeignKey(Author, verbose_name='作者')
-    tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')  # 标签
-    classification = models.ForeignKey(Classification, verbose_name='分类')  # 分类
-    content = UEditorField(blank=True, null=True, verbose_name='文章内容', width=600,
-                           imagePath="/static/media/", toolbars='full')
-    publish_time = models.DateTimeField(auto_now_add=True, verbose_name='发表时间')
-    count = models.IntegerField(default=0, verbose_name='文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
+    title = models.CharField(max_length=100, verbose_name=u'标题')
+    author = models.ForeignKey(Author, verbose_name=u'作者')
+    tags = models.ManyToManyField(Tag, blank=True, verbose_name=u'标签')  # 标签
+    classification = models.ForeignKey(Classification, verbose_name=u'分类')  # 分类
+    content = UEditorField(blank=True, null=True, verbose_name=u'文章内容', width=600,
+                           imagePath="/static/media/", toolbars=u'full')
+    publish_time = models.DateTimeField(auto_now_add=True, verbose_name=u'发表时间')
+    count = models.IntegerField(default=0, verbose_name=u'文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器
 
@@ -217,17 +217,17 @@ class Article(models.Model):  # 文章
 
     class Meta:
         ordering = ['-publish_time']
-        verbose_name_plural = "文章"
+        verbose_name_plural = u"文章"
 
 
 class Links(models.Model):  # 友情链接
-    name = models.CharField(max_length=50, verbose_name='链接名称')
-    link = models.CharField(max_length=100, verbose_name='链接地址')
-    weights = models.SmallIntegerField(default=10, verbose_name='权重', blank=True, null=True)
-    created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    name = models.CharField(max_length=50, verbose_name=u'链接名称')
+    link = models.CharField(max_length=100, verbose_name=u'链接地址')
+    weights = models.SmallIntegerField(default=10, verbose_name=u'权重', blank=True, null=True)
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = "友情链接"
+        verbose_name_plural = u"友情链接"
