@@ -1316,8 +1316,9 @@ position:relative;
 #footer {
   padding-top: 20px;
   line-height: 1.5;
-
-  background: url("2.jpg");
+  background: url("2.jpg") no-repeat;
+  width: 100%;
+  background-size: 100% 100%;
   -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
