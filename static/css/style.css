@@ -622,7 +622,7 @@ sub { bottom: -0.25em; }
 #header {
   margin-bottom: 20px;
   background: url("2.jpg");
-    background-size:100%;
+  background-size: 100% 100%;
 }
 
 #header .container { padding: 0 40px; }
@@ -1316,7 +1316,7 @@ position:relative;
 #footer {
   padding-top: 20px;
   line-height: 1.5;
-  background: url("2.jpg") no-repeat;
+  background: url("2.jpg");
   width: 100%;
   background-size: 100% 100%;
   -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
