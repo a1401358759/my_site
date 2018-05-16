@@ -164,7 +164,7 @@ class Article(models.Model):  # 文章
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=u'标签')  # 标签
     classification = models.ForeignKey(Classification, verbose_name=u'分类')  # 分类
     content = UEditorField(blank=True, null=True, verbose_name=u'文章内容', width=600,
-                           imagePath="/static/media/", toolbars=u'full')
+                           imagePath="/static/media/", toolbars='full')
     publish_time = models.DateTimeField(auto_now_add=True, verbose_name=u'发表时间')
     count = models.IntegerField(default=0, verbose_name=u'文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
     objects = models.Manager()  # 默认的管理器

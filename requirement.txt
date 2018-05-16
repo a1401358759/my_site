@@ -38,4 +38,4 @@ django-redis==4.4.2
 django-bootstrap-pagination==1.6.4
 MySQL-python==1.2.5
 django-admin-bootstrapped==2.5.7
-DjangoUeditor==1.8.143
+django-bootstrap3==10.0.1
