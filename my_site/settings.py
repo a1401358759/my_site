@@ -211,8 +211,8 @@ CRONJOBS = [
 ]
 
 # import local settings
-try:
-    from .local_settings import *
-    print colorize(text='local_settings imported.', fg='yellow')
-except ImportError:
-    pass
+# try:
+#     from .local_settings import *
+#     print colorize(text='local_settings imported.', fg='yellow')
+# except ImportError:
+#     pass
