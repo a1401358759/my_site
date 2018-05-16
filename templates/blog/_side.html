@@ -22,7 +22,7 @@
   <ul>
     {% if date_list %}
       {% for x, y in date_list %}
-        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月({{y}})</a></li>
+        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月 ( {{y}} )</a></li>
       {% endfor %}
     {% endif %}
   </ul>
@@ -33,7 +33,7 @@
 	<ul>
     {% if classification %}
       {% for x,y in classification %}
-        <li><a href="{% url 'classfiDetail' classfi=x %}">{{x}}({{y}})</a></li>
+        <li><a href="{% url 'classfiDetail' classfi=x %}">{{x}} ( {{y}} )</a></li>
       {% endfor %}
     {% endif %}
 	</ul>
