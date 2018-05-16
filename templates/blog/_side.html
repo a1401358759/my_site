@@ -8,14 +8,19 @@
 	</form>
 </section>
 
-<section id="text" class="widget widget_text">
+<section id="archives" class="widget widget_archive">
+  {% include "blog/calendar.html" %}
+</section>
+
+<!-- 拖慢网页速度，暂时隐藏 -->
+<!--<section id="text" class="widget widget_text">
 	<h3 class="widget-title">新浪微博</h3>
 	<div class="textwidget">
     <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="https://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2734584944&verifier=42b4a725&dpc=1">
 
     </iframe>
 	</div>
-</section>
+</section>-->
 
 <section id="archives" class="widget widget_archive">
   <h3 class="widget-title">文章归档</h3>
@@ -77,8 +82,8 @@
     word_array.push({text:list[i][0],weight:list[i][1],link:"/articleTag/"+temp});
   }
 
-  $(function() {
-    $("#example").jQCloud(word_array);
+  jQuery(function() {
+    jQuery("#example").jQCloud(word_array);
   });
 </script>
 <script type="text/javascript" charset="utf-8" src="/static/jquery.js"></script>

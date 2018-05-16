@@ -21,7 +21,7 @@
   <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
 
   <!--jquery  -->
-  <script src="{{ STATIC_URL }}lib/jquery.js"></script>
+  <script src="{{ STATIC_URL }}jquery.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}js/public.js"></script>
   <script src="{{ STATIC_URL }}lib/scorllup.js"></script>
   <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
@@ -65,7 +65,7 @@
 
 <script>
 $(function () {
-  $.scrollUp({
+  jQuery.scrollUp({
 
   });
 });
@@ -143,9 +143,9 @@ $(function () {
 
   <!--导航栏选中改变样式-->
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(".nav a").each(function(){
-        $this = $(this);
+    jQuery(document).ready(function(){
+      jQuery(".nav a").each(function(){
+        $this = jQuery(this);
         if($this[0].href==String(window.location)){
           $this.addClass("cur");
           $this.css("color", "blue");
