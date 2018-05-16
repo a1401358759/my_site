@@ -9,7 +9,7 @@
   background-color: #FFFFFE;
   text-align: center;
   width: 100%;
-  height: 200px;
+  height: 210px;
   padding: 10px;
   line-height: 2.0em;
 }
@@ -38,7 +38,8 @@
 }
 #idCalendar td.onToday {
   font-weight: bold;
-  color: blue;
+  background-color: lightgrey;
+  border-radius: 15px;
 }
 #idCalendar td.onSelect {
   font-weight: bold;
@@ -156,10 +157,10 @@
   </head>
   <body>
   <div class="Calendar">
-    <div id="idCalendarPre"><<</div>
-    <div id="idCalendarNext">>></div>
+    <div id="idCalendarPre" style="padding-left: 10px;"> << </div>
+    <div id="idCalendarNext" style="padding-right: 10px;"> >> </div>
     <span id="idCalendarYear">2008</span>年 <span id="idCalendarMonth">8</span>月
-    <table cellspacing="0">
+    <table cellspacing="0" style="padding-top: 10px;">
       <thead>
         <tr>
           <td>日</td>
