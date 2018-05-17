@@ -11,21 +11,25 @@ class MessagesAdmin(admin.ModelAdmin):
     search_fields = ['name', 'email']
     list_filter = ['created_at', ]
 
-    # class Media:
-    #     js = (
-    #         '/static/tinymce/tinymce.min.js',
-    #         '/static/tinymce/config.js',
-    #     )
+    class Media:
+        js = (
+            '/static/tinymce/jquery.tinymce.min.js',
+            '/static/tinymce/tinymce.min.js',
+            '/static/tinymce/jquery.form.js',
+            '/static/tinymce/config.js',
+        )
 
 
 class OwnerMessageAdmin(admin.ModelAdmin):
     list_display = ('message', 'created_at')
 
-    # class Media:
-    #     js = (
-    #         '/static/tinymce/tinymce.min.js',
-    #         '/static/tinymce/config.js',
-    #     )
+    class Media:
+        js = (
+            '/static/tinymce/jquery.tinymce.min.js',
+            '/static/tinymce/tinymce.min.js',
+            '/static/tinymce/jquery.form.js',
+            '/static/tinymce/config.js',
+        )
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -34,11 +38,13 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ['title', 'tags__name', 'classification__name']  # 含有外键必须指定外键的字段
     list_filter = ['publish_time', ]
 
-    # class Media:
-    #     js = (
-    #         '/static/tinymce/tinymce.min.js',
-    #         '/static/tinymce/config.js',
-    #     )
+    class Media:
+        js = (
+            '/static/tinymce/jquery.tinymce.min.js',
+            '/static/tinymce/tinymce.min.js',
+            '/static/tinymce/jquery.form.js',
+            '/static/tinymce/config.js',
+        )
 
 
 class LinksAdmin(admin.ModelAdmin):

@@ -40,7 +40,9 @@
 
   <script>
     jQuery(document).ready(function() {
-      jQuery('pre').each(function(i, e) {hljs.highlightBlock(e)});
+      jQuery('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
     });
   </script>
 
