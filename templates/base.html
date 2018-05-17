@@ -8,15 +8,12 @@
   <meta name="author" content="">
   <title>{% block title %}{% endblock %}</title>
   {{ form.media }}
-  <link rel="icon" href="/static/css/blog.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/static/css/blog.ico" type="image/x-icon" />
+
   <!-- Bootstrap core CSS -->
-  <link href="{{ STATIC_URL }}lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
   <link href="{{ STATIC_URL }}jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
   <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="{{ STATIC_URL }}parsley/src/parsley.css" rel="stylesheet" />
   <!-- Custom styles for this template -->
   <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
 
@@ -26,27 +23,8 @@
   <script src="{{ STATIC_URL }}lib/scorllup.js"></script>
   <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
   <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
-  <!--SyntaxHighter-->
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/shCore.css">
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/shThemeRDark.css">
-  <script type="text/javascript" src="{{ STATIC_URL }}lib/shCore.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}lib/scripts/shAutoloader.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}lib/scripts/shBrushJScript.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}lib/scripts/shBrushBash.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}lib/scripts/shBrushPython.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}lib/scripts/shBrushCpp.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}lib/scripts/shBrushJava.js"></script>
 
-  <script type="text/javascript">
-    window.onload = SyntaxHighlighter.all();
-  </script>
-
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/prism.css">
-  <script type="text/javascript" src="{{ STATIC_URL }}js/prism.js"></script>
-  <!-- paginator-->
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/jPages.css">
   <link rel="stylesheet" href="{{ STATIC_URL }}css/animate.css">
-  <script src="{{ STATIC_URL }}js/jPages.js"></script>
 
   <!-- jqcloud -->
   <script src="{{ STATIC_URL }}lib/jqcloud-1.0.4.js"></script>
@@ -56,7 +34,15 @@
   <script src="{{ STATIC_URL }}lib/responsive-nav.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/responsive-nav.css">
 
-  <script type="text/javascript" src="{{ STATIC_URL }}js/public.js"></script>
+  <!-- highlight.js -->
+  <script src="{{ STATIC_URL }}plugins/highlight/highlight.pack.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}plugins/highlight/styles/darcula.css">
+
+  <script>
+    jQuery(document).ready(function() {
+      jQuery('pre').each(function(i, e) {hljs.highlightBlock(e)});
+    });
+  </script>
 
   <style>
     .cur{font-weight:bolder;}
@@ -82,10 +68,9 @@ $(function () {
           <span id="site-description" style="color: orange">倚天照海花无数，流水高山心自知。</span>
         </div>
         <div class="social-icons">
-          <a href="https://www.weibo.com" target="_blank"><i style="position:relative;left:-2px;" class="icon-weibo icon-large"></i></a>
-          <a href="https://github.com/a1401358759" target="_blank"> <i style="position:relative;left:-2px;" class="icon-github icon-large"></i></a>
-          <!--<a href="{% url 'RSS' %}" target="_blank"><i style="position:relative;left:-2px;" class="icon-rss icon-large"></i></a>-->
-          <a href="javascript:void (0)" onclick="verify_user()"><i style="position:relative;left:-2px;" class="icon-heart icon-large"></i></a>
+          <a href="https://www.weibo.com" target="_blank"><i style="position:relative;left:-2px;" class="fa fa-weibo"></i></a>
+          <a href="https://github.com/a1401358759" target="_blank"> <i style="position:relative;left:-2px;" class="fa fa-github"></i></a>
+          <a href="javascript:void (0)" onclick="verify_user()"><i style="position:relative;left:-2px;" class="fa fa-heart"></i></a>
         </div>
       </div>
       <div class="clearfix"></div>

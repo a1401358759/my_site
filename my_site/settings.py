@@ -76,8 +76,8 @@ DATABASES = {
         'CONN_MAX_AGE': 3600,
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'my-site',
-        'USER': 'yangxf',
-        'PASSWORD': 'yangxf',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'TEST': {
