@@ -7,6 +7,10 @@ from django.conf import settings
 from django.http import HttpResponse
 
 
+def render_json(data, status=200):
+    return HttpResponse(json.dumps(data), content_type="text/json", status=status)
+
+
 def http_response(request, context={}, statuscode=None, code=None, msg=None, msg_cn=None, content_type=None):
     """
     统一的http response封装，增加通用返回参数，返回值为HttpResponse对象

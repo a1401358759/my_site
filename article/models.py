@@ -2,7 +2,8 @@
 
 from django.db import models
 from collections import OrderedDict
-from DjangoUeditor.models import UEditorField
+# from DjangoUeditor.models import UEditorField
+from .constants import BlogStatus
 
 
 class Author(models.Model):
@@ -171,6 +172,7 @@ class Article(models.Model):  # 文章
     content = models.TextField(verbose_name=u'文章内容', default="")
     publish_time = models.DateTimeField(auto_now_add=True, verbose_name=u'发表时间')
     count = models.IntegerField(default=0, verbose_name=u'文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
+    status = models.SmallIntegerField(verbose_name=u"状态", choices=BlogStatus.CHOICES, default=BlogStatus.PUBLISHED)
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器
 

@@ -4,19 +4,17 @@ import json
 from django.db.models import F
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from utils.paginate import paginate
-from article.models import Article, Classification, Messages, OwnerMessage, Tag, Links
-
-
-def render_json(data, status=200):
-    return HttpResponse(json.dumps(data), content_type="text/json", status=status)
+from utils.response import render_json
+from .models import Article, Classification, Messages, OwnerMessage, Tag, Links
+from .constants import BlogStatus
 
 
 def home(request):
     is_home = True
-    articles = Article.objects.order_by("-publish_time")
+    articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by("-publish_time")
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
@@ -39,7 +37,7 @@ def detail(request, year, month, day, id):
     except Article.DoesNotExist:
         raise Http404
 
-    new_post = Article.objects.order_by('-count')[:10]
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     links = Links.objects.all().order_by("-weights", "id")
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -51,13 +49,13 @@ def detail(request, year, month, day, id):
 def archive_month(request, year, month):
     is_arch_month = True
 
-    articles = Article.objects.filter(publish_time__year=year, publish_time__month=month)  # 当前日期下的文章列表
+    articles = Article.objects.filter(publish_time__year=year, publish_time__month=month, status=BlogStatus.PUBLISHED)  # 当前日期下的文章列表
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     links = Links.objects.all().order_by("-weights", "id")
-    new_post = Article.objects.order_by('-count')[:10]
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
@@ -69,13 +67,13 @@ def classfiDetail(request, classfi):
     is_classfi = True
     temp = Classification.objects.get(name=classfi)  # 获取全部的Article对象
 
-    articles = temp.article_set.all()
+    articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     links = Links.objects.all().order_by("-weights", "id")
-    new_post = Article.objects.order_by('-count')[:10]
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
@@ -87,13 +85,13 @@ def tagDetail(request, tag):
     is_tag = True
     temp = Tag.objects.get(name=tag)  # 获取全部的Article对象
     # articles = Article.objects.filter(tags=tag)
-    articles = temp.article_set.all()
+    articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     links = Links.objects.all().order_by("-weights", "id")
-    new_post = Article.objects.order_by('-count')[:10]
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
@@ -102,13 +100,13 @@ def tagDetail(request, tag):
 
 
 def about(request):
-    articles = Article.objects.order_by('-publish_time')
+    articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     links = Links.objects.all().order_by("-weights", "id")
-    new_post = Article.objects.order_by('-count')[:10]
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
@@ -117,14 +115,14 @@ def about(request):
 
 
 def archive(request):
-    articles = Article.objects.order_by('-publish_time')
+    articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     links = Links.objects.all().order_by("-weights", "id")
     archive = Article.date_list.get_article_by_archive()
-    new_post = Article.objects.order_by('-count')[:10]
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
@@ -156,7 +154,7 @@ class RSSFeed(Feed):
 def blog_search(request):  # 实现对文章标题的搜索
 
     is_search = True
-    new_post = Article.objects.order_by('-count')[:10]
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     links = Links.objects.all().order_by("-weights", "id")
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -178,7 +176,7 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
-    articles = Article.objects.all()
+    articles = Article.objects.filter(status=BlogStatus.PUBLISHED)
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
