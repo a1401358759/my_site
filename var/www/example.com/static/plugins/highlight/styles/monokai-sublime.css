@@ -4,6 +4,12 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
 */
 
+pre code {
+  /*控制代码不换行*/
+  white-space: pre;
+  word-wrap: normal;
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
