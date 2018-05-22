@@ -10,6 +10,27 @@ from utils.paginate import paginate
 from utils.response import render_json
 from .models import Article, Classification, Messages, OwnerMessage, Tag, Links
 from .constants import BlogStatus
+from utils.cos import Cos, TencentCosConf
+
+
+def upload_file(filestream, file_name=None, dir_name=None):
+    """
+    Arguments:
+        filestream {[type]} -- [文件对象]
+        real_file_path {[type]} -- [文件本地路径]
+        file_name {[type]} -- [文件名]
+    Keyword Arguments:
+        dir_name {[type]} -- [上传的文件夹] (default: {None})
+    Returns:
+    """
+    cos_client = Cos(**TencentCosConf)
+    bucket = cos_client.get_bucket("pic-1256044091")
+    if file_name:
+        file_name = file_name
+    else:
+        file_name = filestream.name.split('.')[0]
+    data = bucket.upload_file(filestream, file_name, dir_name)
+    return data
 
 
 def home(request):

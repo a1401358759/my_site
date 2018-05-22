@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^love/?$', 'article.views.love'),
     url(r'^create/messages$', 'article.views.create_messages', name='create_messages'),
     url(r'^ueditor/', include('DjangoUeditor.urls')),
+    url(r'^upload/', 'article.views.upload_file', name='upload_file'),
 ]
