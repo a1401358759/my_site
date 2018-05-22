@@ -12,6 +12,10 @@ class MessagesAdmin(admin.ModelAdmin):
     list_filter = ['created_at', ]
 
     class Media:
+        css = {
+            'all': ('/static/css/manager.css',)
+        }
+
         js = (
             '/static/tinymce/jquery.tinymce.min.js',
             '/static/tinymce/tinymce.min.js',
@@ -24,6 +28,10 @@ class OwnerMessageAdmin(admin.ModelAdmin):
     list_display = ('message', 'created_at')
 
     class Media:
+        css = {
+            'all': ('/static/css/manager.css',)
+        }
+
         js = (
             '/static/tinymce/jquery.tinymce.min.js',
             '/static/tinymce/tinymce.min.js',
@@ -39,6 +47,10 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ['publish_time', ]
 
     class Media:
+        css = {
+            'all': ('/static/css/manager.css',)
+        }
+
         js = (
             '/static/tinymce/jquery.tinymce.min.js',
             '/static/tinymce/tinymce.min.js',

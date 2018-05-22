@@ -15,6 +15,7 @@ from utils.cos import Cos, TencentCosConf
 
 def upload_file(filestream, file_name=None, dir_name=None):
     """
+    tinymce上传图片
     Arguments:
         filestream {[type]} -- [文件对象]
         real_file_path {[type]} -- [文件本地路径]
@@ -23,14 +24,15 @@ def upload_file(filestream, file_name=None, dir_name=None):
         dir_name {[type]} -- [上传的文件夹] (default: {None})
     Returns:
     """
+    print 111111111111
     cos_client = Cos(**TencentCosConf)
     bucket = cos_client.get_bucket("pic-1256044091")
     if file_name:
         file_name = file_name
     else:
         file_name = filestream.name.split('.')[0]
-    data = bucket.upload_file(filestream, file_name, dir_name)
-    return data
+    response = bucket.upload_file(filestream, file_name, dir_name)
+    return render_json({"error": False, "path": response.get("access_url")})
 
 
 def home(request):
