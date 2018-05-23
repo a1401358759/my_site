@@ -19,7 +19,7 @@ from utils.mine_qiniu import upload_data
 def upload_file(request):
     filestream = request.FILES.get('file')
     key, img_path = upload_data(filestream, 'blog')
-    return render_json({"error": False, "url": img_path, "key": key})
+    return render_json({"error": False, "key": key, "url": img_path, "path": img_path})
 
 
 def home(request):
