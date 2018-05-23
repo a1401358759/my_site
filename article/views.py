@@ -11,22 +11,15 @@ from utils.paginate import paginate
 from utils.response import render_json
 from .models import Article, Classification, Messages, OwnerMessage, Tag, Links
 from .constants import BlogStatus
+from utils.mine_qiniu import upload_data
 
 
 @csrf_exempt
 @require_POST
 def upload_file(request):
-    """
-    tinymce上传图片
-    Arguments:
-        filestream {[type]} -- [文件对象]
-        real_file_path {[type]} -- [文件本地路径]
-        file_name {[type]} -- [文件名]
-    Keyword Arguments:
-        dir_name {[type]} -- [上传的文件夹] (default: {None})
-    Returns:
-    """
-    pass
+    filestream = request.FILES.get('file')
+    key, img_path = upload_data(filestream, 'blog')
+    return render_json({"error": False, "url": img_path, "key": key})
 
 
 def home(request):
