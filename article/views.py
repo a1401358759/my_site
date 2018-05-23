@@ -221,6 +221,7 @@ def love(request):
         return render(request, 'blog/404.htm')
 
 
+@csrf_exempt
 @require_POST
 def create_messages(request):
     params = request.POST

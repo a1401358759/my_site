@@ -93,24 +93,20 @@
   </div>
 
   <script type="text/javascript">
-    $(function(){
-
-    });
     function create_messages() {
-      var name = $('#name').val();
-      var email = $('#email').val();
-      var messages = $('#messages').val();
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var messages = document.getElementById("messages").value;
       if (name.length != 0 && email.length != 0 && messages.length != 0) {
-        $.ajax({
-          async: false,
+        jQuery.ajax({
           url: '/create/messages',
           type: 'POST',
           dataType: 'json',
-          data: add_csrf_token({
+          data: {
             'name': name,
             'email': email,
             'messages': messages
-          }),
+          },
           success: function (data) {
             if (data['success'] == true) {
               alert(data['message']);
