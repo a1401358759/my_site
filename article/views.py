@@ -197,13 +197,12 @@ def message(request):
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
-
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     links = Links.objects.all().order_by("-weights", "id")
     own_messages = OwnerMessage.objects.all()
+
     messages = Messages.objects.order_by('-id')
-    page_num = request.GET.get("page") or 1
-    page_size = request.GET.get("page_size") or 5
-    messages, total = paginate(messages, page_num=page_num, page_size=page_size)
+    messages, total = paginate(messages, page_num=page_num, page_size=10)
     messages_num = Messages.objects.all()
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
