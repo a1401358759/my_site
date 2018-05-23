@@ -13,7 +13,8 @@ from .constants import BlogStatus
 from utils.cos import Cos, TencentCosConf
 
 
-def upload_file(filestream, file_name=None, dir_name=None):
+@require_POST
+def upload_file(request):
     """
     tinymce上传图片
     Arguments:
@@ -25,13 +26,13 @@ def upload_file(filestream, file_name=None, dir_name=None):
     Returns:
     """
     print 111111111111
+    filestream = request.FILES.get('file')
+    print filestream
+    file_name = filestream.name.split('.')[0]
     cos_client = Cos(**TencentCosConf)
     bucket = cos_client.get_bucket("pic-1256044091")
-    if file_name:
-        file_name = file_name
-    else:
-        file_name = filestream.name.split('.')[0]
-    response = bucket.upload_file(filestream, file_name, dir_name)
+    response = bucket.upload_file(filestream, file_name=file_name, dir_name='blog')
+    print response
     return render_json({"error": False, "path": response.get("access_url")})
 
 

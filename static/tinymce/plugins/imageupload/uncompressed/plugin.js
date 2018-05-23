@@ -4,32 +4,32 @@
             url = tinyMCE.activeEditor.getParam('imageupload_rel') || url;
             var imageUploadUrl = tinyMCE.activeEditor.getParam('imageupload_url');
             var head = document.getElementsByTagName('body')[0];
-            var css = document.createElement('link');                       
+            var css = document.createElement('link');
             css.type = 'text/css';
             css.rel = 'stylesheet';
             css.href = url + '/css/style.css';
             head.appendChild(css);
-            
+
             // Register commands
             ed.addCommand('mceImageUpload', function() {
-                $('#image_upload_type').val('tinymce'); 
+                $('#image_upload_type').val('tinymce');
                 $('body').append('<div class="imageUploadBg"></div>');
-                
+
                 var showImageUploadError = function(msg) {
                     $('.imageUploadError').html(msg).show();
                     removeForeground();
                 };
-                
+
                 var removeForeground = function() {
                     $('.imageUploadFg').remove();
                     $('.imageUploadFgLoading').remove();
                 };
-                
+
                 var removeBackground = function() {
                     $('.imageUploadBg').remove();
                     $('.imageUploadContainer').remove();
                 };
-                
+
                 var container = '\
                     <div class="imageUploadContainer mce-container mce-panel mce-window">\
                         <div class="imageUploadContainerInner">\
@@ -57,14 +57,14 @@
                         </div>\
                     </div>\
                 ';
-                
+
                 $('body').append(container);
-                
+
                 $('.imageUploadBg, .imageUploadContainer .imageUploadClose, .mce-close').on('click', function(){
                     removeForeground();
                     removeBackground();
                 });
-                
+
                 $('#uploadImageForm').iframePostForm({
                     json: true,
                     post: function(){
@@ -99,11 +99,11 @@
                         }
                     }
                 });
-                
+
                 $('.imageUploadSubmit').on('click', function(){
-                    
+
                     $('.imageUploadError').html('').hide();
-                    
+
                     if ($('#image-upload-area').val() != '') {
                         $('body').append('<div class="imageUploadFg"></div>');
                         $('body').append('<div class="imageUploadFgLoading"></div>');
@@ -111,7 +111,7 @@
                     } else {
                         showImageUploadError('Please select an image to upload.');
                     }
-                    
+
                 });
             });
 

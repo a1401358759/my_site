@@ -12,5 +12,5 @@ tinyMCE.init({
   toolbar2: " searchreplace | bullist numlist | outdent indent | link unlink anchor imageupload media code | inserttime preview | forecolor backcolor | codesample",
   toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | nonbreaking pagebreak restoredraft",
   language:'zh_CN',
-  imageupload_url: '/upload',
+  imageupload_url: '/upload/',
 });
