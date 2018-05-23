@@ -6,13 +6,14 @@ from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 from utils.paginate import paginate
 from utils.response import render_json
 from .models import Article, Classification, Messages, OwnerMessage, Tag, Links
 from .constants import BlogStatus
-from utils.cos import Cos, TencentCosConf
 
 
+@csrf_exempt
 @require_POST
 def upload_file(request):
     """
@@ -25,15 +26,7 @@ def upload_file(request):
         dir_name {[type]} -- [上传的文件夹] (default: {None})
     Returns:
     """
-    print 111111111111
-    filestream = request.FILES.get('file')
-    print filestream
-    file_name = filestream.name.split('.')[0]
-    cos_client = Cos(**TencentCosConf)
-    bucket = cos_client.get_bucket("pic-1256044091")
-    response = bucket.upload_file(filestream, file_name=file_name, dir_name='blog')
-    print response
-    return render_json({"error": False, "path": response.get("access_url")})
+    pass
 
 
 def home(request):
