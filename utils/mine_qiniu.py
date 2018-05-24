@@ -8,7 +8,7 @@ from qiniu import Auth, put_data
 access_key = 'D5m1nrbqTRDIQ1OdpeOM5eN8BL9X3KeLI6b7bwAF'
 secret_key = 'VPLtQM3lwp9arR8qMeVSFKelQWO2tXpeC_yLAdo5'
 bucket_name = 'blog'
-domain_prefix = 'https://p966opuom.bkt.clouddn.com/'
+domain_prefix = 'http://p966opuom.bkt.clouddn.com/'
 
 
 def upload_data(data, bucket_name):
