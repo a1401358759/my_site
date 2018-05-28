@@ -59,7 +59,7 @@
 
     <div class="form-group">
       <div class="col-md-12">
-        <textarea name="messages" id="messages" placeholder="留言内容(必填)" required="required" class="form-control" rows="8" style="resize: none;"></textarea>
+        <textarea name="messages" id="messages" placeholder="留言内容(必填)" required="required" class="form-control" rows="8" style="resize: none;" maxlength="100"></textarea>
       </div>
     </div>
     <div style="text-align: right; margin-top: -10px;">
@@ -67,7 +67,7 @@
     </div>
   </form>
 
-  留言({{ messages_num | length }})
+  留言 ( {{ messages_num | length }} )
   <hr/>
 
   <div id="set_messages">
@@ -97,28 +97,31 @@
       var name = document.getElementById("name").value;
       var email = document.getElementById("email").value;
       var messages = document.getElementById("messages").value;
-      if (name.length != 0 && email.length != 0 && messages.length != 0) {
-        jQuery.ajax({
-          url: '/create/messages',
-          type: 'POST',
-          dataType: 'json',
-          data: {
-            'name': name,
-            'email': email,
-            'messages': messages
-          },
-          success: function (data) {
-            if (data['success'] == true) {
-              alert(data['message']);
-              window.location.reload()
-            }else{
-              alert(data['message']);
-            }
-          }
-        })
-      }else{
-        alert('数据不能为空！')
+      if (!isChinaName(name)) {
+        alert("请填写中文名称");
+        return false;
+      } else if (!name || !email || !messages){
+        alert("数据不能为空！");
+        return false;
       }
+      jQuery.ajax({
+        url: '/create/messages',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          'name': name,
+          'email': email,
+          'messages': messages
+        },
+        success: function (data) {
+          if (data.success) {
+            alert(data.message);
+            window.location.reload()
+          }else{
+            alert(data.message);
+          }
+        }
+      })
     }
   </script>
 {% endblock %}
