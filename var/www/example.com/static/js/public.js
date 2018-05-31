@@ -175,7 +175,7 @@ function isChinaName(name) {
 
 // 验证手机号
 function isPhoneNo(phone) {
-  var pattern = /^1[34578]\d{9}$/;
+  var pattern = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
   return pattern.test(phone);
 }
 
