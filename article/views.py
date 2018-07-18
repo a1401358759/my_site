@@ -5,13 +5,13 @@ from django.db.models import F
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
 from django.shortcuts import render
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_POST, require_GET
 from django.views.decorators.csrf import csrf_exempt
 from utils.paginate import paginate
 from utils.response import render_json
+from utils.mine_qiniu import upload_data
 from .models import Article, Classification, Messages, OwnerMessage, Tag, Links
 from .constants import BlogStatus
-from utils.mine_qiniu import upload_data
 
 
 @csrf_exempt
@@ -226,3 +226,8 @@ def create_messages(request):
         content=messages
     )
     return render_json({'success': True, 'message': '留言成功！'})
+
+
+@require_GET
+def my_resume(request):
+    return render(request, 'resume/my_resume.html')
