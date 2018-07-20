@@ -42,7 +42,7 @@ def home(request):
 
 def detail(request, year, month, day, id):
     try:
-        article = Article.objects.get(id=str(id))
+        article = Article.objects.get(id=id)
         Article.objects.filter(id=id).update(count=F('count') + 1)
     except Article.DoesNotExist:
         raise Http404
