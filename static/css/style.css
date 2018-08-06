@@ -1659,7 +1659,7 @@ legend span {
 --------------------------------------- */
 
 table {
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0;
 }
 
