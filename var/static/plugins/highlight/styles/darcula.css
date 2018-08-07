@@ -14,7 +14,8 @@ pre code {
   overflow-x: auto;
   padding: 0.5em;
   background: #2b2b2b;
-  line-height: 1.5;
+  line-height: 20px;
+  font-size: 14px;
 }
 
 .hljs {
