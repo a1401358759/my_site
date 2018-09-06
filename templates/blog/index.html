@@ -93,7 +93,7 @@
 
             <div class="entry-content">
               <p class="MsoNormal">
-                {{ article.content|truncatewords_html:40|safe }}
+                {{ article.content|truncatewords_html:20|safe }}
               </p>
               <div class="clearfix"></div>
             </div>
@@ -115,7 +115,7 @@
         </div>
       {% endfor%}
       <div class="pull-right" style="margin-top: -15px;">
-        {% bootstrap_paginate articles url_extra_args=params range=10 show_first_last="true" %}
+        {% bootstrap_paginate articles url_extra_args=params range=5 show_first_last="true" %}
       </div>
     </span>
 
