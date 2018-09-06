@@ -837,6 +837,7 @@ sub { bottom: -0.25em; }
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid #EEE;
+  border-radius: 0px;
 }
 
 .breadcrumb li { display: inline-block; }
