@@ -41,25 +41,6 @@
 {% endblock %}
 
 {% block content %}
-  <!--重写分页样式-->
-  <style>
-    .pagination > li > a,
-    .pagination > li > span {
-      padding: 5px 10px;
-      font-size: 12px;
-      margin: 0 0 0 4px;
-    }
-    .pagination > li:first-child > a,
-    .pagination > li:first-child > span {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
-    }
-    .pagination > li:last-child > a,
-    .pagination > li:last-child > span {
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-    }
-  </style>
   {% if error %}
     <h4 style="color: silver;">没有相关文章题目</h4>
   {% else %}
