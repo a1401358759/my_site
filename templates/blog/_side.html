@@ -1,31 +1,31 @@
-<section id="search" class="widget widget_search">
+<div id="search" class="widget widget_search">
 	<form role="search" method="post" class="search-form" action="/search/">
     {% csrf_token %}
 		<input value="" name="s" class="s query" placeholder="查找文章" type="text">
 		<button type="submit" class="search-submit"><span style="font-size:20px" class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 		<div class="clearfix"></div>
 	</form>
-</section>
+</div>
 
-<section id="archives" class="widget widget_archive">
+<div id="archives" class="widget widget_archive">
   {% include "blog/calendar.html" %}
-</section>
+</div>
 
 <!-- 拖慢网页速度，暂时隐藏 -->
-<!--<section id="text" class="widget widget_text">
+<!--<div id="text" class="widget widget_text">
 	<h3 class="widget-title">新浪微博</h3>
 	<div class="textwidget">
     <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="https://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2734584944&verifier=42b4a725&dpc=1">
 
     </iframe>
 	</div>
-</section>-->
+</div>-->
 
-<section id="" class="widget widget_archive">
+<div id="" class="widget widget_archive">
   <iframe src="//www.seniverse.com/weather/weather.aspx?uid=UD93432FCC&cid=CHBJ000000&l=zh-CHS&p=SMART&a=1&u=C&s=1&m=0&x=1&d=3&fc=&bgc=&bc=&ti=0&in=1&li=" frameborder="0" scrolling="no" width="100%" height="200" allowTransparency="true"></iframe>
-</section>
+</div>
 
-<section id="archives" class="widget widget_archive">
+<div id="archives" class="widget widget_archive">
   <h3 class="widget-title">文章归档</h3>
   <ul>
     {% if date_list %}
@@ -34,9 +34,9 @@
       {% endfor %}
     {% endif %}
   </ul>
-</section>
+</div>
 
-<section id="categories" class="widget widget_categories">
+<div id="categories" class="widget widget_categories">
 	<h3 class="widget-title">分类目录</h3>
 	<ul>
     {% if classification %}
@@ -45,9 +45,9 @@
       {% endfor %}
     {% endif %}
 	</ul>
-</section>
+</div>
 
-<section id="new_post" class="widget widget_categories">
+<div id="new_post" class="widget widget_categories">
   <h3 class="widget-title">最热文章</h3>
   <ul>
     {% if new_post %}
@@ -60,21 +60,21 @@
       {% endfor %}
     {% endif %}
   </ul>
-</section>
+</div>
 
-<section id="tag_cloud" class="widget widget_tag_cloud">
+<div id="tag_cloud" class="widget widget_tag_cloud">
   <h3 class="widget-title">标签云</h3>
-    <div id="example" style="width: 100%; height: 300px; padding: 5px;"></div>
-</section>
+  <div id="example" style="width: 100%; height: 300px; padding: 5px;"></div>
+</div>
 
-<section id="linkcat" class="widget widget_links">
+<div id="linkcat" class="widget widget_links">
   <h3 class="widget-title">友情链接</h3>
   <ul class="xoxo blogroll">
     {% for link in links %}
       <li><a href="{{ link.link }}" target="_blank">{{ link.name }}</a></li>
     {% endfor %}
   </ul>
-</section>
+</div>
 
 <script type="text/javascript">
   var list = {{ tag_cloud|safe }};
