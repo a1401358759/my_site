@@ -7,8 +7,19 @@ div.jqcloud {
 }
 
 div.jqcloud a {
-  font-size: inherit;
-  text-decoration: none;
+  /*font-size: inherit;
+  text-decoration: none;*/
+
+  margin: 5px;
+  background-color: #777;
+  display: inline;
+  padding: .2em .6em .3em;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
 }
 
 div.jqcloud span.w10 { font-size: 500%; }
@@ -24,7 +35,7 @@ div.jqcloud span.w1 { font-size: 200%; }
 
 /* colors */
 div.jqcloud { color: #09f; }
-div.jqcloud a { color: inherit; }
+/*div.jqcloud a { color: inherit; }*/
 div.jqcloud a:hover { color: #0df; }
 div.jqcloud a:hover { color: #0cf; }
 div.jqcloud span.w10 { color: #0cf; }
