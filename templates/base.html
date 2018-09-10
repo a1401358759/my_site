@@ -9,7 +9,7 @@
   <meta name="baidu-site-verification" content="xxnzwzyTfv" />
   <title>{% block title %}{% endblock %}</title>
   {{ form.media }}
-  <link rel="shortcut icon" href="/static/css/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/css/logo.jpg" type="image/x-icon" />
 
   <!-- Bootstrap core CSS -->
   <link href="{{ STATIC_URL }}jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
@@ -55,10 +55,6 @@
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
-
-  <style>
-    .cur{font-weight:bolder;}
-  </style>
 </head>
 
 <script>
@@ -88,26 +84,14 @@ $(function () {
       <div class="clearfix"></div>
       <nav class="nav nav-primary">
         <div class="container">
-          <ul id="menu-%e9%a6%96%e9%a1%b5" class="menu sf-js-enabled sf-shadow">
-            <li id="menu-item-43" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-43">
-              <a href="{% url 'home'%}">首页</a></li>
-            <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45">
-              <a href="{% url 'archive'%}">文章存档</a></li>
-            <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
-              <a href="{% url 'message' %}">留言板</a></li>
-            <li id="menu-item-42" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42">
-              <a href="{% url 'about'%}">关于我</a></li>
+          <ul style="margin-left: -35px;">
+            <li><a href="{% url 'home' %}">首页</a></li>
+            <li><a href="{% url 'archive' %}">文章归档</a></li>
+            <li><a href="{% url 'message' %}">留言板</a></li>
+            <li><a href="{% url 'about' %}">关于我</a></li>
           </ul>
         </div>
       </nav>
-      <div id="nav2">
-        <ul>
-          <li><a href="{% url 'home' %}">首页</a></li>
-          <li><a href="{% url 'archive' %}">文章归档</a></li>
-          <li><a href="{% url 'message' %}">留言板</a></li>
-          <li><a href="{% url 'about' %}">关于我</a></li>
-        </ul>
-      </div>
     </header>
 
     <div id="main" class="container">
@@ -126,9 +110,8 @@ $(function () {
     </div> <!-- #main -->
     <center>
       <footer id="footer" class="main-footer no-print text-center hidden-sm hidden-xs">
-        <div id="footer-content" style="color: #b2bcc5;">
-          <strong>&copy; 2017~2018</strong>
-          <span>Designed by Daniel&nbsp;&nbsp;京ICP备18032767号-1</span>&nbsp;
+        <div id="footer-content" style="color: #999; font-size: 14px;">
+          <span>&copy;2018-Daniel&nbsp;Yang-京ICP备18032767号-1</span>&nbsp;
           <span>
             <script>
               // cnzz统计
@@ -151,7 +134,6 @@ $(function () {
       jQuery(".nav a").each(function(){
         $this = jQuery(this);
         if($this[0].href==String(window.location)){
-          $this.addClass("cur");
           $this.css("color", "#619d21");
         }
       });

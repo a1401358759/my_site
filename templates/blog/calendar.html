@@ -180,20 +180,16 @@
 
   <script language="JavaScript">
     var cale = new Calendar("idCalendar", {
-      SelectDay: new Date().setDate(10),
+      // SelectDay: new Date().setDate(10),
       onSelectDay: function(o){ o.className = "onSelect"; },
       onToday: function(o){ o.className = "onToday"; },
       onFinish: function(){
         $("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
-        var flag = [10,15,20];
-        for(var i = 0, len = flag.length; i < len; i++){
-          this.Days[flag[i]].innerHTML = "<a href='javascript:void(0);'>" + flag[i] + "</a>";
-        }
       }
     });
 
     $("idCalendarPre").onclick = function(){ cale.PreMonth(); }
     $("idCalendarNext").onclick = function(){ cale.NextMonth(); }
-</script>
+  </script>
 </body>
 </html>

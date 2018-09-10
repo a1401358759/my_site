@@ -681,10 +681,10 @@ sub { bottom: -0.25em; }
 #header-widget .menu a {
   display: block;
   position: relative;
-  padding: 10px 65px;
+  padding: 10px 20px;
   text-decoration: none;
   color: #eee;
-  margin-left: -80px;
+  /*margin-left: -80px;*/
   font-size: 15px;
 }
 
