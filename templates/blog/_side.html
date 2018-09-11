@@ -1,4 +1,4 @@
-<div id="search" class="widget widget_search">
+<div id="search" class="widget_search">
 	<form role="search" method="post" class="search-form" action="/search/">
     {% csrf_token %}
 		<input value="" name="s" class="s query" placeholder="查找文章" type="text">
@@ -7,7 +7,7 @@
 	</form>
 </div>
 
-<div id="archives" class="widget widget_archive" style="margin-top: -10px;">
+<div id="archives" class="widget widget_archive" style="margin-top: 20px;">
   {% include "blog/calendar.html" %}
 </div>
 

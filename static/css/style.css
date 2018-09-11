@@ -380,6 +380,7 @@ p a,
 p a:visited {
   line-height: inherit;
   word-break: break-all;
+  color: #0078b6;
 }
 
 em,
@@ -633,12 +634,14 @@ sub { bottom: -0.25em; }
   /*box-shadow: 1px 2px 2px #39F;*/
 }
 
-#header .container { padding: 0 40px; }
+#header .container {
+  padding: 0 15px;
+  margin-top: -15px;
+}
 
 #header a {
   text-decoration: none;
   border: 0;
-  padding-bottom: 25px;
   font-family: "STXingkai";
   font-size: 20px;
 }
@@ -657,7 +660,6 @@ sub { bottom: -0.25em; }
 
 #site-title a {
   color: #fff;
-  margin-left: -25px;
   font-size: 30px;
   font-family: "STKaiti";
 }
@@ -918,6 +920,7 @@ sub { bottom: -0.25em; }
 .entry-title, .entry-title a {
   color: #333;
   font-size: 25px;
+  font-family: STKaiti;
 }
 
 .entry-title a:hover { color: #236688; }
@@ -1436,7 +1439,7 @@ position:relative;
   width: 100%;
   margin: 0 !important;
   padding: 10px !important;
-  border: none !important;
+  border: 1px solid #eee !important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -1485,7 +1488,6 @@ position:relative;
 #header .social-icons {
   float: right;
   padding: 28px 0 0 10px;
-  margin-right: -16px;
 }
 
 .widget_wwl_social_widget {
