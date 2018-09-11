@@ -377,7 +377,10 @@ p {
 }
 
 p a,
-p a:visited { line-height: inherit; }
+p a:visited {
+  line-height: inherit;
+  word-break: break-all;
+}
 
 em,
 i,
@@ -681,7 +684,7 @@ sub { bottom: -0.25em; }
 #header-widget .menu a {
   display: block;
   position: relative;
-  padding: 10px 20px;
+  padding: 10px 15px;
   text-decoration: none;
   color: #eee;
   /*margin-left: -80px;*/
