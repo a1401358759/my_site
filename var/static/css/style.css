@@ -642,7 +642,7 @@ sub { bottom: -0.25em; }
 #header a {
   text-decoration: none;
   border: 0;
-  font-family: "STXingkai";
+  font-family: STXingkai;
   font-size: 20px;
 }
 
@@ -661,7 +661,7 @@ sub { bottom: -0.25em; }
 #site-title a {
   color: #fff;
   font-size: 30px;
-  font-family: "STKaiti";
+  font-family: STKaiti;
 }
 
 #site-description {
