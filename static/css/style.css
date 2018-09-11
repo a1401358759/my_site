@@ -6,7 +6,7 @@ body {
   font-family:"Microsoft YaHei","WenQuanYi Micro Hei","tohoma,sans-serif";
   color:#6B6B6B;
   font-size:12px;
-  background-color: #eee;
+  /*background-color: #eee;*/
 }
 
 h1, .h1,
@@ -628,11 +628,9 @@ sub { bottom: -0.25em; }
 
 #header {
   margin-bottom: 20px;
-  /*background: url("2.jpg");*/
-  /*background-size: 100% 100%;*/
-  background-color: #222;
+  background-color: #2196F3;
   opacity: 0.9;
-  box-shadow: 1px 2px 2px #39F;
+  /*box-shadow: 1px 2px 2px #39F;*/
 }
 
 #header .container { padding: 0 40px; }
@@ -640,6 +638,9 @@ sub { bottom: -0.25em; }
 #header a {
   text-decoration: none;
   border: 0;
+  padding-bottom: 25px;
+  font-family: "STXingkai";
+  font-size: 20px;
 }
 
 #logo {
@@ -655,12 +656,10 @@ sub { bottom: -0.25em; }
 }
 
 #site-title a {
-  color: #eee;
-  /*-moz-text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-  -webkit-text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);*/
+  color: #fff;
   margin-left: -25px;
   font-size: 30px;
+  font-family: "STKaiti";
 }
 
 #site-description {
@@ -674,10 +673,10 @@ sub { bottom: -0.25em; }
 --------------------------------------- */
 
 .nav {
-  /*background: #eee;*/
-  /*-moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  /*background: #eee;
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  box*/-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);*/
 }
 
 .nav a,
@@ -686,8 +685,7 @@ sub { bottom: -0.25em; }
   position: relative;
   padding: 10px 15px;
   text-decoration: none;
-  color: #eee;
-  /*margin-left: -80px;*/
+  color: #fff;
   font-size: 15px;
 }
 
@@ -1344,7 +1342,7 @@ position:relative;
 #footer-content {
   margin-top: -20px;
   padding: 20px 0;
-  background: #414141;
+  background: #2196F3;
 }
 
 #copyright {
@@ -1369,11 +1367,12 @@ position:relative;
 }
 
 .widget-title {
-  margin: 0;
-  padding: 0 0 10px;
+  margin: 0 0 10px -23px;
+  padding: 0 0 0 0.8rem;
   font-size: 1.2em;
   font-weight: bold;
   text-transform: uppercase;
+  border-left: 5px solid #008EE5;
 }
 
 .widget ul {
@@ -1427,9 +1426,6 @@ position:relative;
 
 .search-form {
   padding-right: 50px;
-  /*-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);*/
 }
 
 .search-form label { display: none; }
@@ -1453,7 +1449,7 @@ position:relative;
   margin: 0 -50px 0;
   padding: 0;
   border: none;
-  color: #777;
+  color: #000;
 }
 
 .search-submit .icon-search {
