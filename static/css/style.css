@@ -685,7 +685,7 @@ sub { bottom: -0.25em; }
 #header-widget .menu a {
   display: block;
   position: relative;
-  padding: 10px 15px;
+  padding: 10px 10px;
   text-decoration: none;
   color: #fff;
   font-size: 15px;
