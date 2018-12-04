@@ -11,15 +11,16 @@ pre code {
 
 .hljs {
   display: block;
-  overflow-x: auto;
+  overflow: auto;
   padding: 0.5em;
-  background: #2b2b2b;
-  line-height: 20px;
-  font-size: 14px;
+  background: #f7f7f7;
+  line-height: 1.6;
+  font-size: 13px;
 }
 
 .hljs {
-  color: #bababa;
+  color: #4d4d4c;
+  border-radius: 0px;
 }
 
 .hljs-strong,

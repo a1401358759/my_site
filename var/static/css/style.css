@@ -3,10 +3,9 @@
  */
 
 body {
-  font-family:"Microsoft YaHei","WenQuanYi Micro Hei","tohoma,sans-serif";
-  color:#6B6B6B;
-  font-size:12px;
-  /*background-color: #eee;*/
+  font-family: "consolas", "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
+  color: #6B6B6B;
+  font-size: 12px;
 }
 
 h1, .h1,
@@ -31,7 +30,6 @@ h6, .h6 {
     width: 970px;
   }
 }
-
 
 /*
  * Masthead for nav
@@ -75,7 +73,6 @@ h6, .h6 {
   border-left: 5px solid transparent;
 }
 
-
 /*
  * Blog name and description
  */
@@ -94,7 +91,6 @@ h6, .h6 {
   font-size: 20px;
   color: #999;
 }
-
 
 /*
  * Main column and sidebar layout
@@ -121,7 +117,6 @@ h6, .h6 {
   margin-bottom: 0;
 }
 
-
 /* Pagination */
 .pager {
   margin-bottom: 60px;
@@ -133,7 +128,6 @@ h6, .h6 {
   text-align: center;
   border-radius: 30px;
 }
-
 
 /*
  * Blog posts
@@ -150,7 +144,6 @@ h6, .h6 {
   margin-bottom: 20px;
   color: #999;
 }
-
 
 /*
  * Footer
@@ -246,7 +239,7 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  /*vertical-align: baseline;*/
+  border-radius: 0px;
 }
 
 article, aside, details, figcaption, figure,
@@ -316,7 +309,6 @@ body {
   line-height: 1;
   position: relative;
 }
-
 
 /* 2.1 Typography
 --------------------------------------- */
@@ -494,9 +486,6 @@ tt {
   font-family: "微软雅黑", Consolas, Monaco, Lucida Console, monospace;
   font-size: 0.8em;
 }
-
-
-
 
 /* 2.2 Grid & Layout
 --------------------------------------- */
