@@ -131,20 +131,11 @@ $(function () {
   </div>
   {% include "blog/verify_user.html" %}
   <script>
-    var navigation = responsiveNav("#nav2");
+    var navigation = responsiveNav(".nav");
   </script>
 
   <!--导航栏选中改变样式-->
   <script type="text/javascript">
-    // jQuery(document).ready(function(){
-    //   jQuery(".nav a").each(function(){
-    //     $this = jQuery(this);
-    //     if($this[0].href==String(window.location)){
-    //       $this.css("color", "#619d21");
-    //     }
-    //   });
-    // });
-
     function verify_user(){
       jQuery("#verify_user").modal('show');
     }
