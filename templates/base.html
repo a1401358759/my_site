@@ -88,7 +88,7 @@ $(function () {
         </div>
       </div>
       <div class="clearfix"></div>
-      <nav class="nav nav-primary">
+      <nav class="nav nav-primary" id="nav2">
         <div class="container">
           <ul>
             <li><a href="{% url 'home' %}">首页</a></li>
@@ -131,7 +131,7 @@ $(function () {
   </div>
   {% include "blog/verify_user.html" %}
   <script>
-    var navigation = responsiveNav(".nav");
+    var navigation = responsiveNav("#nav2");
   </script>
 
   <!--导航栏选中改变样式-->
