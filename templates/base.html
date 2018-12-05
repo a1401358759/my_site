@@ -45,6 +45,11 @@
       jQuery('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
       });
+
+      //代码高亮自定义
+      jQuery("code").each(function(){
+        jQuery(this).html("<ul><li>" + jQuery(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
+      });
     });
 
     // 百度统计
