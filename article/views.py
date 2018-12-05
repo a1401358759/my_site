@@ -110,10 +110,10 @@ def tagDetail(request, tag):
 
 
 def about(request):
-    articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
-    page_num = request.GET.get("page") or 1
-    page_size = request.GET.get("page_size") or 5
-    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    # articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
+    # page_num = request.GET.get("page") or 1
+    # page_size = request.GET.get("page_size") or 5
+    # articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     links = Links.objects.all().order_by("-weights", "id")
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
@@ -125,10 +125,10 @@ def about(request):
 
 
 def archive(request):
-    articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
-    page_num = request.GET.get("page") or 1
-    page_size = request.GET.get("page_size") or 5
-    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    # articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
+    # page_num = request.GET.get("page") or 1
+    # page_size = request.GET.get("page_size") or 5
+    # articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     links = Links.objects.all().order_by("-weights", "id")
     archive = Article.date_list.get_article_by_archive()
@@ -186,29 +186,27 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
-    articles = Article.objects.filter(status=BlogStatus.PUBLISHED)
-    page_num = request.GET.get("page") or 1
-    page_size = request.GET.get("page_size") or 5
-    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    links = Links.objects.all().order_by("-weights", "id")
-    own_messages = OwnerMessage.objects.all()
-
-    messages = Messages.objects.order_by('-id')
-    messages, total = paginate(messages, page_num=page_num, page_size=10)
-    messages_num = Messages.objects.all()
-    classification = Classification.class_list.get_classify_list()
-    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    # articles = Article.objects.filter(status=BlogStatus.PUBLISHED)
+    # page_num = request.GET.get("page") or 1
+    # page_size = request.GET.get("page_size") or 5
+    # articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    # messages = Messages.objects.order_by('-id')
+    # messages, total = paginate(messages, page_num=page_num, page_size=10)
+    # messages_num = Messages.objects.all()
+    own_message = OwnerMessage.objects.first()
     date_list = Article.date_list.get_article_by_date()
+    classification = Classification.class_list.get_classify_list()
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
+    tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
+    links = Links.objects.order_by("-weights", "id")
     return render(request, 'blog/message.html', locals())
 
 
 def love(request):
-    params = request.POST
-    name = params['name']
-    pw = params['pw']
+    name = request.POST.get('name')
+    pw = request.POST.get('pw')
     if name == 'maomao' and pw == 'nn':
-        return render(request, 'blog/index1.html')
+        return render(request, 'blog/love.html')
     else:
         return render(request, 'blog/404.htm')
 
@@ -216,10 +214,9 @@ def love(request):
 @csrf_exempt
 @require_POST
 def create_messages(request):
-    params = request.POST
-    name = params['name']
-    email = params['email']
-    messages = params['messages']
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    messages = request.POST.get('messages')
     Messages.create_message(
         name=name,
         email=email,

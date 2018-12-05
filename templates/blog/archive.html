@@ -6,6 +6,7 @@
 {% block path %}
     当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章存档
 {% endblock %}
+
 {% block content %}
 	{% if archive %}
         {% for key,value in archive.items %}
@@ -26,7 +27,6 @@
             </div>
         {% endfor %}
     {% endif %}
-
 {% endblock %}
 
 {% block side %}
