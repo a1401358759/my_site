@@ -25,7 +25,7 @@
     </section>
   </div>
 
-  <form style="margin-top: 15px;" class="form-horizontal" id="message_form" action="javascript:;" method="POST">
+  <!--<form style="margin-top: 15px;" class="form-horizontal" id="message_form" action="javascript:;" method="POST">
     {% csrf_token %}
     <div class="row form-inline">
       <div class="form-group">
@@ -108,7 +108,10 @@
       })
     }
   </script>
-{% endblock %}
+{% endblock %}-->
+
+<!-- 评论框 -->
+{% include "blog/_comments.html" %}
 
 {% block side %}
 	{% include "blog/_side.html" %}
