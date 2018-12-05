@@ -186,13 +186,6 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
-    # articles = Article.objects.filter(status=BlogStatus.PUBLISHED)
-    # page_num = request.GET.get("page") or 1
-    # page_size = request.GET.get("page_size") or 5
-    # articles, total = paginate(articles, page_num=page_num, page_size=page_size)
-    # messages = Messages.objects.order_by('-id')
-    # messages, total = paginate(messages, page_num=page_num, page_size=10)
-    # messages_num = Messages.objects.all()
     own_message = OwnerMessage.objects.first()
     date_list = Article.date_list.get_article_by_date()
     classification = Classification.class_list.get_classify_list()
