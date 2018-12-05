@@ -12,15 +12,38 @@ pre code {
 .hljs {
   display: block;
   overflow: auto;
-  padding: 0.5em;
+  padding: 1px;
   background: #f7f7f7;
   line-height: 1.6;
   font-size: 13px;
-}
-
-.hljs {
   color: #4d4d4c;
   border-radius: 0px;
+  margin: 0;
+  width: 100%;
+  white-space: pre-wrap
+}
+
+.hljs ul {
+  list-style: decimal;
+  background-color: #fff;
+  margin: 0px 0px 0 40px !important;
+  padding: 0px;
+}
+
+.hljs ul li {
+  list-style: decimal-leading-zero;
+  border-left: 1px solid #ddd !important;
+  background: #fff;
+  padding: 5px!important;
+  margin: 0 !important;
+  line-height: 14px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.hljs ul li:nth-of-type(even) {
+  background-color: #fcfcfc;
+  color: inherit;
 }
 
 .hljs-strong,
