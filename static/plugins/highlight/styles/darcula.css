@@ -12,7 +12,7 @@ pre code {
 .hljs {
   display: block;
   overflow: auto;
-  padding: 0.5em;
+  padding: 1px;
   background: #f7f7f7;
   line-height: 1.6;
   font-size: 13px;
