@@ -9,12 +9,7 @@
 {% endblock %}
 {% block content %}
   <style type="text/css">
-    #set_messages{margin-top: 30px; margin-left: 10px;}
-    #set_messages h5{margin-top: -10px; margin-left: -10px; color: #4398ed;}
-    #set_messages ul li{list-style: none; border-bottom: 1px dashed #e5e5e5; padding: 13px 0 11px;}
-    #set_messages ul li p{text-indent: 3.5em; word-break: break-all; word-wrap: break-word;}
-    #set_messages ul li div{float: left; margin-right: 10px; margin-top: -5px;}
-    #messages_time{float: right; font-size: smaller; color: silver; margin-top: 3px;}
+
   </style>
 
   <div>
@@ -23,90 +18,6 @@
       <span style="font-size: smaller; text-indent: 2em;">{{ own_message.message|safe }}</span>
     </section>
   </div>
-
-  <!--<form style="margin-top: 15px;" class="form-horizontal" id="message_form" action="javascript:;" method="POST">
-    {% csrf_token %}
-    <div class="row form-inline">
-      <div class="form-group">
-        <div class="col-md-6">
-          <input type="text" placeholder="姓名(必填)" required="required" name="name" id="name" style="width: 348px;">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-md-6">
-          <input type="email" placeholder="邮箱(必填,但不会被公开)" required="required" name="email" id="email" style="width: 349px;">
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-md-12">
-        <textarea name="messages" id="messages" placeholder="留言内容(必填)" required="required" rows="8" style="resize: none; width:100%" maxlength="100"></textarea>
-      </div>
-    </div>
-    <div style="text-align: right; margin-top: -10px;">
-      <button type="submit" class="btn btn-default" onclick="create_messages()">提交</button>
-    </div>
-  </form>
-
-  留言 ( {{ messages_num | length }} )
-  <hr/>
-
-  <div id="set_messages">
-    <section>
-      <h5><i class="glyphicon glyphicon-comment"></i> 近期留言</h5>
-      <ul id="itemContainer">
-        {% for message in messages%}
-          <li>
-            <div><img src="/static/css/head.png" height="40px" width="40px" style="border-radius: 40px;"></div>
-            <div class="clearfix"></div>
-            <span style="color: #4398ed">{{ message.name }}</span>
-            <span id="messages_time"><i class="glyphicon glyphicon-calendar"></i> {{ message.created_at }}</span>
-            <div class="clearfix"></div>
-            <br/><br/>
-            <p>{{ message.content|safe }}</p>
-          </li>
-        {% endfor %}
-        <div class="pull-right">
-          {% bootstrap_paginate messages url_extra_args=params range=5 show_first_last="true" %}
-        </div>
-      </ul>
-    </section>
-  </div>
-
-  <script type="text/javascript">
-    function create_messages() {
-      var name = document.getElementById("name").value;
-      var email = document.getElementById("email").value;
-      var messages = document.getElementById("messages").value;
-      if (!isChinaName(name)) {
-        alert("请填写中文名称");
-        return false;
-      } else if (!name || !email || !messages){
-        alert("数据不能为空！");
-        return false;
-      }
-      jQuery.ajax({
-        url: '/create/messages',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-          'name': name,
-          'email': email,
-          'messages': messages
-        },
-        success: function (data) {
-          if (data.success) {
-            alert(data.message);
-            window.location.reload()
-          }else{
-            alert(data.message);
-          }
-        }
-      })
-    }
-  </script>-->
 
 <!-- 评论框 -->
 {% include "blog/_comments.html" %}
