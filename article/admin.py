@@ -60,7 +60,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class LinksAdmin(admin.ModelAdmin):
-    list_display = ('name', 'link', 'created_time')
+    list_display = ('name', 'link', 'weights', 'created_time')
     list_per_page = 10
 
 

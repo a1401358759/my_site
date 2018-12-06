@@ -46,7 +46,7 @@
         hljs.highlightBlock(block);
       });
 
-      //代码高亮自定义
+      // 代码高亮自定义
       jQuery("code").each(function(){
         jQuery(this).html("<ul><li>" + jQuery(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
       });
@@ -134,7 +134,6 @@ $(function () {
     // var navigation = responsiveNav("#nav2");
   </script>
 
-  <!--导航栏选中改变样式-->
   <script type="text/javascript">
     function verify_user(){
       jQuery("#verify_user").modal('show');
@@ -154,6 +153,7 @@ $(function () {
       s.parentNode.insertBefore(bp, s);
     })();
 
+    // 畅言
     (function(){
       var appid = 'cyt5STTrc';
       var conf = '28f93e777e4486046d3b5173915e80f6';
