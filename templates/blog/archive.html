@@ -1,32 +1,32 @@
 {% extends "base.html" %}
 {% block title %}
-    文章存档
+  文章存档
 {% endblock %}
 
 {% block path %}
-    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章存档
+  当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章存档
 {% endblock %}
 
 {% block content %}
 	{% if archive %}
-        {% for key,value in archive.items %}
-            <div class="archive">
-                <div id="archives">
-                    <h3 class='al_year' >{{key.year}}年{{key.month}}月</h3>
-                    <ul class="al_month_list">
-                        {% for i in value %}
-                            <li>
-                                <a href="{{i.get_absolute_url}}">
-                                    <span style="position:absolute;">{{i.publish_time.month}}月{{i.publish_time.day}}日</span>
-                                    <span class="liaspan" style="position:absolute; left:140px;">{{i}}</span>
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        {% endfor %}
-    {% endif %}
+    {% for key,value in archive.items %}
+      <div class="archive">
+        <div id="archives">
+          <h3 class='al_year' >{{key.year}}年{{key.month}}月</h3>
+          <ul class="al_month_list">
+            {% for i in value %}
+              <li>
+                <a href="{{i.get_absolute_url}}">
+                  <span style="position: absolute">{{i.publish_time.month}}月{{i.publish_time.day}}日</span>
+                  <span class="liaspan" style="position:absolute; left:140px;">{{i}}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
 {% endblock %}
 
 {% block side %}

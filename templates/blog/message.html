@@ -8,16 +8,16 @@
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;留言板
 {% endblock %}
 {% block content %}
-  <style type="text/css">
+<style type="text/css">
 
-  </style>
+</style>
 
-  <div>
-    <section id="recent-comments" class="widget widget_recent_comments">
-      <h6 style="margin-top: -10px; margin-left: -10px;">主人寄语</h6>
-      <span style="font-size: smaller; text-indent: 2em;">{{ own_message.message|safe }}</span>
-    </section>
-  </div>
+<div>
+  <section id="recent-comments" class="widget widget_recent_comments">
+    <h6 style="margin-top: -10px; margin-left: -10px;">主人寄语</h6>
+    <span style="font-size: smaller; text-indent: 2em;">{{ own_message.message|safe }}</span>
+  </section>
+</div>
 
 <!-- 评论框 -->
 {% include "blog/_comments.html" %}

@@ -1,57 +1,54 @@
 {% extends "base.html" %}
 {% block title %}
-    关于我
+  关于我
 {% endblock %}
 {% block path %}
-    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;关于我
+  当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;关于我
 {% endblock %}
 {% block content %}
-    <div class="archive">
-        <div id="archives">
-            <h3 style="font-weight: bold">
-                关于本站
-            </h3>
-            <blockquote>
-                linux下Python, web框架Django开发简易版,
-                <br />
-                <br />
-                若无特殊说明，本站所有文章均为原创文章，并遵循 <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0协议</a> 发布
-            </blockquote>
-            <br />
+  <div class="archive">
+    <div id="archives">
+      <h3 style="font-weight: bold">
+        关于本站
+      </h3>
+      <blockquote>
+        linux下Python, web框架Django开发简易版,
+        <br />
+        <br />
+        若无特殊说明，本站所有文章均为原创文章，并遵循 <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0协议</a> 发布
+      </blockquote>
+      <br />
 
-            <h3 style="font-weight: bold">
-                关于我
-            </h3>
-            <blockquote>
-                IT行业python男一枚,东搞西搞,目前工作于研发部,对在线学习
-                <br/>
-                <br/>
-                和开发感兴趣,闲暇打LOL,看些电视剧和电影
-            </blockquote>
+      <h3 style="font-weight: bold">
+        关于我
+      </h3>
+      <blockquote>
+        IT行业python男一枚,东搞西搞,目前工作于研发部,对在线学习
+        <br/>
+        <br/>
+        和开发感兴趣,闲暇打LOL,看些电视剧和电影
+      </blockquote>
 
-            <br />
-            <h3 style="font-weight: bold">
-                联系我
-            </h3>
-                <ul style="margin-left: 20px">
-                    <li type="circle">博客:&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Daniel的小站</a></li>
-                    <li type="circle">邮箱:&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://mail.qq.com/cgi-bin/loginpage">1401358759@qq.com</a></li>
-                    <li type="circle">GitHub:&nbsp;&nbsp;<a target="_blank" href="https://github.com/a1401358759">github</a></li>
-                    <li type="circle">微博:&nbsp;&nbsp;&nbsp; <a target="_blank" href="http://weibo.com/">杨学峰hpu</a></li>
-                    <li type="circle">微信号:&nbsp;&nbsp;&nbsp; <a href="javascript:void(0)">yangxuefengwx</a></li>
-                </ul>
-            <!-- /.blog-post -->
-        </div>
+      <br />
+      <h3 style="font-weight: bold">
+        联系我
+      </h3>
+      <ul style="margin-left: 20px">
+        <li type="circle">博客:&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)">Daniel的小站</a></li>
+        <li type="circle">邮箱:&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://mail.qq.com/cgi-bin/loginpage">1401358759@qq.com</a></li>
+        <li type="circle">GitHub:&nbsp;&nbsp;<a target="_blank" href="https://github.com/a1401358759">github</a></li>
+        <li type="circle">微博:&nbsp;&nbsp;&nbsp; <a target="_blank" href="http://weibo.com/">杨学峰hpu</a></li>
+        <li type="circle">微信号:&nbsp;&nbsp;&nbsp; <a href="javascript:void(0)">yangxuefengwx</a></li>
+      </ul>
     </div>
-		<!-- 打赏 -->
-		<div id="cyReward" role="cylabs" data-use="reward" sid="" style="text-align: center;"></div>
+  </div>
+	<!-- 打赏 -->
+	<div id="cyReward" role="cylabs" data-use="reward" sid="" style="text-align: center;"></div>
 
-    {% include "blog/_comments.html" %}
+  {% include "blog/_comments.html" %}
 
 {% endblock %}
 
 {% block side %}
 	 {% include "blog/_side.html" %}
 {% endblock %}
-
-

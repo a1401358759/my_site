@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-from django.utils.functional import curry
+# from django.utils.functional import curry
 
 
 class BaseModel(models.Model):
