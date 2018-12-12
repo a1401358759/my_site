@@ -265,7 +265,7 @@ p.file-upload > input[type="file"] {
   border-color: #337ab7;
 }
 
-input,select {
+input[type=text],input[type=password],select {
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
