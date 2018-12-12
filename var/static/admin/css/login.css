@@ -59,7 +59,10 @@ body.login {
     text-align: center;
 }
 
-input[type=text],input[type=password] {
+input[type=text],
+input[type=password],
+input[type=email],
+select {
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
