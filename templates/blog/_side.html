@@ -1,7 +1,7 @@
 <div id="search" class="widget_search">
 	<form role="search" method="post" class="search-form" action="/search/">
     {% csrf_token %}
-		<input value="" name="s" class="s query" placeholder="查找文章" type="text">
+		<input value="{{ s|default:'' }}" name="s" class="s query" placeholder="查找文章" type="text">
 		<button type="submit" class="search-submit"><i style="font-size:20px" class="fa fa-search" aria-hidden="true"></i></button>
 		<div class="clearfix"></div>
 	</form>
