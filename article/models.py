@@ -223,7 +223,7 @@ class Article(models.Model):  # 文章
 
     class Meta:
         ordering = ['-publish_time']
-        verbose_name_plural = u"文章"
+        verbose_name_plural = u"博文管理"
 
 
 class Links(models.Model):  # 友情链接

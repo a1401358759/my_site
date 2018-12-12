@@ -45,6 +45,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_per_page = 10
     search_fields = ['title', 'tags__name', 'classification__name']  # 含有外键必须指定外键的字段
     list_filter = ['publish_time', ]
+    filter_horizontal = ('tags',)
 
     class Media:
         css = {
@@ -62,8 +63,11 @@ class ArticleAdmin(admin.ModelAdmin):
 class LinksAdmin(admin.ModelAdmin):
     list_display = ('name', 'link', 'weights', 'created_time')
     list_per_page = 10
+    ordering = ('-weights',)
 
 
+admin.site.site_title = '博客管理'
+admin.site.site_header = '博客后台管理平台'
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Messages, MessagesAdmin)
 admin.site.register(OwnerMessage, OwnerMessageAdmin)
