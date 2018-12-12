@@ -65,6 +65,11 @@ class LinksAdmin(admin.ModelAdmin):
     list_per_page = 10
     ordering = ('-weights',)
 
+    class Media:
+        css = {
+            'all': ('/static/css/manager.css',)
+        }
+
 
 admin.site.site_title = '博客管理'
 admin.site.site_header = '博客后台管理平台'
