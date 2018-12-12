@@ -40,4 +40,3 @@ MySQL-python==1.2.5
 django-admin-bootstrapped==2.5.7
 django-bootstrap3==10.0.1
 qiniu
-django-simpleui
