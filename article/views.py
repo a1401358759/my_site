@@ -165,13 +165,13 @@ def blog_search(request):  # 实现对文章标题的搜索
 
     is_search = True
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    links = Links.objects.all().order_by("-weights", "id")
+    links = Links.objects.order_by("-weights", "id")
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
     error = False
-    if 's' in request.POST:
-        s = request.POST['s']
+    if 's' in request.GET:
+        s = request.GET['s']
         if not s:
             return render(request, 'blog/index.html')
         else:
@@ -179,7 +179,7 @@ def blog_search(request):  # 实现对文章标题的搜索
             page_num = request.GET.get("page") or 1
             page_size = request.GET.get("page_size") or 5
             articles, total = paginate(articles, page_num=page_num, page_size=page_size)
-            if len(articles) == 0:
+            if total == 0:
                 error = True
 
     return render(request, 'blog/index.html', locals())

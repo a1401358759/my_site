@@ -2,7 +2,7 @@
   transform: initial !important;
 }
 
-input,select {
+input[type=text],select {
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
