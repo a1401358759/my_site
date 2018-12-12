@@ -156,6 +156,12 @@ $(function () {
       s.parentNode.insertBefore(bp, s);
     })();
 
+    // 360推送
+    (function(){
+      var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc":"https://jspassport.ssl.qhimg.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc";
+      document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+
     // 畅言
     (function(){
       var appid = 'cyt5STTrc';
