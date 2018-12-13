@@ -1359,9 +1359,8 @@ position:relative;
 }
 
 .widget-title {
-  margin: 0 0 10px -23px;
-  padding: 0 0 0 0.8rem;
-  font-size: 1.2em;
+  margin: 5px 0 15px 0px;
+  padding: 0px 10px;
   font-weight: bold;
   text-transform: uppercase;
   border-left: 5px solid #008EE5;
