@@ -631,8 +631,8 @@ sub { bottom: -0.25em; }
 #header a {
   text-decoration: none;
   border: 0;
-  font-family: STXingkai;
-  font-size: 20px;
+  font-size: 15px;
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', 'Helvetica', 'sans-serif';
 }
 
 #logo {
@@ -650,7 +650,7 @@ sub { bottom: -0.25em; }
 #site-title a {
   color: #fff;
   font-size: 30px;
-  font-family: STKaiti;
+  font-family: "STXingkai";
 }
 
 #site-description {
@@ -1461,7 +1461,7 @@ position:relative;
   -moz-border-radius: 999px;
   -webkit-border-radius: 999px;
   border-radius: 999px;
-  font-size: 20px;
+  font-size: 20px !important;
   color: #fff;
 }
 
@@ -2201,8 +2201,8 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   color: #000;
 }
 .pagination>.active>span {
-  background-color: #777 !important;
-  border-color: #777 !important;
+  background-color: #2196F3 !important;
+  border-color: #2196F3 !important;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
