@@ -631,7 +631,7 @@ sub { bottom: -0.25em; }
 #header a {
   text-decoration: none;
   border: 0;
-  font-size: 15px;
+  font-size: 17px;
   font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', 'Helvetica', 'sans-serif';
 }
 
