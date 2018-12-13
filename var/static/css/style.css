@@ -352,20 +352,20 @@ h5 { font-size: 1.1em; }
 h6 { font-size: 1em; }
 
 a {
-  color: #000;
+  color: #1DA1F2;
   text-decoration: none;
   line-height: inherit;
   font-size: 15px;
 }
 
-a:hover,
-a:focus { color: #236688; }
+/*a:hover,
+a:focus { color: #236688; }*/
 
 p {
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 1.25em;
-  color: #5f5f5f;
+  color: #666;
 }
 
 p a,
@@ -631,8 +631,8 @@ sub { bottom: -0.25em; }
 #header a {
   text-decoration: none;
   border: 0;
-  font-family: STXingkai;
-  font-size: 20px;
+  font-size: 17px;
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', 'Helvetica', 'sans-serif';
 }
 
 #logo {
@@ -650,7 +650,7 @@ sub { bottom: -0.25em; }
 #site-title a {
   color: #fff;
   font-size: 30px;
-  font-family: STKaiti;
+  font-family: "STXingkai";
 }
 
 #site-description {
@@ -907,12 +907,12 @@ sub { bottom: -0.25em; }
 .entry-title { margin: 0 0 15px; }
 
 .entry-title, .entry-title a {
-  color: #333;
+  color: #F3963B;
   font-size: 25px;
   font-family: STKaiti;
 }
 
-.entry-title a:hover { color: #236688; }
+/*.entry-title a:hover { color: #236688; }*/
 
 h2.entry-title { font-size: 1.5em; }
 
@@ -1359,9 +1359,8 @@ position:relative;
 }
 
 .widget-title {
-  margin: 0 0 10px -23px;
-  padding: 0 0 0 0.8rem;
-  font-size: 1.2em;
+  margin: 5px 0 15px 0px;
+  padding: 0px 10px;
   font-weight: bold;
   text-transform: uppercase;
   border-left: 5px solid #008EE5;
@@ -1461,7 +1460,7 @@ position:relative;
   -moz-border-radius: 999px;
   -webkit-border-radius: 999px;
   border-radius: 999px;
-  font-size: 20px;
+  font-size: 20px !important;
   color: #fff;
 }
 
@@ -1476,7 +1475,7 @@ position:relative;
 
 #header .social-icons {
   float: right;
-  padding: 28px 0 0 10px;
+  padding: 35px 0 0 10px;
 }
 
 .widget_wwl_social_widget {
@@ -2201,8 +2200,8 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   color: #000;
 }
 .pagination>.active>span {
-  background-color: #777 !important;
-  border-color: #777 !important;
+  background-color: #2196F3 !important;
+  border-color: #2196F3 !important;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {

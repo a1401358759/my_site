@@ -34,7 +34,7 @@ pre code {
   list-style: decimal-leading-zero;
   border-left: 1px solid #ddd !important;
   background: #fff;
-  padding: 5px!important;
+  padding: 5px 10px!important;
   margin: 0 !important;
   line-height: 14px;
   word-break: break-all;
