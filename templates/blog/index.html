@@ -80,18 +80,18 @@
               <div class="clearfix"></div>
             </div>
 
-            <footer class="entry-meta">
+            <footer class="entry-meta" style="padding:10px 0">
               <span class="entry-categories">
-                <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+                <span class="fa fa-suitcase" aria-hidden="true"></span>&nbsp;
                 <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
               </span>
               <span class="entry-tags">
-                <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                <span class="fa fa-tags" aria-hidden="true"></span>&nbsp;
                 {% for i in article.get_tags %}
                   <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}&nbsp;&nbsp;</a>
                 {% endfor %}
               </span>
-              <a href="{{ article.get_absolute_url }}" class="more-link"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>  阅读全文</a>
+              <a href="{{ article.get_absolute_url }}" class="more-link"><span class="fa fa-link" aria-hidden="true"></span>&nbsp;阅读全文</a>
             </footer>
           </div>
         </div>

@@ -836,8 +836,8 @@ sub { bottom: -0.25em; }
 .breadcrumb {
   padding: 12px 20px;
   margin-bottom: 20px;
-  background-color: #fff;
-  border: 1px solid #EEE;
+  background-color: #eee;
+  border: 1px solid #eee;
   border-radius: 0px;
 }
 
