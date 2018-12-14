@@ -43,14 +43,14 @@
       <div class="clearfix"></div>
     </div><!-- .entry-content -->
 
-    <footer class="entry-meta">
-      <div class="fenlei" style="margin: 7px;">
+    <footer class="entry-meta" style="padding:10px 0">
+      <div class="fenlei">
         <span class="entry-categories">
-          <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+          <span class="fa fa-suitcase" aria-hidden="true"></span>&nbsp;
           <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
         </span>
         <span class="entry-tags">
-          <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+          <span class="fa fa-tags" aria-hidden="true"></span>&nbsp;
           {% for i in article.get_tags %}
             <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}</a>
           {% endfor %}
