@@ -935,13 +935,13 @@ h2.entry-title { font-size: 1.5em; }
   padding-bottom: 20px;
   font-size: 0.8em;
   line-height: 1.3;
-  border-bottom: 1px solid #fffffe;
+  border-bottom: 1px solid #ddd;
 }
 
 .entry-meta {
   font-size: 0.8em;
   line-height: 1.3;
-  border-top: 1px solid #fffffe;
+  border-top: 1px solid #ddd;
   height: 30px;
   padding: 5px;
 }
