@@ -6,8 +6,8 @@ body {
   font-family: "consolas", "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
   color: #6B6B6B;
   font-size: 12px;
-  background: url("bg.jpg");
-  background-size: 100% 100%;
+  background: url("bg.jpg") no-repeat;
+  background-size: 100% 100% !important;
 }
 
 h1, .h1,
@@ -621,8 +621,7 @@ sub { bottom: -0.25em; }
 #header {
   margin-bottom: 20px;
   background-color: #2196F3;
-  opacity: 0.9;
-  /*box-shadow: 1px 2px 2px #39F;*/
+  /*opacity: 0.9;*/
 }
 
 #header .container {
@@ -2200,6 +2199,7 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   margin: 0 0 0 4px;
   background-color: #fff;
   color: #000;
+  border: none;
 }
 .pagination>.active>span {
   background-color: #2196F3 !important;
