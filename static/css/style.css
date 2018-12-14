@@ -8,6 +8,7 @@ body {
   font-size: 12px;
   background: url("bg.jpg") no-repeat;
   background-size: 100% 100% !important;
+  background-attachment: fixed !important;
 }
 
 h1, .h1,
@@ -621,7 +622,7 @@ sub { bottom: -0.25em; }
 #header {
   margin-bottom: 20px;
   background-color: #2196F3;
-  /*opacity: 0.9;*/
+  opacity: 0.7;
 }
 
 #header .container {
@@ -2100,7 +2101,7 @@ button.black:active {
 }
 
 .archive {
-  padding: 20px 20px;
+  padding: 20px 19px;
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid #eee;
