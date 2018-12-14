@@ -2183,9 +2183,9 @@ button.black:active {
   background-image: url("top.png");
   bottom: 10px;
   right: 20px;
-  width: 40px; /* Width of image */
-  height: 40px; /* Height of image */
-  border-radius: 20px;
+  width: 50px; /* Width of image */
+  height: 50px; /* Height of image */
+  border-radius: 30px;
 }
 
 div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
