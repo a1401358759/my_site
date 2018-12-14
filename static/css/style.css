@@ -2200,7 +2200,7 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   font-size: 12px;
   margin: 0 0 0 2px;
   background-color: #eee !important;
-  color: #333;
+  color: #999;
   border: 1px solid #eee !important;
 }
 .pagination>.active>span {
@@ -2219,7 +2219,6 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
 }
 
 a:hover,
-a:visited,
 a:focus {
   text-decoration: none;
   color: #6bc30d;
