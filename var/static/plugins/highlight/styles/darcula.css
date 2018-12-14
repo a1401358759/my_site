@@ -43,7 +43,7 @@ pre code {
 }
 
 .hljs ul li:nth-of-type(even) {
-  background-color: #f7f7f7;
+  background-color: #fefefe;
   color: inherit;
 }
 
