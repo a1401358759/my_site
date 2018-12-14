@@ -597,6 +597,7 @@ sub { bottom: -0.25em; }
 .layout-cs #sidebar-primary {
   width: 30%;
   float: right;
+  margin-top: 140px;
 }
 
 /* Sidebar Content */
@@ -620,9 +621,11 @@ sub { bottom: -0.25em; }
 --------------------------------------- */
 
 #header {
-  margin-bottom: 20px;
   background-color: #2196F3;
   opacity: 0.7;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 }
 
 #header .container {
@@ -845,6 +848,7 @@ sub { bottom: -0.25em; }
   background-color: #eee;
   border: 1px solid #eee;
   border-radius: 0px;
+  margin-top: 140px;
 }
 
 .breadcrumb li { display: inline-block; }
@@ -1340,9 +1344,9 @@ position:relative;
 }
 
 #footer-content {
-  margin-top: -20px;
   padding: 20px 0;
   background: #2196F3;
+  opacity: 0.7;
 }
 
 #copyright {
