@@ -637,6 +637,12 @@ sub { bottom: -0.25em; }
   font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', 'Helvetica', 'sans-serif';
 }
 
+#header a:hover,
+#header a:focus {
+  text-decoration: none;
+  color: #6bc30d;
+}
+
 #logo {
   float: left;
   padding: 20px 10px 15px;
