@@ -12,12 +12,18 @@ secret_key = 'VPLtQM3lwp9arR8qMeVSFKelQWO2tXpeC_yLAdo5'
 domain_prefix = 'http://img.yangsihan.com/'
 
 
-def upload_data(data, bucket_name):
+def upload_data(filestream, bucket_name):
     # 生成上传凭证
     q = Auth(access_key, secret_key)
-    key = ''.join(random.sample('0123456789abcdefghijklmnopqrstuvwxyz', 8)) + '.png'
-    token = q.upload_token(bucket_name, key)
-    # 上传文件
-    retData, respInfo = put_data(token, key, data)
+    suffix = filestream.name.split('.')[-1]  # 后缀(jpg, png, gif)
+    try:
+        filename = filestream.name.split('.')[0]  # 文件名
+    except:
+        filename = ''.join(random.sample('0123456789abcdefghijklmnopqrstuvwxyz', 8))
 
-    return key, domain_prefix + key + '-watermark'
+    filename = filename + '.' + suffix
+    token = q.upload_token(bucket_name, filename)
+    # 上传文件
+    retData, respInfo = put_data(token, filename, filestream)
+
+    return filename, domain_prefix + filename + '-watermark'
