@@ -2180,9 +2180,9 @@ button.black:active {
 }
 
 #scrollUp {
-  background-image: url("top.png");
-  bottom: 10px;
-  right: 20px;
+  background-image: url("http://img.yangsihan.com/top.gif");
+  bottom: 5px;
+  right: 10px;
   width: 50px; /* Width of image */
   height: 50px; /* Height of image */
   border-radius: 30px;
