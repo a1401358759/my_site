@@ -2238,3 +2238,7 @@ a:focus {
   text-decoration: none;
   color: #6bc30d;
 }
+
+.tpwthwidt:hover {
+  cursor: pointer;
+}
