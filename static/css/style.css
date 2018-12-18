@@ -2181,7 +2181,7 @@ button.black:active {
 
 #scrollUp {
   background-image: url("http://img.yangsihan.com/top.gif");
-  bottom: 5px;
+  bottom: 70px;
   right: 10px;
   width: 50px; /* Width of image */
   height: 50px; /* Height of image */
@@ -2244,7 +2244,7 @@ a:focus {
 }
 
 #SOHUCS, #SOHUCS #SOHU_MAIN {
-  margin: 0;
+  margin: 15px 0 0 0;
   margin-left: auto;
   margin-right: auto;
   padding: 0 10px !important;
