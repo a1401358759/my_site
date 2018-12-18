@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import random
 from django.db.models import F
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
@@ -186,7 +187,8 @@ def blog_search(request):  # 实现对文章标题的搜索
 
 
 def message(request):
-    own_message = OwnerMessage.objects.first()
+    own_messages = OwnerMessage.objects.all()
+    own_message = random.sample(own_messages, 1)[0]  # 随机返回一个主人寄语
     date_list = Article.date_list.get_article_by_date()
     classification = Classification.class_list.get_classify_list()
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]

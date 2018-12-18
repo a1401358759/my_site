@@ -14,13 +14,13 @@
 
 <div>
   <section id="recent-comments" class="widget widget_recent_comments">
-    <h6 style="margin-top: -10px; margin-left: -10px;">主人寄语</h6>
+    <!--<h6 style="margin-top: -10px; margin-left: -10px;">主人寄语</h6>-->
     <span style="font-size: smaller; text-indent: 2em;">{{ own_message.message|safe }}</span>
   </section>
 </div>
 
 <!-- 评论框 -->
-<div id="SOHUCS" sid="leave_message"></div>
+<div id="SOHUCS" sid="leave_message_{{ own_message.id }}"></div>
 <script charset="utf-8" type="text/javascript" src="/static/changyan.js" ></script>
 <script type="text/javascript">
   // window._config = { showScore: true };  // 打分

@@ -25,7 +25,8 @@ class MessagesAdmin(admin.ModelAdmin):
 
 
 class OwnerMessageAdmin(admin.ModelAdmin):
-    list_display = ('message', 'created_at')
+    list_display = ('id', 'message', 'created_at')
+    list_per_page = 10
 
     class Media:
         css = {
