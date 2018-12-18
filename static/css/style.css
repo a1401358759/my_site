@@ -2245,18 +2245,7 @@ a:focus {
 
 #SOHUCS, #SOHUCS #SOHU_MAIN {
   margin: 15px 0 0 0 !important;
-  margin-left: auto;
-  margin-right: auto;
   padding: 0 10px !important;
-  border: 0;
-  font-weight: 400;
-  text-align: left;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-  font-size: 12px;
-  color: #333;
-  line-height: 1;
   background-color: #eee !important;
   opacity: 0.7 !important;
 }
