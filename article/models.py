@@ -44,6 +44,7 @@ class Messages(models.Model):
 
 
 class OwnerMessage(models.Model):
+    summary = models.CharField(max_length=100, verbose_name=u'简介', blank=True, null=True)
     # message = UEditorField(verbose_name=u'寄语', width=600,
     #                        imagePath="/static/media/", toolbars='full')
 
