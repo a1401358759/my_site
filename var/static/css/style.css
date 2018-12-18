@@ -2253,4 +2253,5 @@ a:focus {
   padding: 0 10px !important;
   background-color: #eee !important;
   opacity: 0.7 !important;
+  border-radius: 5px !important;
 }
