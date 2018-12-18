@@ -25,8 +25,14 @@ class MessagesAdmin(admin.ModelAdmin):
 
 
 class OwnerMessageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'message', 'created_at')
+    list_display = ('id', 'message_short', 'created_at')
     list_per_page = 10
+
+    # 留言内容简介
+    def message_short(self, obj):
+        return obj.message[:30] + u"······"
+
+    message_short.short_description = u'内容简介'
 
     class Media:
         css = {
