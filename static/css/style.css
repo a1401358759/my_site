@@ -621,7 +621,7 @@ sub { bottom: -0.25em; }
 #header {
   margin-bottom: 20px;
   background-color: #2196F3;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 #header .container {
@@ -844,7 +844,7 @@ sub { bottom: -0.25em; }
   background-color: #eee;
   border: 1px solid #eee;
   border-radius: 5px;
-  opacity: 0.7
+  opacity: 0.9
 }
 
 .breadcrumb li { display: inline-block; }
@@ -1092,7 +1092,7 @@ img.size-full { max-width: 100%; }
   background-image: url("post.png");
 	background-position: -150px 0px;
 	margin-left: -20px;
-  opacity: 0.7
+  opacity: 0.9
 }
 
 .layout-cs .post-format-indicator,
@@ -1343,7 +1343,7 @@ position:relative;
 #footer-content {
   padding: 20px 0;
   background: #2196F3;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 #copyright {
@@ -1365,7 +1365,7 @@ position:relative;
   font-size: 0.95em;
   background: #eee;
   border: 1px solid #eee;
-  opacity: 0.7;
+  opacity: 0.9;
   border-radius: 5px;
 }
 
@@ -1443,7 +1443,7 @@ position:relative;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   background-color: #eee !important;
-  opacity: 0.7;
+  opacity: 0.9;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -1456,7 +1456,7 @@ position:relative;
   padding: 0;
   border: none;
   color: #2196F3;
-  opacity: 0.7;
+  opacity: 0.9;
   background: #eee;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -2122,7 +2122,7 @@ button.black:active {
   margin-bottom: 20px;
   background-color: #eee;
   border: 1px solid #eee;
-  opacity: 0.7;
+  opacity: 0.9;
   border-radius: 5px;
 }
 
@@ -2221,7 +2221,7 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   background-color: #eee !important;
   color: #999;
   border: 1px solid #eee !important;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 .pagination>.active>span {
   background-color: #2196F3 !important;
@@ -2252,6 +2252,6 @@ a:focus {
   margin: 15px 0 0 0 !important;
   padding: 0 10px !important;
   background-color: #eee !important;
-  opacity: 0.7 !important;
+  opacity: 0.9 !important;
   border-radius: 5px !important;
 }
