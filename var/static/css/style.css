@@ -918,6 +918,7 @@ sub { bottom: -0.25em; }
   color: #F3963B;
   font-size: 25px;
   font-family: STKaiti;
+  margin-top: -10px;
 }
 
 /*.entry-title a:hover { color: #236688; }*/
@@ -928,7 +929,7 @@ h2.entry-title { font-size: 1.5em; }
 
 .entry-info {
   margin-bottom: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   font-size: 0.8em;
   line-height: 1.3;
   border-bottom: 1px solid #ddd;
