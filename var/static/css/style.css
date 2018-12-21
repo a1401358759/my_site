@@ -1435,7 +1435,7 @@ position:relative;
 
 .s {
   float: left;
-  height: 40px;
+  height: 42px;
   width: 100%;
   margin: 0 !important;
   padding: 10px !important;
@@ -1451,7 +1451,7 @@ position:relative;
 
 .search-submit {
   float: right;
-  height: 40px;
+  height: 42px;
   width: 50px;
   margin: 0 -50px 0;
   padding: 0;
