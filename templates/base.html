@@ -81,9 +81,24 @@ $(function () {
     <header id="header" role="banner">
       <div class="container">
         <div id="logo">
-          <h2 id="site-title">
-            <a href="{% url 'home' %}" rel="home">杨学峰的个人博客</a>
-          </h2>
+          <div style="float:left;">
+            <h2 id="site-title">
+              <a href="{% url 'home' %}" rel="home">杨学峰的个人博客</a>
+            </h2>
+          </div>
+          <div style="float:left; margin:25px 0 0 20px;">
+            <nav class="nav nav-primary">
+              <div class="container">
+                <ul>
+                  <li><a href="{% url 'home' %}">首页</a></li>
+                  <li><a href="{% url 'archive' %}">文章归档</a></li>
+                  <li><a href="{% url 'message' %}">留言板</a></li>
+                  <li><a href="{% url 'about' %}">关于我</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div class="clearfix"></div>
         </div>
         <div class="social-icons">
           <a href="https://www.weibo.com" target="_blank"><i class="fa fa-weibo"></i></a>
@@ -93,16 +108,6 @@ $(function () {
         </div>
       </div>
       <div class="clearfix"></div>
-      <nav class="nav nav-primary">
-        <div class="container">
-          <ul>
-            <li><a href="{% url 'home' %}">首页</a></li>
-            <li><a href="{% url 'archive' %}">文章归档</a></li>
-            <li><a href="{% url 'message' %}">留言板</a></li>
-            <li><a href="{% url 'about' %}">关于我</a></li>
-          </ul>
-        </div>
-      </nav>
     </header>
 
     <div id="main" class="container">
@@ -136,18 +141,17 @@ $(function () {
 
     // 心知天气
     (function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))
-
     tpwidget("init", {
       "flavor": "bubble",
       "location": "WX4FBXXFKE4F",
       "geolocation": "enabled",
       "position": "top-right",
-      "margin": "10px 10px",
+      "margin": "0px 0px",
       "language": "zh-chs",
       "unit": "c",
       "theme": "chameleon",
       "uid": "UD93432FCC",
-      "hash": "157154e819ec78f1c8de91241055bb08"
+      "hash": "8ce83970b034af915902fb6188f4038c"
     });
     tpwidget("show");
 

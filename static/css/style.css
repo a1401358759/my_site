@@ -632,7 +632,7 @@ sub { bottom: -0.25em; }
 #header a {
   text-decoration: none;
   border: 0;
-  font-size: 17px;
+  font-size: 16px;
   font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', 'Helvetica', 'sans-serif';
 }
 
@@ -644,7 +644,7 @@ sub { bottom: -0.25em; }
 
 #logo {
   float: left;
-  padding: 20px 10px 15px;
+  padding: 10px 10px 0 10px;
 }
 
 #site-title {
@@ -656,8 +656,9 @@ sub { bottom: -0.25em; }
 
 #site-title a {
   color: #fff;
-  font-size: 30px;
-  font-family: "STXingkai";
+  font-size: 24px;
+  /*font-family: "STXingkai";*/
+  font-weight: normal;
 }
 
 #site-description {
@@ -1495,7 +1496,7 @@ position:relative;
 
 #header .social-icons {
   float: right;
-  padding: 35px 0 0 10px;
+  padding: 25px 0 0 10px;
 }
 
 .widget_wwl_social_widget {
