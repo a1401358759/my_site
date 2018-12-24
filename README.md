@@ -7,3 +7,5 @@
 5. 引入微博秀
 6. 采用JQcloud实现标签云功能
 7. 后台引入Tinymce富文本编辑器,前端使用highlight.js进行代码高亮
+
+**本人博客地址:** [我的博客](超链接地址 "http://www.yangsihan.com")

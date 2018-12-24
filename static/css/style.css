@@ -622,6 +622,9 @@ sub { bottom: -0.25em; }
   margin-bottom: 20px;
   background-color: #2196F3;
   opacity: 0.9;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 }
 
 #header .container {
@@ -1346,6 +1349,8 @@ position:relative;
   padding: 20px 0;
   background: #2196F3;
   opacity: 0.9;
+  color: #ddd;
+  font-size: 14px;
 }
 
 #copyright {

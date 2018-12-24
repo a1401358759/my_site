@@ -81,7 +81,7 @@ $(function () {
     <header id="header" role="banner">
       <div class="container">
         <div id="logo">
-          <div style="float:left;">
+          <div style="float:left;" class="hidden-xs hidden-sm">
             <h2 id="site-title">
               <a href="{% url 'home' %}" rel="home">杨学峰的个人博客</a>
             </h2>
@@ -100,7 +100,7 @@ $(function () {
           </div>
           <div class="clearfix"></div>
         </div>
-        <div class="social-icons">
+        <div class="social-icons hidden-xs hidden-sm">
           <a href="https://www.weibo.com" target="_blank"><i class="fa fa-weibo"></i></a>
           <a href="https://github.com/a1401358759" target="_blank"><i class="fa fa-github"></i></a>
           <a href="javascript:;" onclick="verify_user()"><i class="fa fa-heart"></i></a>
@@ -109,6 +109,8 @@ $(function () {
       </div>
       <div class="clearfix"></div>
     </header>
+
+    <div style="height: 80px;"></div> <!-- 占位div -->
 
     <div id="main" class="container">
       <div id="content-sidebar-wrap">
@@ -126,7 +128,7 @@ $(function () {
     </div> <!-- #main -->
     <center>
       <footer id="footer" class="main-footer no-print text-center hidden-sm hidden-xs">
-        <div id="footer-content" style="color: #ddd; font-size: 14px;">
+        <div id="footer-content">
           <span>杨学峰的个人博客&copy;2018&nbsp;-&nbsp;京ICP备18032767号-1</span>
         </div>
       </footer>
