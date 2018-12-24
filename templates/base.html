@@ -141,6 +141,16 @@ $(function () {
       jQuery("#verify_user").modal('show');
     }
 
+    // 导航栏选中高亮
+    jQuery(document).ready(function(){
+      jQuery(".nav a").each(function(){
+        $this = jQuery(this);
+        if($this[0].href==String(window.location)){
+          $this.css("color", "#6bc30d");
+        }
+      });
+    });
+
     // 心知天气
     (function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))
     tpwidget("init", {
