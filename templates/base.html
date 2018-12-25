@@ -45,6 +45,10 @@
   <script src="{{ STATIC_URL }}plugins/highlight/highlight.pack.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}plugins/highlight/styles/darcula.css">
 
+  <!-- swiper-4.4.6 -->
+  <link rel="stylesheet" href="{{ STATIC_URL }}plugins/swiper4/swiper.min.css">
+  <script src="{{ STATIC_URL }}plugins/swiper4/swiper.min.js"></script>
+
   <script>
     jQuery(document).ready(function() {
       jQuery('pre code').each(function(i, block) {
@@ -115,9 +119,12 @@ $(function () {
     <div id="main" class="container">
       <div id="content-sidebar-wrap">
         <div id="content">
-          <div class="breadcrumb">
-            {% block path %}{% endblock %}
-          </div>
+          {% block banner %}{% endblock %}
+          {% if not is_home %}
+            <div class="breadcrumb">
+              {% block path %}{% endblock %}
+            </div>
+          {% endif %}
           {% block content %}{% endblock %}
         </div> <!-- #content -->
 
