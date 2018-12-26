@@ -655,7 +655,7 @@ sub { bottom: -0.25em; }
 
 #logo {
   float: left;
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 0 0;
 }
 
 #site-title {
@@ -1509,6 +1509,7 @@ position:relative;
 #header .social-icons {
   float: right;
   padding: 25px 0 0 10px;
+  margin-right: -10px;
 }
 
 .widget_wwl_social_widget {
