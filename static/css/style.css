@@ -853,8 +853,8 @@ sub { bottom: -0.25em; }
 .breadcrumb {
   padding: 12px 20px;
   margin-bottom: 10px;
-  background-color: #eee;
-  border: 1px solid #ddd;
+  background-color: #fff;
+  border: 1px solid #fff;
   border-radius: 5px;
   opacity: 0.9
 }
@@ -1379,8 +1379,8 @@ position:relative;
   margin-bottom: 10px;
   padding: 20px;
   font-size: 0.95em;
-  background: #eee;
-  border: 1px solid #ddd;
+  background: #fff;
+  border: 1px solid #fff;
   opacity: 0.9;
   border-radius: 5px;
 }
@@ -1454,12 +1454,12 @@ position:relative;
   width: 100%;
   margin: 0 !important;
   padding: 10px !important;
-  border: 1px solid #ddd !important;
+  border: 1px solid #fff !important;
   border-right: none!important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  background-color: #eee !important;
+  background-color: #fff !important;
   opacity: 0.9;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -1471,11 +1471,11 @@ position:relative;
   width: 50px;
   margin: 0 -50px 0;
   padding: 0;
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-left: none;
   color: #2196F3;
   opacity: 0.9;
-  background: #eee;
+  background: #fff;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -2137,9 +2137,9 @@ button.black:active {
 
 .archive {
   padding: 0px 20px;
-  margin-bottom: 10px;
-  background-color: #eee;
-  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #fff;
   opacity: 0.9;
   border-radius: 5px;
 }
@@ -2236,9 +2236,9 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   padding: 5px 10px;
   font-size: 12px;
   margin: 0 0 0 2px;
-  background-color: #eee !important;
+  background-color: #fff !important;
   color: #999;
-  border: 1px solid #ddd !important;
+  border: 1px solid #fff !important;
   opacity: 0.9;
 }
 .pagination>.active>span {
@@ -2268,13 +2268,13 @@ a:focus {
 
 /* 搜狐畅言 */
 #SOHUCS {
-  border: 1px solid #ddd!important;
+  border: 1px solid #fff!important;
 }
 
 #SOHUCS, #SOHUCS #SOHU_MAIN {
   margin: 15px 0 0 0 !important;
   padding: 0 10px !important;
-  background-color: #eee !important;
+  background-color: #fff !important;
   opacity: 0.9 !important;
   border-radius: 5px !important;
 }
