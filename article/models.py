@@ -4,6 +4,7 @@ from django.db import models
 from collections import OrderedDict
 # from DjangoUeditor.models import UEditorField
 from .constants import BlogStatus
+from utils.mixins import TimeModelMixin
 
 
 class Author(models.Model):
@@ -238,3 +239,19 @@ class Links(models.Model):  # 友情链接
 
     class Meta:
         verbose_name_plural = u"友情链接"
+
+
+class CarouselImg(TimeModelMixin):
+    """
+    轮播图管理
+    """
+    name = models.CharField(max_length=50, verbose_name=u'图片名称')
+    description = models.CharField(max_length=100, verbose_name=u'图片描述')
+    path = models.CharField(max_length=100, verbose_name=u'图片地址')
+    weights = models.SmallIntegerField(default=10, verbose_name=u'图片权重', blank=True, null=True)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = u"轮播管理"

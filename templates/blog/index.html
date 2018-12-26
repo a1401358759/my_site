@@ -20,12 +20,12 @@
 {% endblock %}
 
 {% block banner %}
-  {% if is_home %}
+  {% if is_home and carouse_imgs %}
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="http://img.yangsihan.com/beauty.jpg"></div>
-        <div class="swiper-slide"><img src="http://img.yangsihan.com/luxurycar.jpg"></div>
-        <div class="swiper-slide"><img src="http://img.yangsihan.com/landscape.jpg"></div>
+        {% for img in carouse_imgs %}
+          <div class="swiper-slide"><img src="{{ img.path }}"></div>
+        {% endfor %}
       </div>
       <!-- 如果需要分页器 -->
       <div class="swiper-pagination"></div>

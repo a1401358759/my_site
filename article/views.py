@@ -2,7 +2,7 @@
 
 import json
 import random
-from django.db.models import F
+from django.db.models import F, Q
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
 from django.shortcuts import render
@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from utils.paginate import paginate
 from utils.response import render_json
 from utils.mine_qiniu import upload_data
-from .models import Article, Classification, Messages, OwnerMessage, Tag, Links
+from .models import Article, Classification, Messages, OwnerMessage, Tag, Links, CarouselImg
 from .constants import BlogStatus
 
 
@@ -30,13 +30,12 @@ def home(request):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = Article.objects.order_by('-count')[:10]
-
-    # 友情链接
-    links = Links.objects.all().order_by("-weights", "id")
+    new_post = Article.objects.order_by('-count')[:10]  # 最近发布的十篇文章
+    links = Links.objects.order_by("-weights", "id")  # 友情链接
     classification = Classification.class_list.get_classify_list()  # 分类,以及对应的数目
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()  # 按月归档,以及对应的文章数目
+    carouse_imgs = CarouselImg.objects.order_by("-weights", "id")  # 轮播图
 
     return render(request, 'blog/index.html', locals())
 
@@ -49,7 +48,7 @@ def detail(request, year, month, day, id):
         raise Http404
 
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    links = Links.objects.all().order_by("-weights", "id")
+    links = Links.objects.order_by("-weights", "id")
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
@@ -65,7 +64,7 @@ def archive_month(request, year, month):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    links = Links.objects.all().order_by("-weights", "id")
+    links = Links.objects.order_by("-weights", "id")
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
@@ -111,11 +110,9 @@ def tagDetail(request, tag):
 
 
 def about(request):
-    # articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
-    # page_num = request.GET.get("page") or 1
-    # page_size = request.GET.get("page_size") or 5
-    # articles, total = paginate(articles, page_num=page_num, page_size=page_size)
-
+    """
+    关于我
+    """
     links = Links.objects.all().order_by("-weights", "id")
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
@@ -126,12 +123,10 @@ def about(request):
 
 
 def archive(request):
-    # articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-publish_time')
-    # page_num = request.GET.get("page") or 1
-    # page_size = request.GET.get("page_size") or 5
-    # articles, total = paginate(articles, page_num=page_num, page_size=page_size)
-
-    links = Links.objects.all().order_by("-weights", "id")
+    """
+    文章归档
+    """
+    links = Links.objects.order_by("-weights", "id")  # 友情链接
     archive = Article.date_list.get_article_by_archive()
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
@@ -163,7 +158,6 @@ class RSSFeed(Feed):
 
 
 def blog_search(request):  # 实现对文章标题的搜索
-
     is_search = True
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     links = Links.objects.order_by("-weights", "id")
@@ -171,22 +165,26 @@ def blog_search(request):  # 实现对文章标题的搜索
     tag_cloud = json.dumps(Tag.tag_list.get_tag_list(), ensure_ascii=False)  # 标签,以及对应的文章数目
     date_list = Article.date_list.get_article_by_date()
     error = False
-    if 's' in request.GET:
-        s = request.GET['s']
-        if not s:
-            return render(request, 'blog/index.html')
-        else:
-            articles = Article.objects.filter(title__icontains=s)
-            page_num = request.GET.get("page") or 1
-            page_size = request.GET.get("page_size") or 5
-            articles, total = paginate(articles, page_num=page_num, page_size=page_size)
-            if total == 0:
-                error = True
+
+    query = Q()
+    s = request.GET.get('s') or ""
+    if s:
+        query &= Q(title__icontains=s)
+
+    articles = Article.objects.filter(query)
+    page_num = request.GET.get("page") or 1
+    page_size = request.GET.get("page_size") or 5
+    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    if total == 0:
+        error = True
 
     return render(request, 'blog/index.html', locals())
 
 
 def message(request):
+    """
+    主人寄语
+    """
     own_messages = OwnerMessage.objects.all()
     own_message = random.sample(own_messages, 1)[0]  # 随机返回一个主人寄语
     date_list = Article.date_list.get_article_by_date()

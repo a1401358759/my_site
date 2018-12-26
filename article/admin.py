@@ -5,6 +5,7 @@ from article.models import *
 # from django_summernote.admin import SummernoteModelAdmin
 
 
+@admin.register(Messages)
 class MessagesAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'content', 'created_at')
     list_per_page = 10
@@ -24,15 +25,10 @@ class MessagesAdmin(admin.ModelAdmin):
         )
 
 
+@admin.register(OwnerMessage)
 class OwnerMessageAdmin(admin.ModelAdmin):
     list_display = ('id', 'summary', 'created_at')
     list_per_page = 10
-
-    # 留言内容简介
-    # def message_short(self, obj):
-    #     return obj.message[:30] + u"······"
-
-    # message_short.short_description = u'内容简介'
 
     class Media:
         css = {
@@ -47,6 +43,7 @@ class OwnerMessageAdmin(admin.ModelAdmin):
         )
 
 
+@admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'publish_time')
     list_per_page = 10
@@ -67,6 +64,7 @@ class ArticleAdmin(admin.ModelAdmin):
         )
 
 
+@admin.register(Links)
 class LinksAdmin(admin.ModelAdmin):
     list_display = ('name', 'link', 'weights', 'created_time')
     list_per_page = 10
@@ -78,12 +76,20 @@ class LinksAdmin(admin.ModelAdmin):
         }
 
 
+@admin.register(CarouselImg)
+class CarouselImgAdmin(admin.ModelAdmin):
+    list_display = ('name', 'path', 'weights', 'created_time')
+    list_per_page = 10
+    ordering = ('-weights',)
+
+    class Media:
+        css = {
+            'all': ('/static/css/manager.css',)
+        }
+
+
 admin.site.site_title = '博客管理'
 admin.site.site_header = '博客后台管理平台'
-admin.site.register(Article, ArticleAdmin)
-admin.site.register(Messages, MessagesAdmin)
-admin.site.register(OwnerMessage, OwnerMessageAdmin)
-admin.site.register(Links, LinksAdmin)
 admin.site.register(Author)
 admin.site.register(Tag)
 admin.site.register(Classification)
