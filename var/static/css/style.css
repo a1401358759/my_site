@@ -2097,7 +2097,7 @@ button.black:active {
   .entry-title {
     font-size: 1.5em !important;
   }
-  .entry-meta { display: none; }
+  /*.entry-meta { display: none; }*/
 }
 
 /* Retina Images */
@@ -2285,6 +2285,12 @@ a:focus {
 
 .module-cmt-float-bar {
   display: none!important;
+}
+
+#feedAv,#MZAD_POP_PLACEHOLDER,#pop_ad{
+ margin-top: -250px!important;
+ transform: scale(0);
+ z-index: -99999999999;
 }
 
 /* 轮播插件 */
