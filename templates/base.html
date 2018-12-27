@@ -45,6 +45,10 @@
   <link rel="stylesheet" href="{{ STATIC_URL }}plugins/swiper4/swiper.min.css">
   <script src="{{ STATIC_URL }}plugins/swiper4/swiper.min.js"></script>
 
+  <!-- aplayer -->
+  <link rel="stylesheet" href="{{ STATIC_URL }}plugins/aplayer/APlayer.min.css">
+  <script src="{{ STATIC_URL }}plugins/aplayer/APlayer.min.js"></script>
+
   <script>
     jQuery(document).ready(function() {
       jQuery('pre code').each(function(i, block) {
@@ -73,6 +77,7 @@ $(function () {
   jQuery.scrollUp({
 
   });
+  jQuery(".aplayer-icon-lrc").addClass('hidden');
 });
 </script>
 
@@ -129,6 +134,9 @@ $(function () {
         </aside>
       </div> <!-- #content-sidebar -->
     </div> <!-- #main -->
+
+    <div id="player"></div>  <!-- 音乐播放器 -->
+
     <center>
       <footer id="footer" class="main-footer no-print text-center hidden-sm hidden-xs">
         <div id="footer-content">
@@ -140,6 +148,15 @@ $(function () {
   {% include "blog/verify_user.html" %}
 
   <script type="text/javascript">
+    const ap = new APlayer({
+      container: document.getElementById('player'),
+      fixed: true,
+      autoplay: true,
+      volume: 0.5,
+      audio: {{ music_list|safe }}
+    });
+  </script>
+  <script type="text/javascript">
     function verify_user(){
       jQuery("#verify_user").modal('show');
     }
@@ -149,7 +166,7 @@ $(function () {
       jQuery(".nav a").each(function(){
         $this = jQuery(this);
         if($this[0].href==String(window.location)){
-          $this.css("color", "#6bc30d");
+          $this.css("color", "blue");
         }
       });
     });

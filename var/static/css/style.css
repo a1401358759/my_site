@@ -650,7 +650,7 @@ sub { bottom: -0.25em; }
 #header a:hover,
 #header a:focus {
   text-decoration: none;
-  color: #6bc30d;
+  color: blue;
 }
 
 #logo {
@@ -2254,7 +2254,7 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
 a:hover,
 a:focus {
   text-decoration: none;
-  color: #6bc30d;
+  color: blue;
 }
 
 .tpwthwidt:hover {
@@ -2283,6 +2283,14 @@ a:focus {
  z-index: -99999999999;
 }
 
+#cyReping .reping-header {
+  display: none;
+}
+
+#cyReping .reping-list .list-item {
+  margin: 6px 10px 0px 0px!important;
+}
+
 /* 轮播插件 */
 .swiper-container {
   margin-bottom: 10px!important;
@@ -2301,6 +2309,11 @@ a:focus {
   cursor: pointer;
 }
 
+/* aplayer */
+.aplayer .aplayer-info .aplayer-music .aplayer-author {
+  display: none;
+}
+
 .new_tag {
   display: block;
   float: left;
@@ -2308,5 +2321,9 @@ a:focus {
   border: 1px solid #fff;
   padding: 5px 10px;
   margin-bottom: 5px;
+  color: #fff;
+}
+
+#tag_cloud a:hover {
   color: #fff;
 }

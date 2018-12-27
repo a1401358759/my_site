@@ -256,3 +256,20 @@ class CarouselImg(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = u"轮播管理"
+
+
+class Music(TimeModelMixin):
+    """
+    背景音乐管理
+    """
+    name = models.CharField(max_length=50, verbose_name=u'音乐名称')
+    url = models.CharField(max_length=100, verbose_name=u'音乐地址')
+    cover = models.CharField(max_length=100, verbose_name=u'音乐封面')
+    artist = models.CharField(max_length=100, verbose_name=u'艺术家', blank=True, null=True, default="")
+    lrc = models.CharField(max_length=100, verbose_name=u'音乐歌词', blank=True, null=True, default="")
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = u"背景音乐"

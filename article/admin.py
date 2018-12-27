@@ -88,6 +88,18 @@ class CarouselImgAdmin(admin.ModelAdmin):
         }
 
 
+@admin.register(Music)
+class MusicAdmin(admin.ModelAdmin):
+    list_display = ('name', 'url', 'created_time')
+    list_per_page = 10
+    ordering = ('-created_time',)
+
+    class Media:
+        css = {
+            'all': ('/static/css/manager.css',)
+        }
+
+
 admin.site.site_title = '博客管理'
 admin.site.site_header = '博客后台管理平台'
 admin.site.register(Author)

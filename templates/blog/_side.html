@@ -10,6 +10,10 @@
   {% include "blog/calendar.html" %}
 </div>
 
+<div id="archives" class="widget widget_archive">
+  {% include "blog/clock.html" %}
+</div>
+
 <!-- 拖慢网页速度，暂时隐藏 -->
 <!--<div id="text" class="widget widget_text">
 	<h3 class="widget-title">新浪微博</h3>
@@ -20,15 +24,24 @@
 	</div>
 </div>-->
 
-<div id="archives" class="widget widget_archive">
-  <h3 class="widget-title">文章归档</h3>
+<div id="new_post" class="widget widget_categories">
+  <h3 class="widget-title">最热文章</h3>
   <ul>
-    {% if date_list %}
-      {% for x, y in date_list %}
-        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月 ( {{y}} )</a></li>
+    {% if new_post %}
+      {% for item in new_post %}
+        <li>
+          <a href="{{ item.get_absolute_url }}">
+            <span style="font-family: monaco;">{{ forloop.counter }}</span>.&nbsp;{{ item.title|truncatechars:20 }}&nbsp;( {{ item.count }} )
+          </a>
+        </li>
       {% endfor %}
     {% endif %}
   </ul>
+</div>
+
+<div id="archives" class="widget widget_archive">
+  <h3 class="widget-title">最新评论</h3>
+  <div id="cyReping" role="cylabs" data-use="reping"></div>
 </div>
 
 <div id="categories" class="widget widget_categories">
@@ -42,16 +55,12 @@
 	</ul>
 </div>
 
-<div id="new_post" class="widget widget_categories">
-  <h3 class="widget-title">最热文章</h3>
+<div id="archives" class="widget widget_archive">
+  <h3 class="widget-title">文章归档</h3>
   <ul>
-    {% if new_post %}
-      {% for item in new_post %}
-        <li>
-          <a href="{{ item.get_absolute_url }}">
-            <span style="font-family: monaco;">{{ forloop.counter }}</span>.&nbsp;{{ item.title|truncatechars:20 }}&nbsp;( {{ item.count }} )
-          </a>
-        </li>
+    {% if date_list %}
+      {% for x, y in date_list %}
+        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月 ( {{y}} )</a></li>
       {% endfor %}
     {% endif %}
   </ul>
