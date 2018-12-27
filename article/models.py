@@ -248,6 +248,7 @@ class CarouselImg(TimeModelMixin):
     name = models.CharField(max_length=50, verbose_name=u'图片名称')
     description = models.CharField(max_length=100, verbose_name=u'图片描述')
     path = models.CharField(max_length=100, verbose_name=u'图片地址')
+    link = models.CharField(max_length=200, verbose_name=u'图片外链', default="", null=True)
     weights = models.SmallIntegerField(default=10, verbose_name=u'图片权重', blank=True, null=True)
 
     def __unicode__(self):

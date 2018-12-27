@@ -24,7 +24,7 @@
     <div class="swiper-container hidden-xs">
       <div class="swiper-wrapper">
         {% for img in carouse_imgs %}
-          <div class="swiper-slide"><img src="{{ img.path }}"></div>
+          <div class="swiper-slide"><a href="{{ img.link|default:'#' }}"><img src="{{ img.path }}"/></a></div>
         {% endfor %}
       </div>
       <!-- 如果需要分页器 -->
