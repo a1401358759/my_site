@@ -3,7 +3,7 @@
 * Author: Michael Kruger
 * Brief:
 *
-* This is a canvas based library with 15 different clocks that can be embedded in webpages. 
+* This is a canvas based library with 15 different clocks that can be embedded in webpages.
 * For more info please visit: www.krugaroo.com#canvasClock
 *
 * Copyright 2016 Krugaroo
@@ -19,10 +19,10 @@
 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 * copies of the Software, and to permit persons to whom the Software is
 * furnished to do so, subject to the following conditions:
-* 
+*
 * The above copyright notice and this permission notice shall be included in
 * all copies or substantial portions of the Software.
-* 
+*
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,8 +32,8 @@
 * THE SOFTWARE.
 */
 
-day_arr=["Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"];
-month_arr=["January","February","March","April","May","June","July","August","September","October","November","December"];
+day_arr=["星期日", "星期一", "星期二","星期三","星期四","星期五","星期六"];
+month_arr=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 
 function clock_conti(size, cns, clockd)
 {
@@ -68,7 +68,7 @@ function clock_conti(size, cns, clockd)
   var sec=now.getSeconds();
   var min=now.getMinutes();
   var hour=now.getHours()%12;
-  
+
   cns.fillStyle=(clockd.hasOwnProperty("dial1_color"))?clockd["dial1_color"]:"#333333";
   cns.strokeStyle=(clockd.hasOwnProperty("dial1_color"))?clockd["dial1_color"]:"#333333";
   cns.lineCap="round";
@@ -283,7 +283,7 @@ var r4=[4,5,7];
   var sec=now.getSeconds();
   var min=now.getMinutes();
   var hour=now.getHours()%12;
-  
+
   cns.fillStyle=(clockd.hasOwnProperty("dial1_color"))?clockd["dial1_color"]:"#333333";
   cns.strokeStyle=(clockd.hasOwnProperty("dial1_color"))?clockd["dial1_color"]:"#333333";
   cns.lineCap="round";
@@ -516,7 +516,7 @@ function clock_grow(size, cns, clockd)
   var sec=now.getSeconds();
   var min=now.getMinutes();
   var hour=now.getHours()%12;
-  
+
   cns.fillStyle=(clockd.hasOwnProperty("dial1_color"))?clockd["dial1_color"]:"#333333";
   cns.strokeStyle=(clockd.hasOwnProperty("dial1_color"))?clockd["dial1_color"]:"#333333";
   cns.lineCap="round";
@@ -587,7 +587,7 @@ function clock_dots(size, cns, clockd)
   var sec=now.getSeconds();
   var min=now.getMinutes();
   var hour=now.getHours()%12;
-  
+
   cns.fillStyle=(clockd.hasOwnProperty("dial3_color"))?clockd["dial3_color"]:"#333333";
   cns.strokeStyle=(clockd.hasOwnProperty("dial3_color"))?clockd["dial3_color"]:"#333333";
   cns.lineCap="round";
@@ -792,7 +792,7 @@ function clock_digitalran(size, cns, clockd)
 
   if(clockd.hasOwnProperty("track"))
   {
-   clockd["track"]+=1; 
+   clockd["track"]+=1;
   }
   else
   {
@@ -828,7 +828,7 @@ function clock_digitalran(size, cns, clockd)
 
     clockd["track"]=0;
   }
-  
+
   clockd.timer=setTimeout(function(){clock_digitalran(size, cns, clockd)},50);
 }
 
@@ -850,7 +850,7 @@ function clock_bars(size, cns, clockd)
   var sec=now.getSeconds();
   var min=now.getMinutes();
   var hour=now.getHours()%12;
-  
+
   if((clockd.hasOwnProperty("indicate") && clockd.indicate==true) || !clockd.hasOwnProperty("indicate"))
   {
     cns.strokeStyle=(clockd.hasOwnProperty("indicate_color"))?clockd["indicate_color"]:"#333333";
@@ -1222,7 +1222,7 @@ function clock_loadBG(src, clockd)
   clockd.bgImage = new Image();
   clockd.bgImage.onload = function(){ clockd.bgLoaded=1; };
   clockd.bgImage.src = src;
-  
+
   if(!clockd.hasOwnProperty("bg_opacity")){clockd.bg_opacity=1;}
 }
 
@@ -1253,7 +1253,7 @@ function time_add(x, y, size, cns, clockd)
   {
     return;
   }
-  
+
   var now=new Date();
   var time_off=(clockd.hasOwnProperty("timeoffset"))?clockd["timeoffset"]:0;
   now.setTime(now.getTime()+time_off*1000);
@@ -1297,7 +1297,7 @@ function date_add(x, y, size, cns, clockd)
   {
     return;
   }
-  
+
   var now=new Date();
   var time_off=(clockd.hasOwnProperty("timeoffset"))?clockd["timeoffset"]:0;
   now.setTime(now.getTime()+time_off*1000);
