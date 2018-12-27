@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import json
 import random
 from django.db.models import F, Q
 from django.contrib.syndication.views import Feed  # 订阅RSS
