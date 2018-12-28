@@ -90,7 +90,7 @@ class CarouselImgAdmin(admin.ModelAdmin):
 
 @admin.register(Music)
 class MusicAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url', 'created_time')
+    list_display = ('name', 'artist', 'url', 'created_time')
     list_per_page = 10
     ordering = ('-created_time',)
 

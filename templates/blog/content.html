@@ -7,80 +7,75 @@
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home' %}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
 {% endblock %}
 {% block content %}
+  <div class="archive">
+    <div id="archives">
+      <header class="entry-header">
+        <div class="entry-info">
+          <span class="entry-date">
+            <span class="fa fa-calendar" aria-hidden="true"></span>&nbsp;
+            {{ article.publish_time|date:'Y年m月d日' }}
+          </span>
 
-<div class="archive">
-  <div id="archives">
-    <header class="entry-header">
-      <div class="entry-info">
-        <span class="entry-date">
-          <span class="fa fa-calendar" aria-hidden="true"></span>&nbsp;
-          {{ article.publish_time|date:'Y年m月d日' }}
-        </span>
+          <span class="author vcard">
+            <span class="fa fa-user" aria-hidden="true"></span>&nbsp;
+            {{ article.author }}
+          </span>
 
-        <span class="author vcard">
-          <span class="fa fa-user" aria-hidden="true"></span>&nbsp;
-          {{ article.author }}
-        </span>
+          <span class="pull-right">
+            <span aria-hidden="true">阅读:&nbsp;</span>{{ article.count }}
+          </span>
 
-        <span class="pull-right">
-          <span aria-hidden="true">阅读:&nbsp;</span>{{ article.count }}
-        </span>
+          <span class="comments-link">
+            <span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
+          </span>
+        </div>
+        <h1 class="entry-title">
+          {{ article.title }}
+        </h1>
+      </header>
+      <div>
+        {{ article.content|safe }}
+        <div class="clearfix"></div>
+      </div><!-- .entry-content -->
 
-        <span class="comments-link">
-          <span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
-        </span>
+      <footer class="entry-meta" style="padding:10px 0; margin-top:10px;">
+        <div class="fenlei">
+          <span class="entry-categories">
+            <span class="fa fa-suitcase" aria-hidden="true"></span>&nbsp;
+            <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
+          </span>
+          <span class="entry-tags">
+            <span class="fa fa-tags" aria-hidden="true"></span>&nbsp;
+            {% for i in article.get_tags %}
+              <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}</a>
+            {% endfor %}
+          </span>
+        </div>
+      </footer>
       </div>
-      <h1 class="entry-title">
-        {{ article.title }}
-      </h1>
-    </header>
-    <div>
-      {{ article.content|safe }}
-      <div class="clearfix"></div>
-    </div><!-- .entry-content -->
+  </div>
 
-    <footer class="entry-meta" style="padding:10px 0; margin-top:10px;">
-      <div class="fenlei">
-        <span class="entry-categories">
-          <span class="fa fa-suitcase" aria-hidden="true"></span>&nbsp;
-          <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
-        </span>
-        <span class="entry-tags">
-          <span class="fa fa-tags" aria-hidden="true"></span>&nbsp;
-          {% for i in article.get_tags %}
-            <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}</a>
-          {% endfor %}
-        </span>
-      </div>
-    </footer>
-    </div>
-</div>
+  <!--<div style="float: left;">
+    {% if article.get_after_article %}
+      {% with after=article.get_after_article %}
+        <p class="p1">上一篇 <a href="{{ after.get_absolute_url }}">{{ after }} </a></p>
+      {% endwith %}
+    {% endif %}
+  </div>
+  <br/>
+  <div style="float: left; {% if article.get_after_article %}margin-left: -188px;{% endif %}">
+    {% if article.get_before_article %}
+      {% with before=article.get_before_article %}
+        <p class="p2">下一篇 <a href="{{ before.get_absolute_url }}">{{ before }} </a></p>
+      {% endwith %}
+    {% endif %}
+  </div>-->
 
-<!--<div style="float: left;">
-  {% if article.get_after_article %}
-    {% with after=article.get_after_article %}
-      <p class="p1">上一篇 <a href="{{ after.get_absolute_url }}">{{ after }} </a></p>
-    {% endwith %}
-  {% endif %}
-</div>
-<br/>
-<div style="float: left; {% if article.get_after_article %}margin-left: -188px;{% endif %}">
-  {% if article.get_before_article %}
-    {% with before=article.get_before_article %}
-      <p class="p2">下一篇 <a href="{{ before.get_absolute_url }}">{{ before }} </a></p>
-    {% endwith %}
-  {% endif %}
-</div>-->
+  <!-- 打赏 -->
+  <div id="cyReward" role="cylabs" data-use="reward" sid="{{ article.id }}" style="text-align: center;"></div>
 
-<!-- 打赏 -->
-<div id="cyReward" role="cylabs" data-use="reward" sid="{{ article.id }}" style="text-align: center;"></div>
-
-<!-- 评论表情 -->
-<!--<div id="cyEmoji" role="cylabs" data-use="emoji" sourceid="{{ article.id }}"></div>-->
-
-<!-- 评论框 -->
-{% include "blog/_comments.html" %}
-
+  <!-- 评论框 -->
+  {% include "blog/_comments.html" %}
 {% endblock %}
 
 {% block side %}
