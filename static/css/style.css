@@ -2235,10 +2235,12 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   background-color: #fff !important;
   color: #999;
   border: 1px solid #fff !important;
+  border-radius: 50%;
 }
 .pagination>.active>span {
   background-color: #2196F3 !important;
   border-color: #2196F3 !important;
+  border-radius: 50%;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
