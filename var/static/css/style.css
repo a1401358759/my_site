@@ -2309,11 +2309,7 @@ a:focus {
   cursor: pointer;
 }
 
-/* aplayer */
-.aplayer .aplayer-info .aplayer-music .aplayer-author {
-  display: none;
-}
-
+/* 新标签云 */
 .new_tag {
   display: block;
   float: left;

@@ -2,6 +2,7 @@
 
 import random
 # import time
+from uuid import uuid4
 from qiniu import Auth, put_data
 
 
@@ -16,12 +17,8 @@ def upload_data(filestream, bucket_name):
     # 生成上传凭证
     q = Auth(access_key, secret_key)
     suffix = filestream.name.split('.')[-1]  # 后缀(jpg, png, gif)
-    try:
-        filename = filestream.name.split('.')[0]  # 文件名
-    except:
-        filename = ''.join(random.sample('0123456789abcdefghijklmnopqrstuvwxyz', 8))
 
-    filename = filename + '.' + suffix
+    filename = uuid4().get_hex() + '.' + suffix.lower()
     token = q.upload_token(bucket_name, filename)
     # 上传文件
     retData, respInfo = put_data(token, filename, filestream)
