@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import random
-# import time
 from uuid import uuid4
 from qiniu import Auth, put_data
 
@@ -9,7 +7,6 @@ from qiniu import Auth, put_data
 # 需要填写你的 Access Key 和 Secret Key
 access_key = 'D5m1nrbqTRDIQ1OdpeOM5eN8BL9X3KeLI6b7bwAF'
 secret_key = 'VPLtQM3lwp9arR8qMeVSFKelQWO2tXpeC_yLAdo5'
-# bucket_name = 'blog'
 domain_prefix = 'http://img.yangsihan.com/'
 
 
