@@ -1649,6 +1649,21 @@ select {
   margin-bottom: 10px;
 }
 
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #999;
+  font-size: 13px;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #999;
+  font-size: 13px;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #999;
+  font-size: 13px;
+}
+
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="datetime"]:focus,
