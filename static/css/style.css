@@ -508,7 +508,7 @@ tt {
 .container1024 { max-width: 1050px; }
 
 .container {
-  max-width: 1090px;
+  max-width: 1140px;
   /*background: #eeefff;*/
   /*border-radius: 5px;*/
   /*padding: 20px 10px;*/
@@ -1376,7 +1376,7 @@ position:relative;
 
 .widget {
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 25px;
   font-size: 0.95em;
   background: #fff;
   border: 1px solid #fff;
@@ -2062,14 +2062,14 @@ button.black:active {
   .hentry,
   .widget,
   .author-info,
-  #comments { padding: 10px; }
+  #comments { padding: 25px; }
 
   .entry-info { padding-bottom: 10px; }
 
   .entry-meta { padding-top: 10px; }
 
   #footer-content {
-    padding-bottom: 0;
+    padding: 22.5px 0;
     text-align: center;
   }
 
