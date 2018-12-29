@@ -2294,6 +2294,10 @@ a:focus {
   margin: 6px 10px 0px 0px!important;
 }
 
+#cyReward #cy-reward-pop .power-cy {
+  display: none;
+}
+
 /* 轮播插件 */
 .swiper-container {
   margin-bottom: 10px!important;
