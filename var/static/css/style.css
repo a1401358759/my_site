@@ -6,7 +6,7 @@ body {
   font-family: "consolas", "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
   color: #6B6B6B;
   font-size: 12px;
-  background: url("http://img.yangsihan.com/bg_4.jpg") no-repeat;
+  background: url("http://img.yangsihan.com/bj_8.jpg") no-repeat;
   background-size: 100% 100% !important;
   background-attachment: fixed !important;
 }
@@ -508,10 +508,10 @@ tt {
 .container1024 { max-width: 1050px; }
 
 .container {
-  max-width: 1060px;
-  background: #eeefff;
-  border-radius: 5px;
-  padding: 20px 10px;
+  max-width: 1090px;
+  /*background: #eeefff;*/
+  /*border-radius: 5px;*/
+  /*padding: 20px 10px;*/
 }
 
 .container:after {
@@ -655,7 +655,7 @@ sub { bottom: -0.25em; }
 
 #logo {
   float: left;
-  padding: 10px 10px 0 0;
+  padding: 10px 0px 0px 25px;
 }
 
 #site-title {
@@ -928,8 +928,9 @@ sub { bottom: -0.25em; }
 .entry-title, .entry-title a {
   color: #F3963B;
   font-size: 25px;
-  font-family: STKaiti;
+  font-family: 'PingFang SC';
   margin-top: -10px;
+  font-weight: normal;
 }
 
 /*.entry-title a:hover { color: #236688; }*/
@@ -1343,7 +1344,6 @@ position:relative;
 #footer {
   padding-top: 20px;
   line-height: 1.5;
-  /*background: url("2.jpg");*/
   width: 100%;
   background-size: 100% 100%;
 }
@@ -1354,7 +1354,7 @@ position:relative;
 }
 
 #footer-content {
-  padding: 20px 0;
+  padding: 22.5px 0;
   background: #2196F3;
   opacity: 0.9;
   color: #ddd;
@@ -1510,7 +1510,7 @@ position:relative;
 #header .social-icons {
   float: right;
   padding: 25px 0 0 10px;
-  margin-right: -10px;
+  margin-right: 15px;
 }
 
 .widget_wwl_social_widget {
