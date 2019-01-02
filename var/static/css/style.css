@@ -2336,10 +2336,8 @@ a:focus {
 
 /* 新标签云 */
 .new_tag {
-  display: block;
   float: left;
   margin-right: 5px;
-  border: 1px solid #fff;
   padding: 5px 10px;
   margin-bottom: 5px;
   color: #fff;
