@@ -28,4 +28,4 @@ def get_tags_and_musics():
         })
 
     random.shuffle(music_list)
-    return tag_list, json.dumps(music_list)
+    return tag_list, json.dumps(music_list[:3])
