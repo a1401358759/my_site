@@ -2260,8 +2260,13 @@ a:focus {
   color: blue;
 }
 
+/* 心知天气 */
 .tpwthwidt:hover {
-  cursor: pointer; /* 心知天气 */
+  cursor: pointer;
+}
+
+.tpwthwidt .copyright_3C74fJC {
+  display: none!important; /* 隐藏心知天气powered by */
 }
 
 /* 搜狐畅言 */
@@ -2283,7 +2288,7 @@ a:focus {
 #feedAv,#MZAD_POP_PLACEHOLDER,#pop_ad{
  margin-top: -250px!important;
  transform: scale(0);
- z-index: -99999999999;
+ z-index: -9999999;
 }
 
 #cyReping .reping-header {
@@ -2296,6 +2301,19 @@ a:focus {
 
 #cyReward #cy-reward-pop .power-cy {
   display: none;
+}
+
+.service-wrap-w {
+  display: none!important;
+}
+
+#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-build-gw .build-floor-gw {
+  margin: 20px 0 0 0;  /*手机端评论内容样式*/
+}
+
+#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-issue-gw .issue-wrap-gw {
+  line-height: 2.5em!important;
+  padding-top: 5px!important;
 }
 
 /* 轮播插件 */
