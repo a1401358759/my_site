@@ -302,7 +302,6 @@ html,
 body { font-size: 100%; }
 
 body {
-  /*background: #f2f2f2 url("assets/img/background.png");*/
   color: #4e4e4e;
   padding: 0;
   margin: 0;
@@ -342,17 +341,35 @@ h6 small {
   line-height: 0;
 }
 
-h1 { font-size: 1.5em; }
+h1 {
+  font-size: 1.5em;
+  font-weight: normal;
+}
 
-h2 { font-size: 1.4em; }
+h2 {
+  font-size: 1.4em;
+  font-weight: normal;
+}
 
-h3 { font-size: 1.3em; }
+h3 {
+  font-size: 1.3em;
+  font-weight: normal;
+}
 
-h4 { font-size: 1.2em; }
+h4 {
+  font-size: 1.2em;
+  font-weight: normal;
+}
 
-h5 { font-size: 1.1em; }
+h5 {
+  font-size: 1.1em;
+  font-weight: normal;
+}
 
-h6 { font-size: 1em; }
+h6 {
+  font-size: 1em;
+  font-weight: normal;
+}
 
 a {
   color: #1DA1F2;
@@ -360,9 +377,6 @@ a {
   line-height: inherit;
   font-size: 14px;
 }
-
-/*a:hover,
-a:focus { color: #236688; }*/
 
 p {
   font-size: 14px;
