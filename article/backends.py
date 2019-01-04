@@ -17,7 +17,7 @@ def get_tags_and_musics():
     for tag in tag_list:
         tag.color = '#' + ''.join(random.sample(color_array, 6))  # 为每个标签随机生成颜色
 
-    musics = Music.objects.all()[:3]
+    musics = Music.objects.all()
     for item in musics:
         music_list.append({
             "name": item.name,
@@ -28,4 +28,4 @@ def get_tags_and_musics():
         })
 
     random.shuffle(music_list)
-    return tag_list, json.dumps(music_list)
+    return tag_list, json.dumps(music_list[:3])
