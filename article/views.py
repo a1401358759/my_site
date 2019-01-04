@@ -34,7 +34,7 @@ def home(request):
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     new_post = Article.objects.order_by('-count')[:10]  # 最近发布的十篇文章
-    links = Links.objects.order_by("-weights", "id")  # 友情链接
+    # links = Links.objects.order_by("-weights", "id")  # 友情链接
     classification = Classification.class_list.get_classify_list()  # 分类,以及对应的数目
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
     date_list = Article.date_list.get_article_by_date()  # 按月归档,以及对应的文章数目
@@ -54,7 +54,7 @@ def detail(request, year, month, day, id):
         raise Http404
 
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    links = Links.objects.order_by("-weights", "id")
+    # links = Links.objects.order_by("-weights", "id")
     classification = Classification.class_list.get_classify_list()
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
     date_list = Article.date_list.get_article_by_date()
@@ -70,7 +70,7 @@ def archive_month(request, year, month):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    links = Links.objects.order_by("-weights", "id")
+    # links = Links.objects.order_by("-weights", "id")
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
@@ -88,7 +88,7 @@ def classfiDetail(request, classfi):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    links = Links.objects.all().order_by("-weights", "id")
+    # links = Links.objects.order_by("-weights", "id")
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
@@ -106,7 +106,7 @@ def tagDetail(request, tag):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    links = Links.objects.order_by("-weights", "id")
+    # links = Links.objects.order_by("-weights", "id")
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
@@ -132,7 +132,7 @@ def archive(request):
     """
     文章归档
     """
-    links = Links.objects.order_by("-weights", "id")  # 友情链接
+    # links = Links.objects.order_by("-weights", "id")  # 友情链接
     archive = Article.date_list.get_article_by_archive()
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
@@ -166,7 +166,7 @@ class RSSFeed(Feed):
 def blog_search(request):  # 实现对文章标题的搜索
     is_search = True
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    links = Links.objects.order_by("-weights", "id")
+    # links = Links.objects.order_by("-weights", "id")
     classification = Classification.class_list.get_classify_list()
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
     date_list = Article.date_list.get_article_by_date()
@@ -197,7 +197,7 @@ def message(request):
     classification = Classification.class_list.get_classify_list()
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    links = Links.objects.order_by("-weights", "id")
+    # links = Links.objects.order_by("-weights", "id")
     return render(request, 'blog/message.html', locals())
 
 
@@ -227,3 +227,15 @@ def create_messages(request):
 @require_GET
 def my_resume(request):
     return render(request, 'resume/my_resume.html')
+
+
+def links(request):
+    """
+    友情链接
+    """
+    links = Links.objects.order_by("-weights", "id")
+    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
+    classification = Classification.class_list.get_classify_list()
+    tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
+    date_list = Article.date_list.get_article_by_date()
+    return render(request, 'blog/links.html', locals())

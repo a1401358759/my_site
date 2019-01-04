@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', 'article.views.home', name="home"),  # 主页
     url(r'^about$', 'article.views.about', name="about"),  # 关于我
     url(r'^message$', 'article.views.message', name="message"),  # 留言
+    url(r'^links$', 'article.views.links', name="links"),  # 友情链接
     url(r'^archive/$', 'article.views.archive', name="archive"),  # 归档
     url(r'^feed/$', RSSFeed(), name="RSS"),  # 新添加的urlconf, 并将name设置为RSS, 方便在模板中使用
     url(r'^search/$', 'article.views.blog_search', name="search"),  # 按文章标题搜索

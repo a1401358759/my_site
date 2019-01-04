@@ -9,6 +9,11 @@ body {
   background: url("http://img.yangsihan.com/bj_8.jpg") no-repeat;
   background-size: 100% 100% !important;
   background-attachment: fixed !important;
+  cursor: url("/static/css/cursor_1.png"), default;
+}
+
+a:hover{
+  cursor:url("/static/css/cursor_2.png"), pointer;
 }
 
 h1, .h1,
@@ -22,7 +27,6 @@ h6, .h6 {
   font-weight: normal;
   color: #333;
 }
-
 
 /*
  * Override Bootstrap's default container.

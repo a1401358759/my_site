@@ -14,8 +14,8 @@
 
 <div>
   <section id="recent-comments" class="widget widget_recent_comments">
-    <h3 style="font-weight:bold;">主人寄语</h3>
-    <div style="margin: 10px 20px;">{{ own_message.message|safe }}</div>
+    <h3 style="font-weight:bold; margin-top: 0">主人寄语</h3>
+    <div style="margin-left: 40px;">{{ own_message.message|safe }}</div>
   </section>
 </div>
 
@@ -23,7 +23,6 @@
 <div id="SOHUCS" sid="leave_message"></div>
 <script charset="utf-8" type="text/javascript" src="/static/changyan.js" ></script>
 <script type="text/javascript">
-  // window._config = { showScore: true };  // 打分
   window.changyan.api.config({
     appid: 'cyt5STTrc',
     conf: 'prod_2cd3e2798964d1d91c61c46a0a22f7b9'
