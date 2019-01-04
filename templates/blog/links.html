@@ -34,8 +34,8 @@
   }
   .link img {
     float: left;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
   }
   .link h3 {
@@ -49,6 +49,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    padding-left: 10px;
   }
   .link p {
     height: 50px;
@@ -96,7 +97,7 @@
         <li class="link">
           <div>
             <a href="{{ link.link }}" target="_blank">
-              <img src="{{link.avatar|default:'/static/css/logo.png'}}">
+              <img src="{{ link.avatar|default:'/static/css/logo.png' }}">
               <h3>{{ link.name }}</h3>
               <p>{{ link.desc|default:'' }}</p>
             </a>

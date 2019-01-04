@@ -234,8 +234,8 @@ class Links(models.Model):
     """
     name = models.CharField(max_length=50, verbose_name=u'网站名称')
     link = models.CharField(max_length=100, verbose_name=u'网站地址')
-    avatar = models.CharField(max_length=100, verbose_name=u'网站图标', default="")
-    desc = models.CharField(max_length=200, verbose_name=u'网站描述', default="")
+    avatar = models.CharField(max_length=100, verbose_name=u'网站图标', default="", blank=True)
+    desc = models.CharField(max_length=200, verbose_name=u'网站描述', default="", blank=True)
     weights = models.SmallIntegerField(default=10, verbose_name=u'权重', blank=True, null=True)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
 
