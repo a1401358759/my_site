@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-  杨学峰的个人博客|关于我
+  杨学峰博客|关于我
 {% endblock %}
 {% block path %}
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;关于我
@@ -34,7 +34,7 @@
         联系我
       </h3>
       <ul style="margin-left: 20px">
-        <li type="circle">博客:&nbsp;&nbsp;&nbsp;<a href="javascript:;">杨学峰的个人博客</a></li>
+        <li type="circle">博客:&nbsp;&nbsp;&nbsp;<a href="{% url 'home' %}">杨学峰博客</a></li>
         <li type="circle">邮箱:&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://mail.qq.com/cgi-bin/loginpage">1401358759@qq.com</a></li>
         <li type="circle">GitHub:&nbsp;&nbsp;<a target="_blank" href="https://github.com/a1401358759">github</a></li>
         <li type="circle">微博:&nbsp;&nbsp;&nbsp; <a target="_blank" href="http://weibo.com/">杨学峰hpu</a></li>
