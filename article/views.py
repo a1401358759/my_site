@@ -233,7 +233,8 @@ def links(request):
     """
     友情链接
     """
-    links = Links.objects.order_by("-weights", "id")
+    links = list(Links.objects.all())
+    random.shuffle(links)  # 友情链接随机排序
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
