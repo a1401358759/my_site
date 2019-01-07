@@ -6,9 +6,9 @@ body {
   font-family: "consolas", "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
   color: #6B6B6B;
   font-size: 12px;
-  /*background: url("http://img.yangsihan.com/bj_8.jpg") no-repeat;
+  background: url("http://img.yangsihan.com/background.jpg") no-repeat;
   background-size: 100% 100% !important;
-  background-attachment: fixed !important;*/
+  background-attachment: fixed !important;
   cursor: url("/static/css/cursor_1.png"), default;
   background-color: #F6F6F6;
 }
