@@ -101,7 +101,7 @@
         <li class="link">
           <div>
             <a href="{{ link.link }}" target="_blank">
-              <img src="{{ link.avatar|default:'/static/css/logo.png' }}">
+              <img src="{{ link.avatar|default:' ' }}" alt="博客logo">
               <h3>{{ link.name }}</h3>
               <p>{{ link.desc|default:'' }}</p>
             </a>
