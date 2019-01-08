@@ -949,7 +949,7 @@ sub { bottom: -0.25em; }
   font-size: 25px;
   font-family: 'PingFang SC';
   margin-top: -10px;
-  font-weight: normal;
+  font-weight: 300;
 }
 
 /*.entry-title a:hover { color: #236688; }*/
