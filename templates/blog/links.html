@@ -23,13 +23,15 @@
   }
   .link {
     float: left;
-    padding: 15px 10px 10px 20px;
     overflow: hidden;
-    width: 33.3%;
+    width: 33.33333333%;
   }
   .link a {
     display: block;
     padding: 5px 0px 15px 10px;
+    border: 1px solid #f9f9f9;
+    margin: 5px;
+    transition: ease-in-out all .3s;
   }
   .link img {
     float: left;
@@ -62,6 +64,24 @@
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+  .link:hover {
+    box-shadow: 2px 2px 2px #ddd;
+    transform: scale(1.05);
+  }
+  .link_link {
+    display: block;
+    height: 25px;
+    background: #fcfcfc;
+    color: #e5e5e5;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    line-height: 25px;
+    text-align: center;
+    font-size: 12px;
+    margin-left: -10px;
+    margin-bottom: -15px;
   }
 </style>
 
@@ -101,9 +121,10 @@
         <li class="link">
           <div>
             <a href="{{ link.link }}" target="_blank">
-              <img src="{{ link.avatar|default:' ' }}" />
+              <img src="{{ link.avatar|default:'/static/css/default_icon.jpg' }}" />
               <h3>{{ link.name }}</h3>
               <p>{{ link.desc|default:'' }}</p>
+              <span class="link_link">{{ link.link|truncatewords_html:5 }}</span>
             </a>
           </div>
         </li>
