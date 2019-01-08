@@ -2356,3 +2356,9 @@ a:focus {
 #tag_cloud a:hover {
   color: #fff;
 }
+
+video {
+  background-color: #000;
+  width: 100%;
+  height: 350px;
+}
