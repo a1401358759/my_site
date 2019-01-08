@@ -2279,15 +2279,6 @@ a:focus {
   color: blue;
 }
 
-/* 心知天气 */
-.tpwthwidt:hover {
-  cursor: pointer;
-}
-
-.tpwthwidt .copyright_3C74fJC {
-  display: none!important; /* 隐藏心知天气powered by */
-}
-
 /* 搜狐畅言 */
 #SOHUCS, #SOHUCS #SOHU_MAIN {
   margin: 15px 0 0 0 !important;

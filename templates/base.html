@@ -166,7 +166,6 @@ $(function () {
     const ap = new APlayer({
       container: document.getElementById('player'),
       fixed: true,
-      // autoplay: true,
       volume: 0.5,
       audio: {{ music_list|safe }}
     });
@@ -186,22 +185,6 @@ $(function () {
       });
     });
 
-    // 心知天气
-    (function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))
-    tpwidget("init", {
-      "flavor": "bubble",
-      "location": "WX4FBXXFKE4F",
-      "geolocation": "enabled",
-      "position": "top-right",
-      "margin": "0px 0px",
-      "language": "zh-chs",
-      "unit": "c",
-      "theme": "chameleon",
-      "uid": "UD93432FCC",
-      "hash": "8ce83970b034af915902fb6188f4038c"
-    });
-    tpwidget("show");
-
     // 百度推送
     (function(){
       var bp = document.createElement('script');
@@ -214,12 +197,6 @@ $(function () {
       }
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(bp, s);
-    })();
-
-    // 360推送
-    (function(){
-      var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc":"https://jspassport.ssl.qhimg.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc";
-      document.write('<script src="' + src + '" id="sozz"><\/script>');
     })();
 
     // 畅言

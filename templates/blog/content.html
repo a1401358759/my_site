@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  杨学峰博客|{{ article.title }}
+  杨学峰博客 | {{ article.title }}
 {% endblock %}
 {% block path %}
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home' %}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
