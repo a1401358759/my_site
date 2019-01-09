@@ -20,4 +20,4 @@ def upload_data(filestream, bucket_name):
     # 上传文件
     retData, respInfo = put_data(token, filename, filestream)
 
-    return filename, domain_prefix + filename + '-watermark'
+    return filename, domain_prefix + filename
