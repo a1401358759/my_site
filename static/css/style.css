@@ -1401,6 +1401,7 @@ position:relative;
 
 .widget {
   margin-bottom: 10px;
+  margin-left: -10px;
   padding: 25px;
   font-size: 0.95em;
   background: #fff;
@@ -2087,7 +2088,10 @@ button.black:active {
   .hentry,
   .widget,
   .author-info,
-  #comments { padding: 25px; }
+  #comments {
+    padding: 25px;
+    margin-left: 0px;
+  }
 
   .entry-info { padding-bottom: 10px; }
 
