@@ -384,7 +384,7 @@ a {
 }
 
 p {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.67;
   color: #1A1A1A;
 }
@@ -2235,6 +2235,7 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
 
 .archive pre{
 	background:#1b2426;
+  margin: 5px 0;
 }
 
 .table>tbody>tr>td,
