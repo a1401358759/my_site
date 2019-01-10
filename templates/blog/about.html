@@ -38,20 +38,23 @@
       </ul>
     </div>
   </div>
-	<!-- 打赏 -->
-	<div id="cyReward" role="cylabs" data-use="reward" sid="" style="text-align: center;"></div>
 
   <!-- 评论框 -->
-  <div id="SOHUCS" sid="about_me"></div>
-  <script charset="utf-8" type="text/javascript" src="/static/changyan.js" ></script>
-  <script type="text/javascript">
-    // window._config = { showScore: true };  // 打分
-    window.changyan.api.config({
-      appid: 'cyt5STTrc',
-      conf: 'prod_2cd3e2798964d1d91c61c46a0a22f7b9'
+  <div id="vcomments" class="widget widget_recent_comments friend_links">
+  </div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: '2pSOFwxMUB0mHbMHpCH9bhRL-gzGzoHsz',
+      appKey: 'zkBqvFzJ7NswaFW6oGICyKpq',
+      notify: true,
+      verify: false,
+      avatar: 'identicon',
+      placeholder: '来说两句吧······',
+      visitor: true, // 阅读量统计
     });
   </script>
-
 {% endblock %}
 
 {% block side %}

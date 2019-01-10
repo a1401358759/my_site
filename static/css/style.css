@@ -2374,3 +2374,11 @@ video {
   height: 350px;
   margin: 10px 0;
 }
+
+.v .txt-right {
+  display: none!important;
+}
+
+.friend_links {
+  margin-left: 0px;
+}

@@ -71,12 +71,22 @@
     {% endif %}
   </div>-->
 
-  <!-- 打赏 -->
-  <div id="cyReward" role="cylabs" data-use="reward" sid="{{ article.id }}" style="text-align: center;"></div>
-
   <!-- 评论框 -->
-  {% include "blog/_comments.html" %}
+  <div id="vcomments" class="widget widget_recent_comments friend_links">
+  </div>
+
   <script>
+    new Valine({
+      el: '#vcomments',
+      appId: '2pSOFwxMUB0mHbMHpCH9bhRL-gzGzoHsz',
+      appKey: 'zkBqvFzJ7NswaFW6oGICyKpq',
+      notify: true,
+      verify: false,
+      avatar: 'identicon',
+      placeholder: '来说两句吧······',
+      visitor: true, // 阅读量统计
+    });
+
     $('img').zoomify(); // Default settings
   </script>
 {% endblock %}
