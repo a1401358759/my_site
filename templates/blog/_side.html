@@ -19,7 +19,7 @@
       {% for item in new_post %}
         <li>
           <a href="{{ item.get_absolute_url }}">
-            <span style="font-family: monaco;">{{ forloop.counter }}</span>.&nbsp;{{ item.title|truncatechars:20 }}&nbsp;( {{ item.count }} )
+            <span style="font-family: Consolas;">{{ forloop.counter }}</span>.&nbsp;{{ item.title|truncatechars:20 }}&nbsp;({{ item.count }})
           </a>
         </li>
       {% endfor %}

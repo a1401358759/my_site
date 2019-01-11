@@ -3,7 +3,7 @@
  */
 
 body {
-  font-family: "consolas", "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: Consolas, "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
   color: #6B6B6B;
   font-size: 12px;
   /*background: url("http://img.yangsihan.com/background.jpg") no-repeat;*/
@@ -387,6 +387,7 @@ a {
   text-decoration: none;
   line-height: inherit;
   font-size: 14px;
+  font-family: Consolas, "serif";
 }
 
 p {
