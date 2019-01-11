@@ -37,9 +37,9 @@
   <script src="{{ STATIC_URL }}lib/responsive-nav.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/responsive-nav.css">
 
-  <!-- highlight.js -->
-  <script src="{{ STATIC_URL }}plugins/highlight/highlight.pack.js"></script>
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}plugins/highlight/styles/darcula.css">
+  <!-- prism.js -->
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}plugins/prism/prism.css">
+  <script type="text/javascript" src="{{ STATIC_URL }}plugins/prism/prism.js"></script>
 
   <!-- swiper-4.4.6 -->
   <link rel="stylesheet" href="{{ STATIC_URL }}plugins/swiper4/swiper.min.css">
@@ -58,17 +58,6 @@
   <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
 
   <script>
-    jQuery(document).ready(function() {
-      jQuery('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
-      });
-
-      // 代码高亮自定义
-      jQuery("code").each(function(){
-        jQuery(this).html("<ul><li>" + jQuery(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
-      });
-    });
-
     // 百度统计
     var _hmt = _hmt || [];
     (function() {
@@ -86,6 +75,7 @@ $(function () {
 
   });
   jQuery(".aplayer-icon-lrc").addClass('hidden');  // 隐藏aplayer歌词图标
+  jQuery("pre").addClass("line-numbers");
 });
 </script>
 

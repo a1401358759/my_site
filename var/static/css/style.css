@@ -2341,3 +2341,8 @@ video {
 .friend_links {
   margin-left: 0px;
 }
+
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+  background: #f7f7f7!important;
+  font-size: 14px!important;
+}
