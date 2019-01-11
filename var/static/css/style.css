@@ -393,6 +393,7 @@ p {
   font-size: 14px;
   line-height: 1.67;
   color: #1A1A1A;
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
 }
 
 p a,
@@ -2288,53 +2289,6 @@ a:hover,
 a:focus {
   text-decoration: none;
   color: blue;
-}
-
-/* 搜狐畅言 */
-#SOHUCS, #SOHUCS #SOHU_MAIN {
-  margin: 15px 0 0 0 !important;
-  padding: 0 10px !important;
-  background-color: #fff !important;
-  border-radius: 5px !important;
-}
-
-#SOHUCS #SOHU_MAIN .module-cmt-list .block-cont-gw {
-  border-bottom: 1px dashed #ccc!important;
-}
-
-.module-cmt-float-bar {
-  display: none!important;
-}
-
-#feedAv,#MZAD_POP_PLACEHOLDER,#pop_ad{
- margin-top: -250px!important;
- transform: scale(0);
- z-index: -9999999;
-}
-
-#cyReping .reping-header {
-  display: none;
-}
-
-#cyReping .reping-list .list-item {
-  margin: 6px 10px 0px 0px!important;
-}
-
-#cyReward #cy-reward-pop .power-cy {
-  display: none;
-}
-
-#SOHUCS #SOHU_MAIN .module-cmt-footer {
-  display: none!important;
-}
-
-#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-build-gw .build-floor-gw {
-  margin: 20px 0 0 0;  /*手机端评论内容样式*/
-}
-
-#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-issue-gw .issue-wrap-gw {
-  line-height: 2.5em!important;
-  padding-top: 5px!important;
 }
 
 /* 轮播插件 */
