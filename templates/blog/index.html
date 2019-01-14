@@ -74,11 +74,11 @@
             <header class="entry-header">
               <div class="entry-info">
                 <span class="entry-date">
-                  <span class="fa fa-calendar" aria-hidden="true"></span>&nbsp;
+                  <span class="fa fa-calendar" aria-hidden="true"></span>
                   {{ article.publish_time|date:'Y年m月d日' }}
                 </span>
                 <span class="author vcard">
-                  <span class="fa fa-user" aria-hidden="true"></span>&nbsp;
+                  <span class="fa fa-user" aria-hidden="true"></span>
                   {{ article.author }}
                 </span>
                 <span class="pull-right">
@@ -105,11 +105,11 @@
 
             <footer class="entry-meta" style="padding:10px 0; margin-top:10px;">
               <span class="entry-categories">
-                <span class="fa fa-suitcase" aria-hidden="true"></span>&nbsp;
+                <span class="fa fa-suitcase" aria-hidden="true"></span>
                 <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
               </span>
               <span class="entry-tags">
-                <span class="fa fa-tags" aria-hidden="true"></span>&nbsp;
+                <span class="fa fa-tags" aria-hidden="true"></span>
                 {% for i in article.get_tags %}
                   <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}&nbsp;&nbsp;</a>
                 {% endfor %}
