@@ -397,6 +397,10 @@ p {
   font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
 }
 
+span {
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
+}
+
 p a,
 p a:visited {
   line-height: inherit;
@@ -2330,6 +2334,10 @@ video {
   margin: 10px 0;
 }
 
+.friend_links {
+  margin-left: 0px;
+}
+
 .v .txt-right {
   display: none!important;
 }
@@ -2338,11 +2346,40 @@ video {
   font-family: Consolas!important;
 }
 
-.friend_links {
-  margin-left: 0px;
+/* valine回复按钮样式 */
+.v .vlist .vcard .vh .vmeta .vat {
+  font-size: .75rem!important;
+  color: #313131!important;
+  background-color: #ededed!important;
+  padding: .2em 1em!important;
+  margin-top: -25px!important;
+  border-radius: .2em!important;
+}
+
+.v .vlist .vcard {
+  border: 1px solid rgba(150, 150, 150, 0.18)!important;
+  padding: 1em!important;
+  margin: 1em 0 0!important;
+  border-radius: .2em!important;
+}
+
+.v .vlist .vcard .vquote {
+  border-left: none!important;
+}
+
+.v .vlist .vcard .vh {
+  padding-bottom: 0!important;
+  border-bottom: none!important;
+}
+
+.v * {
+  line-height: 1.8!important;
+}
+
+.v .vlist .vcard .vimg:hover {
+  transform: rotate(360deg);
 }
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
-  /*background: #f7f7f7!important;*/
   font-size: 14px!important;
 }
