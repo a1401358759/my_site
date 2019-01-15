@@ -1480,18 +1480,17 @@ position:relative;
 .search-form label { display: none; }
 
 .s {
-  float: left;
   height: 35px;
-  margin: 0 !important;
-  padding: 10px !important;
-  border: 1px solid #F6F6F6 !important;
-  border-right: none!important;
+  margin: 0!important;
+  border: 1px solid #cfd4db!important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  /*background-color: #F6F6F6!important;*/
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
+  background: #FFF url("/static/css/search.svg") .6rem .7rem no-repeat!important;
+  border-radius: 50px;
+  background-size: 1em;
+  padding: 0 .5rem 0 2rem!important;
+  transition: all .2s ease!important;
 }
 
 .search-submit {
