@@ -2274,7 +2274,7 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
 .pagination > li > span {
   padding: 5px 10px;
   font-size: 12px;
-  margin: 0 0 0 2px;
+  margin: 0 5px;
   background-color: #fff !important;
   color: #999;
   border: 1px solid #fff !important;
@@ -2292,6 +2292,11 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-radius: 50%;
+}
+
+.paginate {
+  margin-top: -15px;
+  text-align: center;
 }
 
 a:hover,

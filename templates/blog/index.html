@@ -122,8 +122,8 @@
           </div>
         </div>
       {% endfor%}
-      <div class="pull-right" style="margin-top: -15px;">
-        {% bootstrap_paginate articles url_extra_args=params range=5 %}
+      <div class="paginate">
+        {% bootstrap_paginate articles url_extra_args=params range=5 show_first_last="true" %}
       </div>
     </span>
   {% endif %}
@@ -133,17 +133,14 @@
         direction: 'horizontal', // 水平切换选项
         loop: true, // 循环模式选项
         autoplay: true,  // 自动切换
-
         autoplay: {
           disableOnInteraction: false,
         },
-
         // 如果需要分页器
         pagination: {
           el: '.swiper-pagination',
           clickable :true, // 导航按钮可以点击
         },
-
         // 如果需要前进后退按钮
         navigation: {
           nextEl: '.swiper-button-next',
