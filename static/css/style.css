@@ -957,11 +957,9 @@ sub { bottom: -0.25em; }
 .entry-title { margin: 0 0 15px; }
 
 .entry-title, .entry-title a {
-  color: #F3963B;
+  /*color: #F3963B;*/
   font-size: 25px;
-  font-family: 'PingFang SC';
-  margin-top: -10px;
-  font-weight: 300;
+  font-family: Consolas;
 }
 
 /*.entry-title a:hover { color: #236688; }*/
