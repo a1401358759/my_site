@@ -1482,7 +1482,6 @@ position:relative;
 .s {
   float: left;
   height: 35px;
-  width: 200px;
   margin: 0 !important;
   padding: 10px !important;
   border: 1px solid #F6F6F6 !important;
@@ -1490,7 +1489,7 @@ position:relative;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  background-color: #F6F6F6!important;
+  /*background-color: #F6F6F6!important;*/
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
 }
@@ -1504,7 +1503,7 @@ position:relative;
   border: 1px solid #F6F6F6;
   border-left: none;
   color: #0084FF;
-  background: #F6F6F6;
+  /*background: #F6F6F6;*/
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
@@ -1684,16 +1683,19 @@ select {
 input::-webkit-input-placeholder { /* WebKit browsers */
   color: #999;
   font-size: 13px;
+  font-family: Consolas;
 }
 
 input::-moz-placeholder { /* Mozilla Firefox 19+ */
   color: #999;
   font-size: 13px;
+  font-family: Consolas;
 }
 
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
   color: #999;
   font-size: 13px;
+  font-family: Consolas;
 }
 
 input[type="text"]:focus,
