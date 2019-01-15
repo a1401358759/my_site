@@ -2128,6 +2128,10 @@ button.black:active {
   .commentlist .children li {
     margin-left: 0;
   }
+
+  video {
+    height: 180px;
+  }
 }
 
 /* Mobile Devices */
