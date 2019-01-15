@@ -9,13 +9,13 @@ body {
   /*background: url("http://img.yangsihan.com/background.jpg") no-repeat;*/
   /*background-size: 100% 100% !important;*/
   /*background-attachment: fixed !important;*/
-  cursor: url("/static/css/cursor_1.png"), default;
+  /*cursor: url("/static/css/cursor_1.png"), default;*/
   background-color: #f5f7f9;
 }
 
-a:hover{
+/*a:hover{
   cursor:url("/static/css/cursor_2.png"), pointer;
-}
+}*/
 
 h1, .h1,
 h2, .h2,
