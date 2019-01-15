@@ -2130,7 +2130,7 @@ button.black:active {
   }
 
   video {
-    height: 180px;
+    height: 180px!important;
   }
 }
 
