@@ -2381,6 +2381,10 @@ video {
   transform: rotate(360deg);
 }
 
+.v a {
+  color: #0078b6!important;
+}
+
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
   font-size: 14px!important;
 }
