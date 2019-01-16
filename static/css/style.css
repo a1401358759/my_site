@@ -2401,6 +2401,10 @@ video {
   color: #1abc9c!important;
 }
 
+.v .vbtn {
+  padding: .2rem 1.25rem!important;
+}
+
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
   font-size: 14px!important;
 }

@@ -7,5 +7,6 @@ new Valine({
   avatar:'monsterid',
   placeholder:'ヾﾉ≧∀≦)o来啊，快活啊!',
   visitor:true,
-  lang:'zh-cn'
 });
+
+$(".v .vbtn").html("提交");
