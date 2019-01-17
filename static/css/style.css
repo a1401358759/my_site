@@ -43,6 +43,10 @@ h6, .h6 {
   .container {
     max-width: 1300px!important;
   }
+
+  .swiper-slide img {
+    height: 350px!important;
+  }
 }
 
 /*
