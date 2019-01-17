@@ -39,6 +39,12 @@ h6, .h6 {
   }
 }
 
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1300px!important;
+  }
+}
+
 /*
  * Masthead for nav
  */
