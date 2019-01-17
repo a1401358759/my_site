@@ -47,6 +47,10 @@ h6, .h6 {
   .swiper-slide img {
     height: 350px!important;
   }
+
+  video {
+    height: 450px!important;
+  }
 }
 
 /*
