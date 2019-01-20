@@ -2408,3 +2408,25 @@ video {
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
   font-size: 14px!important;
 }
+
+blockquote {
+  position: relative;
+  padding-left: 70px;
+  border: none
+}
+
+blockquote p {
+  font-size: 20px;
+  line-height: 28px;
+  font-style: italic
+}
+
+blockquote::before {
+  content: "“";
+  position: absolute;
+  top: -15px;
+  left: -5px;
+  font-size: 200px;
+  line-height: 1;
+  color: #dcdcdc
+}
