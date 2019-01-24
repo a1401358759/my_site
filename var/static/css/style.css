@@ -2430,3 +2430,9 @@ blockquote::before {
   line-height: 1;
   color: #dcdcdc
 }
+
+.no-articles {
+  text-align: center;
+  padding-top: 50px;
+  color: #999;
+}

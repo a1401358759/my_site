@@ -65,7 +65,7 @@
 
 {% block content %}
   {% if not articles %}
-    <h4 style="color: silver;">没有找到相关文章</h4>
+    <h4 class="no-articles">啊哦，没有找到相关文章</h4>
   {% else %}
     <span id="itemContainer">
       {% for article in articles %}
