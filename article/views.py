@@ -77,13 +77,16 @@ def archive_month(request, year, month):
 
 
 def classfiDetail(request, classfi):
-    is_classfi = True
-    temp = Classification.objects.get(name=classfi)  # 获取全部的Article对象
-
-    articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
-    page_num = request.GET.get("page") or 1
-    page_size = request.GET.get("page_size") or 5
-    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    """
+    按分类查找
+    """
+    is_classfi, articles, total = True, [], 0
+    temp = Classification.objects.filter(name__icontains=classfi).first()
+    if temp:
+        articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
+        page_num = request.GET.get("page") or 1
+        page_size = request.GET.get("page_size") or 5
+        articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
@@ -94,12 +97,13 @@ def classfiDetail(request, classfi):
 
 
 def tagDetail(request, tag):
-    is_tag = True
-    temp = Tag.objects.get(name=tag)  # 获取全部的Article对象
-    articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
-    page_num = request.GET.get("page") or 1
-    page_size = request.GET.get("page_size") or 5
-    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    is_tag, articles, total = True, [], 0
+    temp = Tag.objects.filter(name=tag).first()
+    if temp:
+        articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
+        page_num = request.GET.get("page") or 1
+        page_size = request.GET.get("page_size") or 5
+        articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
@@ -113,7 +117,6 @@ def about(request):
     """
     关于我
     """
-    links = Links.objects.all().order_by("-weights", "id")
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
