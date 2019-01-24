@@ -8,14 +8,14 @@
   {% if is_arch_month %}
     杨学峰博客 | {{ year }}年 | {{ month }}月
   {% endif%}
-  {% if is_classfi  %}
-    杨学峰博客 | {{classfi}}
+  {% if is_classfi %}
+    杨学峰博客 | {{ classfi }}
   {% endif%}
   {% if is_tag  %}
-    杨学峰博客 | {{tag}}
+    杨学峰博客 | {{ tag }}
   {% endif%}
   {% if is_search  %}
-    杨学峰博客 | 查找有关{{s}}的文章
+    杨学峰博客 | 查找有关{{ s }}的文章
   {% endif %}
 {% endblock %}
 
@@ -64,8 +64,8 @@
 {% endblock %}
 
 {% block content %}
-  {% if error %}
-    <h4 style="color: silver;">没有相关文章题目</h4>
+  {% if not articles %}
+    <h4 style="color: silver;">没有找到相关文章</h4>
   {% else %}
     <span id="itemContainer">
       {% for article in articles %}
