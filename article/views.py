@@ -84,9 +84,9 @@ def classfiDetail(request, classfi):
     temp = Classification.objects.filter(name__icontains=classfi).first()
     if temp:
         articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
-        page_num = request.GET.get("page") or 1
-        page_size = request.GET.get("page_size") or 5
-        articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    page_num = request.GET.get("page") or 1
+    page_size = request.GET.get("page_size") or 5
+    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
@@ -101,9 +101,9 @@ def tagDetail(request, tag):
     temp = Tag.objects.filter(name=tag).first()
     if temp:
         articles = temp.article_set.filter(status=BlogStatus.PUBLISHED)
-        page_num = request.GET.get("page") or 1
-        page_size = request.GET.get("page_size") or 5
-        articles, total = paginate(articles, page_num=page_num, page_size=page_size)
+    page_num = request.GET.get("page") or 1
+    page_size = request.GET.get("page_size") or 5
+    articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
