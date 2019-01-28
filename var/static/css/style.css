@@ -2367,7 +2367,7 @@ video {
 
 .v .vlist .vcard {
   border: 1px solid rgba(150, 150, 150, 0.18)!important;
-  padding: 1em!important;
+  padding: .5em!important;
   margin: 1em 0 0!important;
   border-radius: .2em!important;
 }
@@ -2404,6 +2404,15 @@ video {
 .v .vbtn {
   padding: .2rem 1.25rem!important;
 }
+
+.v .vlist .vcard .vquote {
+  padding-left: 0!important;
+}
+
+.v .vlist .vcard .vcontent {
+  margin-bottom: 0!important;
+}
+/* valine样式 */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
   font-size: 14px!important;
