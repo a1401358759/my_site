@@ -100,7 +100,6 @@ $(function () {
                   <li><a href="{% url 'message' %}">留言板</a></li>
                   <li><a href="{% url 'links' %}">友情链接</a></li>
                   <li><a href="{% url 'about' %}">关于我</a></li>
-                  <li class="hidden-xs"><a href="http://www.ofmonkey.com/" target="_blank">常用工具</a></li>
                   <li class="hidden-xs">
                     <div id="search" class="widget_search">
                       <form role="search" method="get" class="search-form" action="/search/">
@@ -174,7 +173,7 @@ $(function () {
       jQuery(".nav a").each(function(){
         $this = jQuery(this);
         if($this[0].href==String(window.location)){
-          $this.css("color", "#444444");
+          $this.css({"color": "#333", "font-weight": "bold"});
         }
       });
     });
