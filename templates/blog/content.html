@@ -52,24 +52,14 @@
           </span>
         </div>
       </footer>
-      </div>
+    </div>
   </div>
 
-  <!--<div style="float: left;">
-    {% if article.get_after_article %}
-      {% with after=article.get_after_article %}
-        <p class="p1">上一篇 <a href="{{ after.get_absolute_url }}">{{ after }} </a></p>
-      {% endwith %}
-    {% endif %}
+  <!-- 打赏 -->
+  <div id="reward">
+    <button onclick="reward_modal_show()">打赏</button>
   </div>
-  <br/>
-  <div style="float: left; {% if article.get_after_article %}margin-left: -188px;{% endif %}">
-    {% if article.get_before_article %}
-      {% with before=article.get_before_article %}
-        <p class="p2">下一篇 <a href="{{ before.get_absolute_url }}">{{ before }} </a></p>
-      {% endwith %}
-    {% endif %}
-  </div>-->
+  {% include "blog/reward.html" %}
 
   <!-- 评论框 -->
   <div id="vcomments" class="widget widget_recent_comments friend_links">

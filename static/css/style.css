@@ -2447,3 +2447,19 @@ blockquote::before {
   padding-top: 50px;
   color: #999;
 }
+
+button {
+  outline: none!important;
+}
+#reward {
+  text-align:center;
+  margin-bottom:10px;
+}
+#reward button {
+  border-radius:50px;
+  background-color:red;
+  color:#fff;
+  width:100px;
+  height:45px;
+  outline:none;
+}

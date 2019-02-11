@@ -114,7 +114,6 @@ $(function () {
           <div class="clearfix"></div>
         </div>
         <div class="social-icons hidden-xs hidden-sm">
-          <a href="https://www.weibo.com" target="_blank"><i class="fa fa-weibo"></i></a>
           <a href="https://github.com/a1401358759" target="_blank"><i class="fa fa-github"></i></a>
           <a href="javascript:;" onclick="verify_user()"><i class="fa fa-heart"></i></a>
           <a href="{% url 'my_resume' %}" target="_blank"><i class="fa fa-user"></i></a>
@@ -166,6 +165,10 @@ $(function () {
   <script type="text/javascript">
     function verify_user(){
       jQuery("#verify_user").modal('show');
+    }
+
+    function reward_modal_show(){
+      jQuery("#reward_modal").modal('show');
     }
 
     // 导航栏选中高亮
