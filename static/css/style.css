@@ -2225,13 +2225,13 @@ button.black:active {
   color:#000;
 }
 @media screen and (max-width: 760px) {
-.liaspan{
-  width:31em;
-  word-break:keep-all;/* 不换行 */
-  white-space:nowrap;/* 不换行 */
-  overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
-  text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
-}
+  .liaspan{
+    width:31em;
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+  }
 }
 @media screen and (min-width: 760px) {
 	#nav2{
@@ -2425,9 +2425,11 @@ blockquote {
 }
 
 blockquote p {
-  font-size: 20px;
+  font-size: 17px;
   line-height: 28px;
-  font-style: italic
+  font-style: italic;
+  padding-left: 20px;
+  padding-top: 15px;
 }
 
 blockquote::before {
