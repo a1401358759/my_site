@@ -142,7 +142,7 @@ ul, ol {
 	padding: 100px 0;
 	text-align: center;
 	color: #fff;
-	background: url("http://img.yangsihan.com/intro-bg.jpg") no-repeat bottom center;
+	background: url("https://img.yangsihan.com/intro-bg.jpg") no-repeat bottom center;
 	background-color: #000;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -560,7 +560,7 @@ ol.type li a:hover {
 }
 /* Testimonials Section */
 #testimonials {
-	background: url("http://img.yangsihan.com/testimonial-bg.jpg");
+	background: url("https://img.yangsihan.com/testimonial-bg.jpg");
 	background-size: cover;
 	background-attachment: fixed;
 	color: #ddd;
@@ -708,5 +708,3 @@ nav#footer p {
 #footer i.fa:hover {
 	color: #F4D03F;
 }
-
-

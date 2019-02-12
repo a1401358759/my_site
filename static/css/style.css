@@ -6,7 +6,7 @@ body {
   font-family: Consolas, "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
   color: #6B6B6B;
   font-size: 12px;
-  /*background: url("http://img.yangsihan.com/background.jpg") no-repeat;*/
+  /*background: url("https://img.yangsihan.com/background.jpg") no-repeat;*/
   /*background-size: 100% 100% !important;*/
   /*background-attachment: fixed !important;*/
   /*cursor: url("/static/css/cursor_1.png"), default;*/
@@ -1388,6 +1388,12 @@ position:relative;
   /*opacity: 0.9;*/
   color: #8590A6;
   font-size: 14px;
+  padding: 22.5px 0;
+  text-align: center;
+}
+
+#footer-content span a {
+  color: #8590A6;
 }
 
 #copyright {
@@ -2102,11 +2108,6 @@ button.black:active {
 
   .entry-meta { padding-top: 10px; }
 
-  #footer-content {
-    padding: 22.5px 0;
-    text-align: center;
-  }
-
   #copyright,
   #credit {
     display: block;
@@ -2240,7 +2241,7 @@ button.black:active {
 }
 
 #scrollUp {
-  background-image: url("http://img.yangsihan.com/top.gif");
+  background-image: url("https://img.yangsihan.com/top.gif");
   bottom: 5px;
   right: 10px;
   width: 50px; /* Width of image */
