@@ -11,7 +11,7 @@ from utils.paginate import paginate
 from utils.response import render_json
 from utils.mine_qiniu import upload_data
 from .models import Article, Classification, Messages, OwnerMessage, Tag, Links, CarouselImg
-from .constants import BlogStatus
+from .constants import BlogStatus, CarouselImgType
 from .backends import get_tags_and_musics
 
 
@@ -37,7 +37,7 @@ def home(request):
     classification = Classification.class_list.get_classify_list()  # 分类,以及对应的数目
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
     date_list = Article.date_list.get_article_by_date()  # 按月归档,以及对应的文章数目
-    carouse_imgs = CarouselImg.objects.order_by("-weights", "id")  # 轮播图
+    carouse_imgs = CarouselImg.objects.filter(img_type=CarouselImgType.BANNER).order_by("-weights", "id")  # 轮播图
 
     return render(request, 'blog/index.html', locals())
 

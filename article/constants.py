@@ -11,3 +11,15 @@ class BlogStatus(object):
     )
 
     CHOICES_DICT = dict(CHOICES)
+
+
+class CarouselImgType(object):
+    BANNER = 1
+    ADS = 2
+
+    CHOICES = (
+        (BANNER, u"banner"),
+        (ADS, u"ads")
+    )
+
+    CHOICES_DICT = dict(CHOICES)

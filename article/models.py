@@ -3,7 +3,7 @@
 from django.db import models
 from collections import OrderedDict
 # from DjangoUeditor.models import UEditorField
-from .constants import BlogStatus
+from .constants import BlogStatus, CarouselImgType
 from utils.mixins import TimeModelMixin
 
 
@@ -253,8 +253,9 @@ class CarouselImg(TimeModelMixin):
     name = models.CharField(max_length=50, verbose_name=u'图片名称')
     description = models.CharField(max_length=100, verbose_name=u'图片描述')
     path = models.CharField(max_length=100, verbose_name=u'图片地址')
-    link = models.CharField(max_length=200, verbose_name=u'图片外链', default="", null=True)
+    link = models.CharField(max_length=200, verbose_name=u'图片外链', default="", null=True, blank=True)
     weights = models.SmallIntegerField(default=10, verbose_name=u'图片权重', blank=True, null=True)
+    img_type = models.SmallIntegerField(verbose_name=u"类型", choices=CarouselImgType.CHOICES, default=CarouselImgType.BANNER)
 
     def __unicode__(self):
         return self.name

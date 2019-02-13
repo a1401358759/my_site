@@ -406,6 +406,7 @@ p a:visited {
   line-height: inherit;
   word-break: break-all;
   color: #0078b6;
+  font-size: inherit;
 }
 
 em,
@@ -2463,4 +2464,9 @@ button {
   width:100px;
   height:45px;
   outline:none;
+}
+
+/* 广告位 */
+#ad_swiper img {
+  height: 203px;
 }

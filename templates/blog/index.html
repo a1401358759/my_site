@@ -127,28 +127,6 @@
       </div>
     </span>
   {% endif %}
-  <script type="text/javascript">
-    $(function(){
-      var mySwiper = new Swiper ('.swiper-container', {
-        direction: 'horizontal', // 水平切换选项
-        loop: true, // 循环模式选项
-        autoplay: true,  // 自动切换
-        autoplay: {
-          disableOnInteraction: false,
-        },
-        // 如果需要分页器
-        pagination: {
-          el: '.swiper-pagination',
-          clickable :true, // 导航按钮可以点击
-        },
-        // 如果需要前进后退按钮
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      })
-    });
-  </script>
 {% endblock %}
 
 {% block side %}
