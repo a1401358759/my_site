@@ -26,7 +26,6 @@ SECRET_KEY = 'p-2_9jdgcawck*piav1d(kq-!((g#8#riop01(^5ilnl6f(ram'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-SITE_DOMAIN = config.SITE_DOMAIN
 ALLOWED_HOSTS = ['*']
 
 
@@ -44,8 +43,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap_pagination',
     'article',
-    'DjangoUeditor',
-    'django_crontab'
 )
 
 
@@ -219,9 +216,6 @@ LOGGING = {
     }
 }
 
-CRONJOBS = [
-    ('*/1 * * * *', 'article.cron.test', '>>/log/test.log')
-]
 
 # import local settings
 try:
