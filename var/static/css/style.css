@@ -2365,7 +2365,7 @@ video {
 }
 
 .v .vlist .vcard {
-  border: 1px solid rgba(150, 150, 150, 0.18)!important;
+  border: 1px dashed rgba(150, 150, 150, 0.18)!important;
   padding: .5em!important;
   margin: 1em 0 0!important;
   border-radius: .2em!important;
