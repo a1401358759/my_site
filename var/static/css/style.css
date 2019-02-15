@@ -2414,7 +2414,7 @@ video {
 /* valine样式 */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
-  font-size: 14px!important;
+  font-size: 15px!important;
 }
 
 blockquote {
