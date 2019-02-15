@@ -1372,10 +1372,8 @@ position:relative;
 --------------------------------------- */
 
 #footer {
-  padding-top: 20px;
   line-height: 1.5;
   width: 100%;
-  background-size: 100% 100%;
 }
 
 #footer-widgets {
@@ -1389,7 +1387,6 @@ position:relative;
   /*opacity: 0.9;*/
   color: #8590A6;
   font-size: 14px;
-  padding: 22.5px 0;
   text-align: center;
 }
 
@@ -2243,7 +2240,7 @@ button.black:active {
 
 #scrollUp {
   background-image: url("https://img.yangsihan.com/top.gif");
-  bottom: 5px;
+  bottom: 20px;
   right: 10px;
   width: 50px; /* Width of image */
   height: 50px; /* Height of image */
