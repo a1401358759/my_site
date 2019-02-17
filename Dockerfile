@@ -1,12 +1,13 @@
-FROM registry.cn-beijing.aliyuncs.com/yxf-blog/my_site
+FROM scratch
 
 LABEL name="registry.cn-beijing.aliyuncs.com/yxf-blog/my_site"
-LABEL version="1508840702"
+LABEL version="latest"
 
-VOLUME ["/home/data/venv/my_site/my_sitet", "/home/data/venv/my_site/my_site/log", "/home/data/venv/my_site", "/root/.ssh"]
+VOLUME ["/home/data/venv/my_site/my_sitet", "/home/data/venv/my_site/my_site/log", "/home/data/venv/my_site"]
 EXPOSE 8000
 WORKDIR /home/data/venv/my_site/my_site
 
+RUN mkdir -p log
 # create uwsgi pid dir && /opt/django/bin
 RUN mkdir -p /var/run/uwsgi
 RUN mkdir -p /opt/django/bin

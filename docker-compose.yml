@@ -6,6 +6,5 @@ my_site:
         - /home/data/venv/my_site/my_site:/home/data/venv/my_site/my_site
         - /home/data/venv/my_site/my_site/log:/home/data/venv/my_site/my_site/log
         - /home/data/venv/my_site:/home/data/venv/my_site
-        - /root/.ssh:/root/.ssh
     ports:
         - "9003:8000"

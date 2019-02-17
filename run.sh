@@ -7,4 +7,4 @@ pip install -r requirement.txt
 # TODO git pull
 
 # runserver
-../venv/bin/uwsgi -i etc/uwsgi.ini
+uwsgi -i etc/uwsgi.ini
