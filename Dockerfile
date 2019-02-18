@@ -9,9 +9,17 @@ WORKDIR /home/data/venv/my_site/my_site
 
 RUN mkdir -p /home/data/venv/my_site/my_site/log
 
-RUN chmod +x /home/data/venv/my_site/my_site/run.sh
-RUN chmod +x /home/data/venv/my_site/my_site/control.sh
-RUN chmod +x /home/data/venv/my_site/my_site/entrypoint.sh
+ADD /home/data/venv/my_site/my_site/run.sh /opt/django/bin/
+RUN chmod +x /opt/django/bin/run.sh
 
-ENTRYPOINT ["/home/data/venv/my_site/my_site/entrypoint.sh"]
-CMD ["run.sh"]
+
+ADD /home/data/venv/my_site/my_site/control.sh /opt/django/bin/
+RUN chmod +x /opt/django/bin/control.sh
+RUN ln -s /opt/django/bin/control.sh /bin/control
+
+RUN mkdir -p /opt/django/bin
+ADD /home/data/venv/my_site/my_site/entrypoint.sh /opt/django/bin/
+RUN chmod +x /opt/django/bin/entrypoint.sh
+
+ENTRYPOINT ["/opt/django/bin/entrypoint.sh"]
+CMD ["/opt/django/bin/run.sh"]
