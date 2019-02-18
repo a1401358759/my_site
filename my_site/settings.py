@@ -196,7 +196,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': '%s/log/%s.log' % (BASE_DIR, config.RUNNING_ENVIRONMENT),
+            'filename': '%s/logs/%s.log' % (BASE_DIR, config.RUNNING_ENVIRONMENT),
             'when': 'D',
             'backupCount': 10,
             'formatter': 'default',
