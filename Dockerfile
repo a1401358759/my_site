@@ -3,25 +3,21 @@ FROM scratch
 LABEL name="registry.cn-beijing.aliyuncs.com/yxf-blog/my_site"
 LABEL version="latest"
 
-VOLUME ["/home/data/venv/my_site/my_sitet", "/home/data/venv/my_site/my_site/log", "/home/data/venv/my_site"]
+VOLUME ["/home/data/venv/my_site/my_site", "/home/data/venv/my_site/my_site/log", "/home/data/venv/my_site"]
 EXPOSE 8000
 WORKDIR /home/data/venv/my_site/my_site
 
-RUN mkdir -p log
-# create uwsgi pid dir && /opt/django/bin
-RUN mkdir -p /var/run/uwsgi
-RUN mkdir -p /opt/django/bin
-# add entrypoint.sh -- ENTRYPOINT script, setup virtualenv
-ADD entrypoint.sh /opt/django/bin/
-RUN chmod +x /opt/django/bin/entrypoint.sh
-# add run.sh -- CMD script, how to run docker container
-ADD run.sh /opt/django/bin/
-RUN chmod +x /opt/django/bin/run.sh
-# add control.sh -- some container control cmd
-ADD control.sh /opt/django/bin/
-RUN chmod +x /opt/django/bin/control.sh
-RUN ln -s /opt/django/bin/control.sh /bin/control
+RUN mkdir -p /home/data/venv/my_site/my_site/log
 
-# Run container
-ENTRYPOINT ["/opt/django/bin/entrypoint.sh"]
-CMD ["/opt/django/bin/run.sh"]
+ADD entrypoint.sh /home/data/venv/my_site/my_site
+RUN chmod +x entrypoint.sh
+
+ADD run.sh /home/data/venv/my_site/my_site
+RUN chmod +x run.sh
+
+ADD control.sh /home/data/venv/my_site/my_site
+RUN chmod +x control.sh
+RUN ln -s control.sh /bin/control
+
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["run.sh"]

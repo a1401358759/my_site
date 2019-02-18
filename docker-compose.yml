@@ -1,5 +1,5 @@
 my_site:
-    image: registry.cn-beijing.aliyuncs.com/yxf-blog/my_site
+    image: ubuntu:16.04
     container_name: my_site
     restart: always
     volumes:

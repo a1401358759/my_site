@@ -2,8 +2,8 @@
 set -e
 
 # create and use virtualenv
-VENV_DIR="/opt/django/venv"
-VENV_ACTIVATE_PATH="/opt/django/venv/bin/activate"
+VENV_DIR="/home/data/venv/my_site"
+VENV_ACTIVATE_PATH="/home/data/venv/my_site/bin/activate"
 if [ ! -d "$VENV_ACTIVATE_PATH" ]; then
   virtualenv $VENV_DIR
 fi
