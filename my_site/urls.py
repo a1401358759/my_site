@@ -20,6 +20,6 @@ urlpatterns = [
     url(r'^love/?$', 'article.views.love'),
     url(r'^my-resume/?$', 'article.views.my_resume', name='my_resume'),  # 简历
     url(r'^create/messages$', 'article.views.create_messages', name='create_messages'),
-    url(r'^ueditor/', include('DjangoUeditor.urls')),
+    # url(r'^ueditor/', include('DjangoUeditor.urls')),
     url(r'^upload/$', 'article.views.upload_file', name='upload_file'),
 ]
