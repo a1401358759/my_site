@@ -1,4 +1,4 @@
-FROM scratch
+FROM ubuntu:16.04
 
 LABEL name="registry.cn-beijing.aliyuncs.com/yxf-blog/my_site"
 LABEL version="latest"
