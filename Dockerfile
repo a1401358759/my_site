@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y python-pip
 RUN pip install --no-cache-dir virtualenv
 RUN ln -s /usr/local/python2.7.11/bin/virtualenv /usr/bin/virtualenv
 
-RUN chmod u+x run.sh
+RUN chmod +x run.sh
+
 # 容器启动后要执行的命令
 CMD ["run.sh"]
