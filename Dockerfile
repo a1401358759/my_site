@@ -7,9 +7,6 @@ WORKDIR /home/data/venv/my_site/my_site
 RUN mkdir -p /home/data/venv/my_site/my_site/log
 RUN mkdir -p /opt/django/bin
 
-COPY entrypoint.sh /opt/django/bin/
-RUN chmod +x /opt/django/bin/entrypoint.sh
-
 COPY run.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/run.sh
 
@@ -22,5 +19,4 @@ RUN apt-get update && apt-get install -y python-pip
 RUN pip install --no-cache-dir virtualenv
 RUN ln -s /usr/local/python2.7.11/bin/virtualenv /usr/bin/virtualenv
 
-ENTRYPOINT ["/opt/django/bin/entrypoint.sh"]
 CMD ["/opt/django/bin/run.sh"]
