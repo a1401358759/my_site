@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM registry.cn-beijing.aliyuncs.com/yxf-blog/my_site
 
 LABEL name="registry.cn-beijing.aliyuncs.com/yxf-blog/my_site"
 LABEL version="latest"
