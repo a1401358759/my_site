@@ -12,11 +12,7 @@ EXPOSE 8000
 WORKDIR /home/data/venv/my_site/my_site
 
 # 安装应用运行所需要的工具依赖pip，git好像没用上，mysql客户端，
-RUN apt-get -y install epel-release && \
-    apt-get -y install python-pip && \
-    apt-get -y install git nginx gcc gcc-c++ python-devel && apt-get -y install mysql && \
-    apt-get -y install mysql-devel && apt-get clean all && \
-    pip install --upgrade pip
+RUN apt-get update && apt-get install -y python-pip
 
 RUN pip install --no-cache-dir virtualenv
 RUN ln -s /usr/local/python2.7.11/bin/virtualenv /usr/bin/virtualenv
