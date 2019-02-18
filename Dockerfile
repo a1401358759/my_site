@@ -9,12 +9,9 @@ WORKDIR /home/data/venv/my_site/my_site
 
 RUN mkdir -p /home/data/venv/my_site/my_site/log
 
-RUN chmod +x /home/data/venv/my_site/my_site/entrypoint.sh
-
 RUN chmod +x /home/data/venv/my_site/my_site/run.sh
 
 RUN chmod +x /home/data/venv/my_site/my_site/control.sh
 RUN ln -s /home/data/venv/my_site/my_site/control.sh /bin/control
 
-ENTRYPOINT ["entrypoint.sh"]
 CMD ["run.sh"]
