@@ -19,5 +19,8 @@ RUN chmod +x /opt/django/bin/run.sh
 ADD control.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/control.sh
 
+RUN pip install --no-cache-dir virtualenv
+RUN ln -s /usr/local/bin/virtualenv /usr/bin/virtualenv
+
 ENTRYPOINT ["/opt/django/bin/entrypoint.sh"]
 CMD ["/opt/django/bin/run.sh"]
