@@ -1,23 +1,26 @@
 FROM ubuntu:16.04
-# 声明镜像制作者
-MAINTAINER yangxuefeng <13552974161@163.com>
-# 设置时区
-ENV TZ "Asia/Shanghai"
 
-RUN mkdir -p /home/data/venv/my_site
-RUN mkdir -p /home/data/venv/my_site/my_site
-RUN mkdir -p /home/data/venv/my_site/log
-
+VOLUME ["/home/data/venv/my_site/my_site", "/home/data/venv/my_site/my_site/log", "/home/data/venv/my_site"]
 EXPOSE 8000
 WORKDIR /home/data/venv/my_site/my_site
 
-# 安装应用运行所需要的工具依赖pip，git好像没用上，mysql客户端，
+RUN mkdir -p /home/data/venv/my_site/my_site/log
+RUN mkdir -p /opt/django/bin
+
+COPY entrypoint.sh /opt/django/bin/
+RUN chmod +x /opt/django/bin/entrypoint.sh
+
+COPY run.sh /opt/django/bin/
+RUN chmod +x /opt/django/bin/run.sh
+
+COPY control.sh /opt/django/bin/
+RUN chmod +x /opt/django/bin/control.sh
+
 RUN apt-get update && apt-get install -y python-pip
 
+# install "virtualenv", since the vast majority of users of this image will want it
 RUN pip install --no-cache-dir virtualenv
 RUN ln -s /usr/local/python2.7.11/bin/virtualenv /usr/bin/virtualenv
 
-RUN chmod +x run.sh
-
-# 容器启动后要执行的命令
-CMD ["run.sh"]
+ENTRYPOINT ["/opt/django/bin/entrypoint.sh"]
+CMD ["/opt/django/bin/run.sh"]
