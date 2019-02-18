@@ -19,9 +19,6 @@ RUN chmod +x /opt/django/bin/run.sh
 ADD control.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/control.sh
 
-RUN mv /usr/bin/python /usr/bin/python2.7.5
-RUN ln -s /usr/local/python2.7.11/bin/python /usr/bin/python
-
 RUN apt-get install -y python-pip
 
 # install "virtualenv", since the vast majority of users of this image will want it
