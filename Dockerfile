@@ -10,13 +10,13 @@ WORKDIR /home/data/venv/my_site/my_site
 RUN mkdir -p /home/data/venv/my_site/my_site/log
 RUN mkdir -p /opt/django/bin
 
-ADD entrypoint.sh /opt/django/bin/
+COPY entrypoint.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/entrypoint.sh
 
-ADD run.sh /opt/django/bin/
+COPY run.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/run.sh
 
-ADD control.sh /opt/django/bin/
+COPY control.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/control.sh
 
 RUN apt-get update && apt-get install -y python-pip
