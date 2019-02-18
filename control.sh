@@ -7,12 +7,14 @@ RES='\E[0m'
 
 # 启动uwsgi服务
 if [ "$1" == "start_uwsgi" ]; then
-    uwsgi -i etc/uwsgi.ini &
+    ./manage.py migrate --noinput
+    uwsgi -i etc/uwsgi.ini
     exit
 fi
 
 # 重启uwsgi服务
 if [ "$1" == "restart_uwsgi" ]; then
+    ./manage.py migrate --noinput
     uwsgi --reload /var/run/uwsgi/project.pid
     exit
 fi
@@ -20,6 +22,7 @@ fi
 # 更新代码，更新pip依赖，重启uwsgi服务
 if [ "$1" == "update_restart_uwsgi" ]; then
     git pull
+    ./manage.py migrate --noinput
     pip install -r requirements.txt | grep -v "Requirement already satisfied"
     uwsgi --reload /var/run/uwsgi/project.pid
     exit
