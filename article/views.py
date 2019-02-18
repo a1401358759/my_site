@@ -187,7 +187,7 @@ def message(request):
     主人寄语
     """
     own_messages = OwnerMessage.objects.all()
-    own_message = random.sample(own_messages, 1)[0]  # 随机返回一个主人寄语
+    own_message = random.sample(own_messages, 1)[0] if own_messages else ""  # 随机返回一个主人寄语
     date_list = Article.date_list.get_article_by_date()
     classification = Classification.class_list.get_classify_list()
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
