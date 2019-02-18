@@ -18,7 +18,6 @@ RUN chmod +x /opt/django/bin/run.sh
 
 ADD control.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/control.sh
-RUN ln -s /opt/django/bin/control.sh /bin/control
 
 ENTRYPOINT ["/opt/django/bin/entrypoint.sh"]
 CMD ["/opt/django/bin/run.sh"]
