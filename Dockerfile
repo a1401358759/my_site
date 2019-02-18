@@ -19,7 +19,7 @@ RUN chmod +x /opt/django/bin/run.sh
 ADD control.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/control.sh
 
-RUN apt-get install -y python-pip
+RUN apt-get update && apt-get install -y python-pip
 
 # install "virtualenv", since the vast majority of users of this image will want it
 RUN pip install --no-cache-dir virtualenv
