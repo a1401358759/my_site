@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 RED_COLOR='\E[1;31m' #红
 YELOW_COLOR='\E[1;33m' #黄

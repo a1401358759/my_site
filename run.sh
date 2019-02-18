@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # install uwsgi and requirements
 pip install uwsgi==2.0.12
