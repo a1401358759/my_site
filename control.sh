@@ -15,7 +15,7 @@ fi
 # 重启uwsgi服务
 if [ "$1" == "restart_uwsgi" ]; then
     ./manage.py migrate --noinput
-    uwsgi --reload /var/run/uwsgi/project.pid
+    uwsgi --reload /home/data/venv/my_site/my_site/logs/uwsgi.pid
     exit
 fi
 
@@ -24,7 +24,7 @@ if [ "$1" == "update_restart_uwsgi" ]; then
     git pull
     ./manage.py migrate --noinput
     pip install -r requirements.txt | grep -v "Requirement already satisfied"
-    uwsgi --reload /var/run/uwsgi/project.pid
+    uwsgi --reload /home/data/venv/my_site/my_site/logs/uwsgi.pid
     exit
 fi
 
