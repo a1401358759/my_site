@@ -1,7 +1,13 @@
 /*
  * Globals
  */
-
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/static/css/ZNo-5SxCwH1CXgZ-n3bt2g.woff2") format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215
+}
 body {
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   color: #6B6B6B;
@@ -326,7 +332,6 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 20px 0;
   margin: 1.25rem 0;
   line-height: 1.1;
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
@@ -349,37 +354,31 @@ h6 small {
 h1 {
   font-size: 1.5em;
   font-weight: normal;
-  font-family: initial;
 }
 
 h2 {
   font-size: 1.4em;
   font-weight: normal;
-  font-family: initial;
 }
 
 h3 {
   font-size: 1.3em;
   font-weight: normal;
-  font-family: initial;
 }
 
 h4 {
   font-size: 1.2em;
   font-weight: normal;
-  font-family: initial;
 }
 
 h5 {
   font-size: 1.1em;
   font-weight: normal;
-  font-family: initial;
 }
 
 h6 {
   font-size: 1em;
   font-weight: normal;
-  font-family: initial;
 }
 
 a {
@@ -387,7 +386,7 @@ a {
   text-decoration: none;
   line-height: inherit;
   font-size: 14px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
 p {
