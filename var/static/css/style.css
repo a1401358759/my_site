@@ -3,7 +3,7 @@
  */
 
 body {
-  font-family: Consolas, "Menlo", "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   color: #6B6B6B;
   font-size: 12px;
   /*background: url("https://img.yangsihan.com/background.jpg") no-repeat;*/
@@ -24,7 +24,7 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   margin-top: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   font-weight: normal;
   color: #333;
 }
@@ -310,7 +310,7 @@ body {
   color: #4e4e4e;
   padding: 0;
   margin: 0;
-  font-family: "微软雅黑", "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
@@ -329,7 +329,7 @@ h6 {
   margin: 20px 0;
   margin: 1.25rem 0;
   line-height: 1.1;
-  font-family: "微软雅黑", "Oxygen", Georgia, serif;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   font-weight: 300;
   color: #525252;
   text-rendering: optimizeLegibility;
@@ -387,18 +387,18 @@ a {
   text-decoration: none;
   line-height: inherit;
   font-size: 14px;
-  font-family: Consolas, "serif";
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif
 }
 
 p {
   font-size: 14px;
   line-height: 1.8em;
   color: #1A1A1A;
-  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif
 }
 
 span {
-  font-family: Consolas, "Liberation Mono", Menlo, Monaco, sans-serif!important;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif!important;
 }
 
 p a,
@@ -502,11 +502,6 @@ acronym {
 
 abbr { text-transform: none; }
 
-blockquote {
-  padding: 0 1.25em;
-  /*font-style: italic;*/
-}
-
 cite { font-style: italic; }
 
 address {
@@ -517,7 +512,7 @@ address {
 code,
 kbd,
 tt {
-  font-family: "微软雅黑", Consolas, Monaco, Lucida Console, monospace;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   font-size: 0.8em;
 }
 
@@ -676,7 +671,7 @@ sub { bottom: -0.25em; }
   text-decoration: none;
   border: 0;
   font-size: 15px;
-  font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', 'Helvetica', 'sans-serif';
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
 #header a:hover,
@@ -694,13 +689,12 @@ sub { bottom: -0.25em; }
   margin: 0;
   font-size: 2.5em;
   line-height: 55px;
-  font-family: "微软雅黑", "Oxygen", Georgia, serif;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
 #site-title a {
   color: #0084FF;
   font-size: 24px;
-  /*font-family: "STXingkai";*/
   font-weight: normal;
 }
 
@@ -960,7 +954,7 @@ sub { bottom: -0.25em; }
 .entry-title, .entry-title a {
   /*color: #F3963B;*/
   font-size: 25px;
-  font-family: Consolas;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
 /*.entry-title a:hover { color: #236688; }*/
@@ -1168,7 +1162,7 @@ position:relative;
 }
 .hentry.format-link .entry-content a {
   font-size: 2.125em;
-  font-family: "微软雅黑", "Oxygen", Georgia, serif;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   line-height: 1.1;
 }
 
@@ -1382,7 +1376,7 @@ position:relative;
 }
 
 #footer-content {
-  padding: 22.5px 0;
+  padding: 25px 0;
   background: #FFFFFF;
   /*opacity: 0.9;*/
   color: #8590A6;
@@ -1684,19 +1678,19 @@ select {
 input::-webkit-input-placeholder { /* WebKit browsers */
   color: #999;
   font-size: 13px;
-  font-family: Consolas;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
 input::-moz-placeholder { /* Mozilla Firefox 19+ */
   color: #999;
   font-size: 13px;
-  font-family: Consolas;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
   color: #999;
   font-size: 13px;
-  font-family: Consolas;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
 input[type="text"]:focus,
@@ -2351,7 +2345,7 @@ video {
 }
 
 .v .vlist .vcard .vcontent.expand:after {
-  font-family: Consolas!important;
+  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif!important;
 }
 
 /* valine回复按钮样式 */
@@ -2417,28 +2411,11 @@ video {
   font-size: 15px!important;
 }
 
-blockquote {
-  position: relative;
-  padding-left: 70px;
-  border: none
-}
-
 blockquote p {
   font-size: 17px;
   line-height: 28px;
-  font-style: italic;
   padding-left: 20px;
-  padding-top: 15px;
-}
-
-blockquote::before {
-  content: "“";
-  position: absolute;
-  top: -15px;
-  left: -5px;
-  font-size: 200px;
-  line-height: 1;
-  color: #dcdcdc
+  padding-top: 10px;
 }
 
 .no-articles {
