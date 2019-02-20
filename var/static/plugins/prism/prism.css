@@ -11,7 +11,7 @@ pre[class*="language-"] {
 	color: #f8f8f2;
 	background: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 	text-align: left;
 	white-space: pre!important;
 	word-spacing: normal;
