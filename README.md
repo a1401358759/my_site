@@ -1,6 +1,6 @@
 # my_site
 ### 使用Python + Django + Bootstrap搭建的简易个人博客  
-1. 后台使用django_admin_bootstrapped
+1. 后台基于django-simpleui自己重新编写了代码打包到pypi
 2. 实现文章按月归档
 3. 实现文章分类, 标签
 4. 采用第三方评论: Valine + Leancloud

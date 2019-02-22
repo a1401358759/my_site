@@ -32,9 +32,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-    # 'simpleui',
+    'simpleui',
     'bootstrap3',
-    'django_admin_bootstrapped',
+    # 'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +45,8 @@ INSTALLED_APPS = (
     'article',
 )
 
+# 首页图标
+SIMPLEUI_HOME_ICON = 'layui-icon-rate'
 
 BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
