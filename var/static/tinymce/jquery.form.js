@@ -13,6 +13,7 @@
 // AMD support
 (function (factory) {
     "use strict";
+    var $=jQuery.noConflict();
     if (typeof define === 'function' && define.amd) {
         // using AMD; register as anon module
         define(['jquery'], factory);
