@@ -38,4 +38,4 @@ django-admin-bootstrapped==2.5.7
 django-bootstrap3==10.0.1
 qiniu==7.2.2
 DjangoUeditor==1.8.143
-django-simpleui-2==2.1.0
+django-simpleui-2==2.1.2
