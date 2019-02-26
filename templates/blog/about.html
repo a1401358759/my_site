@@ -15,6 +15,7 @@
         <p>1. 使用Python + Django + MySQL开发的个人博客，GitHub地址：<a href="https://github.com/a1401358759/my_site">github</a>。
         欢迎吐槽、star和fork。<p>
         <p>2. 本站大部分文章是博主工作中遇到问题时，通过网络资源查找到的解决方法的总结记录，如有不当之处，请联系博主删除，敬请谅解！</p>
+        <p>3. 本站已经稳定运行 <span id="days" style="color:red;">0</span> 天。</p>
       </blockquote>
       <br />
 
@@ -22,7 +23,7 @@
         关于我
       </h3>
       <blockquote>
-        <p>1. IT行业python男一枚,东搞西搞,目前工作于研发部,对在线学习和开发感兴趣,闲暇打LOL,看些电视剧和电影</p>
+        <p>1. IT行业python男一枚，东搞西搞，目前工作于研发部，对在线学习和开发感兴趣，偶尔打LOL，看些电视剧和电影。</p>
         <p>2. 欢迎访问我的另一篇博客: <a href="http://wyy.yangsihan.com" target="_blank">博客2🙂</a></p>
         <p>3. <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=rovwt9lv" target="_blank">领取阿里云专属优惠券</a></p>
       </blockquote>
@@ -46,6 +47,14 @@
   </div>
 
   <script src="/static/js/valine.js"></script>
+  <script>
+    var s1 = '2018-02-01';  // 设置为你的建站时间
+    s1 = new Date(s1.replace(/-/g, "/"));
+    s2 = new Date();
+    var days = s2.getTime() - s1.getTime();
+    var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
+    document.getElementById('days').innerHTML = number_of_days;
+  </script>
 {% endblock %}
 
 {% block side %}

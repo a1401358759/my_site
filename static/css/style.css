@@ -265,7 +265,10 @@ ol,
 ul { list-style: none; }
 
 blockquote,
-q { quotes: none; }
+q {
+  quotes: none;
+  margin-top: -10px;
+}
 
 blockquote:before,
 blockquote:after,
