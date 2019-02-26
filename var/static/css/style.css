@@ -2272,7 +2272,10 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
 .pagination>.active>span {
   background-color: #2196F3 !important;
   border-color: #2196F3 !important;
-  border: none;
+  padding-bottom: 4px;
+}
+.pagination>.disabled>span {
+  padding-bottom: 4px;
 }
 
 .paginate {
