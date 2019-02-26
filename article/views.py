@@ -159,7 +159,10 @@ class RSSFeed(Feed):
         return item.content
 
 
-def blog_search(request):  # 实现对文章标题的搜索
+def blog_search(request):
+    """
+    实现对文章标题，标签，分类的搜索
+    """
     is_search = True
     new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
     classification = Classification.class_list.get_classify_list()
@@ -170,7 +173,7 @@ def blog_search(request):  # 实现对文章标题的搜索
     query = Q()
     s = request.GET.get('s') or ""
     if s:
-        query &= Q(title__icontains=s)
+        query &= (Q(title__icontains=s) | Q(classification__name=s) | Q(tags__name=s))
 
     articles = Article.objects.filter(query)
     page_num = request.GET.get("page") or 1

@@ -27,17 +27,6 @@
   </ul>
 </div>
 
-<div id="categories" class="widget widget_categories">
-	<h3 class="widget-title">分类目录</h3>
-	<ul>
-    {% if classification %}
-      {% for x,y in classification %}
-        <li><a href="{% url 'classfiDetail' classfi=x %}">{{ x }} ( {{ y }} )</a></li>
-      {% endfor %}
-    {% endif %}
-	</ul>
-</div>
-
 <div id="archives" class="widget widget_archive">
   <h3 class="widget-title">文章归档</h3>
   <ul>
@@ -47,6 +36,17 @@
       {% endfor %}
     {% endif %}
   </ul>
+</div>
+
+<div id="categories" class="widget widget_categories">
+	<h3 class="widget-title">分类目录</h3>
+	<ul>
+    {% if classification %}
+      {% for x,y in classification %}
+        <li><a href="{% url 'classfiDetail' classfi=x %}">{{ x }} ( {{ y }} )</a></li>
+      {% endfor %}
+    {% endif %}
+	</ul>
 </div>
 
 <div id="tag_cloud" class="widget widget_tag_cloud">
