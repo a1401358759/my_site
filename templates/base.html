@@ -10,53 +10,13 @@
   <meta name="google-site-verification" content="dnyWZ80_3hVjbtwfL9HXBAp31ygEkNlTEopdwTRzhE8" />
   <meta name="baidu-site-verification" content="xxnzwzyTfv" />
   <title>{% block title %}{% endblock %}</title>
-  <meta name="keywords" content="杨学峰、杨学峰博客、Python、Django、MySql、uWSGI、HTML、Jquery、Redis、数据库、服务器、性能优化">
-  <meta name="description" content="杨学峰、杨学峰博客、Python、Django、MySql、uWSGI、HTML、Jquery、Redis、数据库、服务器、性能优化。记录和分享学习的心得,感悟生活,留住感动,静静寻觅生活的美好">
-
+  <meta name="keywords" content="杨学峰、个人博客、杨学峰博客、Python、Django、MySql、uWSGI、HTML、Jquery、Redis、数据库、服务器、性能优化">
+  <meta name="description" content="杨学峰、个人博客、杨学峰博客、Python、Django、MySql、uWSGI、HTML、Jquery、Redis、数据库、服务器、性能优化。记录和分享学习的心得,感悟生活,留住感动,静静寻觅生活的美好">
   {{ form.media }}
   <link rel="shortcut icon" href="/static/css/logo.png" type="image/x-icon" />
 
-  <!-- Bootstrap core CSS -->
-  <link href="{{ STATIC_URL }}plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
-  <link href="{{ STATIC_URL }}plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
-
-  <!--jquery -->
-  <script src="{{ STATIC_URL }}js/jquery.js"></script>
-  <script src="{{ STATIC_URL }}js/public.js"></script>
-  <script src="{{ STATIC_URL }}js/mouse_click.js"></script>
-  <script src="{{ STATIC_URL }}js/scorllup.js"></script>
-  <script src="{{ STATIC_URL }}plugins/bootstrap/js/bootstrap.js"></script>
-  <script src="{{ STATIC_URL }}plugins/bootstrap/js/bootstrap.min.js"></script>
-
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/animate.css">
-
-  <!-- responsive-nav -->
-  <script src="{{ STATIC_URL }}plugins/responsive-nav/responsive-nav.js"></script>
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}plugins/responsive-nav/responsive-nav.css">
-
-  <!-- prism.js -->
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}plugins/prism/prism.css">
-  <script type="text/javascript" src="{{ STATIC_URL }}plugins/prism/prism.js"></script>
-
-  <!-- swiper-4.4.6 -->
-  <link rel="stylesheet" href="{{ STATIC_URL }}plugins/swiper4/swiper.min.css">
-  <script src="{{ STATIC_URL }}plugins/swiper4/swiper.min.js"></script>
-
-  <!-- aplayer -->
-  <link rel="stylesheet" href="{{ STATIC_URL }}plugins/aplayer/APlayer.min.css">
-  <script src="{{ STATIC_URL }}plugins/aplayer/APlayer.min.js"></script>
-
-  <!-- zoomify -->
-  <link rel="stylesheet" href="{{ STATIC_URL }}plugins/zoomify/zoomify.min.css">
-  <script src="{{ STATIC_URL }}plugins/zoomify/zoomify.min.js"></script>
-
-  <!-- Valine -->
-  <script src="{{ STATIC_URL }}plugins/valine/av-min.js"></script>
-  <script src="{{ STATIC_URL }}plugins/valine/Valine.min.js"></script>
-
+  {% include "blog/css.html" %}
+  {% include "blog/js.html" %}
   <script>
     // 百度统计
     if (location.hostname.indexOf('yangsihan.com') > -1) {
@@ -167,33 +127,7 @@ $(function () {
     <div id="player"></div>  <!-- 音乐播放器 -->
 
     <center>
-      <footer id="footer" class="main-footer no-print text-center">
-        <div id="footer-content">
-          <span>
-            <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-              <img src="https://img.yangsihan.com/upyun.png" height="35px">
-            </a>
-          </span>
-          <span>
-            <a href="https://www.qiniu.com/" target="_blank">
-              <img src="https://img.yangsihan.com/qniulogo.png" height="30px">
-            </a>
-          </span>&nbsp;&nbsp;
-          <span id="cc-myssl-id">
-            <a href="https://myssl.com/yangsihan.com?from=mysslid" target="_blank">
-              <img src="https://img.yangsihan.com/myssl-id1.png" height="35px">
-            </a>
-          </span>
-          <br/><br/>
-          <span>杨学峰博客&copy;2019&nbsp;<a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备18032767号-1</a></span>
-          <br/>
-          <span>
-            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037217" target="_blank">
-              <img src="/static/css/beian.png"/>&nbsp;京公网安备 11010502037217号
-            </a>
-          </span>
-        </div>
-      </footer>
+      {% include "blog/footer.html" %}
     </center>
   </div>
   {% include "blog/verify_user.html" %}
@@ -211,6 +145,7 @@ $(function () {
       jQuery("#verify_user").modal('show');
     }
 
+    // 打赏
     function reward_modal_show(){
       jQuery("#reward_modal").modal('show');
     }
@@ -238,6 +173,13 @@ $(function () {
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(bp, s);
     })();
+  </script>
+  <!-- activate-power-mode -->
+  <script src="/static/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true; // make power mode colorful
+    POWERMODE.shake = false; // turn off shake
+    document.body.addEventListener('input', POWERMODE);
   </script>
 </body>
 </html>
