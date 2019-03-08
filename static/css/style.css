@@ -514,7 +514,7 @@ address {
 code,
 kbd,
 tt {
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: "monaco";
   font-size: 0.8em;
 }
 
@@ -2415,6 +2415,10 @@ video {
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
   font-size: 15px!important;
+}
+
+code span, p {
+  font-family: "monaco"!important;
 }
 
 blockquote p {
