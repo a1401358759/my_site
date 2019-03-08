@@ -1715,6 +1715,7 @@ select:focus {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 168, 236, 0.5);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 168, 236, 0.5);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 168, 236, 0.5);
+  outline: none;
 }
 
 textarea { min-height: 120px; }
@@ -2333,6 +2334,10 @@ video {
 /* Valine */
 .v .txt-right {
   display: none!important;
+}
+
+.v .vinput {
+  box-shadow: none;
 }
 
 .v .vlist .vcard .vcontent.expand:after {
