@@ -1716,6 +1716,7 @@ select:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 168, 236, 0.5);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 168, 236, 0.5);
   outline: none;
+  box-shadow: none;
 }
 
 textarea { min-height: 120px; }
@@ -2338,6 +2339,14 @@ video {
 
 .v .vinput {
   box-shadow: none;
+}
+
+.v .vwrap .vheader .vinput:focus {
+  outline: none;
+  box-shadow: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 .v .vlist .vcard .vcontent.expand:after {
