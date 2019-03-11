@@ -32,7 +32,7 @@ class OwnerMessageAdmin(admin.ModelAdmin):
 
     class Media:
         css = {
-            # 'all': ('/static/css/manager.css',)
+            'all': ('/static/css/manager.css',)
         }
 
         js = (
@@ -53,7 +53,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
     class Media:
         css = {
-            # 'all': ('/static/css/manager.css',)
+            'all': ('/static/css/manager.css',)
         }
 
         js = (
