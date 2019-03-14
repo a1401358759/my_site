@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
-
 from django import forms
 
+from utils.dlibs.forms.constants import FormConstants
 
-class FormConstants(object):
-    DEFAULT_PAGE_SIZE = 10
+
+class BaseAdminModelForm(forms.ModelForm):
+    '''admin基础model form类，admin中所有使用model form的都要直接继承此类
+
+    扩展功能：
+        1. 增加is_update属性，新建model对象时为False，更新时为True
+    '''
+    def __init__(self, *args, **kwargs):
+        self.is_update = kwargs.get('instance') is not None
+        super(BaseAdminModelForm, self).__init__(*args, **kwargs)
 
 
 class BaseListForm(forms.Form):

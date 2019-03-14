@@ -4,10 +4,10 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 
 def paginator_page_list(number, page_range):
-    '''获得分页展示的页面范围
+    """获得分页展示的页面范围
 
     number -- 当前页码
-    '''
+    """
     PAGE_SHOW = 7
     number = int(number)
     if len(page_range) <= PAGE_SHOW:
@@ -22,9 +22,9 @@ def paginator_page_list(number, page_range):
 
 
 def paginate(info_list, page_num=1, page_size=20, page_list=True):
-    '''如果page_num超过最大页数，返回最后一页
+    """如果page_num超过最大页数，返回最后一页
 
-    page_list - 返回页脚显示样式控制字段'''
+    page_list - 返回页脚显示样式控制字段"""
     total = 0
     try:
         paginator = Paginator(info_list, page_size)
@@ -41,9 +41,9 @@ def paginate(info_list, page_num=1, page_size=20, page_list=True):
 
 
 def paginate_inc(info_list, page_num=1, page_size=20, page_list=True):
-    '''如果page_num超过最大页数，返回空列表[]
+    """如果page_num超过最大页数，返回空列表[]
 
-    page_list - 返回页脚显示样式控制字段'''
+    page_list - 返回页脚显示样式控制字段"""
     total = 0
     try:
         paginator = Paginator(info_list, page_size)

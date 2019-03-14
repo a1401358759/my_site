@@ -7,9 +7,9 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views.decorators.http import require_POST, require_GET
 from django.views.decorators.csrf import csrf_exempt
-from utils.paginate import paginate
-from utils.response import render_json
-from utils.mine_qiniu import upload_data
+from utils.dlibs.tools.paginator import paginate
+from utils.dlibs.http.response import render_json
+from utils.libs.utils.mine_qiniu import upload_data
 from .models import Article, Classification, Messages, OwnerMessage, Tag, Links, CarouselImg
 from .constants import BlogStatus, CarouselImgType
 from .backends import get_tags_and_musics
