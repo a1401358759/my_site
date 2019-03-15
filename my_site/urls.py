@@ -5,7 +5,8 @@ from django.contrib import admin
 from article.views import RSSFeed
 
 urlpatterns = [
-    url(r'^manager/', include(admin.site.urls)),
+    # url(r'^manager/', include(admin.site.urls)),
+    url(r'^manager/', include("manager.urls")),
     url(r'^$', 'article.views.home', name="home"),  # 主页
     url(r'^about$', 'article.views.about', name="about"),  # 关于我
     url(r'^message$', 'article.views.message', name="message"),  # 留言
