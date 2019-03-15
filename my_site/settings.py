@@ -179,7 +179,7 @@ LOG_ROOT = BASE_DIR
 for key, handler in LOGGING['handlers'].items():
     if handler.get('filename', None):
         # 将logs文件夹定义为项目根目录的上一层，这由docker部署目录结构决定
-        handler['filename'] = os.path.join(LOG_ROOT, "logs", os.path.basename(handler['filename']))
+        handler['filename'] = os.path.join(LOG_ROOT, "../logs", os.path.basename(handler['filename']))
 
 
 # import local settings
