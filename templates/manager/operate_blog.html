@@ -1,0 +1,57 @@
+{% extends 'manager/base/base.html' %}
+{% load bootstrap_pagination %}
+{% block css %}
+
+{% endblock %}
+
+{% block navbar %}
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav list-inline navbar-left">
+        <li class="list-inline-item">
+          <button class="button-menu-mobile open-left">
+            <i class="mdi mdi-menu"></i>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <h4 class="page-title">博客创建</h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block js %}
+  <script>
+  // 删除模态框
+  function del_modal_show() {
+    $("#del_blogs_modal").modal('show');
+  }
+
+  // 批量删除博客
+  function delete_blogs() {
+    $("#del_blogs_modal").modal('hide');
+    var formData = $("#item_ids_form").serialize();
+    $.ajax({
+      url: "",
+      type: 'POST',
+      data: formData,
+      success: function (data) {
+        if (data.code == ERROR_CODE.SUCCESS) {
+          msg_info("删除成功，2秒后自动刷新", 'success')
+          setTimeout(function(){window.location.href = "{% url 'blog_list' %}";}, 2000);
+        } else if (data.code == ERROR_CODE.PARAM_ERROR) {
+          msg_info('参数错误', 'error');
+        }
+      },
+      error: function () {
+        msg_info('删除失败!', 'error');
+      }
+    });
+  }
+</script>
+{% endblock %}

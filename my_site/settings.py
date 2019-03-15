@@ -27,7 +27,7 @@ SECRET_KEY = 'p-2_9jdgcawck*piav1d(kq-!((g#8#riop01(^5ilnl6f(ram'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 ALLOWED_HOSTS = ['*']
-
+LOGIN_URL = '/manager/login/'
 
 # Application definition
 
