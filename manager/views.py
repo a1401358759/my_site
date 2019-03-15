@@ -27,9 +27,9 @@ def blog_list_view(request):
     query = Q()
     title = form.cleaned_data.get("title")
     if title:
-        query &= Q(title__icontains=title)
+        query &= (Q(title__icontains=title) | Q(classification__name=title) | Q(tags__name=title))
 
-    blogs = Article.objects.filter(query).order_by("-id")
+    blogs = Article.objects.select_related().filter(query).order_by("-id")
     blog_list, total = paginate(
         blogs,
         request.GET.get('page') or 1

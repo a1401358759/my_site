@@ -1,0 +1,73 @@
+{% extends 'manager/base/base.html' %}
+{% load bootstrap_pagination %}
+{% block css %}
+
+{% endblock %}
+
+{% block navbar %}
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav list-inline navbar-left">
+        <li class="list-inline-item">
+          <button class="button-menu-mobile open-left">
+            <i class="mdi mdi-menu"></i>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <h4 class="page-title">博客列表</h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card-box table-responsive">
+            <h4 class="m-t-0 header-title"><b></b></h4>
+            <p class="text-muted font-14 m-b-10">
+              <form class="form-inline" action="">
+                <div>
+                  <input id="title" name="title" class="form-control" style="width:300px;" placeholder="标题、分类、标签" value="{{ form.cleaned_data.title }}">
+                  <button type='submit' class='btn btn-primary m-b-6'>搜索</button>&nbsp;&nbsp;<b>共 {{ total }} 条数据</b>
+                </div>
+              </form>
+              <br>
+              <div>
+                <a class='btn btn-success m-b-6' href="">创建</a>
+                <a class='btn btn-danger m-b-6' href="javascript:;" onclick="del_modal_show()">删除</a>
+              </div>
+            </p>
+            <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th>标题</th>
+                  <th>作者</th>
+                  <th>状态</th>
+                  <th>发表时间</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in data_list %}
+                <tr>
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.author.name }}</td>
+                  <td>{{ item.get_status_display }}</td>
+                  <td>{{ item.publish_time|date:'Y-m-d H:i' }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="pull-right">
+              {% bootstrap_paginate data_list url_extra_args=params range=10 show_first_last="true" %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+    </div> <!-- container -->
+  </div> <!-- content -->
+{% endblock %}
