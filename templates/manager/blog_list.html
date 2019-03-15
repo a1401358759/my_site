@@ -44,6 +44,7 @@
             <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                 <tr>
+                  <th width="2%"><input type="checkbox" name="check_all" /></th>
                   <th>标题</th>
                   <th>作者</th>
                   <th>状态</th>
@@ -51,14 +52,17 @@
                 </tr>
               </thead>
               <tbody>
+                <form id="item_ids_form">
                 {% for item in data_list %}
                 <tr>
+                  <td><input type="checkbox" name="item_ids" value="{{ item.id }}"/></td>
                   <td>{{ item.title }}</td>
                   <td>{{ item.author.name }}</td>
                   <td>{{ item.get_status_display }}</td>
                   <td>{{ item.publish_time|date:'Y-m-d H:i' }}</td>
                 </tr>
                 {% endfor %}
+                </form>
               </tbody>
             </table>
             <div class="pull-right">
@@ -70,4 +74,38 @@
       <!-- end row -->
     </div> <!-- container -->
   </div> <!-- content -->
+{% endblock %}
+
+{% block js %}
+  <script>
+  // 反选和全选
+  select_and_reverse();
+
+  // 删除模态框
+  function del_modal_show() {
+    $("#del_blogs_modal").modal('show');
+  }
+
+  // 批量删除博客
+  function delete_blogs() {
+    $("#del_blogs_modal").modal('hide');
+    var formData = $("#item_ids_form").serialize();
+    $.ajax({
+      url: "",
+      type: 'POST',
+      data: formData,
+      success: function (data) {
+        if (data.code == ERROR_CODE.SUCCESS) {
+          msg_info("删除成功，2秒后自动刷新", 'success')
+          setTimeout(function(){window.location.href = "{% url 'blog_list' %}";}, 2000);
+        } else if (data.code == ERROR_CODE.PARAM_ERROR) {
+          msg_info('参数错误', 'error');
+        }
+      },
+      error: function () {
+        msg_info('删除失败!', 'error');
+      }
+    });
+  }
+</script>
 {% endblock %}

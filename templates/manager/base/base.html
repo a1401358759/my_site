@@ -11,6 +11,7 @@
 
     {% endblock %}
     <script src="/static/manager/js/modernizr.min.js"></script>
+    {% include 'manager/base/js.html' %}
   </head>
 
   <body class="fixed-left">
@@ -35,10 +36,6 @@
       </div>
     </div>
 
-    {% include 'manager/base/js.html' %}
-    {% block js %}
-
-    {% endblock %}
     <script>
       $(function(){
         {% for class in active_classes %}
@@ -46,5 +43,8 @@
         {% endfor %}
       });
     </script>
+    {% block js %}
+
+    {% endblock %}
   </body>
 </html>
