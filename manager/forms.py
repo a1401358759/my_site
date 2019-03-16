@@ -29,8 +29,8 @@ class AddMusicForm(forms.Form):
 
 
 class AddCarouselForm(forms.Form):
-    name = forms.CharField(label=u'图片名称'),
-    description = forms.CharField(label=u'图片描述'),
-    path = forms.CharField(label=u'图片路径'),
-    link = forms.CharField(label=u'图片外链', required=False),
-    weights = forms.IntegerField(label=u'图片权重'),
+    name = forms.CharField(label=u'图片名称')
+    description = forms.CharField(label=u'图片描述')
+    path = forms.CharField(label=u'图片路径')
+    link = forms.CharField(label=u'图片外链', required=False)
+    weights = forms.IntegerField(label=u'图片权重')
