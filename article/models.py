@@ -49,7 +49,7 @@ class TagManager(models.Manager):
 
 class Tag(models.Model):
     name = models.CharField(max_length=20, blank=True, verbose_name=u'标签名')
-    creat_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
     objects = models.Manager()
     tag_list = TagManager()
 

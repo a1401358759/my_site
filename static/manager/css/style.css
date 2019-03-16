@@ -751,7 +751,7 @@ select[multiple] {
   box-shadow: none;
   padding: 25px; }
   .modal .modal-dialog .modal-content .modal-header {
-    border-bottom-width: 2px;
+    border-bottom-width: 1px;
     margin: 0;
     padding: 0;
     padding-bottom: 15px; }

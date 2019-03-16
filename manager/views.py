@@ -12,7 +12,7 @@ from utils.errorcode import ERRORCODE
 from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from utils.common import form_error
-from article.models import Article, Links, Classification, CarouselImg, Music, Author, OwnerMessage
+from article.models import Article, Links, Classification, CarouselImg, Music, Author, OwnerMessage, Tag
 from .forms import SearchBlogForm, AddFriendLinkForm, AddAuthorForm
 
 
@@ -125,6 +125,9 @@ def friend_link_list_view(request):
 
 @login_required
 def add_friend_link_view(request):
+    """
+    添加友情链接
+    """
     form = AddFriendLinkForm(request.POST)
     if not form.is_valid():
         messages.warning(request, "</br>".join(form_error(form)))
@@ -146,6 +149,9 @@ def add_friend_link_view(request):
 
 @login_required
 def del_friend_link_view(request):
+    """
+    删除友情链接
+    """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
         return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
@@ -186,6 +192,9 @@ def author_list_view(request):
 
 @login_required
 def add_author_view(request):
+    """
+    添加作者
+    """
     form = AddAuthorForm(request.POST)
     if not form.is_valid():
         messages.warning(request, "</br>".join(form_error(form)))
@@ -206,12 +215,133 @@ def add_author_view(request):
 
 @login_required
 def del_author_view(request):
+    """
+    删除作者
+    """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
         return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
 
     try:
         Author.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def classification_list_view(request):
+    """
+    文章分类列表
+    :param request:
+    :return:
+    """
+    query = Q()
+    name = request.GET.get('name')
+    if name:
+        query &= Q(name__icontains=name)
+
+    classifications = Classification.objects.filter(query).order_by("-id")
+    classification_list, total = paginate(
+        classifications,
+        request.GET.get('page') or 1
+    )
+
+    return render(request, 'manager/classification_list.html', {
+        "active_classes": ['.blog', '.classification_list'],
+        "params": request.GET,
+        "data_list": classification_list,
+        "total": total,
+        "name": name
+    })
+
+
+@login_required
+def add_classification_view(request):
+    """
+    添加文章分类
+    """
+    try:
+        Classification.objects.create(
+            name=request.POST.get('name')
+        )
+        messages.success(request, u'添加成功')
+        return HttpResponseRedirect(reverse('classification_list'))
+    except Exception as e:
+        messages.error(request, u'添加失败: %s' % e)
+        return HttpResponseRedirect(reverse('classification_list'))
+
+
+@login_required
+def del_classification_view(request):
+    """
+    删除文章分类
+    """
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        Classification.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def tag_list_view(request):
+    """
+    文章标签列表
+    :param request:
+    :return:
+    """
+    query = Q()
+    name = request.GET.get('name')
+    if name:
+        query &= Q(name__icontains=name)
+
+    tags = Tag.objects.filter(query).order_by("-id")
+    tag_list, total = paginate(
+        tags,
+        request.GET.get('page') or 1
+    )
+
+    return render(request, 'manager/tag_list.html', {
+        "active_classes": ['.blog', '.tag_list'],
+        "params": request.GET,
+        "data_list": tag_list,
+        "total": total,
+        "name": name
+    })
+
+
+@login_required
+def add_tag_view(request):
+    """
+    添加文章标签
+    """
+    try:
+        Tag.objects.create(
+            name=request.POST.get('name')
+        )
+        messages.success(request, u'添加成功')
+        return HttpResponseRedirect(reverse('tag_list'))
+    except Exception as e:
+        messages.error(request, u'添加失败: %s' % e)
+        return HttpResponseRedirect(reverse('tag_list'))
+
+
+@login_required
+def del_tag_view(request):
+    """
+    删除文章标签
+    """
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        Tag.objects.filter(id__in=item_ids).delete()
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)

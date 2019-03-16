@@ -21,7 +21,7 @@ def paginator_page_list(number, page_range):
             return page_range[(number - 4):(number + 3)]
 
 
-def paginate(info_list, page_num=1, page_size=20, page_list=True):
+def paginate(info_list, page_num=1, page_size=10, page_list=True):
     """如果page_num超过最大页数，返回最后一页
 
     page_list - 返回页脚显示样式控制字段"""
@@ -40,7 +40,7 @@ def paginate(info_list, page_num=1, page_size=20, page_list=True):
     return objects, total
 
 
-def paginate_inc(info_list, page_num=1, page_size=20, page_list=True):
+def paginate_inc(info_list, page_num=1, page_size=10, page_list=True):
     """如果page_num超过最大页数，返回空列表[]
 
     page_list - 返回页脚显示样式控制字段"""
