@@ -14,7 +14,7 @@ from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from utils.common import form_error
 from article.constants import BlogStatus
-from article.models import Article
+from article.models import Article, Links, Classification, CarouselImg, Music
 from .forms import SearchBlogForm
 
 
@@ -71,7 +71,6 @@ def blog_list_view(request):
     """
     form = SearchBlogForm(request.GET)
     form.is_valid()
-    messages.success(request, u'哈哈')
     query = Q()
     title = form.cleaned_data.get("title")
     if title:
@@ -96,4 +95,31 @@ def blog_create_view(request):
     return render(request, 'manager/operate_blog.html', {
         "active_classes": ['.blog', '.blog_list'],
         "params": request.GET,
+    })
+
+
+@login_required
+def friend_link_list_view(request):
+    """
+    友情链接列表
+    :param request:
+    :return:
+    """
+    query = Q()
+    name = request.GET.get('name')
+    if name:
+        query &= Q(name__icontains=name)
+
+    links = Links.objects.filter(query).order_by("-id")
+    link_list, total = paginate(
+        links,
+        request.GET.get('page') or 1
+    )
+
+    return render(request, 'manager/link_list.html', {
+        "active_classes": ['.blog', '.link_list'],
+        "params": request.GET,
+        "data_list": link_list,
+        "total": total,
+        "name": name
     })
