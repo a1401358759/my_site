@@ -1,0 +1,53 @@
+{% extends 'manager/base/base.html' %}
+{% load bootstrap_pagination %}
+{% block css %}
+
+{% endblock %}
+
+{% block navbar %}
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav list-inline navbar-left">
+        <li class="list-inline-item">
+          <button class="button-menu-mobile open-left">
+            <i class="mdi mdi-menu"></i>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <h4 class="page-title">留言创建</h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-box">
+          <form class="form-horizontal" action="" enctype="multipart/form-data">
+            <div class="form-group">
+              <h5>简介 <span class="text-danger">*</span></h5>
+              <div class="controls">
+                <input name="summary" class="form-control" value="{{ station.summary }}">
+              </div>
+            </div>
+            <div class="form-group">
+              <h5>寄语内容 <span class="text-danger">*</span></h5>
+              <div class="controls">
+                <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
+              </div>
+            </div>
+            <a href="{% url 'ownmessage_list' %}" class="btn btn-inverse">返回</a>
+            <button type="submit" class="btn btn-success">提交</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

@@ -12,8 +12,14 @@ from utils.errorcode import ERRORCODE
 from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from utils.common import form_error
-from article.models import Article, Links, Classification, CarouselImg, Music, Author, OwnerMessage, Tag
-from .forms import SearchBlogForm, AddFriendLinkForm, AddAuthorForm, AddMusicForm, AddCarouselForm
+from article.models import (
+    Article, Links, Classification, CarouselImg,
+    Music, Author, OwnerMessage, Tag
+)
+from .forms import (
+    SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm,
+    AddAuthorForm, AddMusicForm, AddCarouselForm
+)
 
 
 def login_view(request):
@@ -492,7 +498,30 @@ def ownmessage_list_view(request):
 
 @login_required
 def add_ownmessage_view(request):
-    pass
+    tp = "manager/operate_ownmessage.html"
+    context = {
+        "active_classes": ['.blog', '.ownmessage_list'],
+        "create": True,
+    }
+
+    if request.method == "GET":
+        return render(request, tp, context)
+
+    if request.method == "POST":
+        form = OperateOwnMessageForm(request.POST)
+        if not form.is_valid():
+            messages.warning(request, "</br>".join(form_error(form)))
+            return HttpResponseRedirect(reverse('ownmessage_list'))
+        try:
+            OwnerMessage.objects.create(
+                summary=form.cleaned_data.get("summary"),
+                message=form.cleaned_data.get("message"),
+            )
+            messages.success(request, u'文章添加成功')
+            return HttpResponseRedirect(reverse('ownmessage_list'))
+        except Exception as ex:
+            messages.warning(request, u'添加失败: %s' % ex)
+            return HttpResponseRedirect(reverse('ownmessage_list'))
 
 
 @login_required

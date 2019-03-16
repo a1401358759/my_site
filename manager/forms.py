@@ -34,3 +34,8 @@ class AddCarouselForm(forms.Form):
     path = forms.CharField(label=u'图片路径')
     link = forms.CharField(label=u'图片外链', required=False)
     weights = forms.IntegerField(label=u'图片权重')
+
+
+class OperateOwnMessageForm(forms.Form):
+    summary = forms.CharField(label=u'简介')
+    message = forms.CharField(label=u'寄语')

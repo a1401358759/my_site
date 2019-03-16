@@ -47,7 +47,6 @@
                 <th>图片名称</th>
                 <th>图片地址</th>
                 <th>图片外链</th>
-                <th>图片描述</th>
                 <th>图片权重</th>
                 <th>预览</th>
                 <th>创建时间</th>
@@ -59,9 +58,8 @@
               <tr>
                 <td><input type="checkbox" name="item_ids" value="{{ item.id }}"/></td>
                 <td>{{ item.name }}</td>
-                <td data-toggle="tooltip" data-placement="bottom" title="{{ item.path }}">{{ item.path|slice:"20" }}</td>
-                <td data-toggle="tooltip" data-placement="bottom" title="{{ item.link }}">{{ item.link|slice:"20" }}</td>
-                <td>{{ item.description }}</td>
+                <td data-toggle="tooltip" data-placement="bottom" title="{{ item.path }}">{{ item.path|slice:"30" }}</td>
+                <td data-toggle="tooltip" data-placement="bottom" title="{{ item.link }}">{{ item.link|slice:"30" }}</td>
                 <td>{{ item.weights }}</td>
                 <td><a i="{{ item.path }}" class="Slide One"><img height="30px" src="{{ item.path }}" alt="{{ item.description }}"></a></td>
                 <td>{{ item.created_time|date:'Y-m-d H:i' }}</td>
