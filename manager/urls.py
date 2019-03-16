@@ -35,4 +35,9 @@ urlpatterns = [
     url(r'^music-list/?$', views.music_list_view, name="music_list"),
     url(r'^music-add/?$', views.add_music_view, name="music_add"),
     url(r'^music-del/?$', views.del_music_view, name="music_del"),
+
+    # 轮播图片
+    url(r'^carousel-list/?$', views.carousel_list_view, name="carousel_list"),
+    url(r'^carousel-add/?$', views.add_carousel_view, name="carousel_add"),
+    url(r'^carousel-del/?$', views.del_carousel_view, name="carousel_del"),
 ]

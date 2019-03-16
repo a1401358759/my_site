@@ -26,3 +26,11 @@ class AddMusicForm(forms.Form):
     url = forms.CharField(label=u'音乐地址')
     cover = forms.CharField(label=u'音乐封面')
     artist = forms.CharField(label=u'演唱者', required=False)
+
+
+class AddCarouselForm(forms.Form):
+    name = forms.CharField(label=u'图片名称'),
+    description = forms.CharField(label=u'图片描述'),
+    path = forms.CharField(label=u'图片路径'),
+    link = forms.CharField(label=u'图片外链', required=False),
+    weights = forms.IntegerField(label=u'图片权重'),

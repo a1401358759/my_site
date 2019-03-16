@@ -13,7 +13,7 @@ from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from utils.common import form_error
 from article.models import Article, Links, Classification, CarouselImg, Music, Author, OwnerMessage, Tag
-from .forms import SearchBlogForm, AddFriendLinkForm, AddAuthorForm, AddMusicForm
+from .forms import SearchBlogForm, AddFriendLinkForm, AddAuthorForm, AddMusicForm, AddCarouselForm
 
 
 def login_view(request):
@@ -408,6 +408,73 @@ def del_music_view(request):
 
     try:
         Music.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def carousel_list_view(request):
+    """
+    轮播图片列表
+    :param request:
+    :return:
+    """
+    query = Q()
+    name = request.GET.get('name')
+    if name:
+        query &= Q(name__icontains=name)
+
+    carousels = CarouselImg.objects.filter(query).order_by("-id")
+    carousel_list, total = paginate(
+        carousels,
+        request.GET.get('page') or 1
+    )
+
+    return render(request, 'manager/carousel_list.html', {
+        "active_classes": ['.blog', '.carousel_list'],
+        "params": request.GET,
+        "data_list": carousel_list,
+        "total": total,
+        "name": name
+    })
+
+
+@login_required
+def add_carousel_view(request):
+    """
+    添加轮播图片
+    """
+    form = AddCarouselForm(request.POST)
+    if not form.is_valid():
+        messages.error(request, "</br>".join(form_error(form)))
+        return HttpResponseRedirect(reverse('carousel_list'))
+    try:
+        CarouselImg.objects.create(
+            name=form.cleaned_data.get('name'),
+            description=form.cleaned_data.get('description'),
+            path=form.cleaned_data.get('path'),
+            link=form.cleaned_data.get('link'),
+            weights=form.cleaned_data.get('weights'),
+        )
+        messages.success(request, u'添加成功')
+        return HttpResponseRedirect(reverse('carousel_list'))
+    except Exception as e:
+        messages.error(request, u'添加失败: %s' % e)
+        return HttpResponseRedirect(reverse('carousel_list'))
+
+
+@login_required
+def del_carousel_view(request):
+    """
+    删除轮播图片
+    """
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        CarouselImg.objects.filter(id__in=item_ids).delete()
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
