@@ -5,26 +5,6 @@ from article.models import *
 # from django_summernote.admin import SummernoteModelAdmin
 
 
-# @admin.register(Messages)
-# class MessagesAdmin(admin.ModelAdmin):
-#     list_display = ('name', 'email', 'content', 'created_at')
-#     list_per_page = 10
-#     search_fields = ['name', 'email']
-#     list_filter = ['created_at', ]
-
-#     class Media:
-#         css = {
-#             # 'all': ('/static/css/manager.css',)
-#         }
-
-#         js = (
-#             '/static/tinymce/jquery.tinymce.min.js',
-#             '/static/tinymce/tinymce.min.js',
-#             '/static/tinymce/jquery.form.js',
-#             '/static/tinymce/config.js',
-#         )
-
-
 @admin.register(OwnerMessage)
 class OwnerMessageAdmin(admin.ModelAdmin):
     list_display = ('id', 'summary', 'created_at')

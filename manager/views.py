@@ -14,7 +14,7 @@ from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from utils.common import form_error
 from article.constants import BlogStatus
-from article.models import Article, Links, Classification, CarouselImg, Music
+from article.models import Article, Links, Classification, CarouselImg, Music, Author, OwnerMessage
 from .forms import SearchBlogForm
 
 
