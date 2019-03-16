@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
 from utils.dlibs.http.response import render_json
 from utils.libs.utils.mine_qiniu import upload_data
-from .models import Article, Classification, Messages, OwnerMessage, Tag, Links, CarouselImg
+from .models import Article, Classification, OwnerMessage, Tag, Links, CarouselImg
 from .constants import BlogStatus, CarouselImgType
 from .backends import get_tags_and_musics
 
@@ -204,21 +204,7 @@ def love(request):
     if name == 'maomao' and pw == 'nn':
         return render(request, 'blog/love.html')
     else:
-        return render(request, 'blog/404.htm')
-
-
-@csrf_exempt
-@require_POST
-def create_messages(request):
-    name = request.POST.get('name')
-    email = request.POST.get('email')
-    messages = request.POST.get('messages')
-    Messages.create_message(
-        name=name,
-        email=email,
-        content=messages
-    )
-    return render_json({'success': True, 'message': '留言成功！'})
+        return render(request, 'blog/404.html')
 
 
 @require_GET

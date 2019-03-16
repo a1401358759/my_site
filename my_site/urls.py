@@ -1,26 +1,24 @@
 # coding:utf-8
 
 from django.conf.urls import include, url
-from django.contrib import admin
-from article.views import RSSFeed
+# from django.contrib import admin
+from article import views
 
 urlpatterns = [
     # url(r'^manager/', include(admin.site.urls)),
     url(r'^manager/', include("manager.urls")),
-    url(r'^$', 'article.views.home', name="home"),  # 主页
-    url(r'^about$', 'article.views.about', name="about"),  # 关于我
-    url(r'^message$', 'article.views.message', name="message"),  # 留言
-    url(r'^links$', 'article.views.links', name="links"),  # 友情链接
-    url(r'^archive/$', 'article.views.archive', name="archive"),  # 归档
-    url(r'^feed/$', RSSFeed(), name="RSS"),  # 新添加的urlconf, 并将name设置为RSS, 方便在模板中使用
-    url(r'^search/$', 'article.views.blog_search', name="search"),  # 按文章标题搜索
-    url(r'^article/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<id>\d+)/$', 'article.views.detail', name="detail"),  # 每篇文章
-    url(r'^article/(?P<year>\d{4})/(?P<month>\d{1,2})/$', 'article.views.archive_month', name="archive_month"),  # 按月归档
-    url(r'^articleClassfi/(?P<classfi>\w+)/$', 'article.views.classfiDetail', name="classfiDetail"),  # 每个分类页下面的文章
-    url(r'^articleTag/(?P<tag>\w+)/$', 'article.views.tagDetail', name="tagDetail"),  # 每个标签页下面的文章
-    url(r'^love/?$', 'article.views.love'),
-    url(r'^my-resume/?$', 'article.views.my_resume', name='my_resume'),  # 简历
-    url(r'^create/messages$', 'article.views.create_messages', name='create_messages'),
-    # url(r'^ueditor/', include('DjangoUeditor.urls')),
-    url(r'^upload/$', 'article.views.upload_file', name='upload_file'),
+    url(r'^$', views.home, name="home"),  # 主页
+    url(r'^about$', views.about, name="about"),  # 关于我
+    url(r'^message$', views.message, name="message"),  # 留言
+    url(r'^links$', views.links, name="links"),  # 友情链接
+    url(r'^archive/$', views.archive, name="archive"),  # 归档
+    url(r'^feed/$', views.RSSFeed(), name="RSS"),  # 新添加的urlconf, 并将name设置为RSS, 方便在模板中使用
+    url(r'^search/$', views.blog_search, name="search"),  # 按文章标题搜索
+    url(r'^article/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<id>\d+)/$', views.detail, name="detail"),  # 每篇文章
+    url(r'^article/(?P<year>\d{4})/(?P<month>\d{1,2})/$', views.archive_month, name="archive_month"),  # 按月归档
+    url(r'^articleClassfi/(?P<classfi>\w+)/$', views.classfiDetail, name="classfiDetail"),  # 每个分类页下面的文章
+    url(r'^articleTag/(?P<tag>\w+)/$', views.tagDetail, name="tagDetail"),  # 每个标签页下面的文章
+    url(r'^love/?$', views.love),
+    url(r'^my-resume/?$', views.my_resume, name='my_resume'),  # 简历
+    url(r'^upload/$', views.upload_file, name='upload_file'),
 ]
