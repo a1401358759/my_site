@@ -32,10 +32,6 @@ LOGIN_URL = '/manager/login/'
 # Application definition
 
 INSTALLED_APPS = (
-    'simpleui',
-    'bootstrap3',
-    # 'django_admin_bootstrapped',
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -44,11 +40,6 @@ INSTALLED_APPS = (
     'bootstrap_pagination',
     'article',
 )
-
-# 首页图标
-SIMPLEUI_HOME_ICON = 'layui-icon-rate'
-
-BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
 MIDDLEWARE_CLASSES = (
     # 'django.middleware.cache.UpdateCacheMiddleware',
@@ -67,7 +58,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'my_site.urls'
 
 WSGI_APPLICATION = 'my_site.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -141,7 +131,6 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "var/static/"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
