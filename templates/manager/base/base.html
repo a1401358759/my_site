@@ -27,19 +27,22 @@
 
       {% include 'manager/base/sidebar.html' %}
       <div class="content-page">
-        {% block message %}
-          <div class="col-12">
-            <section class="content-header" id="message-top"></section>
-            {% for message in messages %}
-              <ul class="alert alert-{{ message.tags }} dmsg">
-                <p> {{ message | safe }} </p>
-              </ul>
-            {% endfor %}
-          </div>
-        {% endblock %}
-        {% block content %}
+        <div class="content">
+          {% block message %}
+            <div class="col-12">
+              <section class="content-header" id="message-top"></section>
+              {% for message in messages %}
+                <ul class="alert alert-{{ message.tags }} dmsg">
+                  <p> {{ message | safe }} </p>
+                </ul>
+              {% endfor %}
+            </div>
+          {% endblock %}
 
-        {% endblock %}
+          {% block content %}
+
+          {% endblock %}
+        </div>
         <footer class="footer text-right">
           杨学峰博客&copy;2019&nbsp;
         </footer>

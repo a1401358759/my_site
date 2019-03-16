@@ -4798,4 +4798,8 @@ File: Responsive
 button {
   cursor: pointer;
 }
+
+.alert {
+  padding: .75rem 0 0 1.25rem!important;
+}
 /*# sourceMappingURL=style.css.map */

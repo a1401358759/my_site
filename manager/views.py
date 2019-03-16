@@ -39,6 +39,9 @@ def login_view(request):
             messages.warning(request, u'登录失败，请检查用户名密码后重试.')
             return HttpResponseRedirect('%s?%s' % (reverse('login_view'), urllib.urlencode({'back_url': back_url})))
         login(request, user)
+        request.session['is_login'] = True
+        request.session['user_id'] = user.id
+        request.session['user_name'] = user.username
         return HttpResponseRedirect(reverse('blog_list'))
     else:
         # 没有登录跳到登录页面进行登录
@@ -53,6 +56,9 @@ def logout_view(request):
     :return:
     """
     logout(request)
+    del request.session['is_login']
+    del request.session['user_id']
+    del request.session['user_name']
     return HttpResponseRedirect('/manager')
 
 
@@ -65,7 +71,7 @@ def blog_list_view(request):
     """
     form = SearchBlogForm(request.GET)
     form.is_valid()
-
+    messages.success(request, u'哈哈')
     query = Q()
     title = form.cleaned_data.get("title")
     if title:
