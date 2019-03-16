@@ -37,7 +37,7 @@ def login_view(request):
         user = authenticate(username=user_name, password=password)
         if not user:
             messages.warning(request, u'登录失败，请检查用户名密码后重试.')
-            return HttpResponseRedirect('%s?%s' % (reverse('login'), urllib.urlencode({'back_url': back_url})))
+            return HttpResponseRedirect('%s?%s' % (reverse('login_view'), urllib.urlencode({'back_url': back_url})))
         login(request, user)
         return HttpResponseRedirect(reverse('blog_list'))
     else:
@@ -45,6 +45,7 @@ def login_view(request):
         return render(request, 'manager/login.html', {'back_url': back_url})
 
 
+@login_required
 def logout_view(request):
     """
     用户登出
