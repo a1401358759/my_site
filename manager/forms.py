@@ -19,3 +19,10 @@ class AddAuthorForm(forms.Form):
     name = forms.CharField(label=u'作者姓名')
     email = forms.CharField(label=u'作者邮箱', required=False, validators=[email_validator])
     website = forms.CharField(label=u'个人网站', required=False)
+
+
+class AddMusicForm(forms.Form):
+    name = forms.CharField(label=u'音乐名称')
+    url = forms.CharField(label=u'音乐地址')
+    cover = forms.CharField(label=u'音乐封面')
+    artist = forms.CharField(label=u'演唱者', required=False)

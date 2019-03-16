@@ -30,7 +30,7 @@
           <p class="text-muted font-14 m-b-10">
             <form class="form-inline" action="">
               <div>
-                <input name="classification" class="form-control" placeholder="分类名称" value="{{ classification|default_if_none:'' }}">
+                <input name="name" class="form-control" placeholder="分类名称" value="{{ name|default_if_none:'' }}">
                 <button type='submit' class='btn btn-primary m-b-6'>搜索</button>&nbsp;&nbsp;<b>共 {{ total }} 条数据</b>
               </div>
             </form>

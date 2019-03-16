@@ -30,4 +30,9 @@ urlpatterns = [
     url(r'^tag-list/?$', views.tag_list_view, name="tag_list"),
     url(r'^tag-add/?$', views.add_tag_view, name="tag_add"),
     url(r'^tag-del/?$', views.del_tag_view, name="tag_del"),
+
+    # 背景音乐
+    url(r'^music-list/?$', views.music_list_view, name="music_list"),
+    url(r'^music-add/?$', views.add_music_view, name="music_add"),
+    url(r'^music-del/?$', views.del_music_view, name="music_del"),
 ]

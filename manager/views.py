@@ -13,7 +13,7 @@ from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from utils.common import form_error
 from article.models import Article, Links, Classification, CarouselImg, Music, Author, OwnerMessage, Tag
-from .forms import SearchBlogForm, AddFriendLinkForm, AddAuthorForm
+from .forms import SearchBlogForm, AddFriendLinkForm, AddAuthorForm, AddMusicForm
 
 
 def login_view(request):
@@ -342,6 +342,72 @@ def del_tag_view(request):
 
     try:
         Tag.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def music_list_view(request):
+    """
+    背景音乐列表
+    :param request:
+    :return:
+    """
+    query = Q()
+    name = request.GET.get('name')
+    if name:
+        query &= Q(name__icontains=name)
+
+    musics = Music.objects.filter(query).order_by("-id")
+    music_list, total = paginate(
+        musics,
+        request.GET.get('page') or 1
+    )
+
+    return render(request, 'manager/music_list.html', {
+        "active_classes": ['.blog', '.music_list'],
+        "params": request.GET,
+        "data_list": music_list,
+        "total": total,
+        "name": name
+    })
+
+
+@login_required
+def add_music_view(request):
+    """
+    添加背景音乐
+    """
+    form = AddMusicForm(request.POST)
+    if not form.is_valid():
+        messages.error(request, "</br>".join(form_error(form)))
+        return HttpResponseRedirect(reverse('music_list'))
+    try:
+        Music.objects.create(
+            name=form.cleaned_data.get('name'),
+            url=form.cleaned_data.get('url'),
+            cover=form.cleaned_data.get('cover'),
+            artist=form.cleaned_data.get('artist'),
+        )
+        messages.success(request, u'添加成功')
+        return HttpResponseRedirect(reverse('music_list'))
+    except Exception as e:
+        messages.error(request, u'添加失败: %s' % e)
+        return HttpResponseRedirect(reverse('music_list'))
+
+
+@login_required
+def del_music_view(request):
+    """
+    删除背景音乐
+    """
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        Music.objects.filter(id__in=item_ids).delete()
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
