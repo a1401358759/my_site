@@ -503,25 +503,21 @@ def add_ownmessage_view(request):
         "active_classes": ['.blog', '.ownmessage_list'],
         "create": True,
     }
-
     if request.method == "GET":
         return render(request, tp, context)
 
     if request.method == "POST":
         form = OperateOwnMessageForm(request.POST)
         if not form.is_valid():
-            messages.warning(request, "</br>".join(form_error(form)))
-            return HttpResponseRedirect(reverse('ownmessage_list'))
+            return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg="</br>".join(form_error(form)))
         try:
             OwnerMessage.objects.create(
                 summary=form.cleaned_data.get("summary"),
                 message=form.cleaned_data.get("message"),
             )
-            messages.success(request, u'文章添加成功')
-            return HttpResponseRedirect(reverse('ownmessage_list'))
+            return http_response(request, statuscode=ERRORCODE.SUCCESS)
         except Exception as ex:
-            messages.warning(request, u'添加失败: %s' % ex)
-            return HttpResponseRedirect(reverse('ownmessage_list'))
+            return http_response(request, statuscode=ERRORCODE.FAILED, msg=ex)
 
 
 @login_required
