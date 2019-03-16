@@ -4802,4 +4802,18 @@ button {
 .alert {
   padding: .75rem 0 0 1.25rem!important;
 }
+
+.new-alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-error {
+  background-color: rgba(240, 80, 80, 0.2);
+  border-color: rgba(240, 80, 80, 0.3);
+  color: #ff5b5b;
+}
 /*# sourceMappingURL=style.css.map */

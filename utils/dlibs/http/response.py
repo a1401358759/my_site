@@ -2,7 +2,6 @@
 
 import time
 import json
-from django.conf import settings
 from django.http import HttpResponse
 
 
@@ -28,7 +27,6 @@ def http_response(request, context={}, statuscode=None, code=None, msg=None, msg
     :return str 序列化json数据或pb流
     """
     content_dict = {
-        "version": settings.VERSION,
         "code": code if code is not None else statuscode.code if statuscode else "",
         "msg": msg if msg is not None else statuscode.msg if statuscode else "",
         "msg_cn": msg_cn if msg_cn is not None else statuscode.msgcn if statuscode else "",

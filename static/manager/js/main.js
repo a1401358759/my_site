@@ -14,7 +14,7 @@ function msg_info(msg, type, timeout) {
   if (!type) type = 'info';
   if (!timeout) timeout = 3000;
   var id = (new Date).getTime() + '' + parseInt(Math.random() * 100);
-  var msg_html = '<div id="'+ id +'" class="alert alert-' + type + '">'+ msg +'</div>'
+  var msg_html = '<div id="'+ id +'" class="new-alert alert-' + type + '">'+ msg +'</div>'
   $('.content-header').after(msg_html);
   setTimeout(function () {
     $("#" + id).fadeOut();

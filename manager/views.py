@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import urllib
-from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render
@@ -13,9 +12,8 @@ from utils.errorcode import ERRORCODE
 from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from utils.common import form_error
-from article.constants import BlogStatus
 from article.models import Article, Links, Classification, CarouselImg, Music, Author, OwnerMessage
-from .forms import SearchBlogForm
+from .forms import SearchBlogForm, AddFriendLinkForm, AddAuthorForm
 
 
 def login_view(request):
@@ -123,3 +121,97 @@ def friend_link_list_view(request):
         "total": total,
         "name": name
     })
+
+
+@login_required
+def add_friend_link_view(request):
+    form = AddFriendLinkForm(request.POST)
+    if not form.is_valid():
+        messages.warning(request, "</br>".join(form_error(form)))
+        return HttpResponseRedirect(reverse('friend_link_list'))
+
+    try:
+        Links.objects.create(
+            name=form.cleaned_data.get('name'),
+            link=form.cleaned_data.get('link'),
+            avatar=form.cleaned_data.get('avatar'),
+            desc=form.cleaned_data.get('desc'),
+        )
+        messages.success(request, u'添加成功')
+        return HttpResponseRedirect(reverse('friend_link_list'))
+    except Exception as e:
+        messages.error(request, u'添加失败: %s' % e)
+        return HttpResponseRedirect(reverse('friend_link_list'))
+
+
+@login_required
+def del_friend_link_view(request):
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        Links.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def author_list_view(request):
+    """
+    作者列表
+    :param request:
+    :return:
+    """
+    query = Q()
+    name = request.GET.get('name')
+    if name:
+        query &= Q(name__icontains=name)
+
+    authors = Author.objects.filter(query).order_by("-id")
+    author_list, total = paginate(
+        authors,
+        request.GET.get('page') or 1
+    )
+
+    return render(request, 'manager/author_list.html', {
+        "active_classes": ['.blog', '.author_list'],
+        "params": request.GET,
+        "data_list": author_list,
+        "total": total,
+        "name": name
+    })
+
+
+@login_required
+def add_author_view(request):
+    form = AddAuthorForm(request.POST)
+    if not form.is_valid():
+        messages.warning(request, "</br>".join(form_error(form)))
+        return HttpResponseRedirect(reverse('author_list'))
+
+    try:
+        Author.objects.create(
+            name=form.cleaned_data.get('name'),
+            email=form.cleaned_data.get('email'),
+            website=form.cleaned_data.get('website'),
+        )
+        messages.success(request, u'添加成功')
+        return HttpResponseRedirect(reverse('author_list'))
+    except Exception as e:
+        messages.error(request, u'添加失败: %s' % e)
+        return HttpResponseRedirect(reverse('author_list'))
+
+
+@login_required
+def del_author_view(request):
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        Author.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
