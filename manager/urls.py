@@ -40,4 +40,9 @@ urlpatterns = [
     url(r'^carousel-list/?$', views.carousel_list_view, name="carousel_list"),
     url(r'^carousel-add/?$', views.add_carousel_view, name="carousel_add"),
     url(r'^carousel-del/?$', views.del_carousel_view, name="carousel_del"),
+
+    # 主人寄语
+    url(r'^ownmessage-list/?$', views.ownmessage_list_view, name="ownmessage_list"),
+    url(r'^ownmessage-add/?$', views.add_ownmessage_view, name="ownmessage_add"),
+    url(r'^ownmessage-del/?$', views.del_ownmessage_view, name="ownmessage_del"),
 ]

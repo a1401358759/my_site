@@ -472,3 +472,40 @@ def del_carousel_view(request):
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def ownmessage_list_view(request):
+    messages = OwnerMessage.objects.order_by("-id")
+    ownmessage_list, total = paginate(
+        messages,
+        request.GET.get('page') or 1
+    )
+
+    return render(request, 'manager/ownmessage_list.html', {
+        "active_classes": ['.blog', '.ownmessage_list'],
+        "params": request.GET,
+        "data_list": ownmessage_list,
+        "total": total,
+    })
+
+
+@login_required
+def add_ownmessage_view(request):
+    pass
+
+
+@login_required
+def del_ownmessage_view(request):
+    """
+    删除主人寄语
+    """
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        OwnerMessage.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
