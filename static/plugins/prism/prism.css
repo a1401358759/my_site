@@ -121,6 +121,7 @@ pre[class*="language-"] {
 .token.function,
 .token.class-name {
 	color: #88AE35;
+  font-weight: bold;
 }
 
 .token.regex,
