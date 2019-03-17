@@ -114,12 +114,13 @@ pre[class*="language-"] {
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: #07a;
+	color: #f92672;
+  font-weight: bold;
 }
 
 .token.function,
 .token.class-name {
-	color: #DD4A68;
+	color: #88AE35;
 }
 
 .token.regex,
@@ -139,4 +140,3 @@ pre[class*="language-"] {
 .token.entity {
 	cursor: help;
 }
-

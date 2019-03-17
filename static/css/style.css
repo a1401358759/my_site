@@ -2414,15 +2414,15 @@ video {
 /* valine样式 */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
-  font-size: 15px!important;
+  font-size: 14px!important;
 }
 
 code span {
-  font-family: "monaco"!important;
+  font-family: "Consolas"!important;
 }
 
 code p {
-  font-family: "monaco"!important;
+  font-family: "Consolas"!important;
 }
 
 blockquote p {
