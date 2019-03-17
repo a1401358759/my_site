@@ -44,5 +44,6 @@ urlpatterns = [
     # 主人寄语
     url(r'^ownmessage-list/?$', views.ownmessage_list_view, name="ownmessage_list"),
     url(r'^ownmessage-add/?$', views.add_ownmessage_view, name="ownmessage_add"),
+    url(r'^ownmessage-edit/(?P<item_id>[a-zA-Z0-9]+)/?$', views.edit_ownmessage_view, name="ownmessage_edit"),
     url(r'^ownmessage-del/?$', views.del_ownmessage_view, name="ownmessage_del"),
 ]

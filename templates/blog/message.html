@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-
+{% load custom_markdown %}
 {% block title %}
   杨学峰博客 | 留言板
 {% endblock %}
@@ -16,7 +16,15 @@
 <div>
   <section id="owner_message" class="widget widget_recent_comments">
     <h3 style="font-weight:bold;margin-top:0;text-align:center;">主人寄语</h3>
-    <div>{% if own_message %}{{ own_message.message|safe }}{% endif %}</div>
+    <div>
+      {% if own_message %}
+        {% if own_message.editor == 1 %}
+          {{ own_message.message|safe }}
+        {% elif own_message.editor == 2 %}
+          {{ own_message.message|custom_markdown }}
+        {% endif %}
+      {% endif %}
+    </div>
   </section>
 </div>
 

@@ -23,3 +23,15 @@ class CarouselImgType(object):
     )
 
     CHOICES_DICT = dict(CHOICES)
+
+
+class EditorKind(object):
+    RichText = 1
+    Markdown = 2
+
+    CHOICES = (
+        (RichText, u"富文本编辑器"),
+        (Markdown, u"Markdown编辑器")
+    )
+
+    CHOICES_DICT = dict(CHOICES)

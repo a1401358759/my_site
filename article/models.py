@@ -3,7 +3,7 @@
 from django.db import models
 from collections import OrderedDict
 # from DjangoUeditor.models import UEditorField
-from .constants import BlogStatus, CarouselImgType
+from .constants import BlogStatus, CarouselImgType, EditorKind
 from utils.dlibs.models.mixins import TimeModelMixin
 
 
@@ -22,6 +22,7 @@ class Author(models.Model):
 class OwnerMessage(models.Model):
     summary = models.CharField(max_length=100, verbose_name=u'简介', blank=True, null=True)
     message = models.TextField(verbose_name=u'寄语', default="")
+    editor = models.SmallIntegerField(verbose_name=u'编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
 
     def __unicode__(self):
@@ -143,6 +144,7 @@ class Article(models.Model):  # 文章
     content = models.TextField(verbose_name=u'文章内容', default="")
     publish_time = models.DateTimeField(auto_now_add=True, verbose_name=u'发表时间')
     count = models.IntegerField(default=0, verbose_name=u'文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
+    editor = models.SmallIntegerField(verbose_name=u'编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
     status = models.SmallIntegerField(verbose_name=u"状态", choices=BlogStatus.CHOICES, default=BlogStatus.PUBLISHED)
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器

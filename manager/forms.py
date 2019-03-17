@@ -2,6 +2,7 @@
 
 from django import forms
 from utils.dlibs.forms.validators import email_validator
+from article.constants import EditorKind
 
 
 class SearchBlogForm(forms.Form):
@@ -39,3 +40,4 @@ class AddCarouselForm(forms.Form):
 class OperateOwnMessageForm(forms.Form):
     summary = forms.CharField(label=u'简介')
     message = forms.CharField(label=u'寄语')
+    editor = forms.ChoiceField(label=u'编辑器类型', choices=EditorKind.CHOICES)

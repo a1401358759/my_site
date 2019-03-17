@@ -16,6 +16,7 @@ from article.models import (
     Article, Links, Classification, CarouselImg,
     Music, Author, OwnerMessage, Tag
 )
+from article.constants import EditorKind
 from .forms import (
     SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm,
     AddAuthorForm, AddMusicForm, AddCarouselForm
@@ -498,10 +499,9 @@ def ownmessage_list_view(request):
 
 @login_required
 def add_ownmessage_view(request):
-    tp = "manager/operate_ownmessage.html"
+    tp = "manager/create_ownmessage.html"
     context = {
         "active_classes": ['.blog', '.ownmessage_list'],
-        "create": True,
     }
     if request.method == "GET":
         return render(request, tp, context)
@@ -509,15 +509,58 @@ def add_ownmessage_view(request):
     if request.method == "POST":
         form = OperateOwnMessageForm(request.POST)
         if not form.is_valid():
-            return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg="</br>".join(form_error(form)))
+            messages.warning(request, msg="</br>".join(form_error(form)))
+            return HttpResponseRedirect(reverse('ownmessage_list'))
         try:
             OwnerMessage.objects.create(
                 summary=form.cleaned_data.get("summary"),
                 message=form.cleaned_data.get("message"),
+                editor=EditorKind.Markdown
             )
-            return http_response(request, statuscode=ERRORCODE.SUCCESS)
+            messages.success(request, u'添加成功')
+            return HttpResponseRedirect(reverse('ownmessage_list'))
         except Exception as ex:
-            return http_response(request, statuscode=ERRORCODE.FAILED, msg=ex)
+            messages.warning(request, ex)
+            return HttpResponseRedirect(reverse('ownmessage_list'))
+
+
+@login_required
+def edit_ownmessage_view(request, item_id):
+    """
+    主人寄语编辑
+    :param request:
+    :return:
+    """
+    message = OwnerMessage.objects.filter(id=item_id).first()
+    if not message:
+        messages.warning(request, "此主人寄语不存在")
+        return HttpResponseRedirect(reverse('ownmessage_list'))
+    tp = "manager/edit_ownmessage.html"
+    context = {
+        "active_classes": ['.blog', '.ownmessage_list'],
+        "message": message,
+        "item_id": item_id
+    }
+    if request.method == "GET":
+        return render(request, tp, context)
+
+    if request.method == "POST":
+        form = OperateOwnMessageForm(request.POST)
+        if not form.is_valid():
+            messages.warning(request, msg="</br>".join(form_error(form)))
+            return HttpResponseRedirect(reverse('ownmessage_list'))
+        data = {
+            "summary": form.cleaned_data.get("summary"),
+            "message": form.cleaned_data.get("message"),
+            "editor": form.cleaned_data.get("editor")
+        }
+        try:
+            OwnerMessage.objects.filter(id=item_id).update(**data)
+            messages.success(request, u'修改成功')
+            return HttpResponseRedirect(reverse('ownmessage_list'))
+        except Exception, ex:
+            messages.warning(request, ex)
+            return HttpResponseRedirect(reverse('ownmessage_list'))
 
 
 @login_required
