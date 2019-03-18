@@ -34,12 +34,22 @@
                 <input name="summary" id="summary" class="form-control" value="{{ message.summary }}">
               </div>
             </div>
-            <div class="form-group">
-              <h5>寄语内容 <span class="text-danger">*</span></h5>
-              <div id="my-editormd" class="controls">
-                <textarea style="display:none;" name="message">{{ message.message }}</textarea>
+            {% if message.editor == 1 %}  <!-- 富文本编辑器 -->
+              <div class="form-group">
+                <h5>寄语内容 <span class="text-danger">*</span></h5>
+                <div id="editor" class="controls">
+                  <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+                </div>
+                <textarea style="display:none;" name="message" id="rich_text">{{ message.message }}</textarea>
               </div>
-            </div>
+            {% elif message.editor == 2 %}   <!-- Markdown编辑器 -->
+              <div class="form-group">
+                <h5>寄语内容 <span class="text-danger">*</span></h5>
+                <div id="my-editormd" class="controls">
+                  <textarea style="display:none;" name="message">{{ message.message }}</textarea>
+                </div>
+              </div>
+            {% endif %}
             <a href="{% url 'ownmessage_list' %}" class="btn btn-inverse">返回</a>
             <button type="submit" class="btn btn-success">提交</button>
           </form>
@@ -50,52 +60,45 @@
 {% endblock %}
 
 {% block js %}
-<script src="/static/manager/plugins/editormd/editormd.min.js"></script>
-<script>
-  var testEditor;
-  testEditor = editormd("my-editormd", {
-    width: "100%",
-    height: 640,
-    syncScrolling: "single",
-    path: "/static/manager/plugins/editormd/lib/",   // 你的path路径（原资源文件中lib包在我们项目中所放的位置）
-    saveHTMLToTextarea: true,
-    emoji: true,
-    taskList: true,
-    tocm: true,         // Using [TOCM]
-    tex: true,                   // 开启科学公式TeX语言支持，默认关闭
-    flowChart: true,             // 开启流程图支持，默认关闭
-    sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
-    toolbarIcons : function() {  // 自定义工具栏，后面有详细介绍
-      return editormd.toolbarModes['full']; // full, simple, mini
-    },
-    imageUpload : true,
-    imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-    imageUploadURL : '/upload/'
-  });
-
-  function submit_info() {
-    var message = testEditor.getHTML();
-    var summary = $("#summary").val();
-
-    $.ajax({
-      url: "{% url 'ownmessage_add' %}",
-      type: 'POST',
-      data: {
-        "summary": summary,
-        "message": message,
+  {% if message.editor == 2 %}
+  <script src="/static/manager/plugins/editormd/editormd.min.js"></script>
+  <script>
+    var testEditor;
+    testEditor = editormd("my-editormd", {
+      width: "100%",
+      height: 640,
+      syncScrolling: "single",
+      path: "/static/manager/plugins/editormd/lib/",   // 你的path路径（原资源文件中lib包在我们项目中所放的位置）
+      saveHTMLToTextarea: true,
+      emoji: true,
+      taskList: true,
+      tocm: true,         // Using [TOCM]
+      tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+      flowChart: true,             // 开启流程图支持，默认关闭
+      sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+      toolbarIcons : function() {  // 自定义工具栏，后面有详细介绍
+        return editormd.toolbarModes['full']; // full, simple, mini
       },
-      success: function (data) {
-        if (data.code == ERROR_CODE.SUCCESS) {
-          msg_info("删除成功，2秒后自动刷新", 'success')
-          setTimeout(function(){window.location.href = "{% url 'ownmessage_list' %}";}, 2000);
-        } else if (data.code == ERROR_CODE.PARAM_ERROR) {
-          msg_info('参数错误', 'error');
-        }
-      },
-      error: function () {
-        msg_info('删除失败!', 'error');
-      }
+      imageUpload : true,
+      imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+      imageUploadURL : '/upload/'
     });
-  }
-</script>
+  </script>
+  {% endif %}
+  {% if message.editor == 1 %}
+  <script src="/static/manager/js/wangEditor.min.js"></script>
+  <script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    var $text1 = $('#rich_text')
+    editor.customConfig.onchange = function (html) {
+      // 监控变化，同步更新到 textarea
+      $text1.val(html)
+    }
+    editor.create()
+    editor.txt.html($text1.val())
+    // 初始化 textarea 的值
+    $text1.val(editor.txt.html());
+  </script>
+  {% endif %}
 {% endblock %}
