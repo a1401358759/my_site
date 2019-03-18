@@ -4,7 +4,7 @@ new Valine({
   appKey:'zkBqvFzJ7NswaFW6oGICyKpq',
   notify:false,
   verify: false,
-  avatar:'monsterid',
+  avatar:'mp',
   placeholder:'ヾﾉ≧∀≦)o来啊，快活啊!',
   visitor:true,
 });
