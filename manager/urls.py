@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^logout/?$', views.logout_view, name="logout_view"),
     url(r'^blog-list/?$', views.blog_list_view, name="blog_list"),
     url(r'^blog-create/?$', views.blog_create_view, name="blog_create"),
+    url(r'^blog-edit/(?P<item_id>[a-zA-Z0-9]+)/?$', views.blog_edit_view, name="blog_edit"),
 
     # 友情链接
     url(r'^friend-links/?$', views.friend_link_list_view, name="friend_link_list"),

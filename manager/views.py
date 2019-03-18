@@ -115,7 +115,6 @@ def blog_create_view(request):
             messages.warning(request, msg="</br>".join(form_error(form)))
             return HttpResponseRedirect(reverse('blog_list'))
         try:
-            tags = request.POST.getlist('tags')
             article = Article.objects.create(
                 title=form.cleaned_data.get("title"),
                 author_id=form.cleaned_data.get("author"),
@@ -125,10 +124,65 @@ def blog_create_view(request):
                 status=form.cleaned_data.get("status"),
                 editor=EditorKind.Markdown,
             )
+            tags = request.POST.getlist('tags')
             article.set_tags(tags)
             messages.success(request, u'添加成功')
             return HttpResponseRedirect(reverse('blog_list'))
         except Exception as ex:
+            messages.warning(request, ex)
+            return HttpResponseRedirect(reverse('blog_list'))
+
+
+@login_required
+def blog_edit_view(request, item_id):
+    """
+    博客编辑
+    :param request:
+    :return:
+    """
+    article = Article.objects.filter(id=item_id).first()
+    if not article:
+        messages.warning(request, "此博客不存在")
+        return HttpResponseRedirect(reverse('blog_list'))
+
+    selected_tags = article.get_tags()
+    auhtors = Author.objects.values("id", "name")
+    classifications = Classification.objects.values("id", "name")
+    tags = Tag.objects.values("id", "name")
+    context = {
+        "active_classes": ['.blog', '.blog_list'],
+        "article": article,
+        "auhtors": auhtors,
+        "classifications": classifications,
+        "tags": tags,
+        "selected_tags": selected_tags,
+        "blog_status": BlogStatus.CHOICES,
+        "item_id": item_id
+    }
+    if request.method == "GET":
+        return render(request, "manager/edit_blog.html", context)
+
+    if request.method == "POST":
+        form = OperateBlogForm(request.POST)
+        if not form.is_valid():
+            messages.warning(request, msg="</br>".join(form_error(form)))
+            return HttpResponseRedirect(reverse('blog_list'))
+
+        try:
+            new_tags = request.POST.getlist('tags')
+            article.set_tags(new_tags)
+            Article.objects.filter(id=item_id).update(
+                title=form.cleaned_data.get("title"),
+                author_id=form.cleaned_data.get("author"),
+                classification_id=form.cleaned_data.get("classification"),
+                content=form.cleaned_data.get("content"),
+                count=form.cleaned_data.get("count"),
+                status=form.cleaned_data.get("status"),
+                editor=form.cleaned_data.get("editor"),
+            )
+            messages.success(request, u'修改成功')
+            return HttpResponseRedirect(reverse('blog_list'))
+        except Exception, ex:
             messages.warning(request, ex)
             return HttpResponseRedirect(reverse('blog_list'))
 

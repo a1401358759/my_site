@@ -46,6 +46,8 @@
                 <th width="2%"><input type="checkbox" name="check_all" /></th>
                 <th>标题</th>
                 <th>作者</th>
+                <th>分类</th>
+                <th>标签</th>
                 <th>状态</th>
                 <th>发表时间</th>
               </tr>
@@ -55,8 +57,14 @@
               {% for item in data_list %}
               <tr>
                 <td><input type="checkbox" name="item_ids" value="{{ item.id }}"/></td>
-                <td>{{ item.title }}</td>
+                <td><a href="{% url 'blog_edit' item.id %}">{{ item.title }}</a></td>
                 <td>{{ item.author.name }}</td>
+                <td>{{ item.classification.name }}</td>
+                <td>
+                {%for tag in item.get_tags %}
+                  {{ tag.name }}&nbsp;
+                {% endfor %}
+                </td>
                 <td>{{ item.get_status_display }}</td>
                 <td>{{ item.publish_time|date:'Y-m-d H:i' }}</td>
               </tr>
