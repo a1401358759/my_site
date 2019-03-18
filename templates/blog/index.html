@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% load bootstrap_pagination %}
-
+{% load custom_markdown %}
 {% block title %}
   {% if is_home %}
     杨学峰博客
@@ -98,7 +98,11 @@
 
             <div class="entry-content">
               <p class="MsoNormal">
-                {{ article.content|truncatewords_html:20|safe }}
+                {% if article.editor == 1 %}
+                  {{ article.content|truncatewords_html:20|safe }}
+                {% elif article.editor == 2 %}
+                  {{ article.content|truncatewords_html:20|markdown_to_html }}
+                {% endif %}
               </p>
               <div class="clearfix"></div>
             </div>

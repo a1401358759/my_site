@@ -43,3 +43,4 @@ aliyun-python-sdk-core==2.13.1
 aliyun-python-sdk-kms==2.5.0
 oss2==2.5.0
 celery==4.2.1
+mistune==0.8.4

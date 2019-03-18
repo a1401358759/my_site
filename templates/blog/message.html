@@ -21,7 +21,7 @@
         {% if own_message.editor == 1 %}
           {{ own_message.message|safe }}
         {% elif own_message.editor == 2 %}
-          {{ own_message.message|custom_markdown }}
+          {{ own_message.message|markdown_to_html }}
         {% endif %}
       {% endif %}
     </div>
