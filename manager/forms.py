@@ -2,7 +2,7 @@
 
 from django import forms
 from utils.dlibs.forms.validators import email_validator
-from article.constants import EditorKind
+from article.constants import EditorKind, BlogStatus
 
 
 class SearchBlogForm(forms.Form):
@@ -41,3 +41,13 @@ class OperateOwnMessageForm(forms.Form):
     summary = forms.CharField(label=u'简介')
     message = forms.CharField(label=u'寄语')
     editor = forms.ChoiceField(label=u'编辑器类型', choices=EditorKind.CHOICES)
+
+
+class OperateBlogForm(forms.Form):
+    title = forms.CharField(label=u'标题', max_length=100)
+    author = forms.IntegerField(label=u'作者')
+    classification = forms.IntegerField(label=u'分类')
+    content = forms.CharField(label=u'内容')
+    count = forms.IntegerField(label=u'阅读量', required=False)
+    editor = forms.ChoiceField(label=u'编辑器类型', choices=EditorKind.CHOICES)
+    status = forms.ChoiceField(label=u'状态', choices=BlogStatus.CHOICES)

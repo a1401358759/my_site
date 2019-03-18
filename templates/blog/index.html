@@ -101,7 +101,7 @@
                 {% if article.editor == 1 %}
                   {{ article.content|truncatewords_html:20|safe }}
                 {% elif article.editor == 2 %}
-                  {{ article.content|truncatewords_html:20|markdown_to_html }}
+                  {{ article.content|markdown_to_html|truncatewords_html:20 }}
                 {% endif %}
               </p>
               <div class="clearfix"></div>

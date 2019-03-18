@@ -16,10 +16,10 @@ from article.models import (
     Article, Links, Classification, CarouselImg,
     Music, Author, OwnerMessage, Tag
 )
-from article.constants import EditorKind
+from article.constants import EditorKind, BlogStatus
 from .forms import (
     SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm,
-    AddAuthorForm, AddMusicForm, AddCarouselForm
+    AddAuthorForm, AddMusicForm, AddCarouselForm, OperateBlogForm
 )
 
 
@@ -90,11 +90,47 @@ def blog_list_view(request):
     })
 
 
+@login_required
 def blog_create_view(request):
-    return render(request, 'manager/operate_blog.html', {
+    """
+    博客添加
+    """
+    tp = "manager/create_blog.html"
+    auhtors = Author.objects.values("id", "name")
+    classifications = Classification.objects.values("id", "name")
+    tags = Tag.objects.values("id", "name")
+    context = {
         "active_classes": ['.blog', '.blog_list'],
-        "params": request.GET,
-    })
+        "auhtors": auhtors,
+        "classifications": classifications,
+        "tags": tags,
+        "blog_status": BlogStatus.CHOICES,
+    }
+    if request.method == "GET":
+        return render(request, tp, context)
+
+    if request.method == "POST":
+        form = OperateBlogForm(request.POST)
+        if not form.is_valid():
+            messages.warning(request, msg="</br>".join(form_error(form)))
+            return HttpResponseRedirect(reverse('blog_list'))
+        try:
+            tags = request.POST.getlist('tags')
+            article = Article.objects.create(
+                title=form.cleaned_data.get("title"),
+                author_id=form.cleaned_data.get("author"),
+                classification_id=form.cleaned_data.get("classification"),
+                content=form.cleaned_data.get("content"),
+                count=form.cleaned_data.get("count"),
+                status=form.cleaned_data.get("status"),
+                editor=EditorKind.Markdown,
+            )
+            article.set_tags(tags)
+            messages.success(request, u'添加成功')
+            return HttpResponseRedirect(reverse('blog_list'))
+        except Exception as ex:
+            messages.warning(request, ex)
+            return HttpResponseRedirect(reverse('blog_list'))
 
 
 @login_required

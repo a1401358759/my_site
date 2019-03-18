@@ -162,6 +162,12 @@ class Article(models.Model):  # 文章
         tag = self.tags.all()
         return tag
 
+    def set_tags(self, tags):
+        for tag in tags:
+            p, created = Tag.objects.get_or_create(pk=tag)
+            self.tags.add(p)
+        super(Article, self).save()
+
     def get_before_article(self):  # 返回当前文章的前一篇文章
         index = 0
         temp = Article.objects.order_by('id')
