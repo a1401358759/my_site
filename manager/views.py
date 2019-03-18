@@ -188,6 +188,22 @@ def blog_edit_view(request, item_id):
 
 
 @login_required
+def blog_del_view(request):
+    """
+    删除博客
+    """
+    item_ids = request.POST.getlist('item_ids')
+    if not item_ids:
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+
+    try:
+        Article.objects.filter(id__in=item_ids).delete()
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
 def friend_link_list_view(request):
     """
     友情链接列表

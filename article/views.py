@@ -5,6 +5,7 @@ from django.db.models import F, Q
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
@@ -15,6 +16,7 @@ from .constants import BlogStatus, CarouselImgType
 from .backends import get_tags_and_musics
 
 
+@login_required
 @csrf_exempt
 @require_POST
 def upload_file(request):
@@ -22,7 +24,6 @@ def upload_file(request):
     editor.md上传图片接口
     """
     filestream = request.FILES.get('editormd-image-file')
-    print type(filestream)
     if not filestream:
         return render_json({"success": 0, "message": u"请选择文件", "url": ""})
 
@@ -30,6 +31,7 @@ def upload_file(request):
     return render_json({"success": 1, "message": u"上传成功", "url": img_path})
 
 
+@login_required
 @csrf_exempt
 @require_POST
 def upload_rich_file(request):

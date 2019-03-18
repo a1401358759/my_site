@@ -5,12 +5,16 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.blog_list_view, name="blog_list"),
+    # 登入登出
     url(r'^login/?$', views.login_view, name="login_view"),
     url(r'^logout/?$', views.logout_view, name="logout_view"),
+
+    # 博客
+    url(r'^$', views.blog_list_view, name="blog_list"),
     url(r'^blog-list/?$', views.blog_list_view, name="blog_list"),
     url(r'^blog-create/?$', views.blog_create_view, name="blog_create"),
     url(r'^blog-edit/(?P<item_id>[a-zA-Z0-9]+)/?$', views.blog_edit_view, name="blog_edit"),
+    url(r'^blog-del/?$', views.blog_del_view, name="blog_del"),
 
     # 友情链接
     url(r'^friend-links/?$', views.friend_link_list_view, name="friend_link_list"),

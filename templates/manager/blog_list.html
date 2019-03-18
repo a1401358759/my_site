@@ -77,6 +77,30 @@
           </div>
         </div>
       </div>
+
+      <div id="del_blogs_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myLargeModalLabel">删除博客</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form>
+              {% csrf_token %}
+              <div class="modal-body">
+                <h4>确认删除博客？</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-inverse" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success" onclick="delete_blogs()">提交</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
     </div>
     <!-- end row -->
   </div> <!-- container -->
@@ -97,7 +121,7 @@
     $("#del_blogs_modal").modal('hide');
     var formData = $("#item_ids_form").serialize();
     $.ajax({
-      url: "",
+      url: "{% url 'blog_del' %}",
       type: 'POST',
       data: formData,
       success: function (data) {
