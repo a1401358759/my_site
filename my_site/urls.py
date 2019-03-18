@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^love/?$', views.love),
     url(r'^my-resume/?$', views.my_resume, name='my_resume'),  # 简历
     url(r'^upload/$', views.upload_file, name='upload_file'),
+    url(r'^upload-rich/$', views.upload_rich_file, name='upload_rich_file'),
 ]

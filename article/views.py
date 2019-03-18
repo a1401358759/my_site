@@ -18,13 +18,34 @@ from .backends import get_tags_and_musics
 @csrf_exempt
 @require_POST
 def upload_file(request):
+    """
+    editor.md上传图片接口
+    """
     filestream = request.FILES.get('editormd-image-file')
+    print type(filestream)
     if not filestream:
         return render_json({"success": 0, "message": u"请选择文件", "url": ""})
 
     key, img_path = upload_data(filestream, 'blog')
-    # return render_json({"error": False, "key": key, "url": img_path, "path": img_path})
     return render_json({"success": 1, "message": u"上传成功", "url": img_path})
+
+
+@csrf_exempt
+@require_POST
+def upload_rich_file(request):
+    """
+    wangEditor上传图片接口, 支持批量上传
+    """
+    files = request.FILES
+    if not files:
+        return render_json({"errno": 1, "data": []})
+
+    img_path_list = []
+    for item in files:
+        key, img_path = upload_data(files.get(item), 'blog')
+        img_path_list.append(img_path)
+
+    return render_json({"errno": 0, "data": img_path_list})
 
 
 def home(request):

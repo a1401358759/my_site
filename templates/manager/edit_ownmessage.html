@@ -90,12 +90,15 @@
   <script type="text/javascript">
     var E = window.wangEditor
     var editor = new E('#editor')
+    editor.customConfig.uploadImgServer = '/upload-rich/'  // 配置服务器端上传图片地址
+    editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024  // 将图片大小限制为 3M
     var $text1 = $('#rich_text')
     editor.customConfig.onchange = function (html) {
       // 监控变化，同步更新到 textarea
       $text1.val(html)
     }
     editor.create()
+    // 设置编辑器的初始值
     editor.txt.html($text1.val())
     // 初始化 textarea 的值
     $text1.val(editor.txt.html());
