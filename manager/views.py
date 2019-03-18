@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import urllib
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render
@@ -19,7 +20,7 @@ from article.models import (
 from article.constants import EditorKind, BlogStatus
 from .forms import (
     SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm,
-    AddAuthorForm, AddMusicForm, AddCarouselForm, OperateBlogForm
+    AddAuthorForm, AddMusicForm, AddCarouselForm, OperateBlogForm, ChangePasswordForm
 )
 
 
@@ -41,7 +42,7 @@ def login_view(request):
         password = request.POST.get('password')
         user = authenticate(username=user_name, password=password)
         if not user:
-            messages.warning(request, u'登录失败，请检查用户名密码后重试.')
+            messages.error(request, u'登录失败，请检查用户名密码后重试.')
             return HttpResponseRedirect('%s?%s' % (reverse('login_view'), urllib.urlencode({'back_url': back_url})))
         login(request, user)
         return HttpResponseRedirect(reverse('blog_list'))
@@ -59,6 +60,28 @@ def logout_view(request):
     """
     logout(request)
     return HttpResponseRedirect('/manager')
+
+
+@login_required
+def change_passwd_view(request):
+    if request.method == "POST":
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            user = User.objects.get(id=request.user.id)
+            if user.check_password(form.cleaned_data['old_password']):
+                user.set_password(form.cleaned_data['new_password'])
+                user.save()
+                messages.success(request, u'密码修改成功，请重新登录')
+                return HttpResponseRedirect(reverse("logout_view"))
+            else:
+                messages.error(request, u'原密码错误.')
+                return HttpResponseRedirect(reverse('change_password'))
+    else:
+        form = ChangePasswordForm()
+    data = {
+        'form': form
+    }
+    return render(request, "manager/change_password.html", data)
 
 
 @login_required

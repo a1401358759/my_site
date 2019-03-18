@@ -8,6 +8,7 @@ urlpatterns = [
     # 登入登出
     url(r'^login/?$', views.login_view, name="login_view"),
     url(r'^logout/?$', views.logout_view, name="logout_view"),
+    url(r'^change-pw/?$', views.change_passwd_view, name="change_password"),
 
     # 博客
     url(r'^$', views.blog_list_view, name="blog_list"),

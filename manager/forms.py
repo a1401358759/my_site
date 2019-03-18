@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
+from django.core.exceptions import ValidationError
 from utils.dlibs.forms.validators import email_validator
 from article.constants import EditorKind, BlogStatus
 
@@ -51,3 +52,14 @@ class OperateBlogForm(forms.Form):
     count = forms.IntegerField(label=u'阅读量', required=False)
     editor = forms.ChoiceField(label=u'编辑器类型', choices=EditorKind.CHOICES)
     status = forms.ChoiceField(label=u'状态', choices=BlogStatus.CHOICES)
+
+
+class ChangePasswordForm(forms.Form):
+    old_password = forms.CharField(label=u'旧密码', max_length=128, widget=forms.PasswordInput())
+    new_password = forms.CharField(label=u'新密码', max_length=128, widget=forms.PasswordInput())
+    confirm_password = forms.CharField(label=u'确认新密码', required=True, max_length=128, widget=forms.PasswordInput())
+
+    def clean_confirm_password(self):
+        if self.cleaned_data['new_password'] != self.cleaned_data['confirm_password']:
+            raise ValidationError(message='请确认两次输入的新密码一致')
+        return self.cleaned_data['confirm_password']
