@@ -1,0 +1,138 @@
+{% extends "blog/base.html" %}
+{% load bootstrap_pagination %}
+{% load custom_markdown %}
+{% block title %}
+  {% if is_home %}
+    杨学峰博客
+  {% endif %}
+  {% if is_arch_month %}
+    杨学峰博客 | {{ year }}年 | {{ month }}月
+  {% endif%}
+  {% if is_classfi %}
+    杨学峰博客 | {{ classfi }}
+  {% endif%}
+  {% if is_tag  %}
+    杨学峰博客 | {{ tag }}
+  {% endif%}
+  {% if is_search  %}
+    杨学峰博客 | 查找有关{{ s }}的文章
+  {% endif %}
+{% endblock %}
+
+{% block banner %}
+  {% if is_home and carouse_imgs %}
+    <div class="swiper-container hidden-xs" style="border-radius:5px">
+      <div class="swiper-wrapper">
+        {% for img in carouse_imgs %}
+          <div class="swiper-slide">
+            <a href="{{ img.link|default:'javascript:;' }}">
+              <img src="{{ img.path }}" alt="{{ img.description }}" />
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  {% endif%}
+{% endblock %}
+
+{% block path %}
+  {% if is_home %}
+    当前位置&nbsp;:&nbsp;首页
+  {% endif%}
+
+  {% if is_arch_month %}
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;按月归档&nbsp;:&nbsp;{{year}}年{{month}}月
+  {% endif%}
+
+  {% if  is_classfi  %}
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;{{classfi}}
+  {% endif%}
+
+  {% if  is_tag  %}
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;标签&nbsp;:&nbsp;{{tag}}
+  {% endif%}
+
+  {% if  is_search  %}
+    当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;搜索&nbsp;:&nbsp;{{s}}{{tag}}
+  {% endif%}
+{% endblock %}
+
+{% block content %}
+  {% if not articles %}
+    <h4 class="no-articles">啊哦，没有找到相关文章</h4>
+  {% else %}
+    <span id="itemContainer">
+      {% for article in articles %}
+        <div class="archive">
+          <div id="archives">
+            <header class="entry-header">
+              <div class="entry-info">
+                <span class="entry-date">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  {{ article.publish_time|date:'Y年m月d日' }}
+                </span>
+                <span class="author vcard">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  {{ article.author }}
+                </span>
+                <span class="pull-right">
+                  <i class="fa fa-eye" aria-hidden="true">&nbsp;阅读:&nbsp;</i>{{ article.count }}
+                </span>
+              </div>
+
+              <h1 class="entry-title">
+                <a href="{{ article.get_absolute_url }}" rel="bookmark">
+                  {{ article.title }}
+                </a>
+              </h1>
+              <!--<div class="post-format-indicator">
+                <a class="entry-format" href="{{ article.get_absolute_url }}"></a>
+              </div>-->
+            </header>
+
+            <div class="entry-content">
+              <p class="MsoNormal">
+                {% if article.editor == 1 %}
+                  {{ article.content|truncatewords_html:20|safe }}
+                {% elif article.editor == 2 %}
+                  {{ article.content|markdown_to_html|truncatewords_html:20 }}
+                {% endif %}
+              </p>
+              <div class="clearfix"></div>
+            </div>
+
+            <footer class="entry-meta" style="padding:10px 0; margin-top:10px;">
+              <span class="entry-categories">
+                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
+              </span>
+              <span class="entry-tags">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+                {% for i in article.get_tags %}
+                  <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}&nbsp;&nbsp;</a>
+                {% endfor %}
+              </span>
+              <a href="{{ article.get_absolute_url }}" class="more-link">
+                <i class="fa fa-link" aria-hidden="true"></i>
+                阅读全文
+              </a>
+            </footer>
+          </div>
+        </div>
+      {% endfor%}
+      <div class="paginate">
+        {% bootstrap_paginate articles url_extra_args=params range=5 show_first_last="true" %}
+      </div>
+    </span>
+  {% endif %}
+{% endblock %}
+
+{% block side %}
+	{% include "blog/_side.html" %}
+{% endblock %}

@@ -1,0 +1,7 @@
+*.pyc
+logs
+.idea
+my_site/*.pyc
+my_site/local_settings.py
+dump.rdb
+.qiniu_pythonsdk_hostscache.json

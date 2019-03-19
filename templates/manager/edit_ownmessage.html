@@ -1,0 +1,107 @@
+{% extends 'manager/base/base.html' %}
+{% load bootstrap_pagination %}
+{% block css %}
+<link rel="stylesheet" href="/static/manager/plugins/editormd/css/editormd.css" />
+{% endblock %}
+
+{% block navbar %}
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav list-inline navbar-left">
+        <li class="list-inline-item">
+          <button class="button-menu-mobile open-left">
+            <i class="mdi mdi-menu"></i>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <h4 class="page-title">留言编辑</h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-box">
+          <form class="form-horizontal" action="{% url 'ownmessage_edit' item_id %}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="editor" value="{{ message.editor }}">
+            <div class="form-group">
+              <h5>简介 <span class="text-danger">*</span></h5>
+              <div class="controls">
+                <input name="summary" id="summary" class="form-control" value="{{ message.summary }}">
+              </div>
+            </div>
+            {% if message.editor == 1 %}  <!-- 富文本编辑器 -->
+              <div class="form-group">
+                <h5>寄语内容 <span class="text-danger">*</span></h5>
+                <div id="editor" class="controls">
+                  <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+                </div>
+                <textarea style="display:none;" name="message" id="rich_text">{{ message.message }}</textarea>
+              </div>
+            {% elif message.editor == 2 %}   <!-- Markdown编辑器 -->
+              <div class="form-group">
+                <h5>寄语内容 <span class="text-danger">*</span></h5>
+                <div id="my-editormd" class="controls">
+                  <textarea style="display:none;" name="message">{{ message.message }}</textarea>
+                </div>
+              </div>
+            {% endif %}
+            <a href="{% url 'ownmessage_list' %}" class="btn btn-inverse">返回</a>
+            <button type="submit" class="btn btn-success">提交</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  {% if message.editor == 2 %}
+  <script src="/static/manager/plugins/editormd/editormd.min.js"></script>
+  <script>
+    var testEditor;
+    testEditor = editormd("my-editormd", {
+      width: "100%",
+      height: 640,
+      syncScrolling: "single",
+      path: "/static/manager/plugins/editormd/lib/",   // 你的path路径（原资源文件中lib包在我们项目中所放的位置）
+      saveHTMLToTextarea: true,
+      emoji: true,
+      taskList: true,
+      tocm: true,         // Using [TOCM]
+      tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+      flowChart: true,             // 开启流程图支持，默认关闭
+      sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+      toolbarIcons : function() {  // 自定义工具栏，后面有详细介绍
+        return editormd.toolbarModes['full']; // full, simple, mini
+      },
+      imageUpload : true,
+      imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+      imageUploadURL : '/upload/'
+    });
+  </script>
+  {% endif %}
+  {% if message.editor == 1 %}
+  <script src="/static/manager/js/wangEditor.min.js"></script>
+  <script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.uploadImgServer = '/upload-rich/'  // 配置服务器端上传图片地址
+    editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024  // 将图片大小限制为 3M
+    var $text1 = $('#rich_text')
+    editor.customConfig.onchange = function (html) {
+      // 监控变化，同步更新到 textarea
+      $text1.val(html)
+    }
+    editor.create()
+    // 设置编辑器的初始值
+    editor.txt.html($text1.val())
+    // 初始化 textarea 的值
+    $text1.val(editor.txt.html());
+  </script>
+  {% endif %}
+{% endblock %}

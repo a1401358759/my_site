@@ -1,0 +1,151 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+  杨学峰博客 | 友情链接
+{% endblock %}
+{% block path %}
+  当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;友情链接
+{% endblock %}
+{% block content %}
+<style type="text/css">
+  .link_rule {
+    padding: 5px;
+  }
+  .link_rule p {
+    line-height: 2.5em;
+    color: #232328;
+    font-size: 13px;
+    word-break: break-all;
+  }
+  .link_rule span.yes {
+    color: green;
+    margin-right: 10px;
+  }
+  .link_rule span.no {
+    color: red;
+    margin-right: 10px;
+  }
+  .link {
+    float: left;
+    overflow: hidden;
+    width: 33.33333333%;
+  }
+  .link a {
+    display: block;
+    padding: 5px 0px 15px 10px;
+    border: 1px solid #f9f9f9;
+    margin: 5px;
+    transition: ease-in-out all .3s;
+  }
+  .link img {
+    float: left;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    border: 1px solid #f5f5f5;
+    padding: .125rem;
+  }
+  .link h3 {
+    text-align: left;
+    font-size: 16px;
+    color: #000;
+    height: 20px;
+    display: -webkit-box;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    padding-left: 10px;
+  }
+  .link p {
+    height: 50px;
+    overflow: hidden;
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 25px;
+    color: #232328;
+    display: -webkit-box;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .link:hover {
+    transform: scale(1.05);
+  }
+  .link_link {
+    display: block;
+    height: 25px;
+    background: #f9f9f9;
+    color: darkgrey;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    line-height: 25px;
+    text-align: center;
+    font-size: 12px;
+    margin-left: -10px;
+    margin-bottom: -15px;
+    word-break: break-word;
+  }
+</style>
+
+<!-- 友链要求 -->
+<div>
+  <section class="widget widget_recent_comments friend_links">
+    <h3 style="font-weight:bold;margin-top:0;text-align:center;">友链要求</h3>
+    <div class="link_rule">
+      <p>
+        <span class="yes"><i class="fa fa-check" aria-hidden="true"></i>原创优先</span>
+        <span class="yes"><i class="fa fa-check" aria-hidden="true"></i>技术优先</span>
+        <span class="no"><i class="fa fa-close" aria-hidden="true"></i>经常宕机</span>
+        <span class="no"><i class="fa fa-close" aria-hidden="true"></i>不合法规</span>
+        <span class="no"><i class="fa fa-close" aria-hidden="true"></i>擦边球站</span>
+        <span class="no"><i class="fa fa-close" aria-hidden="true"></i>红标报毒</span>
+      </p>
+      <p>本站信息如下：</p>
+      <p>名称：杨学峰博客</p>
+      <p>网址：<a href="{% url 'home' %}">https://www.yangsihan.com</a></p>
+      <p>图标：https://www.yangsihan.com/static/css/logo.png</p>
+      <p>描述：一个Python程序员的博客。记录和分享学习的心得,感悟生活,留住感动,静静寻觅生活的美好。</p>
+      <p style="color: red;">
+        注意：如需交换链接请在下方留言，留言格式如本站信息，本站会不定时清理违规友链。
+      </p>
+      <p style="color: red;">
+        PS：本站友情链接每次刷新页面都会随机排序。
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- 已加友链 -->
+<div>
+  <section class="widget widget_recent_comments friend_links">
+    <ul class="">
+      {% for link in links %}
+        <li class="link">
+          <div>
+            <a href="{{ link.link }}" target="_blank">
+              <img src="{{ link.avatar|default:'/static/css/default_icon.jpg' }}" />
+              <h3>{{ link.name }}</h3>
+              <p>{{ link.desc|default:'' }}</p>
+              <span class="link_link">{{ link.link|truncatewords_html:5 }}</span>
+            </a>
+          </div>
+        </li>
+      {% endfor %}
+      <div class="clearfix"></div>
+    </ul>
+  </section>
+</div>
+
+<div id="vcomments" class="widget widget_recent_comments friend_links">
+</div>
+
+<script src="/static/js/valine.js"></script>
+{% endblock %}
+
+{% block side %}
+  {% include "blog/_side.html" %}
+{% endblock %}

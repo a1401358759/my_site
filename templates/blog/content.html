@@ -1,0 +1,80 @@
+{% extends "blog/base.html" %}
+{% load custom_markdown %}
+{% block title %}
+  杨学峰博客 | {{ article.title }}
+{% endblock %}
+{% block path %}
+  当前位置&nbsp;:&nbsp;<a href = "{% url 'home' %}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
+{% endblock %}
+{% block content %}
+  <div class="archive">
+    <div id="archives">
+      <header class="entry-header">
+        <div class="entry-info">
+          <span class="entry-date">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            {{ article.publish_time|date:'Y年m月d日' }}
+          </span>
+
+          <span class="author vcard">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            {{ article.author }}
+          </span>
+
+          <span class="pull-right">
+            <i class="fa fa-eye" aria-hidden="true">&nbsp;阅读:&nbsp;</i>{{ article.count }}
+          </span>
+
+          <span class="comments-link">
+            <span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
+          </span>
+        </div>
+        <h1 class="entry-title" style="text-align:center;">
+          {{ article.title }}
+        </h1>
+      </header>
+      <div>
+        {% if article.editor == 1 %}
+          {{ article.content|safe }}
+        {% elif article.editor == 2 %}
+          {{ article.content|markdown_to_html }}
+        {% endif %}
+        <div class="clearfix"></div>
+      </div><!-- .entry-content -->
+
+      <footer class="entry-meta" style="padding:10px 0; margin-top:10px;">
+        <div class="fenlei">
+          <span class="entry-categories">
+            <i class="fa fa-suitcase" aria-hidden="true"></i>
+            <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
+          </span>
+          <span class="entry-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            {% for i in article.get_tags %}
+              <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}</a>
+            {% endfor %}
+          </span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- 打赏 -->
+  <div id="reward">
+    <button onclick="reward_modal_show()">打赏</button>
+  </div>
+  {% include "blog/reward.html" %}
+
+  <!-- 评论框 -->
+  <div id="vcomments" class="widget widget_recent_comments friend_links">
+  </div>
+
+  <script src="/static/js/valine.js"></script>
+  <script>
+    $('img').zoomify(); // Default settings
+  </script>
+{% endblock %}
+
+{% block side %}
+	{% include "blog/_side.html" %}
+{% endblock %}

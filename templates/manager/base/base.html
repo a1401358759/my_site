@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Coderthemes">
+    <link rel="shortcut icon" href="/static/css/logo.png" type="image/x-icon" />
+    <title>博客管理后台</title>
+    {% include 'manager/base/css.html' %}
+    {% block css %}
+
+    {% endblock %}
+    <script src="/static/manager/js/modernizr.min.js"></script>
+    {% include 'manager/base/js.html' %}
+  </head>
+
+  <body class="fixed-left">
+    <div id="wrapper">
+      <div class="topbar">
+        <div class="topbar-left">
+          <a href="/" class="logo"><span>Admin<span>to</span></span><i class="mdi mdi-layers"></i></a>
+        </div>
+        {% block navbar %}
+
+        {% endblock %}
+      </div>
+
+      {% include 'manager/base/sidebar.html' %}
+      <div class="content-page">
+        <div class="content">
+          {% block message %}
+            <div class="col-12">
+              <section class="content-header" id="message-top"></section>
+              {% for message in messages %}
+                <ul class="alert alert-{{ message.tags }} dmsg">
+                  <p> {{ message | safe }} </p>
+                </ul>
+              {% endfor %}
+            </div>
+          {% endblock %}
+
+          {% block content %}
+
+          {% endblock %}
+        </div>
+        <footer class="footer text-right">
+          杨学峰博客&copy;2019&nbsp;
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      $(function(){
+        {% for class in active_classes %}
+          $("{{ class | safe }}").addClass('active');
+        {% endfor %}
+      });
+    </script>
+    {% block js %}
+
+    {% endblock %}
+  </body>
+</html>

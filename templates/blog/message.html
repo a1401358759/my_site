@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %}
+{% load custom_markdown %}
+{% block title %}
+  杨学峰博客 | 留言板
+{% endblock %}
+{% block path %}
+  当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;留言板
+{% endblock %}
+{% block content %}
+<style type="text/css">
+  #owner_message {
+    margin-left: 0px;
+  }
+</style>
+
+<div>
+  <section id="owner_message" class="widget widget_recent_comments">
+    <h3 style="font-weight:bold;margin-top:0;text-align:center;">主人寄语</h3>
+    <div>
+      {% if own_message %}
+        {% if own_message.editor == 1 %}
+          {{ own_message.message|safe }}
+        {% elif own_message.editor == 2 %}
+          {{ own_message.message|markdown_to_html }}
+        {% endif %}
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+<div id="vcomments" class="widget widget_recent_comments friend_links">
+</div>
+
+<script src="/static/js/valine.js"></script>
+{% endblock %}
+
+{% block side %}
+	{% include "blog/_side.html" %}
+{% endblock %}

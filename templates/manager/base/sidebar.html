@@ -1,0 +1,58 @@
+<div class="left side-menu">
+  <div class="sidebar-inner slimscrollleft">
+    <!-- User -->
+    <div class="user-box">
+      <div class="user-img">
+        <img src="/static/css/logo.png" alt="user-img" class="rounded-circle img-thumbnail img-responsive">
+        <div class="user-status online"><i class="mdi mdi-adjust"></i></div>
+      </div>
+      <h5><a href="javascript:;">{{ request.user.first_name }}</a></h5>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="{% url 'change_password' %}" >
+            <i class="fa fa-key"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="{% url 'logout_view' %}">
+            <i class="fa fa-sign-out"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- End User -->
+
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+      <ul>
+        <li>
+          <a href="{% url 'blog_list' %}" class="blog_list"><i class="fa fa-file-text"></i><span>博客列表</span></a>
+        </li>
+        <li>
+          <a href="{% url 'friend_link_list' %}" class="link_list"><i class="fa fa-link"></i><span>友情链接</span></a>
+        </li>
+        <li>
+          <a href="{% url 'author_list' %}" class="author_list"><i class="fa fa-user-o"></i><span>作者列表</span></a>
+        </li>
+        <li>
+          <a href="{% url 'classification_list' %}" class="classification_list"><i class="fa fa-suitcase"></i><span>文章分类</span></a>
+        </li>
+        <li>
+          <a href="{% url 'tag_list' %}" class="tag_list"><i class="fa fa-tag"></i><span>文章标签</span></a>
+        </li>
+        <li>
+          <a href="{% url 'music_list' %}" class="music_list"><i class="fa fa-music"></i><span>背景音乐</span></a>
+        </li>
+        <li>
+          <a href="{% url 'carousel_list' %}" class="carousel_list"><i class="fa fa-picture-o"></i><span>轮播管理</span></a>
+        </li>
+        <li>
+          <a href="{% url 'ownmessage_list' %}" class="ownmessage_list"><i class="fa fa-envelope-open-o"></i><span>主人寄语</span></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <!-- Sidebar -->
+    <div class="clearfix"></div>
+  </div>
+</div>

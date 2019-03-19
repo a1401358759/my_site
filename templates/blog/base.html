@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="杨学峰">
+  <meta name="copyright" content="Daniel Yang版权所有">
+  <meta name="baidu_union_verify" content="00e8e378a55e67dfe8ef4ccbcc7ab7d7">
+  <meta name="google-site-verification" content="dnyWZ80_3hVjbtwfL9HXBAp31ygEkNlTEopdwTRzhE8" />
+  <meta name="baidu-site-verification" content="xxnzwzyTfv" />
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="keywords" content="杨学峰、个人博客、杨学峰博客、Python、Django、MySql、uWSGI、HTML、Jquery、Redis、数据库、服务器、性能优化">
+  <meta name="description" content="杨学峰、个人博客、杨学峰博客、Python、Django、MySql、uWSGI、HTML、Jquery、Redis、数据库、服务器、性能优化。记录和分享学习的心得,感悟生活,留住感动,静静寻觅生活的美好">
+  {{ form.media }}
+  <link rel="shortcut icon" href="/static/css/logo.png" type="image/x-icon" />
+
+  {% include "blog/css.html" %}
+  {% include "blog/js.html" %}
+  <script>
+    // 百度统计
+    if (location.hostname.indexOf('yangsihan.com') > -1) {
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d0c36cd2aa168157a75f00eaf29e4709";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    }
+  </script>
+  <script type="text/javascript">
+    $(function(){
+      var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'horizontal', // 水平切换选项
+        loop: true, // 循环模式选项
+        autoplay: true,  // 自动切换
+        autoplay: {
+          disableOnInteraction: false,
+        },
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination',
+          clickable :true, // 导航按钮可以点击
+        },
+        // 如果需要前进后退按钮
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      })
+    });
+  </script>
+</head>
+
+<script>
+$(function () {
+  jQuery.scrollUp({
+
+  });
+  jQuery(".aplayer-icon-lrc").addClass('hidden');  // 隐藏aplayer歌词图标
+  jQuery('pre').addClass("line-numbers").css("white-space", "pre-wrap");
+});
+</script>
+
+<body class="home blog layout-cs">
+  <div id="wrap">
+    <header id="header" role="banner">
+      <div class="container">
+        <div id="logo">
+          <div style="float:left;" class="hidden-xs hidden-sm">
+            <h2 id="site-title">
+              <a href="{% url 'home' %}" rel="home">杨学峰博客</a>
+            </h2>
+          </div>
+          <div style="float:left; margin:25px 0 0 20px;">
+            <nav class="nav nav-primary">
+              <div class="container">
+                <ul>
+                  <li><a href="{% url 'home' %}">首页</a></li>
+                  <li class="hidden-xs"><a href="{% url 'archive' %}">文章归档</a></li>
+                  <li><a href="{% url 'message' %}">留言板</a></li>
+                  <li><a href="{% url 'links' %}">友情链接</a></li>
+                  <li><a href="{% url 'about' %}">关于我</a></li>
+                  <li class="hidden-xs">
+                    <div id="search" class="widget_search">
+                      <form role="search" method="get" class="search-form" action="/search/">
+                        <input value="{{ s|default:'' }}" name="s" class="s query" type="text">
+                      </form>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="social-icons hidden-xs hidden-sm">
+          <a href="https://github.com/a1401358759" target="_blank"><i class="fa fa-github"></i></a>
+          <a href="javascript:;" onclick="verify_user()"><i class="fa fa-heart"></i></a>
+          <a href="{% url 'my_resume' %}" target="_blank"><i class="fa fa-user"></i></a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </header>
+
+    <div style="height: 70px;"></div> <!-- 占位div -->
+
+    <div id="main" class="container">
+      <div id="content-sidebar-wrap">
+        <div id="content">
+          {% block banner %}{% endblock %}
+          {% if not is_home %}
+            <div class="breadcrumb">
+              {% block path %}{% endblock %}
+            </div>
+          {% endif %}
+          {% block content %}{% endblock %}
+        </div> <!-- #content -->
+
+        <aside id="sidebar-primary" role="complementary">
+          {% block side %}{% endblock %}
+        </aside>
+      </div> <!-- #content-sidebar -->
+    </div> <!-- #main -->
+
+    <div id="player"></div>  <!-- 音乐播放器 -->
+
+    <center>
+      {% include "blog/footer.html" %}
+    </center>
+  </div>
+  {% include "blog/verify_user.html" %}
+
+  <script type="text/javascript">
+    const ap = new APlayer({
+      container: document.getElementById('player'),
+      fixed: true,
+      volume: 0.5,
+      audio: {{ music_list|safe }}
+    });
+  </script>
+  <script type="text/javascript">
+    function verify_user(){
+      jQuery("#verify_user").modal('show');
+    }
+
+    // 打赏
+    function reward_modal_show(){
+      jQuery("#reward_modal").modal('show');
+    }
+
+    // 导航栏选中高亮
+    jQuery(document).ready(function(){
+      jQuery(".nav a").each(function(){
+        $this = jQuery(this);
+        if($this[0].href==String(window.location)){
+          $this.css({"color": "#333", "font-weight": "bold"});
+        }
+      });
+    });
+
+    // 百度推送
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https'){
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+  <!-- activate-power-mode -->
+  <script src="/static/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true; // make power mode colorful
+    POWERMODE.shake = false; // turn off shake
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+</body>
+</html>

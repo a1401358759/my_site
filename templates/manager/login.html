@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/css/logo.png">
+    <title>博客管理后台登录</title>
+    <!-- App css -->
+    <link href="/static/manager/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/manager/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="/static/manager/js/jquery.min.js"></script>
+    <script src="/static/manager/js/main.js"></script>
+    <style>
+      body {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="account-pages"></div>
+    <div class="clearfix"></div>
+    <div class="wrapper-page">
+      {% block message %}
+        <div class="col-12">
+          {% for message in messages %}
+            <ul class="alert alert-{{ message.tags }} dmsg">
+              <p> {{ message | safe }} </p>
+            </ul>
+          {% endfor %}
+        </div>
+      {% endblock %}
+      <div class="text-center">
+        <a href="javascript:;" class="logo"><span>Admin<span>to</span></span></a>
+      </div>
+      <div class="m-t-20 card-box">
+        <div class="text-center">
+          <h4 class="text-uppercase font-bold m-b-0">登录</h4>
+        </div>
+        <div class="p-20">
+          <form class="form-horizontal m-t-20" method="post" action="{% url 'login_view' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <div class="col-xs-12">
+                <div class="col-xs-12">
+                  <h5>{{ form.user_name.label }} <span class="text-danger">*</span></h5>
+                  <div class="controls">
+                    {{ form.user_name }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-12">
+                <h5>{{ form.password.label }} <span class="text-danger">*</span></h5>
+                <div class="controls">
+                  {{ form.password }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group text-center m-t-30">
+              <div class="col-xs-12">
+                <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">登录</button>
+              </div>
+            </div>
+
+            <div class="form-group m-t-30 m-b-0">
+              <div class="col-sm-12">
+                <a href="JavaScript:;" class="text-muted"><i class="fa fa-lock m-r-5"></i> 忘记密码?</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

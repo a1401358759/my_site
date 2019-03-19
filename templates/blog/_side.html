@@ -1,0 +1,95 @@
+<div id="archives" class="widget widget_archive">
+  {% include "blog/calendar.html" %}
+</div>
+
+<!-- 拖慢网页速度，暂时隐藏 -->
+<!--<div id="text" class="widget widget_text">
+	<h3 class="widget-title">新浪微博</h3>
+	<div class="textwidget">
+    <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="https://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2734584944&verifier=42b4a725&dpc=1">
+
+    </iframe>
+	</div>
+</div>-->
+
+<div id="new_post" class="widget widget_categories">
+  <h3 class="widget-title">最热文章</h3>
+  <ul>
+    {% if new_post %}
+      {% for item in new_post %}
+        <li>
+          <a href="{{ item.get_absolute_url }}">
+            <span style="font-family: Consolas;">{{ forloop.counter }}</span>.&nbsp;{{ item.title|truncatechars:20 }}&nbsp;({{ item.count }})
+          </a>
+        </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</div>
+
+<div id="archives" class="widget widget_archive">
+  <h3 class="widget-title">文章归档</h3>
+  <ul>
+    {% if date_list %}
+      {% for x, y in date_list %}
+        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月 ( {{y}} )</a></li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</div>
+
+<div id="categories" class="widget widget_categories">
+	<h3 class="widget-title">分类目录</h3>
+	<ul>
+    {% if classification %}
+      {% for x,y in classification %}
+        <li><a href="{% url 'classfiDetail' classfi=x %}">{{ x }} ( {{ y }} )</a></li>
+      {% endfor %}
+    {% endif %}
+	</ul>
+</div>
+
+<div id="tag_cloud" class="widget widget_tag_cloud">
+  <h3 class="widget-title">标签云</h3>
+  {% for tag in tag_list %}
+    <a href="/articleTag/{{ tag }}" style="background-color:{{ tag.color }}" class="new_tag">
+      {{ tag }}
+    </a>
+  {% endfor %}
+  <div class="clearfix"></div>
+</div>
+
+<!-- 广告位 -->
+<div id="archives" class="widget widget_archive">
+  <div class="swiper-container" style="border-radius:5px">
+    <div class="swiper-wrapper" id="ad_swiper">
+      <div class="swiper-slide">
+        <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=rovwt9lv" target="_blank">
+          <img src="https://img.yangsihan.com/400_300.jpg"/>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=rovwt9lv" target="_blank">
+          <img src="https://img.yangsihan.com/336_280.jpg"/>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://tm.aliyun.com/?userCode=rovwt9lv" target="_blank">
+          <img src="https://img.yangsihan.com/300_250.jpg"/>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://www.aliyun.com/jianzhan/?userCode=rovwt9lv" target="_blank">
+          <img src="https://img.yangsihan.com/TB1NA.GlmzqK1RjSZFHXXb3CpXa.png"/>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://promotion.aliyun.com/ntms/act/shoppingcart.html?userCode=rovwt9lv" target="_blank">
+          <img src="https://img.yangsihan.com/TB1TFUulmzqK1RjSZFLXXcn2XXa.png"/>
+        </a>
+      </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
