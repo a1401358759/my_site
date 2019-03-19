@@ -4,9 +4,9 @@ Author: CoderThemes
 Email: coderthemes$gmail.com
 File: Core
 */
-/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);*/
-/*@import url(https://fonts.googleapis.com/css?family=Karla:400,700);*/
-/*@import url(https://fonts.googleapis.com/css?family=Rancho);*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+@import url(https://fonts.googleapis.com/css?family=Karla:400,700);
+@import url(https://fonts.googleapis.com/css?family=Rancho);
 /*
 Template Name: UBold Dashboard
 Author: CoderThemes
@@ -34,7 +34,8 @@ body {
   margin: 0;
   padding-bottom: 60px;
   overflow-x: hidden;
-  font-size: 14px; }
+  font-size: 14px;
+}
 
 html {
   position: relative;
