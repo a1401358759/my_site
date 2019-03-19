@@ -19,7 +19,7 @@ from article.models import (
 )
 from article.constants import EditorKind, BlogStatus
 from .forms import (
-    SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm,
+    SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm, LoginForm,
     AddAuthorForm, AddMusicForm, AddCarouselForm, OperateBlogForm, ChangePasswordForm
 )
 
@@ -37,18 +37,24 @@ def login_view(request):
     if user_info:
         return HttpResponseRedirect(back_url)
 
+    if request.method == 'GET':
+        form = LoginForm()
+        return render(request, 'manager/login.html', {"back_url": back_url, "form": form})
+
     if request.method == 'POST':
-        user_name = request.POST.get('user_name')
-        password = request.POST.get('password')
+        form = LoginForm(request.POST)
+        if not form.is_valid():
+            messages.warning(request, u'登录失败')
+            return HttpResponseRedirect(reverse('login_view'))
+
+        user_name = form.cleaned_data.get('user_name')
+        password = form.cleaned_data.get('password')
         user = authenticate(username=user_name, password=password)
         if not user:
             messages.error(request, u'登录失败，请检查用户名密码后重试.')
             return HttpResponseRedirect('%s?%s' % (reverse('login_view'), urllib.urlencode({'back_url': back_url})))
         login(request, user)
         return HttpResponseRedirect(reverse('blog_list'))
-    else:
-        # 没有登录跳到登录页面进行登录
-        return render(request, 'manager/login.html', {'back_url': back_url})
 
 
 @login_required
@@ -135,7 +141,7 @@ def blog_create_view(request):
     if request.method == "POST":
         form = OperateBlogForm(request.POST)
         if not form.is_valid():
-            messages.warning(request, msg="</br>".join(form_error(form)))
+            messages.warning(request, "</br>".join(form_error(form)))
             return HttpResponseRedirect(reverse('blog_list'))
         try:
             article = Article.objects.create(
@@ -188,7 +194,7 @@ def blog_edit_view(request, item_id):
     if request.method == "POST":
         form = OperateBlogForm(request.POST)
         if not form.is_valid():
-            messages.warning(request, msg="</br>".join(form_error(form)))
+            messages.warning(request, "</br>".join(form_error(form)))
             return HttpResponseRedirect(reverse('blog_list'))
 
         try:
@@ -638,7 +644,7 @@ def add_ownmessage_view(request):
     if request.method == "POST":
         form = OperateOwnMessageForm(request.POST)
         if not form.is_valid():
-            messages.warning(request, msg="</br>".join(form_error(form)))
+            messages.warning(request, "</br>".join(form_error(form)))
             return HttpResponseRedirect(reverse('ownmessage_list'))
         try:
             OwnerMessage.objects.create(
@@ -676,7 +682,7 @@ def edit_ownmessage_view(request, item_id):
     if request.method == "POST":
         form = OperateOwnMessageForm(request.POST)
         if not form.is_valid():
-            messages.warning(request, msg="</br>".join(form_error(form)))
+            messages.warning(request, "</br>".join(form_error(form)))
             return HttpResponseRedirect(reverse('ownmessage_list'))
         data = {
             "summary": form.cleaned_data.get("summary"),
