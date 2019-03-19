@@ -66,12 +66,14 @@
   font-family: "Consolas"!important;
 }
 pre.line-numbers {
-  font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  background: #f9f9f9;
+  border: 1px solid #f0f0f0;
+  font-family: Consolas,Menlo,"Liberation Mono","Courier New",monospace!important;
   font-size: 14px;
   line-height: 1.5;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding: 15px;
   border-radius: .25rem;
-  white-space: pre;
+  white-space: pre-wrap;
 }
