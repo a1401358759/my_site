@@ -44,7 +44,6 @@
                 <th>ID</th>
                 <th>简介</th>
                 <th>创建时间</th>
-                <th>操作</th>
               </tr>
             </thead>
             <tbody>
@@ -53,11 +52,8 @@
               <tr>
                 <td><input type="checkbox" name="item_ids" value="{{ item.id }}"/></td>
                 <td>{{ item.id }}</td>
-                <td>{{ item.summary }}</td>
+                <td><a href="{% url 'ownmessage_edit' item.id %}">{{ item.summary }}</a></td>
                 <td>{{ item.created_at|date:'Y-m-d H:i' }}</td>
-                <td>
-                  <a href="{% url 'ownmessage_edit' item.id %}" class="btn btn-sm btn-success">编辑</a>
-                </td>
               </tr>
               {% endfor %}
               </form>
