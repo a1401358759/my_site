@@ -1,7 +1,5 @@
 appdirs==1.4.3
 appnope==0.1.0
-backports.shutil-get-terminal-size==1.0.0
-bootstrap-admin==0.3.7.1
 certifi==2017.11.5
 chardet==3.0.4
 decorator==4.1.2
@@ -9,7 +7,6 @@ Django==1.8.7
 django-appconf==1.0.1
 django-crontab==0.7.1
 django-staticfiles==1.2.1
-django-tinymce==2.6.0
 enum34==1.1.6
 idna==2.6
 ipython==5.5.0
@@ -34,13 +31,11 @@ django-redis-cache==1.7.1
 django-redis==4.4.2
 django-bootstrap-pagination==1.6.4
 MySQL-python==1.2.5
-django-admin-bootstrapped==2.5.7
-django-bootstrap3==10.0.1
 qiniu==7.2.2
 DjangoUeditor==1.8.143
-django-simpleui-2==2.1.5
 aliyun-python-sdk-core==2.13.1
 aliyun-python-sdk-kms==2.5.0
 oss2==2.5.0
 celery==4.2.1
 mistune==0.8.4
+markdown==3.0.1
