@@ -2,7 +2,6 @@
 
 from django.contrib import admin
 from article.models import *
-# from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(OwnerMessage)
@@ -16,10 +15,7 @@ class OwnerMessageAdmin(admin.ModelAdmin):
         }
 
         js = (
-            '/static/tinymce/jquery.tinymce.min.js',
-            '/static/tinymce/tinymce.min.js',
-            '/static/tinymce/jquery.form.js',
-            '/static/tinymce/config.js',
+
         )
 
 
@@ -37,10 +33,7 @@ class ArticleAdmin(admin.ModelAdmin):
         }
 
         js = (
-            '/static/tinymce/jquery.tinymce.min.js',
-            '/static/tinymce/tinymce.min.js',
-            '/static/tinymce/jquery.form.js',
-            '/static/tinymce/config.js',
+
         )
 
 
