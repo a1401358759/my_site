@@ -2469,3 +2469,9 @@ button {
 #ad_swiper img {
   height: 203px;
 }
+ul li {
+  font-size: 15px!important;
+}
+ul ol {
+  font-size: 15px!important;
+}
