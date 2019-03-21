@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+
 from utils.libs.httpclient import RequestClient
 from utils.libs.logger import SysLogger
-from utils.libs.config import settings
+from utils.libs.config.default_settings import AMAP_SERVER_KEY
 
 
 def get_location_by_ip(ip):
@@ -11,7 +12,7 @@ def get_location_by_ip(ip):
         data={
             "ip": ip,
             "output": "JSON",
-            "key": settings.AMAP_SERVER_KEY,
+            "key": AMAP_SERVER_KEY,
         }
     )
     try:
@@ -41,7 +42,7 @@ def get_location_by_lon_and_lat(lon, lat):
         method="GET",
         params={
             "output": "JSON",
-            "key": settings.AMAP_SERVER_KEY,
+            "key": AMAP_SERVER_KEY,
             "location": "%s,%s" % (lon, lat),
             "radius": 1000,
             "extensions": "base",

@@ -9,7 +9,7 @@ from requests.models import PreparedRequest
 
 from utils.libs.error import RequestMethodError
 from utils.libs.logger import SysLogger
-from utils.libs.config import settings
+from utils.libs.config.logger_settings import PROJECT_HTTPCLIENT_LOG
 
 MAX_CONSUMING_TIME = 500  # 单位ms
 
@@ -128,7 +128,7 @@ class AccessStatus(object):
             url=self.url,
             params=self._format_args()
         )
-        logger = logging.getLogger(settings.PROJECT_HTTPCLIENT_LOG)
+        logger = logging.getLogger(PROJECT_HTTPCLIENT_LOG)
         if logger:
             logger.info(msg)
 
