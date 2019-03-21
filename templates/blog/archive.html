@@ -9,20 +9,22 @@
 
 {% block content %}
 	{% if archive %}
-    {% for key,value in archive.items %}
+    {% for key, value in archive.items %}
       <div class="archive">
         <div id="archives">
-          <h3 class='al_year'>{{ key.year }}年{{ key.month }}月</h3>
-          <ul class="al_month_list">
+          <h3 class='al_year'>{{ key|date:'Y' }}年{{ key|date:'m' }}月</h3>
+          <blockquote class="al_month_list">
             {% for i in value %}
-              <li>
+              <p>
                 <a href="{{ i.get_absolute_url }}">
-                  <span>{{ i.publish_time.month }}月{{ i.publish_time.day }}日</span>
-                  <span class="liaspan" style="left:140px;">{{ i }}</span>
+                  <p>
+                    <span>{{ i.publish_time|date:'m' }}月{{ i.publish_time|date:'d' }}日</span>
+                    <span style="margin-left:10px;">{{ i }}</span>
+                  </p>
                 </a>
-              </li>
+              </p>
             {% endfor %}
-          </ul>
+          </blockquote>
         </div>
       </div>
     {% endfor %}
