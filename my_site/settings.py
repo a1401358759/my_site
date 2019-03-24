@@ -161,7 +161,7 @@ TEMPLATES = [
 
 # session设置
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False   # 是否将session有效期设置为到浏览器关闭为止
-SESSION_COOKIE_AGE = 2 * 60 * 60  # 当上例为False时，此项生效，单位为秒
+SESSION_COOKIE_AGE = 24 * 60 * 60  # 当上例为False时，此项生效，单位为秒
 
 LOGGING = {
     'version': 1,
