@@ -163,52 +163,14 @@ TEMPLATES = [
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False   # 是否将session有效期设置为到浏览器关闭为止
 SESSION_COOKIE_AGE = 24 * 60 * 60  # 当上例为False时，此项生效，单位为秒
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'default': {
-            'format': '[%(levelname)s %(asctime)s] %(process)d: %(message)s'
-        },
-    },
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'default',
-        },
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': '%s/logs/%s.log' % (BASE_DIR, config.RUNNING_ENVIRONMENT),
-            'when': 'D',
-            'backupCount': 10,
-            'formatter': 'default',
-        }
-    },
-    'loggers': {
-        '': {
-            'handlers': ['console', 'file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['console', 'file'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
+# logger of libs
+from utils.libs.config.logger_settings import *
+# 重新更新所有handlers的filename，因为LOGGING是个DICT，在logger_conf内已经创建成功，需要再次更新
+LOG_ROOT = BASE_DIR
+for key, handler in LOGGING['handlers'].items():
+    if handler.get('filename', None):
+        # 将logs文件夹定义为项目根目录的上一层，这由docker部署目录结构决定
+        handler['filename'] = os.path.join(LOG_ROOT, "logs", os.path.basename(handler['filename']))
 
 
 # import local settings

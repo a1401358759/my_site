@@ -6,7 +6,7 @@
 import traceback
 import logging
 import sys
-from utils.libs.config import settings
+from utils.libs.config.logger_settings import PROJECT_INFO_LOG, PROJECT_ERROR_LOG, PROJECT_EXCEPTION_LOG
 
 
 class SysLogger(object):
@@ -14,9 +14,9 @@ class SysLogger(object):
 
     @classmethod
     def _logger_init(cls):
-        cls.INFO_LOGGER = getattr(cls, 'INFO_LOGGER', logging.getLogger(settings.PROJECT_INFO_LOG))
-        cls.ERROR_LOGGER = getattr(cls, 'ERROR_LOGGER', logging.getLogger(settings.PROJECT_ERROR_LOG))
-        cls.EXCEPTION_LOGGER = getattr(cls, 'EXCEPTION_LOGGER', logging.getLogger(settings.PROJECT_EXCEPTION_LOG))
+        cls.INFO_LOGGER = getattr(cls, 'INFO_LOGGER', logging.getLogger(PROJECT_INFO_LOG))
+        cls.ERROR_LOGGER = getattr(cls, 'ERROR_LOGGER', logging.getLogger(PROJECT_ERROR_LOG))
+        cls.EXCEPTION_LOGGER = getattr(cls, 'EXCEPTION_LOGGER', logging.getLogger(PROJECT_EXCEPTION_LOG))
 
     @classmethod
     def debug(cls, msg):

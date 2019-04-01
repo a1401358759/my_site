@@ -8,11 +8,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'my-site',
         'USER': 'root',
-        'PASSWORD': '123',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
-        # 'USER': 'yangxf',
-        # 'PASSWORD': 'yangxf',
-        # 'HOST': '123.207.158.145',
         'PORT': '3306',
         'TEST': {
             'CHARSET': 'utf8',

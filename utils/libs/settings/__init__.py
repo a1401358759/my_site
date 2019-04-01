@@ -103,4 +103,3 @@ class Settings(object):
             'cls': self.__class__.__name__,
             'settings_module': self.SETTINGS_MODULE,
         }
-
