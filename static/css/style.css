@@ -2475,3 +2475,7 @@ ul li {
 ul ol {
   font-size: 15px!important;
 }
+
+img {
+  max-width: 100%;
+}
