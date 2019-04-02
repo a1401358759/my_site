@@ -1,4 +1,5 @@
 new Valine({
+  av: AV,
   el:'#vcomments',
   appId:'2pSOFwxMUB0mHbMHpCH9bhRL-gzGzoHsz',
   appKey:'zkBqvFzJ7NswaFW6oGICyKpq',
@@ -10,3 +11,5 @@ new Valine({
 });
 
 $(".v .vbtn").html("提交");
+$(".vemoji-btn").html("表情");
+$(".vpreview-btn").html("预览");

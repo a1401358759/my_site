@@ -2337,11 +2337,9 @@ video {
 .v .txt-right {
   display: none!important;
 }
-
 .v .vinput {
   box-shadow: none;
 }
-
 .v .vwrap .vheader .vinput:focus {
   outline: none;
   box-shadow: none;
@@ -2349,67 +2347,17 @@ video {
   border-left: none;
   border-right: none;
 }
-
 .v .vlist .vcard .vcontent.expand:after {
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif!important;
 }
-
-/* valine回复按钮样式 */
-.v .vlist .vcard .vh .vmeta .vat {
-  font-size: .75rem!important;
-  color: #313131!important;
-  background-color: #ededed!important;
-  padding: .2em 1em!important;
-  margin-top: -25px!important;
-  border-radius: .2em!important;
-}
-
-.v .vlist .vcard {
-  border: 1px dashed rgba(150, 150, 150, 0.18)!important;
-  padding: .5em!important;
-  margin: 1em 0 0!important;
-  border-radius: .2em!important;
-}
-
 .v .vlist .vcard .vquote {
-  border-left: none!important;
+  border-left: 1px dashed rgba(150, 150, 150, 0.18)!important;
 }
-
 .v .vlist .vcard .vh {
-  padding-bottom: 0!important;
-  border-bottom: none!important;
+  border-bottom: 1px dashed rgba(150, 150, 150, 0.18)!important;
 }
-
-.v * {
-  line-height: 1.8!important;
-}
-
 .v .vlist .vcard .vimg:hover {
   transform: rotate(360deg);
-}
-
-.v a {
-  color: #0078b6!important;
-}
-
-.vnick {
-  color: #1abc9c!important;
-}
-
-.v .vlist .vcard .vhead .vnick {
-  color: #1abc9c!important;
-}
-
-.v .vbtn {
-  padding: .2rem 1.25rem!important;
-}
-
-.v .vlist .vcard .vquote {
-  padding-left: 0!important;
-}
-
-.v .vlist .vcard .vcontent {
-  margin-bottom: 0!important;
 }
 /* valine样式 */
 
