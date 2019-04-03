@@ -5,7 +5,7 @@ from utils.errorcode import ERRORCODE
 from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
 from article.models import (
-    Article
+    Article, CarouselImg
 )
 from article.constants import BlogStatus
 from .forms import (
@@ -30,6 +30,7 @@ def blog_list(request):
     blog_list = []
     for blog in blogs:
         blog_list.append({
+            "blog_id": blog.id,
             "title": blog.title,
             "author": blog.author.name,
             "classification": blog.classification.name,
@@ -44,3 +45,18 @@ def blog_list(request):
         "page_num": page_num,
         "page_size": page_size,
     })
+
+
+def get_banners(request):
+    banners = CarouselImg.objects.order_by('id')
+    banner_list = []
+    for item in banners:
+        banner_list.append({
+            "img_url": item.path,
+            "link_url": item.link
+        })
+
+    context = {
+        "banner_list": banner_list
+    }
+    return http_response(request, statuscode=ERRORCODE.SUCCESS, context=context)

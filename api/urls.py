@@ -5,6 +5,6 @@ from . import views
 
 
 urlpatterns = [
-    # 博客
     url(r'^blog-list/?$', views.blog_list),
+    url(r'^get-banners/?$', views.get_banners),
 ]
