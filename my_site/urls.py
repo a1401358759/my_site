@@ -7,6 +7,7 @@ from article import views
 urlpatterns = [
     # url(r'^manager/', include(admin.site.urls)),
     url(r'^manager/', include("manager.urls")),
+    url(r'^api/mysite/', include("api.urls")),
     url(r'^$', views.home, name="home"),  # 主页
     url(r'^about$', views.about, name="about"),  # 关于我
     url(r'^message$', views.message, name="message"),  # 留言
