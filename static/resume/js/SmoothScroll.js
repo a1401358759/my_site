@@ -292,7 +292,11 @@ function wheel(event) {
     }
 
     scrollArray(overflowing, -deltaX, -deltaY);
-    // event.preventDefault();
+    if (event.cancelable) {
+      if (!event.defaultPrevented) {
+        event.preventDefault();
+      }
+    }
 }
 
 /**
