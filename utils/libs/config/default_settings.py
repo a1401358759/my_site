@@ -8,10 +8,10 @@
 """
 
 MAIL_CONFIG = {
-    'host': 'smtp.mxhichina.com',
+    'host': 'smtp.163.com',
     'port': 465,
-    'user': 'no-reply@zhengyi.tech',
-    'password': 'zhengY1@1012',
+    'user': '13552974161@163.com',
+    'password': 'yangxuefeng122',
 }
 
-AMAP_SERVER_KEY = "a885024ffbaac6d1112b334a8d65f22a"
+AMAP_SERVER_KEY = "298b1d5aea8d521f18485063c094a914"
