@@ -18,10 +18,11 @@ CELERY_TASK_DEFAULT_ROUTING_KEY = 'default'
 # CELERY_BROKER_HEARTBEAT = 10  # 心跳
 # crotab任务
 CELERY_BEAT_SCHEDULE = {
-    # 'refund_transfers': {
-    #     'task': 'app.order.tasks.refund_transfers',
-    #     'schedule': crontab(minute='0', hour='8'),
-    # },
+    'submit_urls_to_baidu': {
+        'task': 'article.tasks.submit_urls_to_baidu',
+        'schedule': crontab(minute="*/1"),  # 每分钟执行
+        # 'schedule': crontab(minute=0, hour="*/1"),  # 每小时执行
+    },
 }
 
 CELERY_SEND_TASK_ERROR_EMAILS = True  # 错误发送邮件
