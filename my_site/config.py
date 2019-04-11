@@ -1,5 +1,0 @@
-EMAIL = {
-    'host': '',
-    'user': '',
-    'password': ''
-}

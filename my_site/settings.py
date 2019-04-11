@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
+from __future__ import absolute_import
 import os
 from django.utils.termcolors import colorize
-from my_site import config
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -80,6 +80,10 @@ DATABASES = {
     }
 }
 
+# session设置
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False   # 是否将session有效期设置为到浏览器关闭为止
+SESSION_COOKIE_AGE = 24 * 60 * 60  # 当上例为False时，此项生效，单位为秒
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
@@ -96,13 +100,6 @@ CACHES = {
 
 # celery config
 from config.celery_conf import *
-
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config.EMAIL['host']
-EMAIL_PORT = 25
-EMAIL_HOST_USER = config.EMAIL['user']
-EMAIL_HOST_PASSWORD = config.EMAIL['password']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -161,11 +158,6 @@ TEMPLATES = [
         },
     },
 ]
-
-# session设置
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False   # 是否将session有效期设置为到浏览器关闭为止
-SESSION_COOKIE_AGE = 24 * 60 * 60  # 当上例为False时，此项生效，单位为秒
 
 # logger of libs
 from utils.libs.config.logger_settings import *

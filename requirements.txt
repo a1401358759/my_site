@@ -37,4 +37,4 @@ oss2==2.5.0
 celery==4.2.1
 mistune==0.8.4
 markdown==3.0.1
-django-redis==4.10.0
+django-redis==4.2.0
