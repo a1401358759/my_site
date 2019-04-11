@@ -33,7 +33,7 @@ if [ "$1" == "eval" ]; then
     if [ $# != 2 ] ; then
         printf "${RED_COLOR}eval后只支持一个参数，如果命令由多个词组成请使用''括起来${RES}\n"
     else
-        source /opt/django/venv/bin/activate
+        source /home/data/venv/my_site/bin/activate
         eval $2
     fi
     exit
