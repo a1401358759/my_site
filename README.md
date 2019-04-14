@@ -89,7 +89,8 @@ supervisord -c etc/supervisor.conf
 3. 项目中涉及到的配置文件，如七牛云的 `access_key` 和 `secret_key`，以及leancloud账号的配置，烦请自行注册账号修改，否则侵权必究。
 
 # 捐赠
-如果您觉得本项目对您有些许帮助，感谢您的捐赠
+如果您觉得本项目对您有些许帮助，感谢您的捐赠    
+
 ![微信](https://img.yangsihan.com/2019_02_11_1709097461.png)![支付宝](https://img.yangsihan.com/2019_02_11_1710581136.png)
 
 # 联系我
