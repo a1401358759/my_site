@@ -2356,6 +2356,9 @@ video {
 .v .vlist .vcard .vh {
   border-bottom: 1px dashed rgba(150, 150, 150, 0.18)!important;
 }
+.v .vlist .vcard:last-child .vh {
+  border-bottom: none!important;
+}
 .v .vlist .vcard .vimg:hover {
   transform: rotate(360deg);
 }
