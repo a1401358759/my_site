@@ -7,6 +7,33 @@
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home' %}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
 {% endblock %}
 {% block content %}
+  <style>
+    #content_progress {
+      /* Positioning */
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      height: 2px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      background-color: transparent;
+      color: #35a935;
+    }
+    #content_progress::-webkit-progress-bar {
+      background-color: transparent;
+    }
+    #content_progress::-webkit-progress-value {
+      background-color: #35a935;
+    }
+    #content_progress::-moz-progress-bar {
+      background-color: #35a935;
+    }
+  </style>
+  <progress id="content_progress" value="0"></progress>
   <div class="archive">
     <div id="archives">
       <header class="entry-header">
@@ -72,6 +99,17 @@
   <script src="/static/js/valine.js"></script>
   <script>
     $('img').zoomify(); // Default settings
+    document.addEventListener('DOMContentLoaded', function () {
+      var winHeight = window.innerHeight;
+      var docHeight = document.documentElement.scrollHeight;
+      var progressBar = document.querySelector('#content_progress');
+      progressBar.max = docHeight - winHeight;
+      progressBar.value = window.scrollY;
+      document.addEventListener('scroll', function () {
+        progressBar.max = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.value = window.scrollY;
+      });
+    });
   </script>
 {% endblock %}
 
