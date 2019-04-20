@@ -71,6 +71,7 @@
   </div>
 
   <script src="/static/js/valine.js"></script>
+  <script src="/static/js/jquery.sticky.js"></script>
   <script>
     $('img').zoomify(); // Default settings
     document.addEventListener('DOMContentLoaded', function () {
@@ -84,11 +85,14 @@
         progressBar.value = window.scrollY;
       });
     });
+    $(document).ready(function(){
+      $("#site-state").sticky({topSpacing:50});
+    });
   </script>
 {% endblock %}
 
 {% block side %}
-  <div id="archives" class="widget widget_archive">
+  <div id="site-state" class="widget widget_archive">
     <div class="pull-center">
       <img src="/static/css/logo.png" width="150px" height="150px" alt="博客头像">
       <br>
