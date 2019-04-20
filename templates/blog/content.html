@@ -98,19 +98,19 @@
     <div style="margin-top:30px;" class="pull-center">
       <div class="site-state-item site-state-posts">
         <a href="javascript:;">
-          <span class="site-state-item-count">{{ statis_count.blog_count }}</span>
+          <span class="site-state-item-count">{{ statis_count.blog_count|default_if_none:0 }}</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-posts">
         <a href="javascript:;">
-          <span class="site-state-item-count">{{ statis_count.read_count }}</span>
-          <span class="site-state-item-name">阅读量</span>
+          <span class="site-state-item-count">{{ statis_count.read_count|default_if_none:0 }}</span>
+          <span class="site-state-item-name">总阅读量</span>
         </a>
       </div>
       <div class="site-state-item site-state-posts">
         <a href="javascript:;">
-          <span class="site-state-item-count">{{ statis_count.tags_count }}</span>
+          <span class="site-state-item-count">{{ statis_count.tags_count|default_if_none:0 }}</span>
           <span class="site-state-item-name">标签</span>
         </a>
       </div>
