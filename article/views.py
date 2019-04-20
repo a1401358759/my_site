@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
-from django.db.models import F, Q
+from django.db.models import F, Q, Count, Sum
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
 from django.shortcuts import render
@@ -75,16 +75,17 @@ def detail(request, year, month, day, id):
     """
     try:
         article = Article.objects.get(id=id)
-        Article.objects.filter(id=id).update(count=F('count') + 1)
+        article.count += 1
+        article.save(update_fields=['count'])
+        statis_count = Article.objects.aggregate(
+            blog_count=Count('id'),
+            read_count=Sum('count'),
+            tags_count=Count('tags', distinct=True)
+        )
+        tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
+        return render(request, 'blog/content.html', locals())
     except Article.DoesNotExist:
         raise Http404
-
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
-    tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
-
-    return render(request, 'blog/content.html', locals())
 
 
 def archive_month(request, year, month):

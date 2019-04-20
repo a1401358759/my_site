@@ -7,32 +7,6 @@
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home' %}">首页&nbsp;</a>»&nbsp;文章分类&nbsp;:&nbsp;<a href="{%  url 'classfiDetail' classfi=article.classification %}">{{article.classification}}&nbsp;</a>»&nbsp; {{article.title}}
 {% endblock %}
 {% block content %}
-  <style>
-    #content_progress {
-      /* Positioning */
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-      height: 2px;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      border: none;
-      background-color: transparent;
-      color: #35a935;
-    }
-    #content_progress::-webkit-progress-bar {
-      background-color: transparent;
-    }
-    #content_progress::-webkit-progress-value {
-      background-color: #35a935;
-    }
-    #content_progress::-moz-progress-bar {
-      background-color: #35a935;
-    }
-  </style>
   <progress id="content_progress" value="0"></progress>
   <div class="archive">
     <div id="archives">
@@ -93,7 +67,7 @@
   {% include "blog/reward.html" %}
 
   <!-- 评论框 -->
-  <div id="vcomments" class="widget widget_recent_comments friend_links">
+  <div id="vcomments" class="widget widget_recent_comments">
   </div>
 
   <script src="/static/js/valine.js"></script>
@@ -114,5 +88,42 @@
 {% endblock %}
 
 {% block side %}
-	{% include "blog/_side.html" %}
+  <div id="archives" class="widget widget_archive">
+    <div class="pull-center">
+      <img src="/static/css/logo.png" width="150px" height="150px" alt="博客头像">
+      <br>
+      <span>杨学峰</span>
+      <p class="site-description">记录和分享学习的心得，感悟生活，留住感动，静静寻觅生活的美好。</p>
+    </div>
+    <div style="margin-top:30px;" class="pull-center">
+      <div class="site-state-item site-state-posts">
+        <a href="javascript:;">
+          <span class="site-state-item-count">{{ statis_count.blog_count }}</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-posts">
+        <a href="javascript:;">
+          <span class="site-state-item-count">{{ statis_count.read_count }}</span>
+          <span class="site-state-item-name">阅读量</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-posts">
+        <a href="javascript:;">
+          <span class="site-state-item-count">{{ statis_count.tags_count }}</span>
+          <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:30px;" class="pull-center">
+      <a href="https://github.com/a1401358759" target="_blank">
+        <i class="fa fa-github"></i> Github
+      </a>
+    </div>
+    <div style="margin-top:20px;" class="pull-center">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+        <img src="/static/css/cc-by-nc-sa.png" alt="">
+      </a>
+    </div>
+  </div>
 {% endblock %}

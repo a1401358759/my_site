@@ -1406,7 +1406,6 @@ position:relative;
 
 .widget {
   margin-bottom: 10px;
-  margin-left: -10px;
   padding: 25px;
   font-size: 0.95em;
   background: #fff;
@@ -2329,10 +2328,6 @@ video {
   margin: 10px 0;
 }
 
-.friend_links {
-  margin-left: 0px;
-}
-
 /* Valine */
 .v .txt-right {
   display: none!important;
@@ -2429,4 +2424,59 @@ ul ol {
 
 img {
   max-width: 100%;
+}
+.pull-center {
+  text-align: center;
+}
+/* 文章详情页进度条 */
+#content_progress {
+  /* Positioning */
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: #35a935;
+}
+#content_progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+#content_progress::-webkit-progress-value {
+  background-color: #35a935;
+}
+#content_progress::-moz-progress-bar {
+  background-color: #35a935;
+}
+/* 文章详情页站点介绍 */
+.site-state-item:first-child {
+  border-left: none;
+}
+.site-state-item {
+  display: inline-block;
+  padding: 0 15px;
+  border-left: 1px solid #eee;
+}
+.site-state-item-name {
+  font-size: 13px;
+  color: #999;
+}
+.site-state-item-count {
+  display: block;
+  text-align: center;
+  color: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.site-description {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #999;
 }
