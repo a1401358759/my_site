@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
-from django.db.models import F, Q, Count, Sum
+from django.db.models import Q, Count, Sum
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
 from django.shortcuts import render
@@ -11,9 +11,11 @@ from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
 from utils.dlibs.http.response import render_json
 from utils.libs.utils.mine_qiniu import upload_data
-from .models import Article, Classification, OwnerMessage, Tag, Links, CarouselImg
-from .constants import BlogStatus, CarouselImgType
-from .backends import get_tags_and_musics
+from .models import Article, Classification, OwnerMessage, Tag
+from .constants import BlogStatus
+from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links,
+                       get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs
+                       )
 
 
 @login_required
@@ -55,16 +57,16 @@ def home(request):
     博客首页
     """
     is_home = True
-    articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by("-publish_time")
+    articles = get_articles('articles')
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = Article.objects.order_by('-count')[:10]  # 最近发布的十篇文章
-    classification = Classification.class_list.get_classify_list()  # 分类,以及对应的数目
+    new_post = get_popular_top10_blogs('new_post')  # 阅读量最高的十篇文章
+    classification = get_classifications('classification')  # 分类,以及对应的数目
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()  # 按月归档,以及对应的文章数目
-    carouse_imgs = CarouselImg.objects.filter(img_type=CarouselImgType.BANNER).order_by("-weights", "id")  # 轮播图
+    date_list = get_date_list('date_list')  # 按月归档,以及对应的文章数目
+    carouse_imgs = get_carousel_imgs('carouse_imgs')  # 轮播图
 
     return render(request, 'blog/index.html', locals())
 
@@ -96,10 +98,10 @@ def archive_month(request, year, month):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
+    new_post = get_popular_top10_blogs('new_post')
+    classification = get_classifications('classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
+    date_list = get_date_list('date_list')
 
     return render(request, 'blog/index.html', locals())
 
@@ -116,10 +118,10 @@ def classfiDetail(request, classfi):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
+    new_post = get_popular_top10_blogs('new_post')
+    classification = get_classifications('classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
+    date_list = get_date_list('date_list')
 
     return render(request, 'blog/index.html', locals())
 
@@ -133,10 +135,10 @@ def tagDetail(request, tag):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
+    new_post = get_popular_top10_blogs('new_post')
+    classification = get_classifications('classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
+    date_list = get_date_list('date_list')
 
     return render(request, 'blog/index.html', locals())
 
@@ -145,10 +147,10 @@ def about(request):
     """
     关于我
     """
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
+    new_post = get_popular_top10_blogs('new_post')
+    classification = get_classifications('classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
+    date_list = get_date_list('date_list')
 
     return render(request, 'blog/about.html', locals())
 
@@ -157,11 +159,11 @@ def archive(request):
     """
     文章归档
     """
-    archive = Article.date_list.get_article_by_archive()
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
+    archive = get_archieve('archive')
+    new_post = get_popular_top10_blogs('new_post')
+    classification = get_classifications('classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
+    date_list = get_date_list('date_list')
 
     return render(request, 'blog/archive.html', locals())
 
@@ -192,10 +194,10 @@ def blog_search(request):
     实现对文章标题，标签，分类的搜索
     """
     is_search = True
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
+    new_post = get_popular_top10_blogs('new_post')
+    classification = get_classifications('classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
+    date_list = get_date_list('date_list')
     error = False
 
     query = Q()
@@ -219,9 +221,9 @@ def message(request):
     """
     own_messages = OwnerMessage.objects.all()
     own_message = random.sample(own_messages, 1)[0] if own_messages else ""  # 随机返回一个主人寄语
-    date_list = Article.date_list.get_article_by_date()
-    classification = Classification.class_list.get_classify_list()
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
+    date_list = get_date_list('date_list')
+    classification = get_classifications('classification')
+    new_post = get_popular_top10_blogs('new_post')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
     return render(request, 'blog/message.html', locals())
 
@@ -244,10 +246,10 @@ def links(request):
     """
     友情链接
     """
-    links = list(Links.objects.all())
+    links = get_links('links')
     random.shuffle(links)  # 友情链接随机排序
-    new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-    classification = Classification.class_list.get_classify_list()
+    new_post = get_popular_top10_blogs('new_post')
+    classification = get_classifications('classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = Article.date_list.get_article_by_date()
+    date_list = get_date_list('date_list')
     return render(request, 'blog/links.html', locals())
