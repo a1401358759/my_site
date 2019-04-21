@@ -52,4 +52,7 @@ urlpatterns = [
     url(r'^ownmessage-add/?$', views.add_ownmessage_view, name="ownmessage_add"),
     url(r'^ownmessage-edit/(?P<item_id>[a-zA-Z0-9]+)/?$', views.edit_ownmessage_view, name="ownmessage_edit"),
     url(r'^ownmessage-del/?$', views.del_ownmessage_view, name="ownmessage_del"),
+
+    # 清除缓存
+    url(r'^clear-caches/?$', views.clear_caches_view, name="clear_caches")
 ]

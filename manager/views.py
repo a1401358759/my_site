@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import urllib
+from django.core.cache import cache
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
@@ -712,3 +713,12 @@ def del_ownmessage_view(request):
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def clear_caches_view(request):
+    try:
+        cache.delete_pattern("tmp_*")
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as exp:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=exp)

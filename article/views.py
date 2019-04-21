@@ -57,16 +57,16 @@ def home(request):
     博客首页
     """
     is_home = True
-    articles = get_articles('articles')
+    articles = get_articles('tmp_articles')
     page_num = request.GET.get("page") or 1
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = get_popular_top10_blogs('new_post')  # 阅读量最高的十篇文章
-    classification = get_classifications('classification')  # 分类,以及对应的数目
+    new_post = get_popular_top10_blogs('tmp_new_post')  # 阅读量最高的十篇文章
+    classification = get_classifications('tmp_classification')  # 分类,以及对应的数目
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')  # 按月归档,以及对应的文章数目
-    carouse_imgs = get_carousel_imgs('carouse_imgs')  # 轮播图
+    date_list = get_date_list('tmp_date_list')  # 按月归档,以及对应的文章数目
+    carouse_imgs = get_carousel_imgs('tmp_carouse_imgs')  # 轮播图
 
     return render(request, 'blog/index.html', locals())
 
@@ -98,10 +98,10 @@ def archive_month(request, year, month):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = get_popular_top10_blogs('new_post')
-    classification = get_classifications('classification')
+    new_post = get_popular_top10_blogs('tmp_new_post')
+    classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')
+    date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/index.html', locals())
 
@@ -118,10 +118,10 @@ def classfiDetail(request, classfi):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = get_popular_top10_blogs('new_post')
-    classification = get_classifications('classification')
+    new_post = get_popular_top10_blogs('tmp_new_post')
+    classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')
+    date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/index.html', locals())
 
@@ -135,10 +135,10 @@ def tagDetail(request, tag):
     page_size = request.GET.get("page_size") or 5
     articles, total = paginate(articles, page_num=page_num, page_size=page_size)
 
-    new_post = get_popular_top10_blogs('new_post')
-    classification = get_classifications('classification')
+    new_post = get_popular_top10_blogs('tmp_new_post')
+    classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')
+    date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/index.html', locals())
 
@@ -147,10 +147,10 @@ def about(request):
     """
     关于我
     """
-    new_post = get_popular_top10_blogs('new_post')
-    classification = get_classifications('classification')
+    new_post = get_popular_top10_blogs('tmp_new_post')
+    classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')
+    date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/about.html', locals())
 
@@ -159,11 +159,11 @@ def archive(request):
     """
     文章归档
     """
-    archive = get_archieve('archive')
-    new_post = get_popular_top10_blogs('new_post')
-    classification = get_classifications('classification')
+    archive = get_archieve('tmp_archive')
+    new_post = get_popular_top10_blogs('tmp_new_post')
+    classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')
+    date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/archive.html', locals())
 
@@ -194,10 +194,10 @@ def blog_search(request):
     实现对文章标题，标签，分类的搜索
     """
     is_search = True
-    new_post = get_popular_top10_blogs('new_post')
-    classification = get_classifications('classification')
+    new_post = get_popular_top10_blogs('tmp_new_post')
+    classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')
+    date_list = get_date_list('tmp_date_list')
     error = False
 
     query = Q()
@@ -221,9 +221,9 @@ def message(request):
     """
     own_messages = OwnerMessage.objects.all()
     own_message = random.sample(own_messages, 1)[0] if own_messages else ""  # 随机返回一个主人寄语
-    date_list = get_date_list('date_list')
-    classification = get_classifications('classification')
-    new_post = get_popular_top10_blogs('new_post')
+    date_list = get_date_list('tmp_date_list')
+    classification = get_classifications('tmp_classification')
+    new_post = get_popular_top10_blogs('tmp_new_post')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
     return render(request, 'blog/message.html', locals())
 
@@ -248,8 +248,8 @@ def links(request):
     """
     links = get_links('links')
     random.shuffle(links)  # 友情链接随机排序
-    new_post = get_popular_top10_blogs('new_post')
-    classification = get_classifications('classification')
+    new_post = get_popular_top10_blogs('tmp_new_post')
+    classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics()  # 获取所有标签，并随机赋予颜色
-    date_list = get_date_list('date_list')
+    date_list = get_date_list('tmp_date_list')
     return render(request, 'blog/links.html', locals())
