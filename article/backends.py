@@ -19,21 +19,21 @@ def get_articles(key):
     return articles
 
 
-def get_tags_and_musics():
+def get_tags_and_musics(tag_key, music_key):
     color_array, music_list, tag_list = [
         '0', '1', '2', '3', '4', '5', '6', '7',
         '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
     ], [], []
-    if 'tmp_tag_list' in cache:
-        tag_list = cache.get('tmp_tag_list')
+    if tag_key in cache:
+        tag_list = cache.get(tag_key)
     else:
         tag_list = list(Tag.objects.all())
         for tag in tag_list:
             tag.color = '#' + ''.join(random.sample(color_array, 6))  # 为每个标签随机生成颜色
         random.shuffle(tag_list)  # random.shuffle()的返回值是none，改变的是原来的元素
-        cache.set('tmp_tag_list', tag_list, CACHE_TIME)
-    if 'tmp_music_list' in cache:
-        music_list = cache.get('tmp_music_list')
+        cache.set(tag_key, tag_list, CACHE_TIME)
+    if music_key in cache:
+        music_list = cache.get(music_key)
     else:
         musics = Music.objects.all()
         for item in musics:
@@ -45,7 +45,7 @@ def get_tags_and_musics():
                 "lrc": item.lrc,
             })
         random.shuffle(music_list)
-        cache.set('tmp_music_list', json.dumps(music_list[:3]), CACHE_TIME)
+        cache.set(music_key, json.dumps(music_list[:3]), CACHE_TIME)
 
     return tag_list, music_list
 
