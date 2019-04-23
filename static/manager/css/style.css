@@ -3380,7 +3380,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-ar
   background-size: cover; }
 
 .wrapper-page {
-  margin: 5% auto;
+  margin: 5% 65%;
   position: relative;
   width: 420px; }
   .wrapper-page .card-box {
