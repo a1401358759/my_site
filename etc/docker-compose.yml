@@ -1,22 +1,20 @@
-version: '3'
-services:
-    my_site:
-        image: ubuntu-django:1.0
-        container_name: my_site
-        restart: always
-        volumes:
-            - /home/data/docker/my_site/project:/opt/django/project
-            - /home/data/docker/my_site/logs:/opt/django/logs
-            - /home/data/docker/my_site/venv:/opt/django/venv
-            - /root/.ssh:/root/.ssh
-        ports:
-            - "9000:8000"
-    db:
-        image: mysql:5.7
-    expose:
-        - "3306"
+my_site:
+    image: ubuntu-django:1.0
+    container_name: my_site
+    restart: always
     volumes:
-        - /home/data/docker/my_site/db:/var/lib/mysql
-    environment:
-        - MYSQL_DATABASE='my-site'
-        - MYSQL_ROOT_PASSWORD='yangxf'
+        - /home/data/docker/my_site/project:/opt/django/project
+        - /home/data/docker/my_site/logs:/opt/django/logs
+        - /home/data/docker/my_site/venv:/opt/django/venv
+        - /root/.ssh:/root/.ssh
+    ports:
+        - "9000:8000"
+db:
+    image: mysql:5.7
+expose:
+    - "3306"
+volumes:
+    - /home/data/docker/my_site/db:/var/lib/mysql
+environment:
+    - MYSQL_DATABASE='my-site'
+    - MYSQL_ROOT_PASSWORD='yangxf'
