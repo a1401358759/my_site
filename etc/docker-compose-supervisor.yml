@@ -1,0 +1,9 @@
+my_site_supervisor:
+    image: ubuntu-django-supervisor:1.0
+    container_name: my_site_supervisor
+    restart: always
+    volumes:
+        - /home/data/docker/my_site/project:/opt/django/project
+        - /home/data/docker/my_site/logs_supervisor:/opt/django/logs
+        - /home/data/docker/my_site/venv_supervisor:/opt/django/venv
+        - /root/.ssh:/root/.ssh

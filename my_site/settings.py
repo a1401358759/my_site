@@ -204,7 +204,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': '%s/logs/%s.log' % (BASE_DIR, "Develop"),
+            'filename': '%s/../logs/%s.log' % (BASE_DIR, "Develop"),
             'when': 'D',
             'backupCount': 10,
             'formatter': 'default',
