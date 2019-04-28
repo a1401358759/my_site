@@ -11,3 +11,12 @@ services:
             - /root/.ssh:/root/.ssh
         ports:
             - "9000:8000"
+    db:
+        image: mysql:5.7
+    expose:
+        - "3306"
+    volumes:
+        - /home/data/docker/my_site/db:/var/lib/mysql
+    environment:
+        - MYSQL_DATABASE='my-site'
+        - MYSQL_ROOT_PASSWORD='yangxf'
