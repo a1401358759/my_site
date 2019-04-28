@@ -88,6 +88,15 @@
     $(document).ready(function(){
       $("#site-state").sticky({topSpacing:50});
     });
+    window.onfocus = function () {
+      document.title = '恢复正常了...';
+      setTimeout(function () {
+        document.title = "杨学峰博客 | {{ article.title }}";
+      }, 2000);
+    };
+    window.onblur = function () {
+      document.title = '死鬼~你快回来啊！';
+    };
   </script>
 {% endblock %}
 
