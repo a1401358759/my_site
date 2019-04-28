@@ -1,7 +1,7 @@
 version: '3'
 services:
     my_site:
-        image: ubuntu-django:1.0
+        image: registry.cn-beijing.aliyuncs.com/yxf-blog/ubuntu-django:1.0
         container_name: my_site
         restart: always
         volumes:
@@ -11,12 +11,3 @@ services:
             - /root/.ssh:/root/.ssh
         ports:
             - "9000:8000"
-    db:
-        image: mysql:5.7
-        expose:
-            - "3306"
-        volumes:
-            - /home/data/docker/my_site/db:/var/lib/mysql
-        environment:
-            - MYSQL_DATABASE='my-site'
-            - MYSQL_ROOT_PASSWORD='yangxf'
