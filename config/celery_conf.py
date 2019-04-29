@@ -20,8 +20,6 @@ CELERY_TASK_DEFAULT_ROUTING_KEY = 'default'
 CELERY_BEAT_SCHEDULE = {
     'submit_urls_to_baidu': {
         'task': 'article.tasks.submit_urls_to_baidu',
-        'schedule': crontab(minute=0, hour="*/1"),  # 每小时执行
+        'schedule': crontab(minute="*/10"),  # 每十分钟执行
     },
 }
-
-CELERY_SEND_TASK_ERROR_EMAILS = True  # 错误发送邮件
