@@ -16,6 +16,7 @@ from .constants import BlogStatus
 from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links,
                        get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs
                        )
+from .tasks import submit_urls_to_baidu
 
 
 @login_required
@@ -67,7 +68,7 @@ def home(request):
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
     date_list = get_date_list('tmp_date_list')  # 按月归档,以及对应的文章数目
     carouse_imgs = get_carousel_imgs('tmp_carouse_imgs')  # 轮播图
-
+    submit_urls_to_baidu.delay()
     return render(request, 'blog/index.html', locals())
 
 
