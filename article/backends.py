@@ -6,7 +6,7 @@ from django.core.cache import cache
 from models import Tag, Music, Article, Classification, Links, CarouselImg
 from constants import BlogStatus, CarouselImgType
 
-CACHE_TIME = 3600  # second
+CACHE_TIME = 600  # second
 
 
 def get_articles(key):

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import hashlib
-import urllib
+import random
 from django import template
 from django.utils.safestring import mark_safe
 
@@ -13,8 +13,9 @@ register = template.Library()
 
 @register.filter
 def gravatar_url(email, size=40):
-    default = "https://example.com/static/images/defaultavatar.jpg"
-    return "https://www.gravatar.com/avatar/%s?%s" % (hashlib.md5(email.lower()).hexdigest(), urllib.urlencode({'d': default, 's': str(size)}))
+    styles = ['identicon', 'monsterid', 'wavatar']
+    url = 'https://www.gravatar.com/avatar/{}?s={}&d={}'.format(hashlib.md5(email.lower()).hexdigest(), size, random.choice(styles))
+    return url
 
 # return an image tag with the gravatar
 # TEMPLATE USE:  {{ email|gravatar:150 }}
