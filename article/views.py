@@ -7,15 +7,19 @@ from django.http import Http404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
 from utils.dlibs.http.response import render_json
 from utils.libs.utils.mine_qiniu import upload_data
-from .models import Article, Classification, OwnerMessage, Tag
+from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
 from .constants import BlogStatus
-from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links,
+from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
                        get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs
                        )
+from .forms import CommentForm
 
 
 @login_required
@@ -147,6 +151,8 @@ def about(request):
     关于我
     """
     new_post = get_popular_top10_blogs('tmp_new_post')
+    comments = Comments.objects.filter(target='about').order_by('-id')
+    comments_count = comments.count()
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
     date_list = get_date_list('tmp_date_list')
@@ -252,3 +258,47 @@ def links(request):
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
     date_list = get_date_list('tmp_date_list')
     return render(request, 'blog/links.html', locals())
+
+
+def add_comments_view(request):
+    # TODO 邮件通知
+    form = CommentForm(request.POST)
+    if not form.is_valid():
+        messages.warning(request, u'参数错误')
+        return HttpResponseRedirect(reverse('about'))
+
+    nickname = form.cleaned_data.get('nickname')
+    email = form.cleaned_data.get('email')
+    website = form.cleaned_data.get('website')
+    content = form.cleaned_data.get('content')
+    target = form.cleaned_data.get('target')
+    parent_comment_id = form.cleaned_data.get('parent_comment_id')
+
+    try:
+        user, created = Visitor.objects.update_or_create(
+            nickname=nickname,
+            email=email,
+            defaults={
+                "nickname": nickname,
+                "email": email,
+                "website": website,
+                "avatar": gravatar_url(email)
+            }
+        )
+        new_comment = Comments.objects.create(
+            user=user,
+            content=content,
+            target=target,
+            anchor="".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in xrange(16)])
+        )
+        # 二级回复
+        if parent_comment_id:
+            parent_comment = Comments.objects.filter(pk=parent_comment_id).first()
+            new_comment.parent_id = parent_comment_id
+            new_comment.reply_to = parent_comment.user
+            new_comment.save()
+        messages.success(request, u'评论成功')
+        return HttpResponseRedirect(reverse('about'))
+    except Exception as exp:
+        messages.error(request, u'评论失败: %s' % exp)
+        return HttpResponseRedirect(reverse('about'))

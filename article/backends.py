@@ -2,6 +2,7 @@
 
 import json
 import random
+import hashlib
 from django.core.cache import cache
 from models import Tag, Music, Article, Classification, Links, CarouselImg
 from constants import BlogStatus, CarouselImgType
@@ -108,3 +109,9 @@ def get_carousel_imgs(key):
         carouse_imgs = CarouselImg.objects.filter(img_type=CarouselImgType.BANNER).order_by("-weights", "id")
         cache.set(key, carouse_imgs, CACHE_TIME)
     return carouse_imgs
+
+
+def gravatar_url(email, size=40):
+    styles = ['identicon', 'monsterid', 'wavatar']
+    url = 'https://www.gravatar.com/avatar/{}?s={}&d={}'.format(hashlib.md5(email.lower()).hexdigest(), size, random.choice(styles))
+    return url

@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load mptt_tags %}
 {% block title %}
   杨学峰博客 | 关于我
 {% endblock %}
@@ -6,6 +7,21 @@
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;关于我
 {% endblock %}
 {% block content %}
+  <style>
+    .w-e-text-container {
+      height: 200px !important;
+      max-height: 200px;
+    }
+    .w-e-text {
+      padding: 10px!important;
+    }
+    .comments_anchor {
+      color: #3eb0ef;
+      position: relative;
+      padding-top: 110px;
+      margin-top: -110px;
+    }
+  </style>
   <div class="archive">
     <div id="archives">
       <h3 style="font-weight: bold">
@@ -45,16 +61,92 @@
 
   <!-- 评论框 -->
   <div id="vcomments" class="widget widget_recent_comments">
+    <form class="form-horizontal" action="{% url 'add_comments' %}" method="post" id="comment_form" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-4"><input type="text" placeholder="昵称" class="form-comtrol" name="nickname"></div>
+        <div class="col-md-4"><input type="text" placeholder="邮箱" class="form-comtrol" name="email"></div>
+        <div class="col-md-4"><input type="text" placeholder="网站" class="form-comtrol" name="website"></div>
+      </div>
+      <div id="editor" class="controls">
+
+      </div>
+      <textarea style="display:none;" name="content" id="rich_text"></textarea>
+      <input type="hidden" name="target" value="about">
+      <input type="hidden" name="parent_comment_id" id="parent_comment_id">
+      <button type="submit" class="btn btn-success pull-right" style="margin:10px 0;">提交评论</button>
+    </form>
+
+    <div style="margin-top:60px;">
+      {% if comments %}
+      已有 <b>{{ comments_count }}</b> 条评论
+      <!-- 遍历树形结构 -->
+      {% recursetree comments %}
+        <!-- 给 node 取个别名 comment -->
+        {% with comment=node %}
+          <div class="col-12"><hr>
+            <div>
+              <img src="{{ comment.user.avatar }}" style="border:1px solid #eee; border-radius:50%; padding: 5px;">
+              <span>
+                <strong style="margin-left:5px;">
+                  <a href="{{ comment.user.website }}" target="_blank" style="color:#1abc9c;">{{ comment.user.nickname }}</a>
+                </strong>
+                <span style="font-size:14px;">发表于</span>
+                <a style="color:gray" href="javascript:;">
+                  {{ comment.created_time|date:"Y-m-d H:i" }}
+                </a>
+              </span>
+            </div>
+            <div class="pull-right" style="margin-top: -50px;">
+              <button type="button" class="btn btn-sm text-muted"
+                      onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}', '{{ comment.anchor|default_if_none:'' }}')">
+                回复
+              </button>
+            </div>
+            <div class="clearfix"></div>
+            <div style="margin-top:15px;">
+              <a name="{{ comment.anchor|default_if_none:'' }}" id="{{ comment.anchor|default_if_none:'' }}">
+                {{ comment.content|safe }}
+              </a>
+            </div>
+          </div>
+        {% endwith %}
+      {% endrecursetree %}
+      {% else %}
+        <p style="color:gray;text-align:center;">还没有评论，快来抢🛋吧！~</p>
+      {% endif %}
+    </div>
   </div>
 
-  <script src="/static/js/valine.js"></script>
+  <!--<script src="/static/js/valine.js"></script>-->
   <script>
     var s1 = '2018-02-01';  // 设置为你的建站时间
     s1 = new Date(s1.replace(/-/g, "/"));
     s2 = new Date();
     var days = s2.getTime() - s1.getTime();
     var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
-    document.getElementById('days').innerHTML = number_of_days;
+    document.getElementById('days').value = number_of_days;
+  </script>
+  <script src="/static/manager/js/wangEditor.min.js"></script>
+  <script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.uploadImgServer = '/upload-rich/'  // 配置服务器端上传图片地址
+    editor.customConfig.uploadImgMaxSize = 1 * 1024 * 1024  // 将图片大小限制为 1M
+    var $text1 = $('#rich_text')
+    editor.customConfig.onchange = function (html) {
+      // 监控变化，同步更新到 textarea
+      $text1.val(html)
+    }
+    editor.create()
+    // 设置编辑器的初始值
+    editor.txt.html($text1.val())
+    // 初始化 textarea 的值
+    $text1.val(editor.txt.html());
+    function set_parent_comment_id(comment_id, nickname, parent_anchor) {
+      var html = "<a class='comments_anchor' href='#"+ parent_anchor + "'>@"+ nickname + "&nbsp;" + "</a>"
+      document.getElementById('parent_comment_id').value = comment_id;
+      editor.txt.html(html)
+    };
   </script>
 {% endblock %}
 

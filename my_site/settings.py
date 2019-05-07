@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap_pagination',
     'article',
+    'mptt'
 )
 
 MIDDLEWARE_CLASSES = (

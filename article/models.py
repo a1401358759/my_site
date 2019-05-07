@@ -5,6 +5,7 @@ from collections import OrderedDict
 # from DjangoUeditor.models import UEditorField
 from .constants import BlogStatus, CarouselImgType, EditorKind
 from utils.dlibs.models.mixins import TimeModelMixin
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 class Author(models.Model):
@@ -268,3 +269,34 @@ class Subscription(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = u"邮件订阅"
+
+
+class Visitor(TimeModelMixin):
+    """
+    访客表
+    """
+    nickname = models.CharField(max_length=50)
+    avatar = models.CharField(max_length=100)
+    email = models.EmailField()
+    website = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = u"访客管理"
+
+
+class Comments(MPTTModel, TimeModelMixin):
+    """
+    评论表
+    """
+    user = models.ForeignKey(Visitor, db_constraint=False)
+    reply_to = models.ForeignKey(Visitor, null=True, blank=True, related_name='replyers')
+    content = models.TextField()
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+    target = models.CharField(max_length=100, blank=True, null=True)  # 唯一标识
+    anchor = models.CharField(max_length=20, blank=True, null=True)
+
+    def __str__(self):
+        return self.content
+
+    class MPTTMeta:
+        verbose_name_plural = u"评论管理"
