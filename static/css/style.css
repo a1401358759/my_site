@@ -658,7 +658,7 @@ sub { bottom: -0.25em; }
   /*opacity: 0.9;*/
   position: fixed;
   width: 100%;
-  z-index: 999;
+  z-index: 99999;
 }
 
 #header .container {

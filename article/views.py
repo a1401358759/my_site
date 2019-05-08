@@ -151,8 +151,10 @@ def about(request):
     关于我
     """
     new_post = get_popular_top10_blogs('tmp_new_post')
-    comments = Comments.objects.filter(target='about').order_by('-id')
+    comments = Comments.objects.select_related().filter(target='about').order_by('-id')
     comments_count = comments.count()
+    page_num = request.GET.get("page") or 1
+    comments, total = paginate(comments, page_num=page_num)
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
     date_list = get_date_list('tmp_date_list')
@@ -261,6 +263,9 @@ def links(request):
 
 
 def add_comments_view(request):
+    """
+    添加评论
+    """
     # TODO 邮件通知
     form = CommentForm(request.POST)
     if not form.is_valid():
