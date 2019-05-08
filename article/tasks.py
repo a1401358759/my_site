@@ -5,6 +5,7 @@ from article.models import Article
 from article.constants import BlogStatus, DOMAIN
 from celery import shared_task
 from utils.libs.logger.syslogger import SysLogger
+from utils.send_email import SendEmailClient
 
 
 @shared_task
@@ -15,3 +16,12 @@ def submit_urls_to_baidu():
     response = requests.post(api, data='\n'.join(urls))
     SysLogger.info(response.content.decode())
     print (response.content.decode())
+
+
+@shared_task
+def send_email(mail, mail_body):
+    send_client = SendEmailClient()
+    subject = u'杨学峰博客消息'
+    receivers = [mail]
+    result = send_client.send_email(subject, receivers, mail_body)
+    return result

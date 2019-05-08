@@ -16,12 +16,15 @@ from utils.dlibs.http.response import render_json
 from utils.dlibs.tools.tools import get_clientip
 from utils.libs.utils.mine_qiniu import upload_data
 from utils.libs.utils.lbs import get_location_by_ip
+from utils.send_email import MailTemplate
+from config.common_conf import DOMAIN_NAME
 from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
 from .constants import BlogStatus
 from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
                        get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs
                        )
 from .forms import CommentForm
+from .tasks import send_email
 
 
 @login_required
@@ -309,6 +312,12 @@ def add_comments_view(request):
             parent_comment = Comments.objects.filter(pk=parent_comment_id).first()
             reply_to = parent_comment.user if parent_comment else None
             comment_data.update({"parent_id": parent_comment_id, "reply_to": reply_to})
+            mail_body = MailTemplate.notify_parent_user.format(
+                parent_user=parent_comment.user.nickname,
+                parent_comment=parent_comment.content,
+                target_url=DOMAIN_NAME + parent_comment.target
+            )
+            send_email.delay(reply_to.email, mail_body)
         Comments.objects.create(**comment_data)
         messages.success(request, u'评论成功')
         return HttpResponseRedirect(reverse('about'))
