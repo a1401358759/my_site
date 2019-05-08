@@ -8,22 +8,6 @@
   当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;关于我
 {% endblock %}
 {% block content %}
-  <style>
-    .w-e-text-container {
-      height: 200px !important;
-      max-height: 200px;
-    }
-    .w-e-text {
-      padding: 10px!important;
-    }
-    .comments_anchor:target{
-      padding-top:44px
-    }
-    .quote-content * {
-      color: gray;
-      font-size: 14px;
-    }
-  </style>
   <div class="archive">
     <div id="archives">
       <h3 style="font-weight: bold">
@@ -69,7 +53,6 @@
     {% include "blog/comment_list.html" %}
   </div>
 
-  <!--<script src="/static/js/valine.js"></script>-->
   <script>
     var s1 = '2018-02-01';  // 设置为你的建站时间
     s1 = new Date(s1.replace(/-/g, "/"));

@@ -2480,3 +2480,37 @@ img {
   font-size: 13px;
   color: #999;
 }
+.layui-btn {
+  display: inline-block;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 18px;
+  background-color: #009688;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+/* wangeditor */
+.w-e-text-container {
+  min-height: 150px !important;
+  max-height: 200px;
+}
+.w-e-text {
+  padding: 10px!important;
+}
+.w-e-toolbar {
+  padding: 10px 0!important;
+  background-color: #FFFFFF!important;
+  border: 1px solid #ccc;
+}
+.comments_anchor:target{
+  padding-top:44px
+}
+.quote-content * {
+  color: gray;
+  font-size: 14px;
+}

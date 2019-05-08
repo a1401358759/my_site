@@ -28,7 +28,7 @@
         <div class="clearfix"></div>
         {% if comment.reply_to %}
         <blockquote>
-          <p>引用自 <a href="#{{ comment.parent.anchor }}" style="color:#3eb0ef;">@{{ comment.reply_to.nickname }}</a> 的评论</p>
+          <p>引用自 <a href="#{{ comment.parent.anchor }}" style="color:#3eb0ef;">{{ comment.reply_to.nickname }}</a> 的评论</p>
           <div class="quote-content">{{ comment.parent.content|safe }}</div>
         </blockquote>
         {% endif %}
