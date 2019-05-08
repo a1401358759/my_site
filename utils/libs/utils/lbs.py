@@ -6,6 +6,8 @@ from utils.libs.config.default_settings import AMAP_SERVER_KEY
 
 
 def get_location_by_ip(ip):
+    if not ip:
+        return 0, u"未知", u"未知"
     response = RequestClient.query(
         "http://restapi.amap.com/v3/ip",
         method="POST",
@@ -17,13 +19,13 @@ def get_location_by_ip(ip):
     )
     try:
         ret_json = response.json()
-        adcode = ret_json["adcode"] or 0
-        province = ret_json["province"] or ""
-        city = ret_json["city"] or ""
+        adcode = ret_json.get("adcode") or 0
+        province = ret_json.get("province") or ""
+        city = ret_json.get("city") or ""
         return adcode, province, city
     except Exception, exp:
         SysLogger.exception(exp)
-        return 0, "", ""
+        return 0, u"未知", u"未知"
 
 
 def get_location_by_lon_and_lat(lon, lat):

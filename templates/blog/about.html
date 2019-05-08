@@ -1,5 +1,4 @@
 {% extends "blog/base.html" %}
-{% load mptt_tags %}
 {% load bootstrap_pagination %}
 {% block title %}
   杨学峰博客 | 关于我
@@ -19,7 +18,7 @@
         <p>2. 本站大部分文章是博主工作中遇到问题时，通过网络资源查找到的解决方法的总结记录，如有不当之处，请联系博主删除，敬请谅解！</p>
         <p>3. 本站建于 2018-02-01，已经稳定运行 <span id="days" style="color:red;">0</span> 天。</p>
       </blockquote>
-      <br />
+      <br/>
 
       <h3 style="font-weight: bold">
         关于我
@@ -29,7 +28,7 @@
         <p>2. <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=rovwt9lv" target="_blank">领取阿里云专属优惠券</a></p>
       </blockquote>
 
-      <br />
+      <br/>
       <h3 style="font-weight: bold">
         联系我
       </h3>
@@ -80,7 +79,7 @@
     // 初始化 textarea 的值
     $text1.val(editor.txt.html());
     function set_parent_comment_id(comment_id, nickname, parent_anchor) {
-      var html = "<a class='comments_anchor' href='#"+ parent_anchor + "'>@"+ nickname + "&nbsp;" + "</a>"
+      var html = "<a href='#"+ parent_anchor + "'>@"+ nickname + "&nbsp;" + "</a>"
       document.getElementById('parent_comment_id').value = comment_id;
       editor.txt.html(html)
     };

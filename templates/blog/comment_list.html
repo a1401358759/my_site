@@ -1,43 +1,39 @@
-{% load mptt_tags %}
 {% load bootstrap_pagination %}
 <div style="margin-top:60px;">
   {% if comments %}
   已有 <b>{{ comments_count }}</b> 条评论
   <!-- 遍历树形结构 -->
-  {% recursetree comments %}
-    <!-- 给 node 取个别名 comment -->
-    {% with comment=node %}
-      <div class="col-12">
-        <hr>
-        <a name="{{ comment.anchor|default_if_none:'' }}" id="{{ comment.anchor|default_if_none:'' }}" class="comments_anchor">
-          <img src="{{ comment.user.avatar }}" style="border:1px solid #eee; border-radius:50%; padding: 5px;">
-          <span>
-            <strong style="margin-right:5px; font-size:15px;">
-              <a href="{{ comment.user.website }}" target="_blank" style="color:#1abc9c;">{{ comment.user.nickname }}</a>
-            </strong>
-            <a style="color:#ccc" href="javascript:;">
-              {{ comment.created_time|date:"Y-m-d H:i" }}
-            </a>
-          </span>
-        </a>
-        <div class="pull-right" style="margin-top: 15px;">
-          <a href="javascript:;" class="text-muted" onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}', '{{ comment.anchor|default_if_none:'' }}')">
-            回复
+  {% for comment in comments %}
+    <div class="col-12">
+      <hr>
+      <a name="{{ comment.anchor|default_if_none:'' }}" id="{{ comment.anchor|default_if_none:'' }}" class="comments_anchor">
+        <img src="{{ comment.user.avatar }}" style="border:1px solid #eee; border-radius:50%; padding: 5px;">
+        <span>
+          <strong style="margin-right:5px; font-size:15px;">
+            <a href="{{ comment.user.website }}" target="_blank" style="color:#1abc9c;">{{ comment.user.nickname }}</a>
+          </strong>
+          <a style="color:#ccc" href="javascript:;">
+            {{ comment.created_time|date:"Y-m-d H:i" }}
           </a>
-        </div>
-        <div class="clearfix"></div>
-        {% if comment.reply_to %}
-        <blockquote>
-          <p>引用自 <a href="#{{ comment.parent.anchor }}" style="color:#3eb0ef;">{{ comment.reply_to.nickname }}</a> 的评论</p>
-          <div class="quote-content">{{ comment.parent.content|safe }}</div>
-        </blockquote>
-        {% endif %}
-        <div style="margin-top:15px;">
-          {{ comment.content|safe }}
-        </div>
+        </span>
+      </a>
+      <div class="pull-right" style="margin-top: 15px;">
+        <a href="javascript:;" class="text-muted" onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}', '{{ comment.anchor|default_if_none:'' }}')">
+          回复
+        </a>
       </div>
-    {% endwith %}
-  {% endrecursetree %}
+      <div class="clearfix"></div>
+      {% if comment.reply_to %}
+      <blockquote>
+        <p>引用自 <a href="#{{ comment.parent.anchor }}" style="color:#3eb0ef;">{{ comment.reply_to.nickname }}</a> 的评论</p>
+        <div class="quote-content">{{ comment.parent.content|safe }}</div>
+      </blockquote>
+      {% endif %}
+      <div style="margin-top:15px;">
+        {{ comment.content|safe }}
+      </div>
+    </div>
+  {% endfor %}
   <hr>
   <div class="paginate" style="margin-top:20px;">
     {% bootstrap_paginate comments url_extra_args=params range=5 show_first_last="true" %}
