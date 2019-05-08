@@ -4,9 +4,9 @@ from django import forms
 
 
 class CommentForm(forms.Form):
-    nickname = forms.CharField()
-    email = forms.CharField()
-    website = forms.CharField(required=False)
-    content = forms.CharField()
+    nickname = forms.CharField(label=u'昵称')
+    email = forms.CharField(label=u'邮箱')
+    website = forms.CharField(label=u'网站', required=False)
+    content = forms.CharField(label=u'评论内容')
     target = forms.CharField()
     parent_comment_id = forms.IntegerField(required=False)

@@ -20,11 +20,10 @@
             </a>
           </span>
         </a>
-        <div class="pull-right" style="margin-top: 10px;">
-          <button type="button" class="btn btn-sm text-muted"
-                  onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}', '{{ comment.anchor|default_if_none:'' }}')">
+        <div class="pull-right" style="margin-top: 15px;">
+          <a href="javascript:;" class="text-muted" onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}', '{{ comment.anchor|default_if_none:'' }}')">
             回复
-          </button>
+          </a>
         </div>
         <div class="clearfix"></div>
         {% if comment.reply_to %}
