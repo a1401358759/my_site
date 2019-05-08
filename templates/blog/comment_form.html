@@ -1,0 +1,14 @@
+<form class="form-horizontal" action="{% url 'add_comments' %}" method="post" id="comment_form" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-4"><input type="text" placeholder="如何称呼您" class="form-comtrol" name="nickname" required="required"></div>
+    <div class="col-md-4"><input type="email" placeholder="邮箱可以接收通知" class="form-comtrol" name="email" required="required"></div>
+    <div class="col-md-4"><input type="text" placeholder="网站(可选)" class="form-comtrol" name="website"></div>
+  </div>
+  <div id="editor" class="controls">
+
+  </div>
+  <textarea style="display:none;" required="true" name="content" id="rich_text" placeholder="快来评论吧"></textarea>
+  <input type="hidden" name="parent_comment_id" id="parent_comment_id">
+  <input type="hidden" name="target" id="target">
+  <button type="submit" class="btn btn-success pull-right" style="margin:10px 0;">提交评论</button>
+</form>
