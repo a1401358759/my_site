@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
+from django.db import transaction
 from django.db.models import Q, Count, Sum
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
@@ -13,7 +14,9 @@ from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
 from utils.dlibs.http.response import render_json
+from utils.dlibs.tools.tools import get_clientip
 from utils.libs.utils.mine_qiniu import upload_data
+from utils.libs.utils.lbs import get_location_by_ip
 from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
 from .constants import BlogStatus
 from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
@@ -262,6 +265,7 @@ def links(request):
     return render(request, 'blog/links.html', locals())
 
 
+@transaction.atomic
 def add_comments_view(request):
     """
     添加评论
@@ -290,10 +294,15 @@ def add_comments_view(request):
                 "avatar": gravatar_url(email)
             }
         )
+        ip_address = get_clientip(request)
+        province, city = get_location_by_ip(ip_address)
         new_comment = Comments.objects.create(
             user=user,
             content=content,
             target=target,
+            ip_address=ip_address,
+            province=province,
+            city=city,
             anchor="".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in xrange(16)])
         )
         # 二级回复

@@ -294,6 +294,9 @@ class Comments(MPTTModel, TimeModelMixin):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
     target = models.CharField(max_length=100, blank=True, null=True)  # 唯一标识
     anchor = models.CharField(max_length=20, blank=True, null=True)
+    ip_address = models.CharField(max_length=20, blank=True, null=True)
+    province = models.CharField(max_length=30, blank=True, null=True)
+    city = models.CharField(max_length=30, blank=True, null=True)
 
     def __str__(self):
         return self.content

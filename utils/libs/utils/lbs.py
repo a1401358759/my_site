@@ -23,7 +23,7 @@ def get_location_by_ip(ip):
         return adcode, province, city
     except Exception, exp:
         SysLogger.exception(exp)
-        return 0, u"未知", u"未知"
+        return 0, "", ""
 
 
 def get_location_by_lon_and_lat(lon, lat):
