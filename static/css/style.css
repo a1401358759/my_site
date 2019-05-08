@@ -2495,17 +2495,19 @@ img {
   cursor: pointer;
 }
 /* wangeditor */
-.w-e-text-container {
-  min-height: 150px !important;
-  max-height: 200px;
-}
-.w-e-text {
-  padding: 10px!important;
-}
 .w-e-toolbar {
   padding: 10px 0!important;
   background-color: #FFFFFF!important;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd!important;
+  border-bottom: none!important;
+}
+.w-e-text-container {
+  min-height: 150px !important;
+  max-height: 200px;
+  border: 1px solid #ddd!important;
+}
+.w-e-text {
+  padding: 10px!important;
 }
 .comments_anchor:target{
   padding-top:44px
@@ -2513,4 +2515,9 @@ img {
 .quote-content * {
   color: gray;
   font-size: 14px;
+}
+/* wangeditor */
+.comment-input {
+  height: 40px;
+  border-radius: 0;
 }
