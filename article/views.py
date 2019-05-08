@@ -13,7 +13,7 @@ from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
 from utils.dlibs.http.response import render_json
-from utils.dlibs.tools.tools import get_ip_address
+from utils.dlibs.tools.tools import get_clientip
 from utils.libs.utils.mine_qiniu import upload_data
 from utils.libs.utils.lbs import get_location_by_ip
 from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
@@ -292,18 +292,18 @@ def add_comments_view(request):
                 "avatar": gravatar_url(email)
             }
         )
-        ip_address = get_ip_address(request)
-        province, city = get_location_by_ip(ip_address)
+        ip_address = get_clientip(request)
+        country, province, city = get_location_by_ip(ip_address)
         comment_data = {
             "user_id": user.id,
             "content": content,
             "target": target,
             "ip_address": ip_address,
-            "province": province if province else "",
-            "city": city if city else "",
+            "country": country,
+            "province": province,
+            "city": city,
             "anchor": "".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in xrange(16)]),
         }
-        print comment_data
         # 二级回复
         if parent_comment_id:
             parent_comment = Comments.objects.filter(pk=parent_comment_id).first()

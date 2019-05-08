@@ -278,6 +278,7 @@ class Visitor(TimeModelMixin):
     avatar = models.CharField(max_length=100)
     email = models.EmailField()
     website = models.CharField(max_length=100, blank=True, null=True)
+    blogger = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = u"访客管理"
@@ -294,6 +295,7 @@ class Comments(TimeModelMixin):
     target = models.CharField(max_length=100, blank=True, null=True)  # 唯一标识
     anchor = models.CharField(max_length=20, blank=True, null=True)
     ip_address = models.CharField(max_length=20, blank=True, null=True)
+    country = models.CharField(max_length=20, blank=True, null=True)
     province = models.CharField(max_length=30, blank=True, null=True)
     city = models.CharField(max_length=30, blank=True, null=True)
 
