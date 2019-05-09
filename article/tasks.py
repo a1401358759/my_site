@@ -24,5 +24,4 @@ def send_email_task(mail, mail_body):
     subject = u'杨学峰博客消息'
     receivers = [mail]
     result = send_client.send_email(subject, receivers, mail_body)
-    print result
     return result

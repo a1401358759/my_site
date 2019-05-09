@@ -2378,7 +2378,7 @@ blockquote p {
 
 blockquote {
   color: #666;
-  border-left: 4px solid rgb(29, 172, 245);
+  border-left: 2px solid rgb(29, 172, 245);
   background-color: rgb(248, 248, 248);
   margin-left: 0;
   margin: 1em 0;
@@ -2518,5 +2518,20 @@ img {
 }
 /* wangeditor */
 .comment-input {
+  border: 1px solid #ddd;
   border-radius: 0;
+  height: 40px;
+}
+@media (min-width: 1200px) {
+  .comment-input:first-child {
+    border-right: none;
+  }
+  .comment-input:last-child {
+    border-left: none;
+  }
+}
+@media (max-width: 750px) {
+  .w-e-toolbar {
+    display: none!important;
+  }
 }

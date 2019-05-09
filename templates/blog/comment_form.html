@@ -1,19 +1,13 @@
 <form class="form-horizontal" action="{% url 'add_comments' %}" method="post" id="comment_form" enctype="multipart/form-data">
   <div class="form-row">
-    <div class="">
-      <input type="text" placeholder="我们该如何称呼您？" class="form-control comment-input" name="nickname" required="required" />
-    </div>
-    <div class="">
-      <input type="email" placeholder="听说真实的邮箱可以接到通知哦~" class="form-control comment-input" name="email" required="required" />
-    </div>
-    <div class="">
-      <input type="text" placeholder="个人网站(可选)" class="form-control comment-input" name="website" />
-    </div>
+    <input type="text" placeholder="我们该如何称呼您？" class="col-md-4 comment-input" name="nickname" required="required" />
+    <input type="email" placeholder="真实的邮箱可接到通知哦~" class="col-md-4 comment-input" name="email" required="required" />
+    <input type="text" placeholder="个人网站(可选)" class="col-md-4 comment-input" name="website" />
   </div>
   <div id="editor" class="controls">
 
   </div>
-  <textarea style="display:none;" required="true" name="content" id="rich_text" placeholder="快来评论吧"></textarea>
+  <textarea style="display:none;" required="true" name="content" id="rich_text"></textarea>
   <input type="hidden" name="parent_comment_id" id="parent_comment_id">
   <input type="hidden" name="target" id="target">
   <button type="submit" class="layui-btn pull-right" style="margin:10px 0;">提交评论</button>

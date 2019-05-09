@@ -10,7 +10,12 @@
         <img src="{{ comment.user.avatar }}" style="border:1px solid #eee; border-radius:50%; padding: 5px;">
         <span>
           <strong style="margin-right:5px; font-size:15px;">
-            <a href="{{ comment.user.website }}" target="_blank" style="color:#1abc9c;">{{ comment.user.nickname }}</a>
+            <a href="{{ comment.user.website }}" target="_blank" style="color:#1abc9c;">
+              {{ comment.user.nickname }}
+            </a>
+            {% if comment.user.blogger %}
+              <img src="/static/css/blogger.ico" alt="博主" title="博主" height="25px" width="25px" />
+            {% endif %}
           </strong>
           <a style="color:#ccc" href="javascript:;">
             {{ comment.created_time|date:"Y-m-d H:i" }}
