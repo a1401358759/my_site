@@ -60,6 +60,9 @@
     </div>
   </div>
 
+  <!-- 分享 -->
+  <div class="social-share" style="text-align:center;margin-bottom:10px;"></div>
+
   <!-- 打赏 -->
   <div id="reward">
     <button onclick="reward_modal_show()">打赏</button>
@@ -67,8 +70,7 @@
   {% include "blog/reward.html" %}
 
   <!-- 评论框 -->
-  <div id="vcomments" class="widget widget_recent_comments">
-  </div>
+  <div id="vcomments" class="widget widget_recent_comments"></div>
 
   <script src="/static/js/valine.js"></script>
   <script src="/static/js/jquery.sticky.js"></script>
@@ -97,6 +99,17 @@
     window.onblur = function () {
       document.title = '死鬼~你快回来啊！';
     };
+  </script>
+  <!--  css & js -->
+  <link rel="stylesheet" href="/static/plugins/share/css/share.min.css">
+  <script src="/static/plugins/share/js/social-share.min.js"></script>
+  <script>
+    var $config = {
+      image: '/static/css/logo.png',
+      disabled : ['google', 'facebook', 'twitter'], // 禁用的站点
+      wechatQrcodeHelper : '<p>微信扫码分享至朋友圈。</p>',
+    };
+    socialShare('.social-share', $config);
   </script>
 {% endblock %}
 
