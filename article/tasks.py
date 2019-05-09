@@ -19,9 +19,10 @@ def submit_urls_to_baidu():
 
 
 @shared_task
-def send_email(mail, mail_body):
+def send_email_task(mail, mail_body):
     send_client = SendEmailClient()
     subject = u'杨学峰博客消息'
     receivers = [mail]
     result = send_client.send_email(subject, receivers, mail_body)
+    print result
     return result

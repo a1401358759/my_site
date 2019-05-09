@@ -17,14 +17,14 @@ from utils.dlibs.tools.tools import get_clientip
 from utils.libs.utils.mine_qiniu import upload_data
 from utils.libs.utils.lbs import get_location_by_ip
 from utils.send_email import MailTemplate
-from config.common_conf import DOMAIN_NAME
+from config.common_conf import DOMAIN_NAME, BLOGGER_EMAIL
 from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
 from .constants import BlogStatus
 from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
                        get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs
                        )
 from .forms import CommentForm
-from .tasks import send_email
+from .tasks import send_email_task
 
 
 @login_required
@@ -271,7 +271,6 @@ def add_comments_view(request):
     """
     添加评论
     """
-    # TODO 邮件通知
     form = CommentForm(request.POST)
     if not form.is_valid():
         messages.warning(request, u'参数错误')
@@ -297,6 +296,7 @@ def add_comments_view(request):
         )
         ip_address = get_clientip(request)
         country, province, city = get_location_by_ip(ip_address)
+        anchor = "".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in xrange(16)])
         comment_data = {
             "user_id": user.id,
             "content": content,
@@ -305,21 +305,30 @@ def add_comments_view(request):
             "country": country,
             "province": province,
             "city": city,
-            "anchor": "".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in xrange(16)]),
+            "anchor": anchor,
         }
         # 二级回复
         if parent_comment_id:
-            parent_comment = Comments.objects.filter(pk=parent_comment_id).first()
+            parent_comment = Comments.objects.select_related().filter(pk=parent_comment_id).first()
             reply_to = parent_comment.user if parent_comment else None
             comment_data.update({"parent_id": parent_comment_id, "reply_to": reply_to})
             mail_body = MailTemplate.notify_parent_user.format(
                 parent_user=parent_comment.user.nickname,
                 parent_comment=parent_comment.content,
-                target_url=DOMAIN_NAME + parent_comment.target
+                target_url=DOMAIN_NAME + parent_comment.target,
+                anchor='#' + parent_comment.anchor
             )
-            send_email.delay(reply_to.email, mail_body)
+            send_email_task.delay(reply_to.email, mail_body)
         Comments.objects.create(**comment_data)
         messages.success(request, u'评论成功')
+        if not parent_comment_id and not user.blogger:
+            mail_body = MailTemplate.notify_blogger.format(
+                nickname=nickname,
+                comment=content,
+                target_url=DOMAIN_NAME + target,
+                anchor='#' + anchor
+            )
+            send_email_task.delay(BLOGGER_EMAIL, mail_body)
         return HttpResponseRedirect(reverse('about'))
     except Exception as exp:
         messages.error(request, u'评论失败: %s' % exp)

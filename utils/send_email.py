@@ -5,11 +5,17 @@ from email.MIMEText import MIMEText
 
 
 class MailTemplate(object):
+    notify_blogger = u'''
+        <h4>您的博客上有新的评论啦~</h4>
+        <p>“{nickname}”在您的博客上发表了评论:</p>
+        <p>“{comment}”</p>
+        <p>点击<a href="{target_url}{anchor}">评论内容</a>查看</p>
+    '''
     notify_parent_user = u'''
         <p>致：{parent_user}</p>
-        <p>您在杨学峰博客上的评论<{parent_comment}>已经获得答复。</p>
-        <p>点击<a href="{target_url}">查看</a></p>
-        <p><本邮件为自动发送，请勿直接回复></p>
+        <p>您在杨学峰博客上的评论“{parent_comment}”已经获得答复。</p>
+        <p>点击<a href="{target_url}{anchor}">评论内容</a>查看</p>
+        <p>本邮件为自动发送，请勿直接回复</p>
     '''
 
 
@@ -34,7 +40,7 @@ class SendEmailClient(object):
         message['To'] = ','.join(receivers)  # 接受方信息
         # 登录并发送邮件
         try:
-            smtpObj = smtplib.SMTP_SSL(self.mail_host, 465, timeout=5)
+            smtpObj = smtplib.SMTP_SSL(self.mail_host, 465, timeout=10)
             smtpObj.login(self.sender, self.mail_pass)
             smtpObj.sendmail(self.sender, receivers, message.as_string())
             smtpObj.quit()
