@@ -1,13 +1,13 @@
 <form class="form-horizontal" action="{% url 'add_comments' %}" method="post" id="comment_form" enctype="multipart/form-data">
-  <div class="col-md-12">
-    <div class="col-md-4">
-      <input type="text" placeholder="如何称呼您" class="form-control comment-input" name="nickname" required="required" />
+  <div class="form-row">
+    <div class="">
+      <input type="text" placeholder="我们该如何称呼您？" class="form-control comment-input" name="nickname" required="required" />
     </div>
-    <div class="col-md-4">
-      <input type="email" placeholder="邮箱可以接收通知" class="form-control comment-input" name="email" required="required" />
+    <div class="">
+      <input type="email" placeholder="听说真实的邮箱可以接到通知哦~" class="form-control comment-input" name="email" required="required" />
     </div>
-    <div class="col-md-4">
-      <input type="text" placeholder="网站(可选)" class="form-control comment-input" name="website" />
+    <div class="">
+      <input type="text" placeholder="个人网站(可选)" class="form-control comment-input" name="website" />
     </div>
   </div>
   <div id="editor" class="controls">
