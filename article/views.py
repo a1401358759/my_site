@@ -157,7 +157,6 @@ def about(request):
     """
     new_post = get_popular_top10_blogs('tmp_new_post')
     comments = Comments.objects.select_related().filter(target='about').order_by('-id')
-    comments_count = comments.count()
     page_num = request.GET.get("page") or 1
     comments, total = paginate(comments, page_num=page_num)
     classification = get_classifications('tmp_classification')

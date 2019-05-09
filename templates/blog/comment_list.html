@@ -1,7 +1,7 @@
 {% load bootstrap_pagination %}
 <div style="margin-top:60px;">
   {% if comments %}
-  已有 <b>{{ comments_count }}</b> 条评论
+  已有 <b>{{ total }}</b> 条评论
   <!-- 遍历树形结构 -->
   {% for comment in comments %}
     <div class="col-12">
