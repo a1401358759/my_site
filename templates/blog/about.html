@@ -60,7 +60,6 @@
     var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
     $("#days").html(number_of_days);
     $("#target").val('about');
-    // toastr["success"]("Have fun storming the castle!");
   </script>
   <script src="/static/manager/js/wangEditor.min.js"></script>
   <script type="text/javascript">
@@ -83,6 +82,27 @@
       document.getElementById('parent_comment_id').value = comment_id;
       editor.txt.html(html)
     };
+  </script>
+  <script>
+    function add_comments(){
+      var formData = jQuery('#comment_form').serialize();
+      jQuery.ajax({
+        url: "{% url 'add_comments' %}",
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+          if (data.code == 0) {
+            toastr["success"]("评论成功！");
+            setTimeout(function(){window.location.reload();}, 1000);
+          } else {
+            toastr["warning"](data.msg);
+          }
+        },
+        error: function () {
+          toastr["error"]("网络错误！");
+        }
+      });
+    }
   </script>
 {% endblock %}
 

@@ -2,7 +2,6 @@
 
 from django.db import models
 from collections import OrderedDict
-# from DjangoUeditor.models import UEditorField
 from .constants import BlogStatus, CarouselImgType, EditorKind
 from utils.dlibs.models.mixins import TimeModelMixin
 

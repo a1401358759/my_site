@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="{% url 'add_comments' %}" method="post" id="comment_form" enctype="multipart/form-data">
+<form class="form-horizontal" id="comment_form" enctype="multipart/form-data">
   <div class="form-row">
     <input type="text" placeholder="我们该如何称呼您？" class="col-md-4 comment-input" name="nickname" required="required" />
     <input type="email" placeholder="真实的邮箱可接到通知哦~" class="col-md-4 comment-input" name="email" required="required" />
@@ -10,5 +10,5 @@
   <textarea style="display:none;" required="true" name="content" id="rich_text"></textarea>
   <input type="hidden" name="parent_comment_id" id="parent_comment_id">
   <input type="hidden" name="target" id="target">
-  <button type="submit" class="layui-btn pull-right" style="margin:10px 0;">提交评论</button>
+  <button type="button" class="layui-btn pull-right" style="margin:10px 0;" onclick="add_comments()">提交评论</button>
 </form>

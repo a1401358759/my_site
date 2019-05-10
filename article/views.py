@@ -12,11 +12,12 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
-from utils.dlibs.http.response import render_json
+from utils.dlibs.http.response import render_json, http_response
 from utils.dlibs.tools.tools import get_clientip
 from utils.libs.utils.mine_qiniu import upload_data
 from utils.libs.utils.lbs import get_location_by_ip
 from utils.send_email import MailTemplate
+from utils.errorcode import ERRORCODE
 from config.common_conf import DOMAIN_NAME, BLOGGER_EMAIL
 from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
 from .constants import BlogStatus
@@ -272,8 +273,7 @@ def add_comments_view(request):
     """
     form = CommentForm(request.POST)
     if not form.is_valid():
-        messages.warning(request, u'参数错误')
-        return HttpResponseRedirect(reverse('about'))
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR)
 
     nickname = form.cleaned_data.get('nickname')
     email = form.cleaned_data.get('email')
@@ -328,7 +328,6 @@ def add_comments_view(request):
                 anchor='#' + anchor
             )
             send_email_task.delay(BLOGGER_EMAIL, mail_body)
-        return HttpResponseRedirect(reverse('about'))
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as exp:
-        messages.error(request, u'评论失败: %s' % exp)
-        return HttpResponseRedirect(reverse('about'))
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=exp)
