@@ -59,7 +59,7 @@
     var days = s2.getTime() - s1.getTime();
     var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
     $("#days").html(number_of_days);
-    $("#target").val('about');
+    $("#target").val(window.location.pathname);
   </script>
   <script src="/static/manager/js/wangEditor.min.js"></script>
   <script type="text/javascript">
