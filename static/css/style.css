@@ -2524,6 +2524,11 @@ img {
   border: 1px solid #ddd;
   border-radius: 0;
   height: 40px;
+  font-size: small;
+}
+#comment_form textarea {
+  font-size: small;
+  padding: 10px 5px;
 }
 @media (min-width: 1200px) {
   .comment-input:first-child {
