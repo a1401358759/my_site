@@ -43,8 +43,8 @@
       </blockquote>
     </div>
   </div>
-
-  <!-- 评论框 -->
+  <a name="content-textarea" id="content-textarea"></a> <!-- 评论框锚点 -->
+  <!-- 评论框div -->
   <div id="vcomments" class="widget widget_recent_comments">
     <!-- 评论表单 -->
     {% include "blog/comment_form.html" %}
@@ -60,6 +60,10 @@
     var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
     $("#days").html(number_of_days);
     $("#target").val(window.location.pathname);
+    jQuery(".needEmojiParse").emojiParse({
+      basePath: '/static/plugins/jQuery-emoji/images/emoji',
+      icons: emojiLists   // 注：详见 js/emoji.list.js
+    });
   </script>
   <script type="text/javascript">
     jQuery("#comment_content").emoji({
@@ -72,6 +76,7 @@
       var placeholder = "@" + nickname;
       document.getElementById('parent_comment_id').value = comment_id;
       jQuery("#comment_content").attr("placeholder", placeholder).focus();
+      window.location.href = "#content-textarea";
     };
   </script>
   <script>
@@ -86,7 +91,7 @@
             toastr["success"]("评论成功！");
             setTimeout(function(){window.location.reload();}, 1000);
           } else {
-            toastr["warning"](data.msg);
+            toastr["warning"](data.msg_cn);
           }
         },
         error: function () {

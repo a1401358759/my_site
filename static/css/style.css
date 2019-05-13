@@ -2512,8 +2512,8 @@ img {
   border-radius: 2px;
   cursor: pointer;
 }
-.comments_anchor:target{
-  padding-top:44px
+.comments_anchor:target {
+  padding-top: 44px;
 }
 .quote-content * {
   color: gray;

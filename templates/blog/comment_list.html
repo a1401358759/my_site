@@ -32,10 +32,10 @@
       {% if comment.reply_to %}
       <blockquote>
         <p>引用自 <a href="https://yangsihan.com{{ comment.target }}#{{ comment.parent.anchor }}" style="color:#3eb0ef;">{{ comment.reply_to.nickname }}</a> 的评论</p>
-        <div class="quote-content">{{ comment.parent.content|markdown_to_html }}</div>
+        <div class="quote-content needEmojiParse">{{ comment.parent.content|markdown_to_html }}</div>
       </blockquote>
       {% endif %}
-      <div style="margin-top:15px;">
+      <div style="margin-top:15px;" class="needEmojiParse">
         {{ comment.content|markdown_to_html }}
       </div>
     </div>
