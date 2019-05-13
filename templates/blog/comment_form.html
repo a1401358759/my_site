@@ -4,11 +4,8 @@
     <input type="email" placeholder="真实的邮箱可接到通知哦~" class="col-md-4 comment-input" name="email" required="required" />
     <input type="text" placeholder="个人网站(可选)" class="col-md-4 comment-input" name="website" />
   </div>
-  <div id="editor" class="controls">
-
-  </div>
-  <textarea style="display:none;" required="true" name="content" id="rich_text"></textarea>
+  <textarea style="width:100%;resize:vertical;" required="true" name="content" id="comment_content" placeholder="ヾﾉ≧∀≦)o来啊，快活啊!"></textarea>
   <input type="hidden" name="parent_comment_id" id="parent_comment_id">
   <input type="hidden" name="target" id="target">
-  <button type="button" class="layui-btn pull-right" style="margin:10px 0;" onclick="add_comments()">提交评论</button>
+  <button type="button" class="layui-btn pull-right" onclick="add_comments()">提交评论</button>
 </form>

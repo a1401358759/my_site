@@ -52,7 +52,7 @@
     {% include "blog/comment_list.html" %}
   </div>
 
-  <script>
+  <script type="text/javascript">
     var s1 = '2018-02-01';  // 设置为你的建站时间
     s1 = new Date(s1.replace(/-/g, "/"));
     s2 = new Date();
@@ -61,26 +61,17 @@
     $("#days").html(number_of_days);
     $("#target").val(window.location.pathname);
   </script>
-  <script src="/static/manager/js/wangEditor.min.js"></script>
   <script type="text/javascript">
-    var E = window.wangEditor
-    var editor = new E('#editor')
-    editor.customConfig.uploadImgServer = '/upload-rich/'  // 配置服务器端上传图片地址
-    editor.customConfig.uploadImgMaxSize = 1 * 1024 * 1024  // 将图片大小限制为 1M
-    var $text1 = $('#rich_text')
-    editor.customConfig.onchange = function (html) {
-      // 监控变化，同步更新到 textarea
-      $text1.val(html)
-    }
-    editor.create()
-    // 设置编辑器的初始值
-    editor.txt.html($text1.val())
-    // 初始化 textarea 的值
-    $text1.val(editor.txt.html());
-    function set_parent_comment_id(comment_id, nickname, parent_anchor) {
-      var html = "<a href='#"+ parent_anchor + "'>@"+ nickname + "&nbsp;" + "</a>"
+    jQuery("#comment_content").emoji({
+      showTab: true,
+      animation: 'fade',
+      basePath: '/static/plugins/jQuery-emoji/images/emoji',
+      icons: emojiLists  // 注：详见 js/emoji.list.js
+    });
+    function set_parent_comment_id(comment_id, nickname) {
+      var placeholder = "@" + nickname;
       document.getElementById('parent_comment_id').value = comment_id;
-      editor.txt.html(html)
+      jQuery("#comment_content").attr("placeholder", placeholder).focus();
     };
   </script>
   <script>

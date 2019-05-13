@@ -1,4 +1,5 @@
 {% load bootstrap_pagination %}
+{% load custom_markdown %}
 <div style="margin-top:60px;">
   {% if comments %}
   已有 <b>{{ total }}</b> 条评论
@@ -23,7 +24,7 @@
         </span>
       </a>
       <div class="pull-right" style="margin-top: 15px;">
-        <a href="javascript:;" class="text-muted" onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}', '{{ comment.anchor|default_if_none:'' }}')">
+        <a href="javascript:;" class="text-muted" onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}')">
           回复
         </a>
       </div>
@@ -31,11 +32,11 @@
       {% if comment.reply_to %}
       <blockquote>
         <p>引用自 <a href="https://yangsihan.com{{ comment.target }}#{{ comment.parent.anchor }}" style="color:#3eb0ef;">{{ comment.reply_to.nickname }}</a> 的评论</p>
-        <div class="quote-content">{{ comment.parent.content|safe }}</div>
+        <div class="quote-content">{{ comment.parent.content|markdown_to_html }}</div>
       </blockquote>
       {% endif %}
       <div style="margin-top:15px;">
-        {{ comment.content|safe }}
+        {{ comment.content|markdown_to_html }}
       </div>
     </div>
   {% endfor %}
