@@ -1,4 +1,5 @@
 {% load custom_markdown %}
+{% load bootstrap_pagination %}
 <div style="margin-top:60px;">
   {% if comments %}
   已有 <b>{{ total }}</b> 条评论
@@ -41,7 +42,7 @@
   {% endfor %}
   <hr>
   <div class="paginate" style="margin-top:20px;">
-
+    {% bootstrap_paginate comments url_extra_args=params range=5 show_first_last="true" %}
   </div>
   {% else %}
     <p style="color:gray;text-align:center;">还没有评论，快来抢🛋吧！~</p>
