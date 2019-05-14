@@ -2347,6 +2347,9 @@ video {
 }
 
 /* Valine */
+.v .veditor {
+  border: 1px solid #f0f0f0!important;
+}
 .v .txt-right {
   display: none!important;
 }

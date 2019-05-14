@@ -13,3 +13,18 @@ new Valine({
 $(".v .vbtn").html("提交");
 $(".vemoji-btn").html("表情");
 $(".vpreview-btn").html("预览");
+
+window.onload=function(){
+  // jQuery emoji 解析
+  jQuery(".vcontent").emojiParse({
+    basePath: '/static/plugins/jQuery-emoji/images/emoji',
+    icons: emojiLists   // 注：详见 js/emoji.list.js
+  });
+  // jquery emoji 初始化
+  jQuery(".veditor").emoji({
+    showTab: true,
+    animation: 'fade',
+    basePath: '/static/plugins/jQuery-emoji/images/emoji',
+    icons: emojiLists  // 注：详见 js/emoji.list.js
+  });
+};
