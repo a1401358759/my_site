@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
+from utils.dlibs.forms.base import BaseListForm
 from utils.dlibs.forms.validators import email_validator
 
 
@@ -11,3 +12,7 @@ class CommentForm(forms.Form):
     content = forms.CharField(label=u'评论内容', max_length=150)
     target = forms.CharField()
     parent_comment_id = forms.IntegerField(required=False)
+
+
+class GetCommentsForm(BaseListForm):
+    target = forms.CharField()

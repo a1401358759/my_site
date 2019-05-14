@@ -39,3 +39,24 @@ function add_comments(){
     }
   });
 }
+// 获取评论
+function get_comments(target){
+  jQuery.ajax({
+    url: "/get-comments/",
+    type: 'GET',
+    data: {
+      "target": target
+    },
+    success: function (data) {
+      if (data.code == 0) {
+        // toastr["success"]("评论成功！");
+        // setTimeout(function(){window.location.reload();}, 1000);
+      } else {
+        toastr["warning"](data.msg_cn);
+      }
+    },
+    error: function () {
+      toastr["error"]("网络错误！");
+    }
+  });
+}

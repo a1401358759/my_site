@@ -24,7 +24,7 @@ from .constants import BlogStatus
 from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
                        get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs
                        )
-from .forms import CommentForm
+from .forms import CommentForm, GetCommentsForm
 from .tasks import send_email_task
 
 
@@ -330,3 +330,28 @@ def add_comments_view(request):
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as exp:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=exp)
+
+
+def get_comments_view(request):
+    form = GetCommentsForm(request.GET)
+    if not form.is_valid():
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR)
+
+    page_num = form.cleaned_data.get('page_num') or 1
+    page_size = form.cleaned_data.get('page_size') or 10
+    target = form.cleaned_data.get('target')
+
+    comment_list = []
+    comments = Comments.objects.select_related().filter(target=target).order_by('-id')
+    comments, total = paginate(comments, page_num, page_size)
+    for item in comments:
+        comment_list.append({
+            "anchor": item.anchor
+        })
+
+    return http_response(request, statuscode=ERRORCODE.SUCCESS, context={
+        "comments": comment_list,
+        "total": total,
+        "page_num": page_num,
+        "page_size": page_size,
+    })

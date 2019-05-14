@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^upload/$', views.upload_file, name='upload_file'),
     url(r'^upload-rich/$', views.upload_rich_file, name='upload_rich_file'),
     url(r'^add-comments/$', views.add_comments_view, name='add_comments'),
+    url(r'^get-comments/$', views.get_comments_view, name='get_comments'),
 ]
