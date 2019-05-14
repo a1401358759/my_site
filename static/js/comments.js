@@ -8,7 +8,7 @@ jQuery(".needEmojiParse").emojiParse({
 // jquery emoji 初始化
 jQuery("#comment_content").emoji({
   showTab: true,
-  animation: 'fade',
+  animation: 'slide',
   basePath: '/static/plugins/jQuery-emoji/images/emoji',
   icons: emojiLists  // 注：详见 js/emoji.list.js
 });
