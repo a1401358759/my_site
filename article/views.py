@@ -158,8 +158,7 @@ def about(request):
     """
     new_post = get_popular_top10_blogs('tmp_new_post')
     comments = Comments.objects.select_related().filter(target=request.path).order_by('-id')
-    page_num = request.GET.get("page") or 1
-    comments, total = paginate(comments, page_num=page_num)
+    total = comments.count()
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
     date_list = get_date_list('tmp_date_list')
