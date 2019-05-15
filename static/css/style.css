@@ -2347,7 +2347,7 @@ video {
 }
 
 /* Valine */
-.v .veditor {
+/*.v .veditor {
   border: 1px solid #f0f0f0!important;
 }
 .v .txt-right {
@@ -2377,6 +2377,13 @@ video {
 }
 .v .vlist .vcard .vimg:hover {
   transform: rotate(360deg);
+}*/
+.valine .vwrap .vextra-area .vsmile-icons {
+  padding: 1em 0!important;
+  max-height: none!important;
+}
+.valine .vwrap .vextra-area .vsmile-icons img {
+  margin: 4px!important;
 }
 /* valine样式 */
 
