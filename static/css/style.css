@@ -2380,7 +2380,7 @@ video {
 }*/
 .valine .vwrap .vextra-area .vsmile-icons {
   padding: 1em 0!important;
-  max-height: none!important;
+  max-height: 12em!important;
 }
 .valine .vwrap .vextra-area .vsmile-icons img {
   margin: 4px!important;
