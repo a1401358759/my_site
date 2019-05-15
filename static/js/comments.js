@@ -60,3 +60,7 @@ function get_comments(target){
     }
   });
 }
+// 跳转锚点
+function go2anchor(anchor) {
+  window.location.href = "#" + anchor;
+}
