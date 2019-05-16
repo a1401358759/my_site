@@ -15,12 +15,12 @@ body {
   /*background: url("https://img.yangsihan.com/background.jpg") no-repeat;*/
   /*background-size: 100% 100% !important;*/
   /*background-attachment: fixed !important;*/
-  /*cursor: url("/static/css/cursor_1.png"), default;*/
+  cursor: url("/static/css/arr112.png"), default;
   background-color: #FFFFFF;
 }
 
 /*a:hover{
-  cursor:url("/static/css/cursor_2.png"), pointer;
+  cursor: url("/static/css/arr105.png"), pointer;
 }*/
 
 h1, .h1,
@@ -679,10 +679,12 @@ sub { bottom: -0.25em; }
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
-#header a:hover,
-#header a:focus {
+#header ul li a:hover,
+#header ul li a:focus {
   text-decoration: none;
-  color: #1C71FE;
+  color: #FFF;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 a {
   color: #4381fd;
@@ -2582,24 +2584,24 @@ img {
 #new_post .first-rank {
   color: #fff;
   background: red;
-  padding: 1px 1px 1px 3px;
+  padding: 0px 1px 0px 3px;
   border-radius: 3px;
 }
 #new_post .second-rank {
   color: #fff;
   background: #ff6600;
-  padding: 1px 1px 1px 3px;
+  padding: 0px 1px 0px 3px;
   border-radius: 3px;
 }
 #new_post .third-rank {
   color: #fff;
   background: orange;
-  padding: 1px 1px 1px 3px;
+  padding: 0px 1px 0px 3px;
   border-radius: 3px;
 }
 #new_post .other-rank {
   color: #999;
   background: #eee;
-  padding: 1px 1px 1px 3px;
+  padding: 0px 1px 0px 3px;
   border-radius: 3px;
 }
