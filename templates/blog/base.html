@@ -135,12 +135,12 @@ $(function () {
   {% include "blog/verify_user.html" %}
 
   <script type="text/javascript">
-    const ap = new APlayer({
-      container: document.getElementById('player'),
-      fixed: true,
-      volume: 0.5,
-      audio: {{ music_list|safe }}
-    });
+    // const ap = new APlayer({
+    //   container: document.getElementById('player'),
+    //   fixed: true,
+    //   volume: 0.5,
+    //   audio: {{ music_list|safe }}
+    // });
   </script>
   <script type="text/javascript">
     function verify_user(){
@@ -153,14 +153,14 @@ $(function () {
     }
 
     // 导航栏选中高亮
-    jQuery(document).ready(function(){
-      jQuery(".nav a").each(function(){
-        $this = jQuery(this);
-        if($this[0].href==String(window.location)){
-          $this.css({"color": "#333", "font-weight": "bold"});
-        }
-      });
-    });
+    // jQuery(document).ready(function(){
+    //   jQuery(".nav a").each(function(){
+    //     $this = jQuery(this);
+    //     if($this[0].href==String(window.location)){
+    //       $this.css({"color": "#ea6f5a"});
+    //     }
+    //   });
+    // });
 
     // 百度推送
     (function(){

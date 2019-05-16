@@ -6,7 +6,7 @@ new Valine({
   notify: false,
   verify: false,
   avatar:'mp',
-  placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+  placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
   visitor: true,
   emoticon_url: "https://emoji.yangsihan.com/",
   emoticon_list: [

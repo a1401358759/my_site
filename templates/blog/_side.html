@@ -19,7 +19,9 @@
       {% for item in new_post %}
         <li>
           <a href="{{ item.get_absolute_url }}">
-            <span style="font-family: Consolas;">{{ forloop.counter }}</span>.&nbsp;{{ item.title|truncatechars:20 }}&nbsp;({{ item.count }})
+            <span class="{% if forloop.counter == 1 %}first-rank{% elif forloop.counter == 2 %}second-rank{% elif forloop.counter == 3 %}third-rank{% else %}other-rank{% endif %}">
+              {{ forloop.counter }}
+            </span>&nbsp;&nbsp;{{ item.title|truncatechars:20 }}&nbsp;({{ item.count }})
           </a>
         </li>
       {% endfor %}

@@ -31,7 +31,7 @@
       <div class="clearfix"></div>
       {% if comment.reply_to %}
       <blockquote>
-        <p>引用自 <a href="javascript:;" onclick="go2anchor('{{ comment.parent.anchor }}')" style="color:#3eb0ef;">@{{ comment.reply_to.nickname }}</a> 的评论</p>
+        <p>引用自 <a href="javascript:;" onclick="go2anchor('{{ comment.parent.anchor }}')">@{{ comment.reply_to.nickname }}</a> 的评论</p>
         <div class="quote-content needEmojiParse">{{ comment.parent.content|markdown_to_html }}</div>
       </blockquote>
       {% endif %}
