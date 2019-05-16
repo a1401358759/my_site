@@ -2576,23 +2576,23 @@ img {
   color: #fff;
   background: red;
   padding: 1px 1px 1px 3px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 #new_post .second-rank {
   color: #fff;
   background: #ff6600;
   padding: 1px 1px 1px 3px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 #new_post .third-rank {
   color: #fff;
   background: orange;
   padding: 1px 1px 1px 3px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 #new_post .other-rank {
   color: #999;
   background: #eee;
   padding: 1px 1px 1px 3px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
