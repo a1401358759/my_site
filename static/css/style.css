@@ -2493,18 +2493,25 @@ img {
   appearance: none;
   border: none;
   background-color: transparent;
-  color: #35a935;
+  color: #FFFF00;
 }
+/* 进度条 */
 #content_progress::-webkit-progress-bar {
   background-color: transparent;
 }
 #content_progress::-webkit-progress-value {
-  background-color: #35a935;
+  background-color: #FFFF00;
 }
 #content_progress::-moz-progress-bar {
-  background-color: #35a935;
+  background-color: #FFFF00;
 }
 /* 文章详情页站点介绍 */
+#site-state .site-state-img {
+  height: 150px;
+  width: 150px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+}
 .site-state-item:first-child {
   border-left: none;
 }
