@@ -80,7 +80,8 @@
   <script src="/static/js/valine.js"></script>
   <script src="/static/js/jquery.sticky.js"></script>
   <script>
-    $('img').zoomify(); // Default settings
+    $('img:not(.vsmile-icons img)').zoomify(); // Default settings
+    // 阅读进度条
     document.addEventListener('DOMContentLoaded', function () {
       var winHeight = window.innerHeight;
       var docHeight = document.documentElement.scrollHeight;
