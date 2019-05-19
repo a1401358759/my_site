@@ -68,7 +68,7 @@
 pre.line-numbers {
   background: #f9f9f9;
   border: 1px solid #f0f0f0;
-  font-family: Consolas,Menlo,"Liberation Mono","Courier New",monospace;
+  font-family: "Source Code Pro",Consolas,Menlo,Monaco,"Courier New",monospace;
   font-size: 14px;
   line-height: 1.5;
   overflow: auto;

@@ -339,7 +339,7 @@ h6 {
   line-height: 1.1;
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
   font-weight: 300;
-  color: #525252;
+  color: #333;
   text-rendering: optimizeLegibility;
 }
 
@@ -396,9 +396,10 @@ h6 {
 }
 
 p {
-  font-size: 14px;
-  line-height: 1.8em;
+  font-size: 15px;
+  line-height: 1.8;
   color: #1A1A1A;
+  margin: 1.25em 0;
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif
 }
 
@@ -518,7 +519,9 @@ code,
 kbd,
 tt {
   font-family: "Consolas";
-  font-size: 0.8em;
+  font-size: 1.0em;
+  padding: 1px 3px;
+  border-radius: 3px;
 }
 
 /* 2.2 Grid & Layout
@@ -1491,7 +1494,7 @@ position:relative;
 .s {
   height: 35px;
   margin: 0!important;
-  border: 1px solid #cfd4db!important;
+  border: none!important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -2421,12 +2424,13 @@ code p {
 
 blockquote p {
   font-size: 15px;
-  line-height: 28px;
+  line-height: 1.8;
+  margin: 0;
 }
 
 blockquote {
   color: #666;
-  border-left: 2px solid rgb(29, 172, 245);
+  border-left: 2px solid #2196F3;
   background-color: rgb(248, 248, 248);
   margin-left: 0;
   margin: 1em 0;
@@ -2465,9 +2469,13 @@ button {
 }
 ul li {
   font-size: 15px!important;
+  line-height: 1.8;
+  color: #333;
 }
-ul ol {
+ol li{
   font-size: 15px!important;
+  line-height: 1.8;
+  color: #333;
 }
 
 img {
