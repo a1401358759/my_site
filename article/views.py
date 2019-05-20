@@ -8,8 +8,6 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib import messages
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
 from utils.dlibs.http.response import render_json, http_response
@@ -258,7 +256,7 @@ def links(request):
     """
     友情链接
     """
-    links = get_links('links')
+    links = get_links('tmp_links')
     random.shuffle(links)  # 友情链接随机排序
     new_post = get_popular_top10_blogs('tmp_new_post')
     classification = get_classifications('tmp_classification')

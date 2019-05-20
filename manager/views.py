@@ -157,6 +157,8 @@ def blog_create_view(request):
             tags = request.POST.getlist('tags')
             article.set_tags(tags)
             messages.success(request, u'添加成功')
+            cache.delete_pattern("tmp_articles")  # 清除缓存
+            cache.delete_pattern("tmp_archive")  # 清除缓存
             return HttpResponseRedirect(reverse('blog_list'))
         except Exception as ex:
             messages.warning(request, ex)
@@ -211,6 +213,8 @@ def blog_edit_view(request, item_id):
                 editor=form.cleaned_data.get("editor"),
             )
             messages.success(request, u'修改成功')
+            cache.delete_pattern("tmp_articles")  # 清除缓存
+            cache.delete_pattern("tmp_archive")  # 清除缓存
             return HttpResponseRedirect(reverse('blog_list'))
         except Exception, ex:
             messages.warning(request, ex)
@@ -228,6 +232,8 @@ def blog_del_view(request):
 
     try:
         Article.objects.filter(id__in=item_ids).delete()
+        cache.delete_pattern("tmp_articles")  # 清除缓存
+        cache.delete_pattern("tmp_archive")  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
@@ -278,6 +284,7 @@ def add_friend_link_view(request):
             desc=form.cleaned_data.get('desc'),
         )
         messages.success(request, u'添加成功')
+        cache.delete_pattern('tmp_links')  # 清除缓存
         return HttpResponseRedirect(reverse('friend_link_list'))
     except Exception as e:
         messages.error(request, u'添加失败: %s' % e)
@@ -295,6 +302,7 @@ def del_friend_link_view(request):
 
     try:
         Links.objects.filter(id__in=item_ids).delete()
+        cache.delete_pattern('tmp_links')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
@@ -403,6 +411,7 @@ def add_classification_view(request):
             name=request.POST.get('name')
         )
         messages.success(request, u'添加成功')
+        cache.delete_pattern('tmp_classification')  # 清除缓存
         return HttpResponseRedirect(reverse('classification_list'))
     except Exception as e:
         messages.error(request, u'添加失败: %s' % e)
@@ -420,6 +429,7 @@ def del_classification_view(request):
 
     try:
         Classification.objects.filter(id__in=item_ids).delete()
+        cache.delete_pattern('tmp_classification')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
@@ -462,6 +472,7 @@ def add_tag_view(request):
             name=request.POST.get('name')
         )
         messages.success(request, u'添加成功')
+        cache.delete_pattern('tmp_tags')  # 清除缓存
         return HttpResponseRedirect(reverse('tag_list'))
     except Exception as e:
         messages.error(request, u'添加失败: %s' % e)
@@ -479,6 +490,7 @@ def del_tag_view(request):
 
     try:
         Tag.objects.filter(id__in=item_ids).delete()
+        cache.delete_pattern('tmp_tags')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
@@ -528,6 +540,7 @@ def add_music_view(request):
             artist=form.cleaned_data.get('artist'),
         )
         messages.success(request, u'添加成功')
+        cache.delete_pattern('tmp_musics')  # 清除缓存
         return HttpResponseRedirect(reverse('music_list'))
     except Exception as e:
         messages.error(request, u'添加失败: %s' % e)
@@ -545,6 +558,7 @@ def del_music_view(request):
 
     try:
         Music.objects.filter(id__in=item_ids).delete()
+        cache.delete_pattern('tmp_musics')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
@@ -595,6 +609,7 @@ def add_carousel_view(request):
             weights=form.cleaned_data.get('weights'),
         )
         messages.success(request, u'添加成功')
+        cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存
         return HttpResponseRedirect(reverse('carousel_list'))
     except Exception as e:
         messages.error(request, u'添加失败: %s' % e)
@@ -612,6 +627,7 @@ def del_carousel_view(request):
 
     try:
         CarouselImg.objects.filter(id__in=item_ids).delete()
+        cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)

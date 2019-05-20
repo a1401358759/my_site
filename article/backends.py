@@ -16,7 +16,7 @@ def get_articles(key):
         articles = cache.get(key)
     else:
         articles = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by("-publish_time")
-        cache.set(key, articles, CACHE_TIME)
+        cache.set(key, articles, None)
     return articles
 
 
@@ -32,7 +32,7 @@ def get_tags_and_musics(tag_key, music_key):
         for tag in tag_list:
             tag.color = '#' + ''.join(random.sample(color_array, 6))  # 为每个标签随机生成颜色
         random.shuffle(tag_list)  # random.shuffle()的返回值是none，改变的是原来的元素
-        cache.set(tag_key, tag_list, CACHE_TIME)
+        cache.set(tag_key, tag_list, None)
     if music_key in cache:
         music_list = cache.get(music_key)
     else:
@@ -46,7 +46,7 @@ def get_tags_and_musics(tag_key, music_key):
                 "lrc": item.lrc,
             })
         random.shuffle(music_list)
-        cache.set(music_key, json.dumps(music_list[:3]), CACHE_TIME)
+        cache.set(music_key, json.dumps(music_list[:3]), None)
 
     return tag_list, music_list
 
@@ -57,7 +57,7 @@ def get_popular_top10_blogs(key):
         new_post = cache.get(key)
     else:
         new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
-        cache.set(key, list(new_post), 24 * CACHE_TIME)
+        cache.set(key, list(new_post), 24 * 3600)  # 缓存24小时
     return new_post
 
 
@@ -67,7 +67,7 @@ def get_classifications(key):
         classification = cache.get(key)
     else:
         classification = Classification.class_list.get_classify_list()
-        cache.set(key, classification, CACHE_TIME)
+        cache.set(key, classification, None)
     return classification
 
 
@@ -77,7 +77,7 @@ def get_date_list(key):
         date_list = cache.get(key)
     else:
         date_list = Article.date_list.get_article_by_date()
-        cache.set(key, date_list, CACHE_TIME)
+        cache.set(key, date_list, 24 * 3600)  # 缓存24小时
     return date_list
 
 
@@ -87,7 +87,7 @@ def get_archieve(key):
         archieve = cache.get(key)
     else:
         archieve = Article.date_list.get_article_by_archive()
-        cache.set(key, archieve, CACHE_TIME)
+        cache.set(key, archieve, 24 * 3600)  # 缓存24小时
     return archieve
 
 
@@ -97,7 +97,7 @@ def get_links(key):
         links = cache.get(key)
     else:
         links = list(Links.objects.all())
-        cache.set(key, links, CACHE_TIME)
+        cache.set(key, links, None)
     return links
 
 
@@ -107,7 +107,7 @@ def get_carousel_imgs(key):
         carouse_imgs = cache.get(key)
     else:
         carouse_imgs = CarouselImg.objects.filter(img_type=CarouselImgType.BANNER).order_by("-weights", "id")
-        cache.set(key, carouse_imgs, CACHE_TIME)
+        cache.set(key, carouse_imgs, None)
     return carouse_imgs
 
 
