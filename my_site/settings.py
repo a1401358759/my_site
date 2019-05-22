@@ -87,7 +87,7 @@ SESSION_COOKIE_AGE = 24 * 60 * 60  # 当上例为False时，此项生效，单�
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://172.17.0.1:6379/1',
+        'LOCATION': 'redis://172.17.0.1:6380/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             'PASSWORD': '',
