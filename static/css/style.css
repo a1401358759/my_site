@@ -2613,3 +2613,6 @@ img {
 .swiper-button-next {
   display: none;
 }
+.modal {
+  top: 20%!important;
+}
