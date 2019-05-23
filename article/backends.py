@@ -4,7 +4,7 @@ import json
 import random
 import hashlib
 from django.core.cache import cache
-from models import Tag, Music, Article, Classification, Links, CarouselImg
+from models import Tag, Music, Article, Classification, Links, CarouselImg, Comments
 from constants import BlogStatus, CarouselImgType
 
 CACHE_TIME = 600  # second
@@ -109,6 +109,16 @@ def get_carousel_imgs(key):
         carouse_imgs = CarouselImg.objects.filter(img_type=CarouselImgType.BANNER).order_by("-weights", "id")
         cache.set(key, carouse_imgs, None)
     return carouse_imgs
+
+
+def get_cache_comments(key):
+    comments = []
+    if key in cache:
+        comments = cache.get(key)
+    else:
+        comments = Comments.objects.select_related().filter(target=key).order_by('-id')
+        cache.set(key, comments, None)
+    return comments
 
 
 def gravatar_url(email, size=40):

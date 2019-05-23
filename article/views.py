@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
+from django.core.cache import cache
 from django.db.models import Q, Count, Sum
 from django.contrib.syndication.views import Feed  # 订阅RSS
 from django.http import Http404
@@ -20,7 +21,7 @@ from config.common_conf import DOMAIN_NAME, BLOGGER_EMAIL
 from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
 from .constants import BlogStatus
 from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
-                       get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs
+                       get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs, get_cache_comments
                        )
 from .forms import CommentForm, GetCommentsForm
 from .tasks import send_email_task
@@ -91,7 +92,7 @@ def detail(request, year, month, day, id):
             read_count=Sum('count'),
             tags_count=Count('tags', distinct=True)
         )
-        tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+        # tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
         return render(request, 'blog/content.html', locals())
     except Article.DoesNotExist:
         raise Http404
@@ -155,7 +156,7 @@ def about(request):
     关于我
     """
     new_post = get_popular_top10_blogs('tmp_new_post')
-    comments = Comments.objects.select_related().filter(target=request.path).order_by('-id')
+    comments = get_cache_comments(request.path)
     page_num = request.GET.get("page") or 1
     comments, total = paginate(comments, page_num=page_num)
     classification = get_classifications('tmp_classification')
@@ -318,6 +319,7 @@ def add_comments_view(request):
             send_email_task.delay(reply_to.email, mail_body)
         Comments.objects.create(**comment_data)
         messages.success(request, u'评论成功')
+        cache.delete_pattern(target)  # 清除缓存
         if not parent_comment_id and not user.blogger:
             mail_body = MailTemplate.notify_blogger.format(
                 nickname=nickname,
