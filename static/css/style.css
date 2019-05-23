@@ -2562,9 +2562,6 @@ img {
   border-radius: 2px;
   cursor: pointer;
 }
-.comments_anchor:target {
-  padding-top: 44px;
-}
 .quote-content * {
   color: gray;
   font-size: 14px;
