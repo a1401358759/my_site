@@ -17,7 +17,6 @@ function set_parent_comment_id(comment_id, nickname) {
   var placeholder = "@" + nickname;
   document.getElementById('parent_comment_id').value = comment_id;
   jQuery("#comment_content").attr("placeholder", placeholder).focus();
-  window.location.href = "#content-textarea";
 };
 // 提交评论
 function add_comments(){
