@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
+import markdown
 from django.core.cache import cache
 from django.db.models import Q, Count, Sum
 from django.contrib.syndication.views import Feed  # 订阅RSS
@@ -19,7 +20,7 @@ from utils.send_email import MailTemplate
 from utils.errorcode import ERRORCODE
 from config.common_conf import DOMAIN_NAME, BLOGGER_EMAIL
 from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
-from .constants import BlogStatus
+from .constants import BlogStatus, EditorKind
 from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
                        get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs, get_cache_comments
                        )
@@ -92,6 +93,15 @@ def detail(request, year, month, day, id):
             read_count=Sum('count'),
             tags_count=Count('tags', distinct=True)
         )
+        # 生成文章目录
+        if article.editor == EditorKind.Markdown:
+            md = markdown.Markdown(extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+                'markdown.extensions.toc',
+            ])
+            article.content = md.convert(article.content)
+            toc = md.toc
         # tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
         return render(request, 'blog/content.html', locals())
     except Article.DoesNotExist:

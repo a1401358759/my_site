@@ -301,5 +301,5 @@ class Comments(TimeModelMixin):
     def __str__(self):
         return self.content
 
-    class MPTTMeta:
+    class Meta:
         verbose_name_plural = u"评论管理"

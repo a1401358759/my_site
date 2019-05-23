@@ -32,7 +32,7 @@
           </span>
 
           <span class="comments-link">
-            <span class="ds-thread-count" data-thread-key="{{article.id}}"></span>
+            <span class="ds-thread-count" data-thread-key="{{ article.id }}"></span>
           </span>
         </div>
         <h1 class="entry-title" style="text-align:center;">
@@ -40,11 +40,7 @@
         </h1>
       </header>
       <div>
-        {% if article.editor == 1 %}
-          {{ article.content|safe }}
-        {% elif article.editor == 2 %}
-          {{ article.content|markdown_to_html }}
-        {% endif %}
+        {{ article.content|safe }}
         <div class="clearfix"></div>
       </div><!-- .entry-content -->
 
@@ -57,7 +53,7 @@
           <span class="entry-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
             {% for i in article.get_tags %}
-              <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}</a>
+              <a href="{{ i.get_absolute_url }}" rel="tag"> {{ i }}</a>
             {% endfor %}
           </span>
         </div>
@@ -93,8 +89,9 @@
         progressBar.value = window.scrollY;
       });
     });
+    // 粘性侧边栏
     $(document).ready(function(){
-      $("#site-state").sticky({topSpacing:50});
+      $("#article-directory").sticky({topSpacing:60});
     });
     window.onfocus = function () {
       document.title = '哎呀，回来了...';
@@ -158,4 +155,10 @@
       </a>
     </div>
   </div>
+  {% if article.editor == 2 %}
+    <div id="article-directory" class="widget widget_archive">
+      <h3 class="widget-title">文章目录</h3>
+      {{ toc|safe }}
+    </div>
+  {% endif %}
 {% endblock %}
