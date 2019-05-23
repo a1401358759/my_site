@@ -7,7 +7,7 @@
   {% for comment in comments %}
     <div class="col-12">
       <hr>
-      <a name="{{ comment.anchor|default_if_none:'' }}" id="{{ comment.anchor|default_if_none:'' }}" class="comments_anchor">
+      <a id="{{ comment.anchor|default_if_none:'' }}" class="comments_anchor">
         <img src="{{ comment.user.avatar }}" style="border:1px solid #eee; border-radius:50%; padding: 5px;">
         <span>
           <strong style="margin-right:5px; font-size:15px;">
@@ -31,7 +31,7 @@
       <div class="clearfix"></div>
       {% if comment.reply_to %}
       <blockquote>
-        <p>引用自 <a href="javascript:;" onclick="go2anchor('{{ comment.parent.anchor }}')">@{{ comment.reply_to.nickname }}</a> 的评论</p>
+        <p>引用自 <a href="#{{ comment.parent.anchor }}">@{{ comment.reply_to.nickname }}</a> 的评论</p>
         <div class="quote-content needEmojiParse">{{ comment.parent.content|markdown_to_html }}</div>
       </blockquote>
       {% endif %}
