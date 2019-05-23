@@ -99,6 +99,7 @@ def detail(request, year, month, day, id):
                 'markdown.extensions.extra',
                 'markdown.extensions.codehilite',
                 'markdown.extensions.toc',
+                'markdown.extensions.tables'
             ])
             article.content = md.convert(article.content)
             toc = md.toc
