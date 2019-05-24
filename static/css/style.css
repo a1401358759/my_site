@@ -2414,6 +2414,9 @@ video {
 .vcomment a {
   color: #4381fd!important;
 }
+.valine .vlist .vcard {
+  margin: 1em 0 0!important;
+}
 /* valine样式 */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
