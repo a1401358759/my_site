@@ -99,9 +99,9 @@
             <div class="entry-content">
               <p class="MsoNormal">
                 {% if article.editor == 1 %}
-                  {{ article.content|truncatewords_html:20|safe }}
+                  {{ article.content|truncatewords_html:10|safe }}
                 {% elif article.editor == 2 %}
-                  {{ article.content|markdown_to_html|truncatewords_html:20 }}
+                  {{ article.content|markdown_to_html|truncatewords_html:10 }}
                 {% endif %}
               </p>
               <div class="clearfix"></div>
