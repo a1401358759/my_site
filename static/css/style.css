@@ -896,6 +896,9 @@ a {
   background-color: #fff;
   border: 1px solid #eee;
   border-radius: 2px;
+  -moz-box-shadow: 0px 1px 5px #eee;
+  -webkit-box-shadow: 0px 1px 5px #eee;
+  box-shadow: 0px 1px 5px #eee;
 }
 
 .breadcrumb li { display: inline-block; }
@@ -1424,6 +1427,9 @@ position:relative;
   background: #fff;
   border: 1px solid #eee;
   border-radius: 2px;
+  -moz-box-shadow: 0px 1px 5px #eee;
+  -webkit-box-shadow: 0px 1px 5px #eee;
+  box-shadow: 0px 1px 5px #eee;
 }
 
 .widget-title {
@@ -2210,6 +2216,9 @@ button.black:active {
   background-color: #fff;
   border: 1px solid #eee;
   border-radius: 2px;
+  -moz-box-shadow: 0px 1px 5px #eee;
+  -webkit-box-shadow: 0px 1px 5px #eee;
+  box-shadow: 0px 1px 5px #eee;
 }
 
 .archive .divider { padding: 0 8px; }
