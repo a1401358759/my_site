@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <style>
   .calendar{width:100%;font-size:100%;position:relative}
-  .calendar .header{height:100px;position:relative;color:#fff}
+  .calendar .header{height:80px;position:relative;color:#fff}
   .calendar .header .text{position:absolute;top:0;left:-1px;right:-1px;bottom:0;background-color:#308ff0;padding:15px;-webkit-transform:rotateX(90deg);transform:rotateX(90deg);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:.4s ease-in-out 0s;opacity:0}
-  .calendar .header .text>span{text-align:center;padding:26px;display:block}
-  .calendar .header.active .text{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}
+  .calendar .header .text>span{text-align:center;padding:16px;display:block}
+  .calendar .header.active .text{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1;border-top-left-radius: 2px;border-top-right-radius: 2px;}
   .months{width:100%;position:relative}
   .months .hr{height:1px;margin:15px 0;background:#ccc}
   .month{padding:5px;width:inherit;height:inherit;background:#fff;position:absolute;-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:all .4s ease-in-out 0s;}
