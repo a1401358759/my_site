@@ -76,6 +76,7 @@ DATABASES = {
         },
         'OPTIONS': {
             'connect_timeout': MYSQLDB_CONNECT_TIMEOUT,
+            'charset': 'utf8mb4'
         }
     }
 }
