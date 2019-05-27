@@ -8,7 +8,7 @@
   .calendar .header .text{position:absolute;top:0;left:-1px;right:-1px;bottom:0;background-color:#308ff0;padding:15px;-webkit-transform:rotateX(90deg);transform:rotateX(90deg);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:.4s ease-in-out 0s;opacity:0}
   .calendar .header .text>span{text-align:center;padding:26px;display:block}
   .calendar .header.active .text{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}
-  .months{width:100%;height:270px;position:relative}
+  .months{width:100%;position:relative}
   .months .hr{height:1px;margin:15px 0;background:#ccc}
   .month{padding:5px;width:inherit;height:inherit;background:#fff;position:absolute;-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:all .4s ease-in-out 0s;}
   .months[data-flow="left"] .month{-webkit-transform:rotateY(-180deg);transform:rotateY(-180deg)}
@@ -56,6 +56,14 @@
   </div>
 </div>
 <script>
+  function dynamic_length() {
+    var row_length = $(".month[data-active='true'] .table div.row").length;
+    if (row_length <= 6) {
+      $(".months").css("height", "230px");
+    } else {
+      $(".months").css("height", "270px");
+    }
+  }
   var Calendar = function(t) {
     this.divId = t.RenderID ? t.RenderID : '[data-render="calendar"]', this.DaysOfWeek = t.DaysOfWeek ? t.DaysOfWeek : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], this.Months = t.Months ? t.Months : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var e = new Date;
@@ -118,7 +126,9 @@
       }), document.querySelector('.month[data-active="true"]').addEventListener("transitionend", function() {
         document.querySelector(".months").removeAttribute("data-loading")
       })
+      dynamic_length();
     }
+    dynamic_length();
   });
 </script>
 </body>
