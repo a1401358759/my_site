@@ -24,6 +24,30 @@ def get_location_by_ip(ip):
         return "", "", ""
 
 
+def get_location_by_ip_with_amap(ip):
+    """
+    使用高德API通过IP获取地理位置
+    """
+    response = RequestClient.query(
+        "http://restapi.amap.com/v3/ip",
+        method="POST",
+        data={
+            "ip": ip,
+            "output": "JSON",
+            "key": AMAP_SERVER_KEY,
+        }
+    )
+    try:
+        ret_json = response.json()
+        adcode = ret_json["adcode"] or 0
+        province = ret_json["province"] or ""
+        city = ret_json["city"] or ""
+        return adcode, province, city
+    except Exception, exp:
+        SysLogger.exception(exp)
+        return 0, u"", u""
+
+
 def get_location_by_lon_and_lat(lon, lat):
     """
     根据经纬度查询地址
