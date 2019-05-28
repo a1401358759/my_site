@@ -1,5 +1,4 @@
 // 全局变量
-
 var ERROR_CODE = {
   SUCCESS: 0,
   UNKNOWN: 1,
@@ -9,6 +8,9 @@ var ERROR_CODE = {
   NOT_FOUND: 13,
   NOT_LOGIN: 14
 };
+
+// 高德地图js API
+var AMAP_KEY = "298b1d5aea8d521f18485063c094a914"
 
 function msg_info(msg, type, timeout) {
   if (!type) type = 'info';
@@ -63,9 +65,9 @@ $.fn.serializefiles = function() {
 
 //获取url中的参数
 function getUrlParam(name) {
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-  var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-  if (r != null) return unescape(r[2]); return null; //返回参数值
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");  // 构造一个含有目标参数的正则表达式对象
+  var r = window.location.search.substr(1).match(reg);  // 匹配目标参数
+  if (r != null) return unescape(r[2]); return null;  // 返回参数值
 }
 
 function select_and_reverse() {

@@ -14,4 +14,4 @@ MAIL_CONFIG = {
     'password': 'yangxuefeng122',
 }
 
-AMAP_SERVER_KEY = "298b1d5aea8d521f18485063c094a914"
+AMAP_SERVER_KEY = "c3f34608ff28f6cd617560bc497e8976"
