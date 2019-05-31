@@ -2382,42 +2382,17 @@ video {
 }
 
 /* Valine */
-/*.v .veditor {
-  border: 1px solid #f0f0f0!important;
+.valine .vlist .vcard .vcomment-body .vavatar {
+  margin-top: -0.5em!important;
 }
-.v .txt-right {
-  display: none!important;
-}
-.v .vinput {
-  box-shadow: none;
-}
-.v .vwrap .vheader .vinput:focus {
-  outline: none;
-  box-shadow: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-.v .vlist .vcard .vcontent.expand:after {
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif!important;
-}
-.v .vlist .vcard .vquote {
-  border-left: 1px dashed rgba(150, 150, 150, 0.18)!important;
-}
-.v .vlist .vcard .vh {
-  border-bottom: 1px dashed rgba(150, 150, 150, 0.18)!important;
-}
-.v .vlist .vcard:last-child .vh {
-  border-bottom: none!important;
-}
-.v .vlist .vcard .vimg:hover {
-  transform: rotate(360deg);
-}*/
-.valine .vwrap .vextra-area .vsmile-icons {
+.valine .vinputs-area .vextra-area .vsmile-icons {
   padding: 1em 0!important;
-  max-height: 12em!important;
+  max-height: 10em!important;
 }
-.valine .vwrap .vextra-area .vsmile-icons img {
+.valine .vlist .vcard .vcomment-body {
+  border-top: 1px solid rgba(150, 150, 150, 0.1)!important;
+}
+.valine .vinputs-area .vextra-area .vsmile-icons img {
   margin: 4px!important;
 }
 .valine .vlist .vcard .vhead .vname {
@@ -2425,17 +2400,9 @@ video {
 }
 .valine .vlist .vcard .vhead .vtime {
   color: #ccc!important;
-  margin-top: .5em;
-}
-.valine .vwrap .textarea-wrapper .comment_trigger .trigger_title {
-  font-size: 1.2em!important;
-  margin-left: 2.5em!important;
 }
 .vcomment a {
   color: #4381fd!important;
-}
-.valine .vlist .vcard {
-  margin: 1em 0 0!important;
 }
 /* valine样式 */
 
