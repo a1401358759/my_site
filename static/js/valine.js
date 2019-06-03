@@ -36,6 +36,7 @@ new Valine({
   avatar:'mp',
   placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
   visitor: true,
+  admin_email: '13552974161@163.com',
   emoticon_url: "https://emoji.yangsihan.com/",
   emoticon_list: [
     '1.png','2.png','3.png','4.png','5.png','6.png','7.png','8.png','9.png','10.png','11.png','12.png','13.png','14.png',
@@ -52,11 +53,6 @@ new Valine({
     '156.png','157.png','158.png','159.png','160.png','161.png','162.png','163.png','164.png'
   ]
 });
-
-// 老版评论框注释
-// $(".v .vbtn").html("提交");
-// $(".vemoji-btn").html("表情");
-// $(".vpreview-btn").html("预览");
 
 // function parse_emoji() {
 //   jQuery(".vcontent").emojiParse({

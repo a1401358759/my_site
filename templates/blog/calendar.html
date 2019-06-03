@@ -87,7 +87,7 @@
     }, 200), document.querySelector("body").setAttribute("data-theme", this.Months[document.querySelector('[data-active="true"] .render').getAttribute("data-month")].toLowerCase())
   }, Calendar.prototype.Calendar = function(t, e) {
     "number" == typeof t && (this.CurrentYear = t), "number" == typeof t && (this.CurrentMonth = e);
-    var r = (new Date).getDay() - 5,
+    var r = (new Date).getDay(),
         n = (new Date).getMonth(),
         a = (new Date).getFullYear(),
         o = new Date(t, e, 1).getDay(),
