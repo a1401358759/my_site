@@ -1,6 +1,6 @@
-<div class="calendar-widget">
+<!--<div class="calendar-widget">
   {% include "blog/calendar.html" %}
-</div>
+</div>-->
 
 <!-- 拖慢网页速度，暂时隐藏 -->
 <!--<div id="text" class="widget widget_text">
@@ -11,6 +11,18 @@
     </iframe>
 	</div>
 </div>-->
+
+<div class="widget widget_categories">
+  <h3 class="widget-title">文章搜索</h3>
+  <div id="search" class="widget_search">
+    <form role="search" method="get" class="search-form" action="/search/">
+      <div>
+        <input value="{{ s|default:'' }}" name="s" class="s query" type="text" placeholder="搜索 ···">
+        <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <div id="new_post" class="widget widget_categories">
   <h3 class="widget-title">最热文章</h3>

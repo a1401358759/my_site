@@ -56,7 +56,7 @@ def get_popular_top10_blogs(key):
     if key in cache:
         new_post = cache.get(key)
     else:
-        new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:10]
+        new_post = Article.objects.filter(status=BlogStatus.PUBLISHED).order_by('-count')[:8]
         cache.set(key, list(new_post), 24 * 3600)  # 缓存24小时
     return new_post
 

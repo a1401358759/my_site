@@ -80,13 +80,6 @@ $(function () {
                   <li><a href="{% url 'message' %}">留言板</a></li>
                   <li><a href="{% url 'links' %}">友情链接</a></li>
                   <li><a href="{% url 'about' %}">关于我</a></li>
-                  <li class="hidden-xs">
-                    <div id="search" class="widget_search">
-                      <form role="search" method="get" class="search-form" action="/search/">
-                        <input value="{{ s|default:'' }}" name="s" class="s query" type="text">
-                      </form>
-                    </div>
-                  </li>
                 </ul>
               </div>
             </nav>
