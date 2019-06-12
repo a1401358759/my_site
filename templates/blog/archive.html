@@ -1,34 +1,47 @@
 {% extends "blog/base.html" %}
 {% block title %}
-  杨学峰博客 | 文章存档
+  杨学峰博客 | 文章归档
 {% endblock %}
 
 {% block path %}
-  当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章存档
+  当前位置&nbsp;:&nbsp;<a href = "{% url 'home'%}">首页&nbsp;</a>»&nbsp;文章归档
 {% endblock %}
 
 {% block content %}
+  <link rel="stylesheet" href="/static/plugins/history/history.css">
 	{% if archive %}
-    {% for key, value in archive.items %}
-      <div class="archive">
-        <div id="archives">
-          <h3 class='al_year'>{{ key|date:'Y' }}年{{ key|date:'m' }}月</h3>
-          <blockquote class="al_month_list">
-            {% for i in value %}
-              <p>
-                <a href="{{ i.get_absolute_url }}">
-                  <p>
-                    <span>{{ i.publish_time|date:'m' }}月{{ i.publish_time|date:'d' }}日</span>
-                    <span style="margin-left:10px;">{{ i }}</span>
-                  </p>
-                </a>
-              </p>
-            {% endfor %}
-          </blockquote>
+    <div class="archive">
+      <div class="head-warp">
+        <div class="head">
+          <div class="nav-box">
+            <ul>
+              <li class="cur" style="height:20px;"></li>
+            </ul>
+          </div>
         </div>
       </div>
-    {% endfor %}
+      <div class="main">
+        <div class="history">
+          {% for key, value in archive.items %}
+          <div class="history-date">
+            <ul>
+              <h2><a href="#nogo">{{ key|date:'Y' }}年{{ key|date:'m' }}月</a></h2>
+              {% for i in value %}
+              <li class="green">
+                <h3>{{ key|date:'m' }}.{{ i.publish_time|date:'d' }}<span>{{ key|date:'Y' }}</span></h3>
+                <dl>
+                  <a href="{{ i.get_absolute_url }}"><p>{{ i }}</p></a>
+                </dl>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   {% endif %}
+  <script src="/static/plugins/history/history.js"></script>
 {% endblock %}
 
 {% block side %}
