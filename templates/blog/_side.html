@@ -46,7 +46,7 @@
   <ul>
     {% if date_list %}
       {% for x, y in date_list %}
-        <li><a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月 ( {{y}} )</a></li>
+        <li><i class="fa fa-calendar-o"></i>&nbsp;&nbsp;<a href="{% url 'archive_month' year=x.year month=x.month %}">{{x.year}}年{{x.month}}月 ( {{y}} )</a></li>
       {% endfor %}
     {% endif %}
   </ul>
@@ -56,8 +56,8 @@
 	<h3 class="widget-title">分类目录</h3>
 	<ul>
     {% if classification %}
-      {% for x,y in classification %}
-        <li><a href="{% url 'classfiDetail' classfi=x %}">{{ x }} ( {{ y }} )</a></li>
+      {% for x, y in classification %}
+        <li><i class="fa fa-bookmark-o"></i>&nbsp;&nbsp;<a href="{% url 'classfiDetail' classfi=x %}">{{ x }} ( {{ y }} )</a></li>
       {% endfor %}
     {% endif %}
 	</ul>
