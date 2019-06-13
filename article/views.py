@@ -9,7 +9,6 @@ from django.http import Http404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
-from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from utils.dlibs.tools.paginator import paginate
 from utils.dlibs.http.response import render_json, http_response
@@ -329,7 +328,6 @@ def add_comments_view(request):
             )
             send_email_task.delay(reply_to.email, mail_body)
         Comments.objects.create(**comment_data)
-        messages.success(request, u'评论成功')
         cache.delete_pattern(target)  # 清除缓存
         if not parent_comment_id and not user.blogger:
             mail_body = MailTemplate.notify_blogger.format(
