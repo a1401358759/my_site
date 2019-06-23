@@ -2392,6 +2392,18 @@ video {
 .vcomment a {
   color: #4381fd!important;
 }
+.v .vwrap .vedit .vctrl {
+  display: none;
+}
+.v .vwrap .vcontrol .col.col-80 {
+  width: 100%!important;
+}
+.v .vwrap .vcontrol .col.col-20 {
+  display: none;
+}
+.v .vbtn {
+  margin-top: -15px!important;
+}
 /* valine样式 */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
