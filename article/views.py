@@ -323,6 +323,8 @@ def add_comments_view(request):
             mail_body = MailTemplate.notify_parent_user.format(
                 parent_user=parent_comment.user.nickname,
                 parent_comment=parent_comment.content,
+                comment_user=nickname,
+                comment=content,
                 target_url=DOMAIN_NAME + parent_comment.target,
                 anchor='#' + parent_comment.anchor
             )
