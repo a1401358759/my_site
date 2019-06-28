@@ -23,7 +23,7 @@ class SendEmailClient(object):
 
     def __init__(self):
         self.mail_host = 'smtp.qq.com'  # 邮件服务器
-        self.send_user = u'杨学峰博客'  # 发送方信息
+        self.send_user = 'yxfblog@qq.com'  # 发送方信息
         self.sender = 'yxfblog@qq.com'  # 发送方邮箱
         self.mail_pass = 'xeaxnhwlgdchiaee'  # 邮箱密码或授权码
 
