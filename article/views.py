@@ -367,3 +367,7 @@ def get_comments_view(request):
         "page_num": page_num,
         "page_size": page_size,
     })
+
+
+def page_not_found(request):
+    return render(request, 'blog/404.html')

@@ -26,3 +26,4 @@ urlpatterns = [
     url(r'^add-comments/$', views.add_comments_view, name='add_comments'),
     url(r'^get-comments/$', views.get_comments_view, name='get_comments'),
 ]
+handler404 = views.page_not_found
