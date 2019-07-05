@@ -362,7 +362,7 @@ def get_comments_view(request):
         'markdown.extensions.toc',
     ])
     comment_list = []
-    comments = Comments.objects.select_related().filter(target=target).order_by('-id')
+    comments = get_cache_comments(target)
     comments, total = paginate(comments, page_num, page_size)
     for item in comments:
         comment_list.append({
@@ -372,7 +372,7 @@ def get_comments_view(request):
             "avatar": item.user.avatar,
             "website": item.user.website,
             "nickname": item.user.nickname,
-            "blogger": item.user.blogger,
+            "blogger": True if item.user.blogger else False,
             "created_time": item.created_time.strftime("%Y-%m-%d %H:%M"),
             "reply_to": True if item.reply_to else False,
             "reply_to_user": item.reply_to.nickname if item.reply_to else '',
