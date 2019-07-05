@@ -48,6 +48,7 @@ function get_comments(target){
     },
     success: function (data) {
       if (data.code == 0) {
+        console.log(data.comment_list);
         // toastr["success"]("评论成功！");
         // setTimeout(function(){window.location.reload();}, 1000);
       } else {

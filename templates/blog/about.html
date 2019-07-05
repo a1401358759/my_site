@@ -51,6 +51,7 @@
     {% include "blog/comment_list.html" %}
   </div>
 
+  <script type="text/javascript" src="/static/js/comments.js"></script>
   <script>
     var now = new Date();
     function createtime() {
@@ -65,9 +66,11 @@
       document.getElementById("timeDate").innerHTML = dnum +" 天 ";
       document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒。";
     }
-    setInterval("createtime()",250);
+    setInterval("createtime()", 250);
+    $(function(){
+      // get_comments(window.location.pathname);
+    });
   </script>
-  <script type="text/javascript" src="/static/js/comments.js"></script>
 {% endblock %}
 
 {% block side %}

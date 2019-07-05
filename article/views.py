@@ -381,7 +381,7 @@ def get_comments_view(request):
         })
 
     return http_response(request, statuscode=ERRORCODE.SUCCESS, context={
-        "comments": comment_list,
+        "comment_list": comment_list,
         "total": total,
         "page_num": page_num,
         "page_size": page_size,
