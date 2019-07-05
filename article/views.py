@@ -345,6 +345,9 @@ def add_comments_view(request):
 
 
 def get_comments_view(request):
+    """
+    获取评论列表
+    """
     form = GetCommentsForm(request.GET)
     if not form.is_valid():
         return http_response(request, statuscode=ERRORCODE.PARAM_ERROR)
@@ -353,12 +356,28 @@ def get_comments_view(request):
     page_size = form.cleaned_data.get('page_size') or 10
     target = form.cleaned_data.get('target')
 
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
     comment_list = []
     comments = Comments.objects.select_related().filter(target=target).order_by('-id')
     comments, total = paginate(comments, page_num, page_size)
     for item in comments:
         comment_list.append({
-            "anchor": item.anchor
+            "comment_id": item.id,
+            "anchor": item.anchor,
+            "comment": md.convert(item.content),
+            "avatar": item.user.avatar,
+            "website": item.user.website,
+            "nickname": item.user.nickname,
+            "blogger": item.user.blogger,
+            "created_time": item.created_time.strftime("%Y-%m-%d %H:%M"),
+            "reply_to": True if item.reply_to else False,
+            "reply_to_user": item.reply_to.nickname if item.reply_to else '',
+            "parent_anchor": item.parent.anchor if item.parent else '',
+            "parent_comment": md.convert(item.parent.content) if item.parent else ''
         })
 
     return http_response(request, statuscode=ERRORCODE.SUCCESS, context={

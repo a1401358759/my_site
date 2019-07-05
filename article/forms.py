@@ -15,4 +15,4 @@ class CommentForm(forms.Form):
 
 
 class GetCommentsForm(BaseListForm):
-    target = forms.CharField()
+    target = forms.CharField(max_length=100)
