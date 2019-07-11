@@ -2404,6 +2404,17 @@ video {
 .v .vbtn {
   margin-top: -15px!important;
 }
+.vcontent p {
+  font-size: 14px;
+}
+#veditor {
+  background-image: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/comment-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: rgba(255,255,255,0);
+  resize: vertical;
+}
 /* valine样式 */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
