@@ -2591,25 +2591,25 @@ img {
 #new_post .first-rank {
   color: #fff;
   background: red;
-  padding: 2px 4px 3px 6px;
+  padding: 2px 4px 3px 8px;
   border-radius: 50%;
 }
 #new_post .second-rank {
   color: #fff;
   background: #2ea7e0;
-  padding: 2px 4px 3px 6px;
+  padding: 2px 4px 3px 8px;
   border-radius: 50%;
 }
 #new_post .third-rank {
   color: #fff;
   background: #6bc30d;
-  padding: 2px 4px 3px 6px;
+  padding: 2px 4px 3px 8px;
   border-radius: 50%;
 }
 #new_post .other-rank {
   color: #666;
   background: #edefee;
-  padding: 2px 4px 3px 6px;
+  padding: 2px 4px 3px 8px;
   border-radius: 50%;
 }
 .swiper-button-prev,
