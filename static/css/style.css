@@ -1441,6 +1441,7 @@ position:relative;
   -moz-box-shadow: 0px 1px 5px #eee;
   -webkit-box-shadow: 0px 1px 5px #eee;
   box-shadow: 0px 1px 5px #eee;
+  margin-top: -2px;
 }
 
 .widget-title {
