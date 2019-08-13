@@ -24,12 +24,12 @@ var i18n =  {
   now: '刚刚',
   input_tips: '您输入的网址或邮箱格式不正确，请修正后提交！'
 }
-
+// 已切换为leanapp国际版
 new Valine({
   av: AV,
   el: '#vcomments',
-  appId: '2pSOFwxMUB0mHbMHpCH9bhRL-gzGzoHsz',
-  appKey: 'zkBqvFzJ7NswaFW6oGICyKpq',
+  appId: 'n0hsEqsFy4WbCYQOfw05K8u1-MdYXbMMI',
+  appKey: 'GMXGgt62FOylOKhMDYfb9tGc',
   notify: false,
   verify: false,
   avatar:'mp',
