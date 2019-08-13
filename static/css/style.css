@@ -1,13 +1,13 @@
 /*
  * Globals
  */
-@font-face {
-  /*font-family: 'Play';*/
+/* @font-face {
+  font-family: 'Play';
   font-style: normal;
   font-weight: 400;
-  /*src: url("/static/css/ZNo-5SxCwH1CXgZ-n3bt2g.woff2") format('woff2');*/
-  /*unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215*/
-}
+  src: url("/static/css/ZNo-5SxCwH1CXgZ-n3bt2g.woff2") format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215
+} */
 body {
   font-family: 'Source Han Serif SC','Source Han Serif','source-han-serif-sc','PT Serif','SongTi SC','MicroSoft Yahei',Georgia,serif;
   color: #6B6B6B;
@@ -719,16 +719,7 @@ a {
   margin-left: -25px;
 }
 
-/* 4. Navigation
---------------------------------------- */
-
-.nav {
-  /*background: #eee;
-  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);*/
-}
-
+/* 4. Navigation  */
 .nav a,
 #header-widget .menu a {
   display: block;
@@ -767,11 +758,6 @@ a {
 #header-widget ul.menu li:hover a {
   color: #fff;
 }*/
-
-.nav ul li:hover a:hover,
-#header-widget ul.menu li:hover a:hover {
-  /*color: rgba(255, 255, 255, 0.85);*/
-}
 
 .nav ul li:hover li ul,
 #header-widget ul.menu li:hover li ul { top: -999em; }
@@ -1668,7 +1654,6 @@ h3.widget-title {
 /* 9.1 Forms
 --------------------------------------- */
 
-label {}
 fieldset { margin-bottom: 10px; }
 
 textarea,
@@ -1824,17 +1809,6 @@ button {
   background-color: #fff;
   border: 1px solid #fff;
   *zoom:1;
-}
-
-#commentform #submit:hover,
-#commentform #submit:active,
-input[type="submit"]:hover,
-input[type="submit"]:active,
-button:hover,
-button:active {
-  /*background: #fff;*/
-  /*background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#f8f8f8));*/
-  /*background: -moz-linear-gradient(top, #eee, #f8f8f8);*/
 }
 
 button.large {
@@ -2267,10 +2241,10 @@ button.black:active {
 @media screen and (max-width: 760px) {
   .liaspan{
     width:31em;
-    word-break:keep-all;/* 不换行 */
-    white-space:nowrap;/* 不换行 */
-    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
-    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    word-break:keep-all;  /* 不换行 */
+    white-space:nowrap;  /* 不换行 */
+    overflow:hidden;  /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;  /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
   }
 }
 @media screen and (min-width: 760px) {
@@ -2390,6 +2364,9 @@ video {
 .valine .vlist .vcard .vhead .vtime {
   color: #ccc!important;
 }
+.v .vlist .vcard .vhead .vsys {
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif!important;
+}
 .vcomment a {
   color: #4381fd!important;
 }
@@ -2407,6 +2384,7 @@ video {
 }
 .vcontent p {
   font-size: 14px;
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 #veditor {
   background-image: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/comment-bg.png);
