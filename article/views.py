@@ -18,13 +18,14 @@ from utils.libs.utils.lbs import get_location_by_ip
 from utils.send_email import MailTemplate
 from utils.errorcode import ERRORCODE
 from config.common_conf import DOMAIN_NAME, BLOGGER_EMAIL
-from .models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
-from .constants import BlogStatus, EditorKind
-from .backends import (get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
-                       get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs, get_cache_comments
-                       )
-from .forms import CommentForm, GetCommentsForm
-from .tasks import send_email_task
+from article.models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
+from article.constants import BlogStatus, EditorKind, CarouselImgType
+from article.backends import (
+    get_tags_and_musics, get_popular_top10_blogs, get_links, gravatar_url,
+    get_classifications, get_date_list, get_articles, get_archieve, get_carousel_imgs, get_cache_comments
+)
+from article.forms import CommentForm, GetCommentsForm
+from article.tasks import send_email_task
 
 
 @login_required
@@ -75,7 +76,8 @@ def home(request):
     classification = get_classifications('tmp_classification')  # 分类,以及对应的数目
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
     date_list = get_date_list('tmp_date_list')  # 按月归档,以及对应的文章数目
-    carouse_imgs = get_carousel_imgs('tmp_carouse_imgs')  # 轮播图
+    carouse_imgs = get_carousel_imgs('tmp_carouse_imgs', CarouselImgType.BANNER)  # 轮播图
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     return render(request, 'blog/index.html', locals())
 
 
@@ -119,6 +121,7 @@ def archive_month(request, year, month):
     new_post = get_popular_top10_blogs('tmp_new_post')
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/index.html', locals())
@@ -139,6 +142,7 @@ def classfiDetail(request, classfi):
     new_post = get_popular_top10_blogs('tmp_new_post')
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/index.html', locals())
@@ -156,6 +160,7 @@ def tagDetail(request, tag):
     new_post = get_popular_top10_blogs('tmp_new_post')
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/index.html', locals())
@@ -171,6 +176,7 @@ def about(request):
     comments, total = paginate(comments, page_num=page_num)
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/about.html', locals())
@@ -184,6 +190,7 @@ def archive(request):
     new_post = get_popular_top10_blogs('tmp_new_post')
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     date_list = get_date_list('tmp_date_list')
 
     return render(request, 'blog/archive.html', locals())
@@ -218,6 +225,7 @@ def blog_search(request):
     new_post = get_popular_top10_blogs('tmp_new_post')
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     date_list = get_date_list('tmp_date_list')
     error = False
 
@@ -246,6 +254,7 @@ def message(request):
     classification = get_classifications('tmp_classification')
     new_post = get_popular_top10_blogs('tmp_new_post')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     return render(request, 'blog/message.html', locals())
 
 
@@ -272,6 +281,7 @@ def links(request):
     new_post = get_popular_top10_blogs('tmp_new_post')
     classification = get_classifications('tmp_classification')
     tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
+    ads_imgs = get_carousel_imgs('tmp_ads_imgs', CarouselImgType.ADS)  # 广告轮播图
     date_list = get_date_list('tmp_date_list')
     return render(request, 'blog/links.html', locals())
 

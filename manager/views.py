@@ -20,7 +20,7 @@ from article.models import (
     Music, Author, OwnerMessage, Tag
 )
 from article.constants import EditorKind, BlogStatus, CarouselImgType
-from .forms import (
+from manager.forms import (
     SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm, LoginForm,
     AddAuthorForm, AddMusicForm, AddCarouselForm, OperateBlogForm, ChangePasswordForm
 )

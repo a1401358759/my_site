@@ -5,7 +5,7 @@ import random
 import hashlib
 from django.core.cache import cache
 from models import Tag, Music, Article, Classification, Links, CarouselImg, Comments
-from constants import BlogStatus, CarouselImgType
+from constants import BlogStatus
 
 CACHE_TIME = 600  # second
 
@@ -101,12 +101,12 @@ def get_links(key):
     return links
 
 
-def get_carousel_imgs(key):
+def get_carousel_imgs(key, img_type):
     carouse_imgs = []
     if key in cache:
         carouse_imgs = cache.get(key)
     else:
-        carouse_imgs = CarouselImg.objects.filter(img_type=CarouselImgType.BANNER).order_by("-weights", "id")
+        carouse_imgs = CarouselImg.objects.filter(img_type=img_type).order_by("-weights", "id")
         cache.set(key, carouse_imgs, None)
     return carouse_imgs
 
