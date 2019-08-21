@@ -605,7 +605,7 @@ def add_carousel_view(request):
     try:
         filestream = request.FILES.get('path')
         key, img_path = upload_data(filestream, 'blog')
-        img_type = form.cleaned_data.get('img_type')
+        img_type = int(form.cleaned_data.get('img_type'))
         CarouselImg.objects.create(
             name=form.cleaned_data.get('name'),
             description=form.cleaned_data.get('description'),
@@ -637,6 +637,7 @@ def del_carousel_view(request):
     try:
         CarouselImg.objects.filter(id__in=item_ids).delete()
         cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存
+        cache.delete_pattern('tmp_ads_imgs')
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
