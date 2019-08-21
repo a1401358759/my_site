@@ -102,17 +102,17 @@ $(function () {
     <div id="main" class="container">
       <div id="content-sidebar-wrap">
         <div id="content">
-          {% block banner %}{% endblock %}
+          {% block banner %}{% endblock %}  <!-- banner位 -->
           {% if not is_home %}
             <div class="breadcrumb">
-              {% block path %}{% endblock %}
+              {% block path %}{% endblock %}  <!-- 当前位置 -->
             </div>
           {% endif %}
-          {% block content %}{% endblock %}
+          {% block content %}{% endblock %}  <!-- 正文 -->
         </div> <!-- #content -->
 
         <aside id="sidebar-primary" role="complementary">
-          {% block side %}{% endblock %}
+          {% block side %}{% endblock %}  <!-- 侧边 -->
         </aside>
       </div> <!-- #content-sidebar -->
     </div> <!-- #main -->
@@ -164,17 +164,6 @@ $(function () {
           s.parentNode.insertBefore(hm, s);
         })();
       }
-      // 百度推送
-      // var bp = document.createElement('script');
-      // var curProtocol = window.location.protocol.split(':')[0];
-      // if (curProtocol === 'https'){
-      //   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-      // }else{
-      //   bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-      // }
-      // var s = document.getElementsByTagName("script")[0];
-      // s.parentNode.insertBefore(bp, s);
-
       // 360推送收录
       (function(){
         var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc":"https://jspassport.ssl.qhimg.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc";
