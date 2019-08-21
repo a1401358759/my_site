@@ -13,12 +13,13 @@ from django.core.urlresolvers import reverse
 from utils.errorcode import ERRORCODE
 from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
+from utils.libs.utils.mine_qiniu import upload_data
 from utils.common import form_error
 from article.models import (
     Article, Links, Classification, CarouselImg,
     Music, Author, OwnerMessage, Tag
 )
-from article.constants import EditorKind, BlogStatus
+from article.constants import EditorKind, BlogStatus, CarouselImgType
 from .forms import (
     SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm, LoginForm,
     AddAuthorForm, AddMusicForm, AddCarouselForm, OperateBlogForm, ChangePasswordForm
@@ -587,7 +588,8 @@ def carousel_list_view(request):
         "params": request.GET,
         "data_list": carousel_list,
         "total": total,
-        "name": name
+        "name": name,
+        "image_types": CarouselImgType.CHOICES
     })
 
 
@@ -596,17 +598,21 @@ def add_carousel_view(request):
     """
     添加轮播图片
     """
-    form = AddCarouselForm(request.POST)
+    form = AddCarouselForm(request.POST, request.FILES)
     if not form.is_valid():
         messages.error(request, "</br>".join(form_error(form)))
         return HttpResponseRedirect(reverse('carousel_list'))
     try:
+        filestream = request.FILES.get('path')
+        print filestream
+        key, img_path = upload_data(filestream, 'blog')
         CarouselImg.objects.create(
             name=form.cleaned_data.get('name'),
             description=form.cleaned_data.get('description'),
-            path=form.cleaned_data.get('path'),
+            path=img_path,
             link=form.cleaned_data.get('link'),
             weights=form.cleaned_data.get('weights'),
+            img_type=form.cleaned_data.get('img_type'),
         )
         messages.success(request, u'添加成功')
         cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存

@@ -3,7 +3,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from utils.dlibs.forms.validators import email_validator
-from article.constants import EditorKind, BlogStatus
+from article.constants import EditorKind, BlogStatus, CarouselImgType
 
 
 class SearchBlogForm(forms.Form):
@@ -38,8 +38,9 @@ class AddMusicForm(forms.Form):
 class AddCarouselForm(forms.Form):
     name = forms.CharField(label=u'图片名称')
     description = forms.CharField(label=u'图片描述')
-    path = forms.CharField(label=u'图片路径')
+    path = forms.FileField(label=u'图片')
     link = forms.CharField(label=u'图片外链', required=False)
+    img_type = forms.ChoiceField(label=u'图片类型', choices=CarouselImgType.CHOICES)
     weights = forms.IntegerField(label=u'图片权重')
 
 
