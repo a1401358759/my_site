@@ -51,6 +51,7 @@
                 <th>标签</th>
                 <th>状态</th>
                 <th>发表时间</th>
+                <th>操作</th>
               </tr>
             </thead>
             <tbody>
@@ -62,12 +63,19 @@
                 <td>{{ item.author.name }}</td>
                 <td>{{ item.classification.name }}</td>
                 <td>
-                {%for tag in item.get_tags %}
+                {% for tag in item.get_tags %}
                   {{ tag.name }}&nbsp;
                 {% endfor %}
                 </td>
                 <td>{{ item.get_status_display }}</td>
                 <td>{{ item.publish_time|date:'Y-m-d H:i' }}</td>
+                <td>
+                  {% if item.status == 1 %}
+                  <a href="javascript:;" class="btn btn-success btn-sm" onclick="update_status_modal_show('{{ item.id }}', 2)">发布</a>
+                  {% elif item.status == 2 %}
+                  <a href="javascript:;" class="btn btn-danger btn-sm" onclick="update_status_modal_show('{{ item.id }}', 1)">撤回</a>
+                  {% endif %}
+                </td>
               </tr>
               {% endfor %}
               </form>
@@ -78,7 +86,7 @@
           </div>
         </div>
       </div>
-
+      <!-- 删除博客 -->
       <div id="del_blogs_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -100,7 +108,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-
+      <!-- 清除缓存 -->
       <div id="clear_cache_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -122,6 +130,30 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+      <!-- 发布或撤回文章 -->
+      <div id="update_status_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myLargeModalLabel">发布或撤回文章</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form>
+              <div class="modal-body">
+                <h4>确认操作？</h4>
+                <input type="hidden" id="blog_status">
+                <input type="hidden" id="blog_id">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-inverse" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success" onclick="update_status()">确定</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 
     </div>
     <!-- end row -->
@@ -133,16 +165,41 @@
   // 反选和全选
   select_and_reverse();
 
+  // 发布或撤回文章
+  function update_status_modal_show(blog_id, status) {
+    $("#blog_id").val(blog_id);
+    $("#blog_status").val(status);
+    $("#update_status_modal").modal('show');
+  }
+  // 批量删除博客
+  function update_status() {
+    $("#update_status_modal").modal('hide');
+    var blog_id = $("#blog_id").val();
+    var status = $("#blog_status").val();
+    $.ajax({
+      url: "{% url 'blog_update_status' %}",
+      type: 'POST',
+      data: {
+        "blog_id": blog_id,
+        "status": status
+      },
+      success: function (data) {
+        if (data.code == ERROR_CODE.SUCCESS) {
+          msg_info("操作成功", 'success')
+          setTimeout(function(){window.location.href = "{% url 'blog_list' %}";}, 1000);
+        } else if (data.code == ERROR_CODE.PARAM_ERROR) {
+          msg_info('参数错误', 'error');
+        }
+      },
+      error: function () {
+        msg_info('操作失败!', 'error');
+      }
+    });
+  }
   // 删除模态框
   function del_modal_show() {
     $("#del_blogs_modal").modal('show');
   }
-
-  // 清除缓存模态框
-  function clear_cache_modal() {
-    $("#clear_cache_modal").modal('show');
-  }
-
   // 批量删除博客
   function delete_blogs() {
     $("#del_blogs_modal").modal('hide');
@@ -164,7 +221,11 @@
       }
     });
   }
-
+  // 清除缓存模态框
+  function clear_cache_modal() {
+    $("#clear_cache_modal").modal('show');
+  }
+  // 清除缓存
   function clear_caches() {
     $("#clear_cache_modal").modal('hide');
     $.ajax({

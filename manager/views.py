@@ -21,8 +21,8 @@ from article.models import (
 )
 from article.constants import EditorKind, BlogStatus, CarouselImgType
 from manager.forms import (
-    SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm, LoginForm,
-    AddAuthorForm, AddMusicForm, AddCarouselForm, OperateBlogForm, ChangePasswordForm
+    SearchBlogForm, AddFriendLinkForm, OperateOwnMessageForm, LoginForm, AddAuthorForm,
+    AddMusicForm, AddCarouselForm, OperateBlogForm, ChangePasswordForm, UpdateBlogStatusForm
 )
 
 
@@ -238,6 +238,26 @@ def blog_del_view(request):
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+
+
+@login_required
+def blog_update_status_view(request):
+    """
+    发布或撤回博客
+    """
+    form = UpdateBlogStatusForm(request.POST)
+    if not form.is_valid():
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR)
+
+    blog_id = form.cleaned_data.get('blog_id')
+    status = form.cleaned_data.get('status')
+
+    try:
+        if Article.objects.filter(id=blog_id).update(status=status) <= 0:
+            return http_response(request, statuscode=ERRORCODE.NOT_FOUND)
+        return http_response(request, statuscode=ERRORCODE.SUCCESS)
+    except Exception as e:
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'失败: %s' % e)
 
 
 @login_required

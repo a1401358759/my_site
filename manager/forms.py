@@ -69,3 +69,8 @@ class ChangePasswordForm(forms.Form):
         if self.cleaned_data['new_password'] != self.cleaned_data['confirm_password']:
             raise ValidationError(message='请确认两次输入的新密码一致')
         return self.cleaned_data['confirm_password']
+
+
+class UpdateBlogStatusForm(forms.Form):
+    blog_id = forms.IntegerField(label=u'博客id')
+    status = forms.ChoiceField(label=u'状态', choices=BlogStatus.CHOICES)

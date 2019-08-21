@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^blog-create/?$', views.blog_create_view, name="blog_create"),
     url(r'^blog-edit/(?P<item_id>[a-zA-Z0-9]+)/?$', views.blog_edit_view, name="blog_edit"),
     url(r'^blog-del/?$', views.blog_del_view, name="blog_del"),
+    url(r'^blog-update-status/?$', views.blog_update_status_view, name="blog_update_status"),
 
     # 友情链接
     url(r'^friend-links/?$', views.friend_link_list_view, name="friend_link_list"),
