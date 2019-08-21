@@ -604,18 +604,21 @@ def add_carousel_view(request):
         return HttpResponseRedirect(reverse('carousel_list'))
     try:
         filestream = request.FILES.get('path')
-        print filestream
         key, img_path = upload_data(filestream, 'blog')
+        img_type = form.cleaned_data.get('img_type')
         CarouselImg.objects.create(
             name=form.cleaned_data.get('name'),
             description=form.cleaned_data.get('description'),
             path=img_path,
             link=form.cleaned_data.get('link'),
             weights=form.cleaned_data.get('weights'),
-            img_type=form.cleaned_data.get('img_type'),
+            img_type=img_type,
         )
         messages.success(request, u'添加成功')
-        cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存
+        if img_type == CarouselImgType.BANNER:
+            cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存
+        elif img_type == CarouselImgType.ADS:
+            cache.delete_pattern('tmp_ads_imgs')  # 清除缓存
         return HttpResponseRedirect(reverse('carousel_list'))
     except Exception as e:
         messages.error(request, u'添加失败: %s' % e)
