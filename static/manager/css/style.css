@@ -4,9 +4,9 @@ Author: CoderThemes
 Email: coderthemes$gmail.com
 File: Core
 */
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
-@import url(https://fonts.googleapis.com/css?family=Karla:400,700);
-@import url(https://fonts.googleapis.com/css?family=Rancho);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700); */
+/* @import url(https://fonts.googleapis.com/css?family=Karla:400,700); */
+/* @import url(https://fonts.googleapis.com/css?family=Rancho); */
 /*
 Template Name: UBold Dashboard
 Author: CoderThemes
@@ -30,7 +30,7 @@ File: Core
 ============= */
 body {
   background: #ebeff2;
-  font-family: "Roboto", sans-serif;
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-seriff;
   margin: 0;
   padding-bottom: 60px;
   overflow-x: hidden;
@@ -138,7 +138,7 @@ a:focus {
   line-height: 16px;
   margin-bottom: 8px;
   margin-top: 0;
-  font-family: "Karla", sans-serif; }
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
 
 /* =============
    Helper clasess
@@ -683,7 +683,7 @@ select[multiple] {
   color: #435966;
   font-size: 15px;
   font-weight: 600;
-  font-family: "Karla", sans-serif; }
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
 
 .nav > li > a:focus, .nav > li > a:hover {
   text-decoration: none;
@@ -1057,7 +1057,7 @@ pre {
 ============= */
 .btn {
   border-radius: 2px;
-  padding: 6px 14px;
+  padding: 8px 14px 3px 14px;  /* 原始为6px 14px */
   font-size: 14px;
   box-shadow: none !important; }
 
@@ -2631,7 +2631,7 @@ File: Pages
 /* Sweet Alert */
 /* =========== */
 .swal2-modal {
-  font-family: "Roboto", sans-serif;
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   box-shadow: 0 10px 33px rgba(0, 0, 0, 0.1) !important; }
   .swal2-modal .swal2-title {
     font-size: 28px; }
@@ -3212,7 +3212,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-ar
     padding: 30px 20px 25px; }
   .pricing-column .plan-title {
     font-size: 16px;
-    font-family: "Karla", sans-serif;
+    font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     margin-bottom: 10px;
     color: #188ae2;
     text-transform: uppercase;
@@ -3220,7 +3220,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-ar
     font-weight: 400; }
   .pricing-column .plan-price {
     font-size: 48px;
-    font-family: "Karla", sans-serif;
+    font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     margin-bottom: 10px;
     color: #435966; }
   .pricing-column .plan-duration {
@@ -3296,7 +3296,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-ar
     margin-top: 0px;
     font-size: 15px;
     font-weight: 500;
-    font-family: "Roboto", sans-serif; }
+    font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
     .kanban-box .kanban-detail h4 a {
       color: #435966; }
   .kanban-box .kanban-detail ul li a {
@@ -4164,7 +4164,7 @@ File: Menu
 .logo {
   color: #188ae2 !important;
   font-size: 32px;
-  font-family: 'Rancho', cursive; }
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
   .logo i {
     display: none; }
   .logo span span {
