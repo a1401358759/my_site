@@ -33,7 +33,7 @@
 .codehilite .nd { color: #3c5d5d; font-weight: bold } /* Name.Decorator */
 .codehilite .ni { color: #800080 } /* Name.Entity */
 .codehilite .ne { color: #990000; font-weight: bold } /* Name.Exception */
-.codehilite .nf { color: #990000; font-weight: bold } /* Name.Function */
+.codehilite .nf { color: #88ae35; font-weight: bold } /* Name.Function */
 .codehilite .nl { color: #990000; font-weight: bold } /* Name.Label */
 .codehilite .nn { color: #555555 } /* Name.Namespace */
 .codehilite .nt { color: #000080 } /* Name.Tag */
