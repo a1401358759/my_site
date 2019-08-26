@@ -2,7 +2,7 @@
 .codehilite .c { color: #999988; font-style: italic } /* Comment */
 .codehilite .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .codehilite .k { color: #f92672; font-weight: bold } /* Keyword */
-.codehilite .o { color: #000000; font-weight: bold } /* Operator */
+.codehilite .o { color: #999; font-weight: bold } /* Operator */
 .codehilite .cm { color: #999988; font-style: italic } /* Comment.Multiline */
 .codehilite .cp { color: #999999; font-weight: bold; font-style: italic } /* Comment.Preproc */
 .codehilite .c1 { color: #999988; font-style: italic } /* Comment.Single */
@@ -19,7 +19,7 @@
 .codehilite .gu { color: #aaaaaa } /* Generic.Subheading */
 .codehilite .gt { color: #aa0000 } /* Generic.Traceback */
 .codehilite .kc { color: #000000; font-weight: bold } /* Keyword.Constant */
-.codehilite .kd { color: #000000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kd { color: #f92672; font-weight: bold } /* Keyword.Declaration */
 .codehilite .kn { color: #f92672; font-weight: bold } /* Keyword.Namespace */
 .codehilite .kp { color: #000000; font-weight: bold } /* Keyword.Pseudo */
 .codehilite .kr { color: #000000; font-weight: bold } /* Keyword.Reserved */
