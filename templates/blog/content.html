@@ -40,7 +40,11 @@
         </h1>
       </header>
       <div>
-        {{ article.content|safe }}
+        {% if article.editor == 1 %}
+          {{ article.content|safe }}
+        {% elif article.editor == 2 %}
+          {{ article.content|markdown_to_html }}
+        {% endif %}
         <div class="clearfix"></div>
       </div><!-- .entry-content -->
 
