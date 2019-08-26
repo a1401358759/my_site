@@ -6,6 +6,7 @@
 .codehilite .cm { color: #999988; font-style: italic } /* Comment.Multiline */
 .codehilite .cp { color: #999999; font-weight: bold; font-style: italic } /* Comment.Preproc */
 .codehilite .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.codehilite .ch { color: #999988; font-style: italic } /* Comment.Single */
 .codehilite .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
 .codehilite .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
 .codehilite .ge { color: #000000; font-style: italic } /* Generic.Emph */
@@ -26,7 +27,7 @@
 .codehilite .m { color: #009999 } /* Literal.Number */
 .codehilite .s { color: #d01040 } /* Literal.String */
 .codehilite .na { color: #008080 } /* Name.Attribute */
-.codehilite .nb { color: #0086B3 } /* Name.Builtin */
+.codehilite .nb { color:#f92672 } /* Name.Builtin */
 .codehilite .nc { color: #88AE35; font-weight: bold } /* Name.Class */
 .codehilite .no { color: #008080 } /* Name.Constant */
 .codehilite .nd { color: #3c5d5d; font-weight: bold } /* Name.Decorator */
@@ -45,14 +46,14 @@
 .codehilite .mo { color: #009999 } /* Literal.Number.Oct */
 .codehilite .sb { color: #d01040 } /* Literal.String.Backtick */
 .codehilite .sc { color: #d01040 } /* Literal.String.Char */
-.codehilite .sd { color: #d01040 } /* Literal.String.Doc */
-.codehilite .s2 { color: #d01040 } /* Literal.String.Double */
+.codehilite .sd { color: #690 } /* Literal.String.Doc */
+.codehilite .s2 { color: #88AE35 } /* Literal.String.Double */
 .codehilite .se { color: #d01040 } /* Literal.String.Escape */
 .codehilite .sh { color: #d01040 } /* Literal.String.Heredoc */
 .codehilite .si { color: #d01040 } /* Literal.String.Interpol */
 .codehilite .sx { color: #d01040 } /* Literal.String.Other */
 .codehilite .sr { color: #009926 } /* Literal.String.Regex */
-.codehilite .s1 { color: #d01040 } /* Literal.String.Single */
+.codehilite .s1 { color: #690 } /* Literal.String.Single */
 .codehilite .ss { color: #990073 } /* Literal.String.Symbol */
 .codehilite .bp { color: #f92672 } /* Name.Builtin.Pseudo */
 .codehilite .vc { color: #008080 } /* Name.Variable.Class */

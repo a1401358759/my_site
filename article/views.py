@@ -102,7 +102,7 @@ def detail(request, year, month, day, id):
                 'markdown.extensions.toc',
                 'markdown.extensions.tables'
             ])
-            # article.content = md.convert(article.content)
+            article.content = md.convert(article.content)
             toc = md.toc
         # tag_list, music_list = get_tags_and_musics('tmp_tags', 'tmp_musics')  # 获取所有标签，并随机赋予颜色
         return render(request, 'blog/content.html', locals())
