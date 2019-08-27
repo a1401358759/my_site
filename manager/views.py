@@ -72,6 +72,9 @@ def logout_view(request):
 
 @login_required
 def change_passwd_view(request):
+    """
+    修改密码
+    """
     if request.method == "POST":
         form = ChangePasswordForm(request.POST)
         if form.is_valid():
@@ -255,6 +258,8 @@ def blog_update_status_view(request):
     try:
         if Article.objects.filter(id=blog_id).update(status=status) <= 0:
             return http_response(request, statuscode=ERRORCODE.NOT_FOUND)
+        cache.delete_pattern("tmp_articles")  # 清除缓存
+        cache.delete_pattern("tmp_archive")  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'失败: %s' % e)
@@ -665,6 +670,9 @@ def del_carousel_view(request):
 
 @login_required
 def ownmessage_list_view(request):
+    """
+    主人寄语列表
+    """
     messages = OwnerMessage.objects.order_by("-id")
     ownmessage_list, total = paginate(
         messages,
@@ -681,6 +689,9 @@ def ownmessage_list_view(request):
 
 @login_required
 def add_ownmessage_view(request):
+    """
+    添加主人寄语
+    """
     tp = "manager/create_ownmessage.html"
     context = {
         "active_classes": ['.blog', '.ownmessage_list'],
@@ -763,6 +774,9 @@ def del_ownmessage_view(request):
 
 @login_required
 def clear_caches_view(request):
+    """
+    清除全部缓存
+    """
     try:
         cache.delete_pattern("tmp_*")
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
