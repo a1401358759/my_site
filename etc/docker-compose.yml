@@ -10,6 +10,6 @@ services:
             - /home/data/docker/my_site/venv:/opt/django/venv
             - /root/.ssh:/root/.ssh
         sysctls:
-            - net.core.somaxconn=1024
+            - net.core.somaxconn=100
         ports:
             - "9000:8000"
