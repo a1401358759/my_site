@@ -3,7 +3,7 @@ appnope==0.1.0
 certifi==2017.11.5
 chardet==3.0.4
 decorator==4.1.2
-Django==1.11.0
+Django==1.11.23
 django-appconf==1.0.1
 django-crontab==0.7.1
 django-staticfiles==1.2.1
