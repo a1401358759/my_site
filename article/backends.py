@@ -46,7 +46,7 @@ def get_tags_and_musics(tag_key, music_key):
                 "lrc": item.lrc,
             })
         random.shuffle(music_list)
-        cache.set(music_key, json.dumps(music_list[:3]), None)
+        cache.set(music_key, json.dumps(music_list[:3]), CACHE_TIME)
 
     return tag_list, music_list
 

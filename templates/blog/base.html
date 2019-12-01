@@ -126,12 +126,12 @@ $(function () {
   {% include "blog/verify_user.html" %}
 
   <script type="text/javascript">
-    // const ap = new APlayer({
-    //   container: document.getElementById('player'),
-    //   fixed: true,
-    //   volume: 0.5,
-    //   audio: {{ music_list|safe }}
-    // });
+    const ap = new APlayer({
+      container: document.getElementById('player'),
+      fixed: true,
+      volume: 0.5,
+      audio: {{ music_list|safe }}
+    });
   </script>
   <!-- 粒子吸附效果 -->
   <!-- <script type="text/javascript" color="0,0,255" opacity='1' zIndex="0" count="200" src="/static/js/canvas-nest.js"></script> -->
