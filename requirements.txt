@@ -25,7 +25,7 @@ scandir==1.6
 simplegeneric==0.8.1
 six==1.9.0
 traitlets==4.3.2
-urllib3==1.22
+urllib3==1.24.2
 wcwidth==0.1.7
 django-bootstrap-pagination==1.6.4
 MySQL-python==1.2.5
