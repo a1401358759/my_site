@@ -79,7 +79,7 @@
                 </span>
                 <span class="author vcard">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  {{ article.author }}
+                  {{ article.author.name }}
                 </span>
                 <span class="pull-right">
                   <i class="fa fa-eye" aria-hidden="true">&nbsp;阅读:&nbsp;</i>{{ article.count }}
@@ -110,12 +110,12 @@
             <footer class="entry-meta" style="padding:10px 0; margin-top:10px;">
               <span class="entry-categories">
                 <i class="fa fa-briefcase" aria-hidden="true"></i>
-                <a href="{% url 'classfiDetail' classfi=article.classification %}" rel="category">{{article.classification}}</a>
+                <a href="{% url 'classfiDetail' classfi=article.classification.name %}" rel="category">{{ article.classification.name }}</a>
               </span>
               <span class="entry-tags">
                 <i class="fa fa-tags" aria-hidden="true"></i>
                 {% for i in article.get_tags %}
-                  <a href="{{ i.get_absolute_url }}" rel="tag"> {{i}}&nbsp;&nbsp;</a>
+                  <a href="{{ i.get_absolute_url }}" rel="tag"> {{i.name}}&nbsp;&nbsp;</a>
                 {% endfor %}
               </span>
               <a href="{{ article.get_absolute_url }}" class="more-link">

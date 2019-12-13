@@ -249,7 +249,7 @@ def message(request):
     主人寄语
     """
     own_messages = OwnerMessage.objects.all()
-    own_message = random.sample(own_messages, 1)[0] if own_messages else ""  # 随机返回一个主人寄语
+    own_message = random.sample(list(own_messages), 1)[0] if own_messages else ""  # 随机返回一个主人寄语
     date_list = get_date_list('tmp_date_list')
     classification = get_classifications('tmp_classification')
     new_post = get_popular_top10_blogs('tmp_new_post')

@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from django.db import models
+from django.urls import reverse
 from collections import OrderedDict
 from .constants import BlogStatus, CarouselImgType, EditorKind
 from utils.dlibs.models.mixins import TimeModelMixin
@@ -34,7 +35,7 @@ class OwnerMessage(models.Model):
 class TagManager(models.Manager):
 
     def get_tag_list(self):                 # 返回文章标签列表, 每个标签以及对应的文章数目
-        tags = Tag.objects.all()
+        tags = list(Tag.objects.all())
         tag_list = []
         for i in range(len(tags)):
             tag_list.append([])
@@ -53,10 +54,8 @@ class Tag(models.Model):
     objects = models.Manager()
     tag_list = TagManager()
 
-    # @models.permalink
     def get_absolute_url(self):
-        return('tagDetail', (),
-               {'tag': self.name})
+        return reverse("tagDetail", kwargs={'tag': self.name})
 
     def __unicode__(self):
         return self.name
@@ -69,7 +68,7 @@ class ClassManager(models.Manager):
 
     @classmethod
     def get_classify_list(cls):  # 返回文章分类列表, 每个分类以及对应的文章数目
-        classify = Classification.objects.all()  # 获取所有的分类
+        classify = list(Classification.objects.all())  # 获取所有的分类
         classify_list = []
         for i in range(len(classify)):
             classify_list.append([])
@@ -97,7 +96,7 @@ class ArticleManager(models.Model):
 
     @classmethod
     def get_article_by_date(cls):  # 实现文章的按月归档, 返回 月份以及对应的文章数  如: [[2015.5,5],[2015.4,5]] ,
-        post_date = Article.objects.dates('publish_time', 'month')
+        post_date = list(Article.objects.dates('publish_time', 'month'))
         post_date = post_date.reverse()  # 将post_date逆置,使之按月份递减的顺序排布
         date_list = []
         for i in range(len(post_date)):
@@ -148,9 +147,8 @@ class Article(models.Model):  # 文章
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器
 
-    # @models.permalink
     def get_absolute_url(self):
-        return ('detail', (), {
+        return reverse("detail", kwargs={
             'year': self.publish_time.year,
             'month': self.publish_time.strftime('%m'),
             'day': self.publish_time.strftime('%d'),
