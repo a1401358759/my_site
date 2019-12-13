@@ -31,7 +31,7 @@ def pad_bin(byte_list):
 
 def unpad(s):
     unpadding_len = 0
-    for i in xrange(len(s)):
+    for i in range(len(s)):
         if s[:-1 - i] != 0:
             unpadding_len = s[-1 - i] + i
             break
@@ -42,7 +42,7 @@ def str2longs(s):
     length = (len(s) + 3) / 4
     s = s.ljust(length * 4, '\0')
     result = []
-    for i in xrange(length):
+    for i in range(length):
         j = 0
         j |= ord(s[i * 4])
         j |= ord(s[i * 4 + 1]) << 8
@@ -64,7 +64,7 @@ def longs2str(s):
 def bytes2longs(s):
     length = len(s) / 4
     result = []
-    for i in xrange(length):
+    for i in range(length):
         j = 0
         j |= ord(s[i * 4])
         j |= ord(s[i * 4 + 1]) << 8

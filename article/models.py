@@ -38,13 +38,8 @@ class TagManager(models.Manager):
         tags = list(Tag.objects.all())
         tag_list = []
         for i in range(len(tags)):
-            tag_list.append([])
-        for i in range(len(tags)):
-            temp = Tag.objects.get(name=tags[i])  # 获取当前标签
-            posts = temp.article_set.all()      # 获取当前标签下的所有文章
-            tag_list[i].append(tags[i].name)
-            tag_list[i].append(len(posts))
-
+            article_count = tags[i].article_set.count()      # 获取当前标签下的所有文章
+            tag_list.append([tags[i].name, len(article_count)])
         return tag_list
 
 
@@ -71,12 +66,8 @@ class ClassManager(models.Manager):
         classify = list(Classification.objects.all())  # 获取所有的分类
         classify_list = []
         for i in range(len(classify)):
-            classify_list.append([])
-        for i in range(len(classify)):
-            temp = Classification.objects.get(name=classify[i])  # 获取当前分类
-            posts = temp.article_set.all()  # 获取当前分类下的所有文章
-            classify_list[i].append(classify[i])
-            classify_list[i].append(len(posts))
+            article_count = classify[i].article_set.count()  # 获取当前分类下的所有文章
+            classify_list.append([classify[i], article_count])
         return classify_list
 
 
@@ -97,17 +88,14 @@ class ArticleManager(models.Model):
     @classmethod
     def get_article_by_date(cls):  # 实现文章的按月归档, 返回 月份以及对应的文章数  如: [[2015.5,5],[2015.4,5]] ,
         post_date = list(Article.objects.dates('publish_time', 'month'))
-        post_date = post_date.reverse()  # 将post_date逆置,使之按月份递减的顺序排布
+        post_date.reverse()  # 将post_date逆置,使之按月份递减的顺序排布
+
         date_list = []
-        for i in range(len(post_date)):
-            date_list.append([])
         for i in range(len(post_date)):
             current_year = post_date[i].year
             current_month = post_date[i].month
-            temp_article = Article.objects.filter(publish_time__year=current_year, publish_time__month=current_month)
-            temp_num = len(temp_article)
-            date_list[i].append(post_date[i])
-            date_list[i].append(temp_num)
+            article_count = Article.objects.filter(publish_time__year=current_year, publish_time__month=current_month).count()
+            date_list.append([post_date[i], article_count])
         return date_list
 
     @classmethod
@@ -116,21 +104,14 @@ class ArticleManager(models.Model):
         :rtype: object
         """
         post_date = Article.objects.dates('publish_time', 'month')
-        post_date = post_date.reverse()
+        post_date.reverse()
 
-        post_date_article = []
-        for i in range(len(post_date)):
-            post_date_article.append([])
-
+        dicts = OrderedDict()
         for i in range(len(post_date)):
             current_year = post_date[i].year
             current_month = post_date[i].month
             temp_article = Article.objects.filter(publish_time__year=current_year, publish_time__month=current_month)
-            post_date_article[i] = temp_article
-
-        dicts = OrderedDict()
-        for i in range(len(post_date)):
-            dicts.setdefault(post_date[i], post_date_article[i])
+            dicts.setdefault(post_date[i], list(temp_article))
         return dicts
 
 

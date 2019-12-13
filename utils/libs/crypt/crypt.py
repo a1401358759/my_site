@@ -20,7 +20,7 @@ def random_str(length=8):
     '''生成可打印的 [0-9a-zA-Z] 随机字符串.'''
     seeds = string.letters + string.digits
     random_str = ''
-    for x in xrange(length):
+    for x in range(length):
         random_str += random.choice(seeds)
     return random_str
 

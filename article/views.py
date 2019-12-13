@@ -314,7 +314,7 @@ def add_comments_view(request):
         )
         ip_address = get_clientip(request)
         country, province, city = get_location_by_ip(ip_address)
-        anchor = "".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in xrange(16)])
+        anchor = "".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in range(16)])
         comment_data = {
             "user_id": user.id,
             "content": content,
