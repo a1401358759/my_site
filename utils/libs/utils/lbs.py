@@ -19,7 +19,7 @@ def get_location_by_ip(ip):
         province = ret_json[1]
         city = ret_json[2]
         return country, province, city
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return "", "", ""
 
@@ -43,7 +43,7 @@ def get_location_by_ip_with_amap(ip):
         province = ret_json["province"] or ""
         city = ret_json["city"] or ""
         return adcode, province, city
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return 0, u"", u""
 
@@ -81,7 +81,7 @@ def get_location_by_lon_and_lat(lon, lat):
         township = ret_json["regeocode"]['addressComponent']['township']
         address = ret_json["regeocode"]['formatted_address']
         return adcode, province, city, district, township, address
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return 0, u"未知", u"未知", u"未知", u"未知", u"未知"
 

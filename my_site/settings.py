@@ -41,17 +41,18 @@ INSTALLED_APPS = (
     'article',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',  # django2.0不需要了
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'utils.dlibs.middleware.request_init.RequestInitMiddleware',
-)
+]
 
 ROOT_URLCONF = 'my_site.urls'
 
@@ -71,8 +72,8 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'TEST': {
-            'CHARSET': 'utf8',
-            'COLLATION': 'utf8_general_ci'
+            'CHARSET': 'utf8mb4',
+            'COLLATION': 'utf8mb4_general_ci'
         },
         'OPTIONS': {
             'connect_timeout': MYSQLDB_CONNECT_TIMEOUT,
@@ -228,6 +229,6 @@ LOGGING = {
 # import local settings
 try:
     from .local_settings import *
-    print colorize(text='local_settings imported.', fg='yellow')
+    print(colorize(text='local_settings imported.', fg='yellow'))
 except ImportError:
     pass

@@ -24,6 +24,7 @@ class ComboCache(BaseCache):
             'LOCAL_CACHE': 'cache-alias',# 复合缓存使用的local缓存alias name
         },
     """
+
     def __init__(self, server, params):
         super(ComboCache, self).__init__(params)
         self.localc = get_cache(params.get('LOCAL_CACHE'))  # local cache
@@ -65,7 +66,7 @@ class ComboCache(BaseCache):
         try:
             # 尝试从remote cache 读取
             remote_value = self.remotec.get(key=key, version=version)
-        except Exception, ex:
+        except Exception as ex:
             # 如果backend cache异常，且cache值不为None，则local重新缓存这个key，
             # 并且延长timeout_local设定的时间, 下次会直接命中local
             self._printexc(ex)
@@ -73,7 +74,7 @@ class ComboCache(BaseCache):
                 self.localc.set(key, value, timeout=timeout_local, version=version)
         else:
             # 如果remote cache未异常，更新local cache
-            if (remote_value is not None) or self.remotec.has_key(key, version=version):
+            if (remote_value is not None) or key in self.remotec:
                 self.localc.set(key, remote_value, timeout=timeout_local, version=version)
                 value = remote_value
         return value or default
@@ -85,5 +86,5 @@ class ComboCache(BaseCache):
         # 2. set remote
         try:
             self.remotec.set(key, value, timeout, version)
-        except Exception, ex:
+        except Exception as ex:
             self._printexc(ex)

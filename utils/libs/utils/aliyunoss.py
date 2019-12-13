@@ -58,7 +58,7 @@ class AliyunOssApi(object):
         filename = self._gen_filename(filestream.name, dirs=dirs, path=path, prefix=prefix, name=name, suffix=suffix)
         try:
             oss_object = self.bucket.put_object(filename, filestream)
-        except Exception, exp:
+        except Exception as exp:
             SysLogger.exception(exp)
             return None, None
 
@@ -77,7 +77,7 @@ class AliyunOssApi(object):
         try:
             self.bucket.get_object_to_file(filename, target_path)
             return True
-        except Exception, exp:
+        except Exception as exp:
             SysLogger.exception(exp)
             return False
 
@@ -130,7 +130,7 @@ class AliyunOssApi(object):
             if delete_old:
                 self.bucket.delete_object(old_filename)
             return filename
-        except Exception, exp:
+        except Exception as exp:
             SysLogger.exception(exp)
             return None
 
@@ -145,7 +145,7 @@ class AliyunOssApi(object):
         try:
             self.bucket.delete_object(filename)
             return True
-        except Exception, exp:
+        except Exception as exp:
             SysLogger.exception(exp)
             return None
 
@@ -160,6 +160,6 @@ class AliyunOssApi(object):
         try:
             self.bucket.batch_delete_objects(filename_list)
             return True
-        except Exception, exp:
+        except Exception as exp:
             SysLogger.exception(exp)
             return None

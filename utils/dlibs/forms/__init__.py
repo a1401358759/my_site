@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from base import BaseAdminModelForm
+from .base import BaseAdminModelForm

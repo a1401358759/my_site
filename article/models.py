@@ -53,7 +53,7 @@ class Tag(models.Model):
     objects = models.Manager()
     tag_list = TagManager()
 
-    @models.permalink
+    # @models.permalink
     def get_absolute_url(self):
         return('tagDetail', (),
                {'tag': self.name})
@@ -137,9 +137,9 @@ class ArticleManager(models.Model):
 
 class Article(models.Model):  # 文章
     title = models.CharField(max_length=100, verbose_name=u'标题')
-    author = models.ForeignKey(Author, verbose_name=u'作者')
+    author = models.ForeignKey(Author, verbose_name=u'作者', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=u'标签')  # 标签
-    classification = models.ForeignKey(Classification, verbose_name=u'分类')  # 分类
+    classification = models.ForeignKey(Classification, verbose_name=u'分类', on_delete=models.CASCADE)  # 分类
     content = models.TextField(verbose_name=u'文章内容', default="")
     publish_time = models.DateTimeField(auto_now_add=True, verbose_name=u'发表时间')
     count = models.IntegerField(default=0, verbose_name=u'文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
@@ -148,7 +148,7 @@ class Article(models.Model):  # 文章
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器
 
-    @models.permalink
+    # @models.permalink
     def get_absolute_url(self):
         return ('detail', (), {
             'year': self.publish_time.year,
@@ -287,10 +287,10 @@ class Comments(TimeModelMixin):
     """
     评论表
     """
-    user = models.ForeignKey(Visitor, db_constraint=False)
-    reply_to = models.ForeignKey(Visitor, null=True, blank=True, related_name='replyers')
+    user = models.ForeignKey(Visitor, on_delete=models.CASCADE)
+    reply_to = models.ForeignKey(Visitor, null=True, blank=True, related_name='replyers', on_delete=models.CASCADE)
     content = models.TextField()
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='children')
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
     target = models.CharField(max_length=100, blank=True, null=True)  # 唯一标识
     anchor = models.CharField(max_length=20, blank=True, null=True)
     ip_address = models.CharField(max_length=20, blank=True, null=True)

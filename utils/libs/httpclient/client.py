@@ -73,7 +73,7 @@ class RequestClient(object):
                     request_mode = cls._request_session
                 response = getattr(request_mode, method)(url=url, params=params, data=data, headers=default_headers,
                                                          files=files, timeout=timeout, stream=stream, **kwargs)
-            except Exception, exp:
+            except Exception as exp:
                 SysLogger.exception(exp)
 
             # 400以上的错误，599以下错误，需要接着访问

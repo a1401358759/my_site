@@ -4,8 +4,8 @@ import json
 import random
 import hashlib
 from django.core.cache import cache
-from models import Tag, Music, Article, Classification, Links, CarouselImg, Comments
-from constants import BlogStatus
+from article.models import Tag, Music, Article, Classification, Links, CarouselImg, Comments
+from article.constants import BlogStatus
 
 CACHE_TIME = 600  # second
 

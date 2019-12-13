@@ -398,5 +398,5 @@ def get_comments_view(request):
     })
 
 
-def page_not_found(request):
+def page_not_found(request, exception):
     return render(request, 'blog/404.html')

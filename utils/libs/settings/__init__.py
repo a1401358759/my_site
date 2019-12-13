@@ -93,7 +93,7 @@ class Settings(object):
                     self._explicit_settings.add(setting)
         except ImportError:
             # 在开发库的时候,不会因为缺少项目中真实的配置文件而报错
-            print "\033[1;33;40m### 缺少配置文件:%s | (如果是跑测试用例,可以忽略这个错误) \n\033[0m" % self.SETTINGS_MODULE
+            print("\033[1;33;40m### 缺少配置文件:%s | (如果是跑测试用例,可以忽略这个错误) \n\033[0m" % self.SETTINGS_MODULE)
 
     def is_overridden(self, setting):
         return setting in self._explicit_settings

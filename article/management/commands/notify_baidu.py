@@ -13,7 +13,7 @@ class Command(BaseCommand):
         urls = [DOMAIN + article.get_absolute_url() for article in articles]
         api = 'http://data.zz.baidu.com/urls?site=yangsihan.com&token=7tNlHmCq6GVPoYfb'
         response = requests.post(api, data='\n'.join(urls))
-        print (response.content.decode())
+        print(response.content.decode())
 
     def handle(self, *args, **options):
         self.notify_baidu()

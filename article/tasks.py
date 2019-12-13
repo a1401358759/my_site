@@ -15,7 +15,7 @@ def submit_urls_to_baidu():
     api = 'http://data.zz.baidu.com/urls?site=yangsihan.com&token=7tNlHmCq6GVPoYfb'
     response = requests.post(api, data='\n'.join(urls))
     SysLogger.info(response.content.decode())
-    print (response.content.decode())
+    print(response.content.decode())
 
 
 @shared_task
@@ -24,5 +24,5 @@ def send_email_task(mail, mail_body):
     subject = u'👉 咚！「杨学峰博客」上有新评论了'
     receivers = [mail]
     result = send_client.send_email(subject, receivers, mail_body)
-    print result
+    print(result)
     return result

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import urllib
+import urllib.parse
 from django.core.cache import cache
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from utils.errorcode import ERRORCODE
 from utils.dlibs.http.response import http_response
 from utils.dlibs.tools.paginator import paginate
@@ -54,7 +54,7 @@ def login_view(request):
         user = authenticate(username=user_name, password=password)
         if not user:
             messages.error(request, u'登录失败，请检查用户名密码后重试.')
-            return HttpResponseRedirect('%s?%s' % (reverse('login_view'), urllib.urlencode({'back_url': back_url})))
+            return HttpResponseRedirect('%s?%s' % (reverse('login_view'), urllib.parse.urlencode({'back_url': back_url})))
         login(request, user)
         return HttpResponseRedirect(reverse('blog_list'))
 
@@ -220,7 +220,7 @@ def blog_edit_view(request, item_id):
             cache.delete_pattern("tmp_articles")  # 清除缓存
             cache.delete_pattern("tmp_archive")  # 清除缓存
             return HttpResponseRedirect(reverse('blog_list'))
-        except Exception, ex:
+        except Exception as ex:
             messages.warning(request, ex)
             return HttpResponseRedirect(reverse('blog_list'))
 
@@ -751,7 +751,7 @@ def edit_ownmessage_view(request, item_id):
             OwnerMessage.objects.filter(id=item_id).update(**data)
             messages.success(request, u'修改成功')
             return HttpResponseRedirect(reverse('ownmessage_list'))
-        except Exception, ex:
+        except Exception as ex:
             messages.warning(request, ex)
             return HttpResponseRedirect(reverse('ownmessage_list'))
 

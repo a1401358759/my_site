@@ -52,7 +52,7 @@ def aes_encrypt(plaintext, key, iv=None, flag="raw"):
             encrypted = b64encode(encrypted)
 
         return encrypted, iv_
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return None, ''
 
@@ -75,7 +75,7 @@ def aes_decrypt(ciphertext, key, iv, flag="raw"):
             ciphertext = b64decode(ciphertext)
         plaintext = unpad(cipher.decrypt(ciphertext))
         return plaintext
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return None
 
@@ -86,7 +86,7 @@ def aes_encrypt_base64_iv(plaintext, key):
         iv = Random.new().read(AES.block_size)
         ciphertext = aes_encrypt(plaintext, key, iv)[0]
         return b64encode(iv + ciphertext)
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return None
 
@@ -97,7 +97,7 @@ def aes_decrypt_base64_iv(ciphertext, key):
         decoded = b64decode(ciphertext)
         iv, ciphertext = decoded[:AES.block_size], decoded[AES.block_size:]
         return aes_decrypt(ciphertext, key, iv)
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return None
 
@@ -111,7 +111,7 @@ def xxtea_encrypt(plaintext, key, flag="base64", is_bin=False):
         if flag == "base64":
             cipher = b64encode(cipher)
         return cipher
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return None
 
@@ -125,6 +125,6 @@ def xxtea_decrypt(cipher, key, flag="base64", is_bin=False):
                 return bytes(bytearray(byte_list))
             else:
                 return bytes(bytearray(byte_list[:-1]))  # 去掉末位的 \0
-    except Exception, exp:
+    except Exception as exp:
         SysLogger.exception(exp)
         return None
