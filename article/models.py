@@ -87,8 +87,8 @@ class ArticleManager(models.Model):
 
     @classmethod
     def get_article_by_date(cls):  # 实现文章的按月归档, 返回 月份以及对应的文章数  如: [[2015.5,5],[2015.4,5]] ,
-        post_date = list(Article.objects.dates('publish_time', 'month'))
-        post_date.reverse()  # 将post_date逆置,使之按月份递减的顺序排布
+        post_date = Article.objects.dates('publish_time', 'month')
+        post_date = post_date.reverse()  # 将post_date逆置,使之按月份递减的顺序排布
 
         date_list = []
         for i in range(len(post_date)):
@@ -104,7 +104,7 @@ class ArticleManager(models.Model):
         :rtype: object
         """
         post_date = Article.objects.dates('publish_time', 'month')
-        post_date.reverse()
+        post_date = post_date.reverse()
 
         dicts = OrderedDict()
         for i in range(len(post_date)):
