@@ -1,4 +1,4 @@
-> 当前项目所使用环境：Python2.7，Django1.11.0
+> 当前项目所使用环境：Python3.6.8，Django2.2.8
 
 # 项目介绍
 ##### 1. 后端语言：Python + Django
@@ -16,22 +16,22 @@
 ##### 8. 接入[七牛云存储](https://www.qiniu.com/)，文章中的图片通过接口上传到七牛云
 
 # 项目部署
-> 本项目的部署是在Ubuntu16.04的系统上，其他Ubuntu发行版本或者类Unix系统的部署中可能有不同，请知悉。   
-      
+> 本项目的部署是在Ubuntu16.04的系统上，其他Ubuntu发行版本或者类Unix系统的部署中可能有不同，请知悉。
+
 
 1. 首先更新系统环境到最新，使其得到更好的兼容
 ```bash
 sudo apt-get update  # 检查是否有可用更新
 sudo apt-get upgrade  # 应用更新
-```    
+```
 2. 克隆项目
 ```bash
 git clone https://github.com/a1401358759/my_site.git
-```    
+```
 3. 在项目根目录下创建项目所需要的文件夹
 ```bash
 mkdir logs  # 用来存储项目日志
-```    
+```
 4. 新建`local_settings.py`用来覆盖`settings.py`里面的数据库配置
 ```bash
 cp -r my_site/local_settings.py.template local_settings.py
@@ -64,9 +64,9 @@ python manage.py runserver
 sudo apt-get install nginx  # 安装Nginx
 sudo pip install uwsgi  # 安装uwsgi
 sudo apt-get install supervisor  # 安装supervisor
-```    
+```
 
-1. 复制项目根目录下 `etc/blog.conf` 到 `/etc/nginx/conf.d/` 文件夹下，然后自行修改 `blog.conf` 里面的相关配置 
+1. 复制项目根目录下 `etc/blog.conf` 到 `/etc/nginx/conf.d/` 文件夹下，然后自行修改 `blog.conf` 里面的相关配置
 ```bash
 cp -r etc/blog.conf /etc/nginx/conf.d/blog.conf
 ```
@@ -89,7 +89,7 @@ supervisord -c etc/supervisor.conf
 3. 项目中涉及到的配置文件，如七牛云的 `access_key` 和 `secret_key`，以及leancloud账号的配置，烦请自行注册账号修改，否则侵权必究。
 
 # 捐赠
-如果您觉得本项目对您有些许帮助，感谢您的捐赠    
+如果您觉得本项目对您有些许帮助，感谢您的捐赠
 
 ![微信](https://img.yangsihan.com/2019_02_11_1709097461.png)![支付宝](https://img.yangsihan.com/2019_02_11_1710581136.png)
 
