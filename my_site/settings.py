@@ -14,6 +14,11 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 from __future__ import absolute_import
 import os
+try:
+    import pymysql
+    pymysql.install_as_MySQLdb()
+except:
+    pass
 from django.utils.termcolors import colorize
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
