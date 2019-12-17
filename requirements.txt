@@ -17,7 +17,7 @@ pickleshare==0.7.4
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
 Pygments==2.2.0
-PyMySQL==0.7.2
+PyMySQL==0.9.3
 pyparsing==2.2.0
 pytz==2017.2
 requests==2.22.0
@@ -29,7 +29,6 @@ urllib3==1.24.2
 wcwidth==0.1.7
 django-bootstrap-pagination==1.6.4
 qiniu==7.2.2
-DjangoUeditor==1.8.143
 aliyun-python-sdk-core==2.13.1
 aliyun-python-sdk-kms==2.5.0
 oss2==2.5.0
