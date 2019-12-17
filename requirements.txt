@@ -39,4 +39,3 @@ redis==3.3.11
 supervisor==4.1.0
 kombu==4.6.7
 mysqlclient==1.4.6
-mysql-connector==2.2.9
