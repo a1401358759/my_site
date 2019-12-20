@@ -16,13 +16,19 @@
 ##### 8. 接入[七牛云存储](https://www.qiniu.com/)，文章中的图片通过接口上传到七牛云
 
 # 项目部署
-> 本项目的部署是在Ubuntu16.04的系统上，其他Ubuntu发行版本或者类Unix系统的部署中可能有不同，请知悉。
+> 本项目的部署是在Ubuntu18.04的系统上，其他Ubuntu发行版本或者类Unix系统的部署中可能有不同，请知悉。
 
 
 1. 首先更新系统环境到最新，使其得到更好的兼容
 ```bash
 sudo apt-get update  # 检查是否有可用更新
 sudo apt-get upgrade  # 应用更新
+sudo apt-get install python3-pip  # 以下为安装相关依赖包
+sudo apt-get install locales
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install libssl-dev
+sudo apt-get install libcrypto++-dev
+sudo apt-get install python3-dev
 ```
 2. 克隆项目
 ```bash
@@ -38,15 +44,15 @@ cp -r my_site/local_settings.py.template local_settings.py
 ```
 5. 进入数据库创建数据库
 ```bash
-CREATE DATABASE `my_site` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE `my_site` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
 6. 同步数据库
 ```bash
-python manage.py migrate
+python3 manage.py migrate
 ```
 7. 安装项目所需要的包
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 8. 因为本项目使用了Redis，所以需要安装redis-server
 ```bash
@@ -55,14 +61,14 @@ redis-server &  # 启动Redis-server
 ```
 9. 运行项目
 ```bash
-python manage.py runserver
+python3 manage.py runserver
 ```
-正常情况下，经过以下步骤，就可以通过 `127.0.0.1:8000` 来访问博客首页了，通过  `127.0.0.1:8000/manager` 访问管理端
+正常情况下，经过以上步骤，就可以通过 `127.0.0.1:8000` 来访问博客首页了，通过  `127.0.0.1:8000/manager` 访问管理端
 
 以上步骤是在本地进行项目测试访问，在线上正式部署还需要安装Nginx、uwsgi、supervisor等。
 ```bash
 sudo apt-get install nginx  # 安装Nginx
-sudo pip install uwsgi  # 安装uwsgi
+sudo pip3 install uwsgi  # 安装uwsgi
 sudo apt-get install supervisor  # 安装supervisor
 ```
 
