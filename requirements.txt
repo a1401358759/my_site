@@ -3,7 +3,7 @@ appnope==0.1.0
 certifi==2017.11.5
 chardet==3.0.4
 decorator==4.1.2
-Django==2.2.8
+Django==3.0.2
 django-appconf==1.0.1
 django-crontab==0.7.1
 django-staticfiles==1.2.1
@@ -34,7 +34,7 @@ oss2==2.5.0
 celery==4.3.0
 mistune==0.8.4
 markdown==3.0.1
-django-redis==4.10.0
+django-redis==4.11.0
 redis==3.3.11
 supervisor==4.1.0
 kombu==4.6.7
