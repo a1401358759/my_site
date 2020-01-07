@@ -1,4 +1,4 @@
-> 当前项目所使用环境：Python3.6.8，Django2.2.8
+> 当前项目所使用环境：Python3.6.8，Django3.0.2
 
 # 项目介绍
 ##### 1. 后端语言：Python + Django

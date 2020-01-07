@@ -22,12 +22,12 @@ pytz==2017.2
 requests==2.22.0
 scandir==1.6
 simplegeneric==0.8.1
-six==1.9.0
+six==1.13.0
 traitlets==4.3.2
-urllib3==1.24.2
+urllib3==1.25.7
 wcwidth==0.1.7
 django-bootstrap-pagination==1.6.4
-qiniu==7.2.2
+qiniu==7.2.6
 aliyun-python-sdk-core==2.13.1
 aliyun-python-sdk-kms==2.5.0
 oss2==2.5.0
