@@ -89,8 +89,8 @@ def detail(request, year, month, day, id):
         article = Article.objects.get(id=id)
         article.count += 1
         article.save(update_fields=['count'])
-        statis_count = Article.objects.aggregate(
-            blog_count=Count('id'),
+        statics_count = Article.objects.aggregate(
+            blog_count=Count('id', distinct=True),
             read_count=Sum('count'),
             tags_count=Count('tags', distinct=True)
         )
