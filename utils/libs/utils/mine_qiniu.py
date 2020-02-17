@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from uuid import uuid4
+import uuid
 from qiniu import Auth, put_data
 
 
@@ -15,7 +15,7 @@ def upload_data(filestream, bucket_name):
     q = Auth(access_key, secret_key)
     suffix = filestream.name.split('.')[-1]  # 后缀(jpg, png, gif)
 
-    filename = uuid4().get_hex() + '.' + suffix.lower()
+    filename = uuid.uuid4().hex + '.' + suffix.lower()
     token = q.upload_token(bucket_name, filename)
     # 上传文件
     retData, respInfo = put_data(token, filename, filestream)
