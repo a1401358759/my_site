@@ -88,7 +88,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False   # 是否将session有效期设置为�
 SESSION_COOKIE_AGE = 24 * 60 * 60  # 当上例为False时，此项生效，单位为秒
 CACHES = {
     'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
+        'BACKEND': 'django_redis.cache.RedisCache',  # django-redis==4.11.0支持Django3.0+
         'LOCATION': 'redis://172.17.0.1:6380/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
