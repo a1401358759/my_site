@@ -22,6 +22,7 @@ class AddFriendLinkForm(forms.Form):
 
 
 class AddAuthorForm(forms.Form):
+    item_id = forms.IntegerField(required=False)
     name = forms.CharField(label='作者姓名')
     email = forms.CharField(label='作者邮箱', required=False, validators=[email_validator])
     website = forms.CharField(label='个人网站', required=False)

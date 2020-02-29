@@ -381,16 +381,25 @@ def add_author_view(request):
         messages.warning(request, "</br>".join(form_error(form)))
         return HttpResponseRedirect(reverse('author_list'))
 
+    item_id = form.cleaned_data.get('item_id')
     try:
-        Author.objects.create(
-            name=form.cleaned_data.get('name'),
-            email=form.cleaned_data.get('email'),
-            website=form.cleaned_data.get('website'),
-        )
-        messages.success(request, '添加成功')
+        if not item_id:
+            Author.objects.create(
+                name=form.cleaned_data.get('name'),
+                email=form.cleaned_data.get('email'),
+                website=form.cleaned_data.get('website'),
+            )
+            messages.success(request, '添加成功')
+        else:
+            Author.objects.filter(id=item_id).update(
+                name=form.cleaned_data.get('name'),
+                email=form.cleaned_data.get('email'),
+                website=form.cleaned_data.get('website'),
+            )
+            messages.success(request, '编辑成功')
         return HttpResponseRedirect(reverse('author_list'))
     except Exception as e:
-        messages.error(request, '添加失败: %s' % e)
+        messages.error(request, '操作失败: %s' % e)
         return HttpResponseRedirect(reverse('author_list'))
 
 
