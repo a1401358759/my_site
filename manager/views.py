@@ -295,25 +295,36 @@ def friend_link_list_view(request):
 @login_required
 def add_friend_link_view(request):
     """
-    添加友情链接
+    添加/编辑友情链接
     """
     form = AddFriendLinkForm(request.POST)
     if not form.is_valid():
         messages.warning(request, "</br>".join(form_error(form)))
         return HttpResponseRedirect(reverse('friend_link_list'))
 
-    try:
-        Links.objects.create(
+    edit_id = form.cleaned_data.get('edit_id')
+    if not edit_id:
+        try:
+            Links.objects.create(
+                name=form.cleaned_data.get('name'),
+                link=form.cleaned_data.get('link'),
+                avatar=form.cleaned_data.get('avatar'),
+                desc=form.cleaned_data.get('desc'),
+            )
+            messages.success(request, u'添加成功')
+            cache.delete_pattern('tmp_links')  # 清除缓存
+            return HttpResponseRedirect(reverse('friend_link_list'))
+        except Exception as e:
+            messages.error(request, u'添加失败: %s' % e)
+            return HttpResponseRedirect(reverse('friend_link_list'))
+    else:
+        Links.objects.filter(id=edit_id).update(
             name=form.cleaned_data.get('name'),
             link=form.cleaned_data.get('link'),
             avatar=form.cleaned_data.get('avatar'),
             desc=form.cleaned_data.get('desc'),
         )
-        messages.success(request, u'添加成功')
-        cache.delete_pattern('tmp_links')  # 清除缓存
-        return HttpResponseRedirect(reverse('friend_link_list'))
-    except Exception as e:
-        messages.error(request, u'添加失败: %s' % e)
+        messages.success(request, '编辑成功')
         return HttpResponseRedirect(reverse('friend_link_list'))
 
 

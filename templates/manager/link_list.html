@@ -36,8 +36,8 @@
             </form>
             <br>
             <div>
-              <a href="javascript:;" class='btn btn-success m-b-6' data-toggle="modal" data-target="#addLinks">创建</a>
-              <a class='btn btn-danger m-b-6' href="javascript:;" onclick="del_modal_show()">删除</a>
+              <a href="javascript:;" class='btn btn-success m-b-6' onclick="add_modal_show()">创建</a>
+              <a href="javascript:;" class='btn btn-danger m-b-6' onclick="del_modal_show()">删除</a>
             </div>
           </p>
           <table class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -47,6 +47,7 @@
                 <th>网站名称</th>
                 <th>网站地址</th>
                 <th>创建时间</th>
+                <th>操作</th>
               </tr>
             </thead>
             <tbody>
@@ -57,6 +58,10 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.link }}</td>
                 <td>{{ item.created_time|date:'Y-m-d H:i' }}</td>
+                <td>
+                  <a class="btn btn-sm btn-info" href="javascript:;"
+                    onclick="edit_modal_show('{{ item.id }}', '{{ item.name }}', '{{ item.link }}', '{{ item.avatar }}', '{{ item.desc }}')"> 编辑
+                  </a></td>
               </tr>
               {% endfor %}
               </form>
@@ -76,31 +81,32 @@
               <h4 class="modal-title" id="myLargeModalLabel">新增友情链接</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <form action="{% url 'friend_link_add' %}" method="post">
+            <form action="{% url 'friend_link_add' %}" method="post" id="linkForm">
               {% csrf_token %}
+              <input type="hidden" id="edit_id" name="edit_id">
               <div class="modal-body">
                 <div class="form-group">
                   <h5>网站名称 <span class="text-danger">*</span></h5>
                   <div class="controls">
-                    <input name="name" class="form-control">
+                    <input name="name" id="name" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>网站链接 <span class="text-danger">*</span></h5>
                   <div class="controls">
-                    <input name="link" class="form-control">
+                    <input name="link" id="link" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>网站图标 <span class="text-danger">*</span></h5>
                   <div class="controls">
-                    <input name="avatar" class="form-control">
+                    <input name="avatar" id="avatar" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>网站描述 <span class="text-danger">*</span></h5>
                   <div class="controls">
-                    <input name="desc" class="form-control">
+                    <input name="desc" id="desc" class="form-control">
                   </div>
                 </div>
               </div>
@@ -148,6 +154,12 @@
   // 反选和全选
   select_and_reverse();
 
+  // 添加友情链接
+  function add_modal_show() {
+    $('#linkForm')[0].reset();
+    $("#addLinks").modal('show');
+  }
+
   // 删除模态框
   function del_modal_show() {
     $("#del_blogs_modal").modal('show');
@@ -173,6 +185,16 @@
         msg_info('删除失败!', 'error');
       }
     });
+  }
+
+  // 编辑友情链接
+  function edit_modal_show(link_id, name, link, avatar, desc) {
+    $("#edit_id").val(link_id);
+    $("#name").val(name);
+    $("#link").val(link);
+    $("#avatar").val(avatar);
+    $("#desc").val(desc);
+    $("#addLinks").modal('show');
   }
 </script>
 {% endblock %}
