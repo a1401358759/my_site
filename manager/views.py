@@ -303,8 +303,8 @@ def add_friend_link_view(request):
         return HttpResponseRedirect(reverse('friend_link_list'))
 
     edit_id = form.cleaned_data.get('edit_id')
-    if not edit_id:
-        try:
+    try:
+        if not edit_id:
             Links.objects.create(
                 name=form.cleaned_data.get('name'),
                 link=form.cleaned_data.get('link'),
@@ -312,19 +312,18 @@ def add_friend_link_view(request):
                 desc=form.cleaned_data.get('desc'),
             )
             messages.success(request, '添加成功')
-            cache.delete_pattern('tmp_links')  # 清除缓存
-            return HttpResponseRedirect(reverse('friend_link_list'))
-        except Exception as e:
-            messages.error(request, '添加失败: %s' % e)
-            return HttpResponseRedirect(reverse('friend_link_list'))
-    else:
-        Links.objects.filter(id=edit_id).update(
-            name=form.cleaned_data.get('name'),
-            link=form.cleaned_data.get('link'),
-            avatar=form.cleaned_data.get('avatar'),
-            desc=form.cleaned_data.get('desc'),
-        )
-        messages.success(request, '编辑成功')
+        else:
+            Links.objects.filter(id=edit_id).update(
+                name=form.cleaned_data.get('name'),
+                link=form.cleaned_data.get('link'),
+                avatar=form.cleaned_data.get('avatar'),
+                desc=form.cleaned_data.get('desc'),
+            )
+            messages.success(request, '编辑成功')
+        cache.delete_pattern('tmp_links')  # 清除缓存
+        return HttpResponseRedirect(reverse('friend_link_list'))
+    except Exception as e:
+        messages.error(request, '操作失败: %s' % e)
         return HttpResponseRedirect(reverse('friend_link_list'))
 
 
@@ -443,15 +442,22 @@ def add_classification_view(request):
     """
     添加文章分类
     """
+    item_id = request.POST.get('item_id')
     try:
-        Classification.objects.create(
-            name=request.POST.get('name')
-        )
-        messages.success(request, '添加成功')
+        if not item_id:
+            Classification.objects.create(
+                name=request.POST.get('name')
+            )
+            messages.success(request, '添加成功')
+        else:
+            Classification.objects.filter(id=item_id).update(
+                name=request.POST.get('name')
+            )
+            messages.success(request, '编辑成功')
         cache.delete_pattern('tmp_classification')  # 清除缓存
         return HttpResponseRedirect(reverse('classification_list'))
     except Exception as e:
-        messages.error(request, '添加失败: %s' % e)
+        messages.error(request, '操作失败: %s' % e)
         return HttpResponseRedirect(reverse('classification_list'))
 
 
