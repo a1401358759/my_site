@@ -136,6 +136,7 @@
   // 添加
   function add_modal_show() {
     $('#addForm')[0].reset();
+    $('#myLargeModalLabel').text('新增文章分类');
     $('#addModal').modal('show');
   }
 
@@ -143,6 +144,7 @@
   function edit_modal_show(item_id, name) {
     $('#item_id').val(item_id);
     $('#name').val(name);
+    $('#myLargeModalLabel').text('编辑文章分类');
     $('#addModal').modal('show');
   }
 

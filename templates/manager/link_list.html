@@ -61,7 +61,8 @@
                 <td>
                   <a class="btn btn-sm btn-info" href="javascript:;"
                     onclick="edit_modal_show('{{ item.id }}', '{{ item.name }}', '{{ item.link }}', '{{ item.avatar }}', '{{ item.desc }}')"> 编辑
-                  </a></td>
+                  </a>
+                </td>
               </tr>
               {% endfor %}
               </form>
@@ -157,6 +158,18 @@
   // 添加友情链接
   function add_modal_show() {
     $('#linkForm')[0].reset();
+    $('#myLargeModalLabel').text('新增友情链接');
+    $("#addLinks").modal('show');
+  }
+
+  // 编辑友情链接
+  function edit_modal_show(link_id, name, link, avatar, desc) {
+    $("#edit_id").val(link_id);
+    $("#name").val(name);
+    $("#link").val(link);
+    $("#avatar").val(avatar);
+    $("#desc").val(desc);
+    $('#myLargeModalLabel').text('编辑友情链接');
     $("#addLinks").modal('show');
   }
 
@@ -185,16 +198,6 @@
         msg_info('删除失败!', 'error');
       }
     });
-  }
-
-  // 编辑友情链接
-  function edit_modal_show(link_id, name, link, avatar, desc) {
-    $("#edit_id").val(link_id);
-    $("#name").val(name);
-    $("#link").val(link);
-    $("#avatar").val(avatar);
-    $("#desc").val(desc);
-    $("#addLinks").modal('show');
   }
 </script>
 {% endblock %}

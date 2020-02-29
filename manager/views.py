@@ -445,14 +445,10 @@ def add_classification_view(request):
     item_id = request.POST.get('item_id')
     try:
         if not item_id:
-            Classification.objects.create(
-                name=request.POST.get('name')
-            )
+            Classification.objects.create(name=request.POST.get('name'))
             messages.success(request, '添加成功')
         else:
-            Classification.objects.filter(id=item_id).update(
-                name=request.POST.get('name')
-            )
+            Classification.objects.filter(id=item_id).update(name=request.POST.get('name'))
             messages.success(request, '编辑成功')
         cache.delete_pattern('tmp_classification')  # 清除缓存
         return HttpResponseRedirect(reverse('classification_list'))
@@ -510,15 +506,18 @@ def add_tag_view(request):
     """
     添加文章标签
     """
+    item_id = request.POST.get('item_id')
     try:
-        Tag.objects.create(
-            name=request.POST.get('name')
-        )
-        messages.success(request, '添加成功')
+        if not item_id:
+            Tag.objects.create(name=request.POST.get('name'))
+            messages.success(request, '添加成功')
+        else:
+            Tag.objects.filter(id=item_id).update(name=request.POST.get('name'))
+            messages.success(request, '编辑成功')
         cache.delete_pattern('tmp_tags')  # 清除缓存
         return HttpResponseRedirect(reverse('tag_list'))
     except Exception as e:
-        messages.error(request, '添加失败: %s' % e)
+        messages.error(request, '操作失败: %s' % e)
         return HttpResponseRedirect(reverse('tag_list'))
 
 
