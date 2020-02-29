@@ -16,7 +16,7 @@ def utf82unicode(content):
         if not isinstance(content, unicode):
             content = content.decode("utf-8")
     except:
-        content = u"fail_utf8_to_unicode"
+        content = "fail_utf8_to_unicode"
     return content
 
 

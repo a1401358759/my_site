@@ -18,13 +18,13 @@
               <span style="background-color:red;color:#FFF;font-size:smaller;padding:2px 5px;border-radius:5px;">博主</span>
             {% endif %}
           </strong>
-          <a style="color:#ccc" href="javascript:;">
+          <i style="color:#ccc; font-size: small;">
             {{ comment.created_time|date:"Y-m-d H:i" }}
-          </a>
+          </i>
         </span>
       </a>
       <div class="pull-right" style="margin-top: 15px;">
-        <a href="#comment_form" class="text-muted" onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}')">
+        <a href="#comment_form" style="font-size: small;" class="text-muted" onclick="set_parent_comment_id('{{ comment.id }}', '{{ comment.user.nickname }}')">
           回复
         </a>
       </div>

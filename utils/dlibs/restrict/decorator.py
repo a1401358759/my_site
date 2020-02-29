@@ -13,7 +13,7 @@ def restrict_white_ip_access(config):
     :param config: 白名单配置项，格式：
                     {
                         'domain': ['127.0.0.1', '10.*.*.*'],
-                        'description': u'示例'
+                        'description': '示例'
                     }
     """
 

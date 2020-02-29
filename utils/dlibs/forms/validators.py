@@ -19,11 +19,11 @@ ID_NUM_RE = re.compile(r'^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1
 
 
 # --------------- validators ------------------#
-mobile_validator = RegexValidator(MOBILE_RE, u'手机号格式不正确', 'invalid')
-email_validator = EmailValidator(u'请输入正确的email', 'invalid')
-verify_code_validator = RegexValidator(VERIFY_CODE_RE, u'短信验证码格式不正确', 'invalid')
-captcha_validator = RegexValidator(CAPTCHA_RE, u'图片验证码格式不正确', 'invalid')
-id_num_validator = RegexValidator(ID_NUM_RE, u'身份证号码错误', 'invalid')
+mobile_validator = RegexValidator(MOBILE_RE, '手机号格式不正确', 'invalid')
+email_validator = EmailValidator('请输入正确的email', 'invalid')
+verify_code_validator = RegexValidator(VERIFY_CODE_RE, '短信验证码格式不正确', 'invalid')
+captcha_validator = RegexValidator(CAPTCHA_RE, '图片验证码格式不正确', 'invalid')
+id_num_validator = RegexValidator(ID_NUM_RE, '身份证号码错误', 'invalid')
 
 
 # --------------- 验证函数 ------------------#

@@ -3,7 +3,7 @@
 from os import path
 from django.apps import AppConfig
 
-VERBOSE_APP_NAME = u"模块管理"
+VERBOSE_APP_NAME = "模块管理"
 
 
 def get_current_app_name(file):

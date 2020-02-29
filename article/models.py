@@ -8,28 +8,28 @@ from utils.dlibs.models.mixins import TimeModelMixin
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=30, verbose_name=u'姓名')
-    email = models.EmailField(blank=True, verbose_name=u'邮件')
-    website = models.URLField(blank=True, verbose_name=u'个人网站')
+    name = models.CharField(max_length=30, verbose_name='姓名')
+    email = models.EmailField(blank=True, verbose_name='邮件')
+    website = models.URLField(blank=True, verbose_name='个人网站')
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = u"文章作者"
+        verbose_name_plural = "文章作者"
 
 
 class OwnerMessage(models.Model):
-    summary = models.CharField(max_length=100, verbose_name=u'简介', blank=True, null=True)
-    message = models.TextField(verbose_name=u'寄语', default="")
-    editor = models.SmallIntegerField(verbose_name=u'编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
+    summary = models.CharField(max_length=100, verbose_name='简介', blank=True, null=True)
+    message = models.TextField(verbose_name='寄语', default="")
+    editor = models.SmallIntegerField(verbose_name='编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     def __unicode__(self):
         return self.message
 
     class Meta:
-        verbose_name_plural = u"主人寄语"
+        verbose_name_plural = "主人寄语"
 
 
 class TagManager(models.Manager):
@@ -44,8 +44,8 @@ class TagManager(models.Manager):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=20, blank=True, verbose_name=u'标签名')
-    created_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
+    name = models.CharField(max_length=20, blank=True, verbose_name='标签名')
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     objects = models.Manager()
     tag_list = TagManager()
 
@@ -56,7 +56,7 @@ class Tag(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = u"文章标签"
+        verbose_name_plural = "文章标签"
 
 
 class ClassManager(models.Manager):
@@ -80,7 +80,7 @@ class Classification(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = u"文章分类"
+        verbose_name_plural = "文章分类"
 
 
 class ArticleManager(models.Model):
@@ -116,15 +116,15 @@ class ArticleManager(models.Model):
 
 
 class Article(models.Model):  # 文章
-    title = models.CharField(max_length=100, verbose_name=u'标题')
-    author = models.ForeignKey(Author, verbose_name=u'作者', on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag, blank=True, verbose_name=u'标签')  # 标签
-    classification = models.ForeignKey(Classification, verbose_name=u'分类', on_delete=models.CASCADE)  # 分类
-    content = models.TextField(verbose_name=u'文章内容', default="")
-    publish_time = models.DateTimeField(auto_now_add=True, verbose_name=u'发表时间')
-    count = models.IntegerField(default=0, verbose_name=u'文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
-    editor = models.SmallIntegerField(verbose_name=u'编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
-    status = models.SmallIntegerField(verbose_name=u"状态", choices=BlogStatus.CHOICES, default=BlogStatus.PUBLISHED)
+    title = models.CharField(max_length=100, verbose_name='标题')
+    author = models.ForeignKey(Author, verbose_name='作者', on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')  # 标签
+    classification = models.ForeignKey(Classification, verbose_name='分类', on_delete=models.CASCADE)  # 分类
+    content = models.TextField(verbose_name='文章内容', default="")
+    publish_time = models.DateTimeField(auto_now_add=True, verbose_name='发表时间')
+    count = models.IntegerField(default=0, verbose_name='文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
+    editor = models.SmallIntegerField(verbose_name='编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
+    status = models.SmallIntegerField(verbose_name="状态", choices=BlogStatus.CHOICES, default=BlogStatus.PUBLISHED)
     objects = models.Manager()  # 默认的管理器
     date_list = ArticleManager()  # 自定义的管理器
 
@@ -181,71 +181,71 @@ class Article(models.Model):  # 文章
 
     class Meta:
         ordering = ['-publish_time']
-        verbose_name_plural = u"博文管理"
+        verbose_name_plural = "博文管理"
 
 
 class Links(models.Model):
     """
     友情链接
     """
-    name = models.CharField(max_length=50, verbose_name=u'网站名称')
-    link = models.CharField(max_length=100, verbose_name=u'网站地址')
-    avatar = models.CharField(max_length=100, verbose_name=u'网站图标', default="", blank=True)
-    desc = models.CharField(max_length=200, verbose_name=u'网站描述', default="", blank=True)
-    weights = models.SmallIntegerField(default=10, verbose_name=u'权重', blank=True, null=True)
-    email = models.EmailField(verbose_name=u'联系邮箱', null=True, blank=True)
-    created_time = models.DateTimeField(auto_now_add=True, verbose_name=u'创建时间')
+    name = models.CharField(max_length=50, verbose_name='网站名称')
+    link = models.CharField(max_length=100, verbose_name='网站地址')
+    avatar = models.CharField(max_length=100, verbose_name='网站图标', default="", blank=True)
+    desc = models.CharField(max_length=200, verbose_name='网站描述', default="", blank=True)
+    weights = models.SmallIntegerField(default=10, verbose_name='权重', blank=True, null=True)
+    email = models.EmailField(verbose_name='联系邮箱', null=True, blank=True)
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = u"友情链接"
+        verbose_name_plural = "友情链接"
 
 
 class CarouselImg(TimeModelMixin):
     """
     轮播图管理
     """
-    name = models.CharField(max_length=50, verbose_name=u'图片名称')
-    description = models.CharField(max_length=100, verbose_name=u'图片描述')
-    path = models.CharField(max_length=100, verbose_name=u'图片地址')
-    link = models.CharField(max_length=200, verbose_name=u'图片外链', default="", null=True, blank=True)
-    weights = models.SmallIntegerField(default=10, verbose_name=u'图片权重', blank=True, null=True)
-    img_type = models.SmallIntegerField(verbose_name=u"类型", choices=CarouselImgType.CHOICES, default=CarouselImgType.BANNER)
+    name = models.CharField(max_length=50, verbose_name='图片名称')
+    description = models.CharField(max_length=100, verbose_name='图片描述')
+    path = models.CharField(max_length=100, verbose_name='图片地址')
+    link = models.CharField(max_length=200, verbose_name='图片外链', default="", null=True, blank=True)
+    weights = models.SmallIntegerField(default=10, verbose_name='图片权重', blank=True, null=True)
+    img_type = models.SmallIntegerField(verbose_name="类型", choices=CarouselImgType.CHOICES, default=CarouselImgType.BANNER)
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = u"轮播管理"
+        verbose_name_plural = "轮播管理"
 
 
 class Music(TimeModelMixin):
     """
     背景音乐管理
     """
-    name = models.CharField(max_length=50, verbose_name=u'音乐名称')
-    url = models.CharField(max_length=100, verbose_name=u'音乐地址')
-    cover = models.CharField(max_length=100, verbose_name=u'音乐封面')
-    artist = models.CharField(max_length=100, verbose_name=u'艺术家', blank=True, null=True, default="")
-    lrc = models.CharField(max_length=100, verbose_name=u'音乐歌词', blank=True, null=True, default="")
+    name = models.CharField(max_length=50, verbose_name='音乐名称')
+    url = models.CharField(max_length=100, verbose_name='音乐地址')
+    cover = models.CharField(max_length=100, verbose_name='音乐封面')
+    artist = models.CharField(max_length=100, verbose_name='艺术家', blank=True, null=True, default="")
+    lrc = models.CharField(max_length=100, verbose_name='音乐歌词', blank=True, null=True, default="")
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = u"背景音乐"
+        verbose_name_plural = "背景音乐"
 
 
 class Subscription(TimeModelMixin):
     """
     邮件订阅
     """
-    email = models.EmailField(verbose_name=u'订阅邮箱')
+    email = models.EmailField(verbose_name='订阅邮箱')
 
     class Meta:
-        verbose_name_plural = u"邮件订阅"
+        verbose_name_plural = "邮件订阅"
 
 
 class Visitor(TimeModelMixin):
@@ -259,7 +259,7 @@ class Visitor(TimeModelMixin):
     blogger = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name_plural = u"访客管理"
+        verbose_name_plural = "访客管理"
 
 
 class Comments(TimeModelMixin):
@@ -281,4 +281,4 @@ class Comments(TimeModelMixin):
         return self.content
 
     class Meta:
-        verbose_name_plural = u"评论管理"
+        verbose_name_plural = "评论管理"

@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 
 
 class MailTemplate(object):
-    notify_blogger = u'''
+    notify_blogger = '''
         <table style="width: 99.8%;height:99.8% ">
            <tbody>
             <tr>
@@ -26,7 +26,7 @@ class MailTemplate(object):
         </body>
     '''
 
-    notify_parent_user = u'''
+    notify_parent_user = '''
         <table style="width: 99.8%;height:99.8% ">
            <tbody>
             <tr>

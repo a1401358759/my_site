@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
+import string
 import markdown
 from django.core.cache import cache
 from django.db.models import Q, Count, Sum
@@ -37,10 +38,10 @@ def upload_file(request):
     """
     filestream = request.FILES.get('editormd-image-file')
     if not filestream:
-        return render_json({"success": 0, "message": u"请选择文件", "url": ""})
+        return render_json({"success": 0, "message": "请选择文件", "url": ""})
 
     key, img_path = upload_data(filestream, 'blog')
-    return render_json({"success": 1, "message": u"上传成功", "url": img_path})
+    return render_json({"success": 1, "message": "上传成功", "url": img_path})
 
 
 @login_required
@@ -314,7 +315,7 @@ def add_comments_view(request):
         )
         ip_address = get_clientip(request)
         country, province, city = get_location_by_ip(ip_address)
-        anchor = "".join([random.choice("abcdefghijklmnopqrstuvwxyz1234567890") for i in range(16)])
+        anchor = ''.join(random.sample(string.ascii_lowercase + string.digits, 16))
         comment_data = {
             "user_id": user.id,
             "content": content,

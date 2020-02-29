@@ -45,7 +45,7 @@ def get_location_by_ip_with_amap(ip):
         return adcode, province, city
     except Exception as exp:
         SysLogger.exception(exp)
-        return 0, u"", u""
+        return 0, "", ""
 
 
 def get_location_by_lon_and_lat(lon, lat):
@@ -58,7 +58,7 @@ def get_location_by_lon_and_lat(lon, lat):
     :return: ADCODE,省,市,县,屯,详细地址
     """
     if not (lon and lat):
-        return 0, u"未知", u"未知", u"未知", u"未知", u"未知"
+        return 0, "未知", "未知", "未知", "未知", "未知"
     response = RequestClient.query(
         "http://restapi.amap.com/v3/geocode/regeo",
         method="GET",
@@ -83,7 +83,7 @@ def get_location_by_lon_and_lat(lon, lat):
         return adcode, province, city, district, township, address
     except Exception as exp:
         SysLogger.exception(exp)
-        return 0, u"未知", u"未知", u"未知", u"未知", u"未知"
+        return 0, "未知", "未知", "未知", "未知", "未知"
 
 
 def get_address_info(lon, lat, ip):
@@ -95,10 +95,10 @@ def get_address_info(lon, lat, ip):
     :param ip:
     :return: ADCODE,省,市,县,屯,详细地址
     """
-    adcode, province, city, district, township, address = "", u"未知", u"未知", "", "", ""
+    adcode, province, city, district, township, address = "", "未知", "未知", "", "", ""
     if lon and lat:
         adcode, province, city, district, township, address = get_location_by_lon_and_lat(lon, lat)
 
-    if u"未知" in (province, city):
+    if "未知" in (province, city):
         adcode, province, city = get_location_by_ip(ip)
     return adcode, province, city, district, township, address

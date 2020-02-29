@@ -46,14 +46,14 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if not form.is_valid():
-            messages.warning(request, u'登录失败')
+            messages.warning(request, '登录失败')
             return HttpResponseRedirect(reverse('login_view'))
 
         user_name = form.cleaned_data.get('user_name')
         password = form.cleaned_data.get('password')
         user = authenticate(username=user_name, password=password)
         if not user:
-            messages.error(request, u'登录失败，请检查用户名密码后重试.')
+            messages.error(request, '登录失败，请检查用户名密码后重试.')
             return HttpResponseRedirect('%s?%s' % (reverse('login_view'), urllib.parse.urlencode({'back_url': back_url})))
         login(request, user)
         return HttpResponseRedirect(reverse('blog_list'))
@@ -82,10 +82,10 @@ def change_passwd_view(request):
             if user.check_password(form.cleaned_data['old_password']):
                 user.set_password(form.cleaned_data['new_password'])
                 user.save()
-                messages.success(request, u'密码修改成功，请重新登录')
+                messages.success(request, '密码修改成功，请重新登录')
                 return HttpResponseRedirect(reverse("logout_view"))
             else:
-                messages.error(request, u'原密码错误.')
+                messages.error(request, '原密码错误.')
                 return HttpResponseRedirect(reverse('change_password'))
     else:
         form = ChangePasswordForm()
@@ -160,7 +160,7 @@ def blog_create_view(request):
             )
             tags = request.POST.getlist('tags')
             article.set_tags(tags)
-            messages.success(request, u'添加成功')
+            messages.success(request, '添加成功')
             cache.delete_pattern("tmp_articles")  # 清除缓存
             cache.delete_pattern("tmp_archive")  # 清除缓存
             return HttpResponseRedirect(reverse('blog_list'))
@@ -216,7 +216,7 @@ def blog_edit_view(request, item_id):
                 status=form.cleaned_data.get("status"),
                 editor=form.cleaned_data.get("editor"),
             )
-            messages.success(request, u'修改成功')
+            messages.success(request, '修改成功')
             cache.delete_pattern("tmp_articles")  # 清除缓存
             cache.delete_pattern("tmp_archive")  # 清除缓存
             return HttpResponseRedirect(reverse('blog_list'))
@@ -232,7 +232,7 @@ def blog_del_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         Article.objects.filter(id__in=item_ids).delete()
@@ -240,7 +240,7 @@ def blog_del_view(request):
         cache.delete_pattern("tmp_archive")  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required
@@ -262,7 +262,7 @@ def blog_update_status_view(request):
         cache.delete_pattern("tmp_archive")  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='失败: %s' % e)
 
 
 @login_required
@@ -311,11 +311,11 @@ def add_friend_link_view(request):
                 avatar=form.cleaned_data.get('avatar'),
                 desc=form.cleaned_data.get('desc'),
             )
-            messages.success(request, u'添加成功')
+            messages.success(request, '添加成功')
             cache.delete_pattern('tmp_links')  # 清除缓存
             return HttpResponseRedirect(reverse('friend_link_list'))
         except Exception as e:
-            messages.error(request, u'添加失败: %s' % e)
+            messages.error(request, '添加失败: %s' % e)
             return HttpResponseRedirect(reverse('friend_link_list'))
     else:
         Links.objects.filter(id=edit_id).update(
@@ -335,14 +335,14 @@ def del_friend_link_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         Links.objects.filter(id__in=item_ids).delete()
         cache.delete_pattern('tmp_links')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required
@@ -388,10 +388,10 @@ def add_author_view(request):
             email=form.cleaned_data.get('email'),
             website=form.cleaned_data.get('website'),
         )
-        messages.success(request, u'添加成功')
+        messages.success(request, '添加成功')
         return HttpResponseRedirect(reverse('author_list'))
     except Exception as e:
-        messages.error(request, u'添加失败: %s' % e)
+        messages.error(request, '添加失败: %s' % e)
         return HttpResponseRedirect(reverse('author_list'))
 
 
@@ -402,13 +402,13 @@ def del_author_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         Author.objects.filter(id__in=item_ids).delete()
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required
@@ -447,11 +447,11 @@ def add_classification_view(request):
         Classification.objects.create(
             name=request.POST.get('name')
         )
-        messages.success(request, u'添加成功')
+        messages.success(request, '添加成功')
         cache.delete_pattern('tmp_classification')  # 清除缓存
         return HttpResponseRedirect(reverse('classification_list'))
     except Exception as e:
-        messages.error(request, u'添加失败: %s' % e)
+        messages.error(request, '添加失败: %s' % e)
         return HttpResponseRedirect(reverse('classification_list'))
 
 
@@ -462,14 +462,14 @@ def del_classification_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         Classification.objects.filter(id__in=item_ids).delete()
         cache.delete_pattern('tmp_classification')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required
@@ -508,11 +508,11 @@ def add_tag_view(request):
         Tag.objects.create(
             name=request.POST.get('name')
         )
-        messages.success(request, u'添加成功')
+        messages.success(request, '添加成功')
         cache.delete_pattern('tmp_tags')  # 清除缓存
         return HttpResponseRedirect(reverse('tag_list'))
     except Exception as e:
-        messages.error(request, u'添加失败: %s' % e)
+        messages.error(request, '添加失败: %s' % e)
         return HttpResponseRedirect(reverse('tag_list'))
 
 
@@ -523,14 +523,14 @@ def del_tag_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         Tag.objects.filter(id__in=item_ids).delete()
         cache.delete_pattern('tmp_tags')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required
@@ -576,11 +576,11 @@ def add_music_view(request):
             cover=form.cleaned_data.get('cover'),
             artist=form.cleaned_data.get('artist'),
         )
-        messages.success(request, u'添加成功')
+        messages.success(request, '添加成功')
         cache.delete_pattern('tmp_musics')  # 清除缓存
         return HttpResponseRedirect(reverse('music_list'))
     except Exception as e:
-        messages.error(request, u'添加失败: %s' % e)
+        messages.error(request, '添加失败: %s' % e)
         return HttpResponseRedirect(reverse('music_list'))
 
 
@@ -591,14 +591,14 @@ def del_music_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         Music.objects.filter(id__in=item_ids).delete()
         cache.delete_pattern('tmp_musics')  # 清除缓存
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required
@@ -650,14 +650,14 @@ def add_carousel_view(request):
             weights=form.cleaned_data.get('weights'),
             img_type=img_type,
         )
-        messages.success(request, u'添加成功')
+        messages.success(request, '添加成功')
         if img_type == CarouselImgType.BANNER:
             cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存
         elif img_type == CarouselImgType.ADS:
             cache.delete_pattern('tmp_ads_imgs')  # 清除缓存
         return HttpResponseRedirect(reverse('carousel_list'))
     except Exception as e:
-        messages.error(request, u'添加失败: %s' % e)
+        messages.error(request, '添加失败: %s' % e)
         return HttpResponseRedirect(reverse('carousel_list'))
 
 
@@ -668,7 +668,7 @@ def del_carousel_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         CarouselImg.objects.filter(id__in=item_ids).delete()
@@ -676,7 +676,7 @@ def del_carousel_view(request):
         cache.delete_pattern('tmp_ads_imgs')
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required
@@ -721,7 +721,7 @@ def add_ownmessage_view(request):
                 message=form.cleaned_data.get("message"),
                 editor=EditorKind.Markdown
             )
-            messages.success(request, u'添加成功')
+            messages.success(request, '添加成功')
             return HttpResponseRedirect(reverse('ownmessage_list'))
         except Exception as ex:
             messages.warning(request, ex)
@@ -760,7 +760,7 @@ def edit_ownmessage_view(request, item_id):
         }
         try:
             OwnerMessage.objects.filter(id=item_id).update(**data)
-            messages.success(request, u'修改成功')
+            messages.success(request, '修改成功')
             return HttpResponseRedirect(reverse('ownmessage_list'))
         except Exception as ex:
             messages.warning(request, ex)
@@ -774,13 +774,13 @@ def del_ownmessage_view(request):
     """
     item_ids = request.POST.getlist('item_ids')
     if not item_ids:
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg=u'参数错误')
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg='参数错误')
 
     try:
         OwnerMessage.objects.filter(id__in=item_ids).delete()
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as e:
-        return http_response(request, statuscode=ERRORCODE.FAILED, msg=u'删除失败: %s' % e)
+        return http_response(request, statuscode=ERRORCODE.FAILED, msg='删除失败: %s' % e)
 
 
 @login_required

@@ -11,7 +11,7 @@ def form_error(form_info):
         if k == "__all__":
             error_str.append(v[0])
         else:
-            error_str.append(u"%s:%s" % (form_info.fields[k].label, v[0]))
+            error_str.append("%s:%s" % (form_info.fields[k].label, v[0]))
 
     return error_str
 
