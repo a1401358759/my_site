@@ -2609,3 +2609,18 @@ img {
 .modal {
   top: 20%!important;
 }
+/* 自定义滚动条 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #fff;
+  border-radius: 10px;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2196F3;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
