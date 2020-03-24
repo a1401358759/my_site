@@ -67,6 +67,7 @@ h6, .h6 {
 .blog-nav-item:focus {
   color: #fff;
   text-decoration: none;
+  transition: all .2s;
 }
 
 /* Active state gets a caret at the bottom */
@@ -386,14 +387,20 @@ h6 {
 }
 
 .widget>ul>li>a {
-  color: #1f1f1f;
+  color: #1A1A1A;
   text-decoration: none;
   line-height: inherit;
   font-size: 14px;
+  font-weight: 400;
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 .widget>ul>li>a:hover {
-  color: #1C71FE;
+  color: #66ab27;
+  transition: all .3s;
+}
+.widget-hover>ul>li>a:hover {
+  color: #f00;
+  padding-left: 0.5rem !important;
 }
 
 p {
@@ -680,6 +687,7 @@ sub { bottom: -0.25em; }
   text-decoration: none;
   border: 0;
   font-size: 15px;
+  font-weight: 600;
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
 }
 
@@ -709,7 +717,7 @@ a {
 #site-title a {
   color: #FFF;
   font-size: 24px;
-  font-weight: normal;
+  font-weight: 500;
 }
 
 #site-description {
@@ -955,14 +963,15 @@ a {
 .entry-title { margin: 0 0 15px; }
 
 .entry-title, .entry-title a {
-  color: #1f1f1f;
-  font-size: 25px;
+  color: #000;
+  font-size: 1.75rem;
   font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-weight: 550;
 }
 
-/*.entry-title a:hover { color: #236688; }*/
-
-h2.entry-title { font-size: 1.5em; }
+.entry-title a:hover {
+  color: #66ab27;
+}
 
 /* Entry meta */
 
@@ -1005,14 +1014,15 @@ h2.entry-title { font-size: 1.5em; }
 .entry-info a,
 .entry-meta a {
   color: #999999;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/ /*字符全部大写*/
   font-size: 12px;
 }
 
 .more-link:hover,
 .entry-info a:hover,
 .entry-meta a:hover {
-  color: #236688;
+  color: #f00;
+  transition-duration: .3s;
 }
 
 .sticky.format-standard .entry-meta .date,
@@ -2304,6 +2314,7 @@ a:hover,
 a:focus {
   text-decoration: none;
   color: blue;
+  transition: all .2s;
 }
 
 /* 轮播插件 */

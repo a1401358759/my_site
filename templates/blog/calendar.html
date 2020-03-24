@@ -6,7 +6,7 @@
   .calendar{width:100%;font-size:100%;position:relative}
   .calendar .header{height:80px;position:relative;color:#fff}
   .calendar .header .text{position:absolute;top:0;left:-1px;right:-1px;bottom:0;background-color:#308ff0;padding:15px;-webkit-transform:rotateX(90deg);transform:rotateX(90deg);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:.4s ease-in-out 0s;opacity:0}
-  .calendar .header .text>span{text-align:center;padding:16px;display:block}
+  .calendar .header .text>span{text-align:center;padding:16px;display:block;font-weight:700;}
   .calendar .header.active .text{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1;border-top-left-radius: 2px;border-top-right-radius: 2px;}
   .months{width:100%;position:relative}
   .months .hr{height:1px;margin:15px 0;background:#ccc}
@@ -16,9 +16,9 @@
   .table{width:100%;font-size:10px;font-weight:400;display:table}
   .table .row{display:table-row}
   .table .row.head{color:#308ff0;text-transform:uppercase}
-  .table .row .cell{width:14.28%;padding:5px;text-align:center;display:table-cell}
+  .table .row .cell{width:14.28%;padding:5px;text-align:center;display:table-cell;font-weight: 700;}
   .table .row .cell.disable{color:#ccc}
-  .table .row .cell span{display:block;line-height:28px;transition:color,background .4s ease-in-out 0s}
+  .table .row .cell span{display:block;line-height:28px;transition:color,background .4s ease-in-out 0s;font-weight: 500;}
   .table .row .cell.active span{color:#fff;background-color:#308ff0}
   .months .month[data-active="true"]{-webkit-transform:rotateY(0);transform:rotateY(0)}
   .header [data-action]{color:inherit;position:absolute;top:50%;margin-top:-20px;width:40px;height:40px;z-index:1;opacity:0;transition:all .4s ease-in-out 0s}
@@ -36,7 +36,7 @@
 
   .row.head{color:#2196F3}
   .header .text,
-  .table .row .cell.active span{background-color:#2196F3}
+  .table .row .cell.active span{background-color:#2196F3;}
 </style>
 </head>
 <body>
