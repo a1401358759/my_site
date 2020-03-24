@@ -30,7 +30,15 @@
               <li class="green">
                 <h3>{{ key|date:'m' }}.{{ i.publish_time|date:'d' }}<span>{{ key|date:'Y' }}</span></h3>
                 <dl>
-                  <a href="{{ i.get_absolute_url }}"><p>{{ i.title }}</p></a>
+                  <a href="{{ i.get_absolute_url }}" title="{{ i.title }}">
+                    <p>
+                      {% if i.title|length > 40 %}
+                        {{ i.title|truncatechars:40 }}...
+                      {% else %}
+                        {{ i.title }}
+                      {% endif %}
+                    </p>
+                  </a>
                 </dl>
               </li>
               {% endfor %}

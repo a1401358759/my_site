@@ -22,7 +22,7 @@ a { blr:expression(this.onFocus=this.blur()) }
 .history-date { overflow:hidden;}
 .history-date h2 { background:url(/static/images/icon06.gif) #fff no-repeat 168px 0; height:40px; font-size:20px; font-weight:normal; margin-bottom:20px;background-size: 40px 40px;  }
 .history-date h2.first { position:absolute; left:0; top:0; width:935px; z-index:99;}
-.history-date h2 a {color:#00bbff; display:inline-block; *display:inline; zoom:1; background:url(/static/images/icon08.gif) no-repeat right 50%; padding-right:17px; margin:10px 70px 0 22px;}
+.history-date h2 a {color:#2196f3; display:inline-block; *display:inline; zoom:1; background:url(/static/images/icon08.gif) no-repeat right 50%; padding-right:17px; margin:10px 70px 0 22px;}
 .history-date h2 a:hover { text-decoration:none;}
 .history-date h2 img { vertical-align:-5px;}
 .history-date h2.date02 { background:none;}

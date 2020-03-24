@@ -33,7 +33,12 @@
           <a href="{{ item.get_absolute_url }}" title="{{ item.title }}">
             <span class="{% if forloop.counter == 1 %}first-rank{% elif forloop.counter == 2 %}second-rank{% elif forloop.counter == 3 %}third-rank{% else %}other-rank{% endif %}">
               {{ forloop.counter }}
-            </span>&nbsp;&nbsp;{{ item.title|truncatechars:20 }}&nbsp;({{ item.count }})
+            </span>&nbsp;&nbsp;
+            {% if item.title|length > 15 %}
+              {{ item.title|truncatechars:15 }}...
+            {% else %}
+              {{ item.title }}
+            {% endif %}&nbsp;({{ item.count }})
           </a>
         </li>
       {% endfor %}
