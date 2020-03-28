@@ -3,6 +3,7 @@
 import random
 import string
 import markdown
+from datetime import datetime, timedelta
 from django.core.cache import cache
 from django.db.models import Q, Count, Sum
 from django.contrib.syndication.views import Feed  # 订阅RSS
@@ -88,8 +89,14 @@ def detail(request, year, month, day, id):
     """
     try:
         article = Article.objects.get(id=id)
-        article.count += 1
-        article.save(update_fields=['count'])
+        # 文章阅读量统计，12小时内连续访问的IP只记录一次
+        ip_address = get_clientip(request)
+        key = ip_address + '_' + str(id)
+        if cache.get(key) is None:
+            article.count += 1
+            article.save(update_fields=['count'])
+            cache.set(key, str(datetime.now() + timedelta(hours=12)), 12 * 60 * 60)  # 设置12小时过期
+
         statics_count = Article.objects.aggregate(
             blog_count=Count('id', distinct=True),
             read_count=Sum('count'),
