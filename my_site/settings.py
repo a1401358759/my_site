@@ -47,12 +47,13 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',  # django2.0不需要了
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'utils.dlibs.middleware.request_init.RequestInitMiddleware',
 ]
+# 在Django 3.0.x中XFrameOptionsMiddleware中间件设置X_FRAME_OPTIONS的默认值从SAMEORIGIN更改为DENY
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ROOT_URLCONF = 'my_site.urls'
 
