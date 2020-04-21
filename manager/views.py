@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import urllib.parse
+from datetime import datetime
 from django.core.cache import cache
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -215,6 +216,7 @@ def blog_edit_view(request, item_id):
                 count=form.cleaned_data.get("count"),
                 status=form.cleaned_data.get("status"),
                 editor=form.cleaned_data.get("editor"),
+                last_update=datetime.now()
             )
             messages.success(request, '修改成功')
             cache.delete_pattern("tmp_articles")  # 清除缓存
@@ -770,7 +772,8 @@ def edit_ownmessage_view(request, item_id):
         data = {
             "summary": form.cleaned_data.get("summary"),
             "message": form.cleaned_data.get("message"),
-            "editor": form.cleaned_data.get("editor")
+            "editor": form.cleaned_data.get("editor"),
+            "last_update": datetime.now()
         }
         try:
             OwnerMessage.objects.filter(id=item_id).update(**data)

@@ -50,6 +50,7 @@
                 <th>图片类型</th>
                 <th>图片预览</th>
                 <th>创建时间</th>
+                <th>最后更新时间</th>
               </tr>
             </thead>
             <tbody>
@@ -61,8 +62,9 @@
                 <td data-toggle="tooltip" data-placement="bottom" title="{{ item.path }}">{{ item.path|slice:"30" }}</td>
                 <td data-toggle="tooltip" data-placement="bottom" title="{{ item.link }}">{{ item.link|slice:"30" }}</td>
                 <td>{{ item.get_img_type_display }}</td>
-                <td><a i="{{ item.path }}" class="Slide One"><img height="30px" src="{{ item.path }}" alt="{{ item.description }}"></a></td>
+                <td><a i="{{ item.path }}" class="Slide One"><img height="30px" width="60px" src="{{ item.path }}" alt="{{ item.description }}"></a></td>
                 <td>{{ item.created_time|date:'Y-m-d H:i' }}</td>
+                <td>{{ item.last_update|date:'Y-m-d H:i' }}</td>
               </tr>
               {% endfor %}
               </form>

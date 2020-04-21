@@ -38,6 +38,9 @@
         <h1 class="entry-title" style="text-align:center;">
           {{ article.title }}
         </h1>
+        {% if not_update_days >= 180 %}
+          <div class="expired-tips">友情提醒：本文最后更新于 {{ not_update_days }} 天前，文中所描述的信息可能已发生改变，请谨慎使用。</div>
+        {% endif %}
       </header>
       <div>
         {{ article.content|safe }}

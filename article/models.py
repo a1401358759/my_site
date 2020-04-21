@@ -1,5 +1,6 @@
 # coding: utf-8
 
+from datetime import datetime
 from django.db import models
 from django.urls import reverse
 from collections import OrderedDict
@@ -7,7 +8,7 @@ from .constants import BlogStatus, CarouselImgType, EditorKind
 from utils.dlibs.models.mixins import TimeModelMixin
 
 
-class Author(models.Model):
+class Author(TimeModelMixin):
     name = models.CharField(max_length=30, verbose_name='姓名')
     email = models.EmailField(blank=True, verbose_name='邮件')
     website = models.URLField(blank=True, verbose_name='个人网站')
@@ -24,6 +25,7 @@ class OwnerMessage(models.Model):
     message = models.TextField(verbose_name='寄语', default="")
     editor = models.SmallIntegerField(verbose_name='编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    last_update = models.DateTimeField(verbose_name='最后修改时间', default=datetime.now)
 
     def __unicode__(self):
         return self.message
@@ -43,9 +45,8 @@ class TagManager(models.Manager):
         return tag_list
 
 
-class Tag(models.Model):
+class Tag(TimeModelMixin):
     name = models.CharField(max_length=20, blank=True, verbose_name='标签名')
-    created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     objects = models.Manager()
     tag_list = TagManager()
 
@@ -71,7 +72,7 @@ class ClassManager(models.Manager):
         return classify_list
 
 
-class Classification(models.Model):
+class Classification(TimeModelMixin):
     name = models.CharField(max_length=25)
     objects = models.Manager()  # 默认的管理器
     class_list = ClassManager()  # 自定义的管理器
@@ -122,6 +123,7 @@ class Article(models.Model):  # 文章
     classification = models.ForeignKey(Classification, verbose_name='分类', on_delete=models.CASCADE)  # 分类
     content = models.TextField(verbose_name='文章内容', default="")
     publish_time = models.DateTimeField(auto_now_add=True, verbose_name='发表时间')
+    last_update = models.DateTimeField(verbose_name='最后修改时间', default=datetime.now)
     count = models.IntegerField(default=0, verbose_name='文章点击数')  # 文章点击数,但未实现统计文章点击数的功能
     editor = models.SmallIntegerField(verbose_name='编辑器类型', choices=EditorKind.CHOICES, default=EditorKind.RichText)
     status = models.SmallIntegerField(verbose_name="状态", choices=BlogStatus.CHOICES, default=BlogStatus.PUBLISHED)
@@ -180,11 +182,11 @@ class Article(models.Model):  # 文章
         return self.title
 
     class Meta:
-        ordering = ['-publish_time']
+        ordering = ['-id']
         verbose_name_plural = "博文管理"
 
 
-class Links(models.Model):
+class Links(TimeModelMixin):
     """
     友情链接
     """
@@ -194,7 +196,6 @@ class Links(models.Model):
     desc = models.CharField(max_length=200, verbose_name='网站描述', default="", blank=True)
     weights = models.SmallIntegerField(default=10, verbose_name='权重', blank=True, null=True)
     email = models.EmailField(verbose_name='联系邮箱', null=True, blank=True)
-    created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     def __unicode__(self):
         return self.name

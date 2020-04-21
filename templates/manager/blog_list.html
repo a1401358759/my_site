@@ -46,11 +46,11 @@
               <tr>
                 <th width="2%"><input type="checkbox" name="check_all" /></th>
                 <th>标题</th>
-                <th>作者</th>
                 <th>分类</th>
                 <th>标签</th>
                 <th>状态</th>
                 <th>发表时间</th>
+                <th>最后更新时间</th>
                 <th>操作</th>
               </tr>
             </thead>
@@ -60,7 +60,6 @@
               <tr>
                 <td><input type="checkbox" name="item_ids" value="{{ item.id }}"/></td>
                 <td><a href="{% url 'blog_edit' item.id %}">{{ item.title }}</a></td>
-                <td>{{ item.author.name }}</td>
                 <td>{{ item.classification.name }}</td>
                 <td>
                 {% for tag in item.get_tags %}
@@ -69,11 +68,12 @@
                 </td>
                 <td>{{ item.get_status_display }}</td>
                 <td>{{ item.publish_time|date:'Y-m-d H:i' }}</td>
+                <td>{{ item.last_update|date:'Y-m-d H:i' }}</td>
                 <td>
                   {% if item.status == 1 %}
-                  <a href="javascript:;" class="btn btn-success btn-sm" onclick="update_status_modal_show('{{ item.id }}', 2)">发布</a>
+                    <a href="javascript:;" class="btn btn-success btn-sm" onclick="update_status_modal_show('{{ item.id }}', 2)">发布</a>
                   {% elif item.status == 2 %}
-                  <a href="javascript:;" class="btn btn-danger btn-sm" onclick="update_status_modal_show('{{ item.id }}', 1)">撤回</a>
+                    <a href="javascript:;" class="btn btn-danger btn-sm" onclick="update_status_modal_show('{{ item.id }}', 1)">撤回</a>
                   {% endif %}
                 </td>
               </tr>

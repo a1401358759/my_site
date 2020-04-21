@@ -49,6 +49,7 @@
                 <th>音乐封面</th>
                 <th>演唱者</th>
                 <th>创建时间</th>
+                <th>最后更新时间</th>
               </tr>
             </thead>
             <tbody>
@@ -58,9 +59,10 @@
                 <td><input type="checkbox" name="item_ids" value="{{ item.id }}"/></td>
                 <td>{{ item.name }}</td>
                 <td data-toggle="tooltip" data-placement="bottom" title="{{ item.url }}">{{ item.url|slice:"30" }}</td>
-                <td data-toggle="tooltip" data-placement="bottom" title="{{ item.cover }}">{{ item.cover|slice:"30" }}</td>
+                <td><a i="{{ item.cover }}" class="Slide One"><img height="30px" width="60px" src="{{ item.cover }}" alt="{{ item.cover }}"></a></td>
                 <td>{{ item.artist }}</td>
                 <td>{{ item.created_time|date:'Y-m-d H:i' }}</td>
+                <td>{{ item.last_update|date:'Y-m-d H:i' }}</td>
               </tr>
               {% endfor %}
               </form>
