@@ -7,17 +7,9 @@ new Valine({
   avatar:'mp',
   placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
   visitor: true,
-  emojiCDN: '/static/plugins/jQuery-emoji/images/emoji/qq/',
-  emojiMaps: {
-  }
-});
-
-// jquery emoji 初始化
-jQuery(".veditor").emoji({
-  showTab: true,
-  animation: 'slide',
-  basePath: '/static/plugins/jQuery-emoji/images/emoji',
-  icons: emojiLists  // 注：详见 js/emoji.list.js
+  // emojiCDN: '/static/plugins/jQuery-emoji/images/emoji/qq/',
+  // emojiMaps: {
+  // }
 });
 
 var tur = true;

@@ -2366,47 +2366,6 @@ video {
 }
 
 /* Valine */
-.valine .vlist .vcard .vcomment-body .vavatar {
-  margin-top: -0.5em!important;
-}
-.valine .vinputs-area .vextra-area .vsmile-icons {
-  padding: 1em 0!important;
-  max-height: 10em!important;
-}
-.valine .vlist .vcard .vcomment-body {
-  border-top: 1px solid rgba(150, 150, 150, 0.1)!important;
-}
-.valine .vinputs-area .vextra-area .vsmile-icons img {
-  margin: 4px!important;
-}
-.valine .vlist .vcard .vhead .vname {
-  color: #1abc9c!important;
-}
-.valine .vlist .vcard .vhead .vtime {
-  color: #ccc!important;
-}
-.v .vlist .vcard .vhead .vsys {
-  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif!important;
-}
-.vcomment a {
-  color: #4381fd!important;
-}
-.v .vwrap .vedit .vctrl {
-  display: none;
-}
-.v .vwrap .vcontrol .col.col-80 {
-  width: 100%!important;
-}
-.v .vwrap .vcontrol .col.col-20 {
-  display: none;
-}
-.v .vbtn {
-  margin-top: -15px!important;
-}
-.vcontent p {
-  font-size: 14px;
-  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-}
 #veditor {
   background-image: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/comment-bg.png);
   background-size: contain;
