@@ -144,15 +144,6 @@ $(function () {
       jQuery("#reward_modal").modal('show');
     }
 
-    // 导航栏选中高亮
-    // jQuery(document).ready(function(){
-    //   jQuery(".nav a").each(function(){
-    //     $this = jQuery(this);
-    //     if($this[0].href==String(window.location)){
-    //       $this.css({"color": "#ea6f5a"});
-    //     }
-    //   });
-    // });
     (function(){
       // 百度统计
       if (location.hostname.indexOf('yangsihan.com') > -1) {
@@ -164,11 +155,6 @@ $(function () {
           s.parentNode.insertBefore(hm, s);
         })();
       }
-      // 360推送收录
-      (function(){
-        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc":"https://jspassport.ssl.qhimg.com/11.0.1.js?a44de98db818922042875e66a7a7a9fc";
-        document.write('<script src="' + src + '" id="sozz"><\/script>');
-      })();
     })();
   </script>
   <!-- activate-power-mode -->

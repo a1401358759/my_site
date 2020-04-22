@@ -7,26 +7,33 @@ new Valine({
   avatar:'mp',
   placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
   visitor: true,
-  // emojiCDN: 'https://emoji.yangsihan.com/',
-  // emojiMaps: {
-  //   '133': '133.png'
-  // }
+  emojiCDN: '/static/plugins/jQuery-emoji/images/emoji/qq/',
+  emojiMaps: {
+  }
 });
 
+// jquery emoji 初始化
+jQuery(".veditor").emoji({
+  showTab: true,
+  animation: 'slide',
+  basePath: '/static/plugins/jQuery-emoji/images/emoji',
+  icons: emojiLists  // 注：详见 js/emoji.list.js
+});
+
+var tur = true;
 function parse_emoji() {
   jQuery(".vcontent").emojiParse({
     basePath: '/static/plugins/jQuery-emoji/images/emoji',
     icons: emojiLists   // 注：详见 js/emoji.list.js
   });
+  tur = true;
 }
 
-setTimeout(function() {
-  // jQuery emoji 解析
-  parse_emoji();
+window.onscroll = function(){
+  if (tur) { setTimeout(parse_emoji, 100); tur = false;
+  } else { }
+}
 
-  jQuery(".vmore").on("click", function() {
-    setTimeout(function() {
-      parse_emoji();
-    }, 500);
-  });
-}, 800)
+jQuery(".vmore").on("click", function() {
+  setTimeout(parse_emoji, 100);
+});
