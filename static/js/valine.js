@@ -7,11 +7,11 @@ new Valine({
   avatar:'mp',
   placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
   visitor: true,
-  // emojiCDN: '/static/plugins/jQuery-emoji/images/emoji/qq/',
-  // emojiMaps: {
-  // }
+  emojiCDN: ' ',
+  emojiMaps: emojiMaps
 });
 
+// 解析jQuery-emoji表情
 var tur = true;
 function parse_emoji() {
   jQuery(".vcontent").emojiParse({
