@@ -268,12 +268,14 @@ def message(request):
 
 
 def love(request):
+    from django.contrib.auth import authenticate
+
     name = request.POST.get('name')
     pw = request.POST.get('pw')
-    if name == 'maomao' and pw == 'nn':
-        return render(request, 'blog/love.html')
-    else:
-        return render(request, 'blog/404.html')
+    user = authenticate(username=name, password=pw)
+    if not user:
+        return render(request, "blog/404.html")
+    return render(request, "blog/love.html")
 
 
 @require_GET

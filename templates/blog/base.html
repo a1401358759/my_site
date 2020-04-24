@@ -89,7 +89,8 @@ $(function () {
         <div class="social-icons hidden-xs hidden-sm">
           <a href="https://github.com/a1401358759" target="_blank"><i class="fa fa-github"></i></a>
           <a href="javascript:;" onclick="verify_user()"><i class="fa fa-heart"></i></a>
-          <a href="{% url 'my_resume' %}" target="_blank"><i class="fa fa-user"></i></a>
+          <a href="https://monitor.yangsihan.com/" target="_blank"><i class="fa fa-bell"></i></a>
+          <!--<a href="{% url 'my_resume' %}" target="_blank"><i class="fa fa-user"></i></a>-->
           <a href="{% url 'RSS' %}" target="_blank"><i class="fa fa-rss"></i></a>
         </div>
       </div>
@@ -132,10 +133,9 @@ $(function () {
       audio: {{ music_list|safe }}
     });
   </script>
-  <!-- 粒子吸附效果 -->
-  <!-- <script type="text/javascript" color="0,0,255" opacity='1' zIndex="0" count="200" src="/static/js/canvas-nest.js"></script> -->
   <script type="text/javascript">
     function verify_user(){
+      jQuery('#verify_user_form')[0].reset();
       jQuery("#verify_user").modal('show');
     }
 
@@ -164,5 +164,8 @@ $(function () {
     POWERMODE.shake = false; // turn off shake
     document.body.addEventListener('input', POWERMODE);
   </script>
+  <!-- 彩带 -->
+  <script id="ribbon" size="100" alpha='0.3' zIndex="-2" src="/static/js/ribbon.min.js"></script>
+  <script id="ribbon_piao" src="/static/js/piao.min.js"></script>
 </body>
 </html>
