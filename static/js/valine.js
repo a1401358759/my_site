@@ -7,6 +7,7 @@ new Valine({
   avatar:'mp',
   placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
   visitor: true,
+  enableQQ: true,
   emojiCDN: ' ',
   emojiMaps: emojiMaps
 });
