@@ -2374,6 +2374,34 @@ video {
   background-color: rgba(255,255,255,0);
   resize: vertical;
 }
+#vcomments .vcards .vhead .vsys {
+  color: #7889c3;
+}
+#vcomments .vwrap .vemojis .vemoji, #vcomments .vwrap .vpreview .vemoji {
+  max-height: 22px !important;
+  max-width: 45px !important;
+}
+#vcomments .vcards .vcontent .vemoji {
+  max-height: 24px !important;
+  max-width: 50px !important;
+}
+#vcomments .vcards .vmeta .vat {
+  font-weight: 700;
+  color: #2196f3;
+}
+#vcomments .vcards .vhead a.vnick, .v[data-class=v] .vcards .vcard .vhead .vnick {
+  color: #ff9800;
+  font-weight: 700;
+}
+#vcomments .vcards .vcontent a {
+  color: #2196f3;
+  line-height: inherit;
+}
+#vcomments .vwrap {
+  border-radius: 8px;
+  border-style: dashed;
+  border: 1px dashed rgba(85,85,85,.3);
+}
 /* valine样式 */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
