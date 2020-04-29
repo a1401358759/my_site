@@ -9,7 +9,9 @@ new Valine({
   visitor: true,
   enableQQ: true,
   emojiCDN: ' ',
-  emojiMaps: emojiMaps
+  emojiMaps: emojiMaps,
+  tagMeta: ['博主', '', ''],
+  master: ['165de1e1c5d38358083e2c6dc8fe2886'],  // gravatar头像hash
 });
 
 // 解析jQuery-emoji表情
