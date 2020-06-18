@@ -2378,7 +2378,7 @@ video {
   color: #7889c3;
 }
 #vcomments .vwrap .vemojis .vemoji, #vcomments .vwrap .vpreview .vemoji {
-  max-height: 22px !important;
+  max-height: 25px !important;
   max-width: 45px !important;
 }
 #vcomments .vcards .vcontent .vemoji {

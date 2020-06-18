@@ -8,7 +8,7 @@ new Valine({
   placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
   visitor: true,
   enableQQ: true,
-  emojiCDN: ' ',
+  emojiCDN: 'https://valinecdn.bili33.top/',
   emojiMaps: emojiMaps,
   tagMeta: ['博主', '', ''],
   master: ['165de1e1c5d38358083e2c6dc8fe2886'],  // gravatar头像hash
