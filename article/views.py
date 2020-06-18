@@ -283,6 +283,11 @@ def my_resume(request):
     return render(request, 'resume/my_resume.html')
 
 
+@require_GET
+def tool_box(request):
+    return render(request, 'tools/tool_list.html')
+
+
 def links(request):
     """
     友情链接

@@ -21,6 +21,7 @@ urlpatterns = [
     re_path(r'^articleTag/(?P<tag>\w+)/$', views.tagDetail, name="tagDetail"),  # 每个标签页下面的文章
     re_path(r'^love/?$', views.love),
     re_path(r'^my-resume/?$', views.my_resume, name='my_resume'),  # 简历
+    re_path(r'^tools/?$', views.tool_box, name='tool_box'),  # 工具
     re_path(r'^upload/$', views.upload_file, name='upload_file'),
     re_path(r'^upload-rich/$', views.upload_rich_file, name='upload_rich_file'),
     re_path(r'^add-comments/$', views.add_comments_view, name='add_comments'),
