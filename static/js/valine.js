@@ -14,6 +14,24 @@ new Valine({
   master: ['165de1e1c5d38358083e2c6dc8fe2886'],  // gravatar头像hash
 });
 
+// 解决valine-admin云引擎唤醒失败
+var engine = document.cookie.replace(/(?:(?:^|.*;\s*)engine\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+if(engine!='1') {
+  fetch('https://quan.suning.com/getSysTime.do')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(date) {
+    var hours = new Date(date.sysTime2).getHours();
+    if(hours>7 && hours<23){
+      fetch('https://daniel.avosapps.us');
+      var exp = new Date(date.sysTime2);
+      exp.setTime(exp.getTime() + 20*60*1000);
+      document.cookie = "engine=1;path=/;expires="+ exp.toGMTString();
+    }
+  })
+}
+
 // 解析jQuery-emoji表情
 var tur = true;
 function parse_emoji() {
