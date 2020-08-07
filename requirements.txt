@@ -3,7 +3,7 @@ appnope==0.1.0
 certifi==2017.11.5
 chardet==3.0.4
 decorator==4.1.2
-Django==3.0.8
+Django==3.1
 django-appconf==1.0.1
 django-crontab==0.7.1
 django-staticfiles==1.2.1
@@ -27,7 +27,7 @@ traitlets==4.3.2
 urllib3==1.25.9
 wcwidth==0.1.7
 django-bootstrap-pagination==1.7.1
-qiniu==7.2.8
+qiniu==7.2.9
 aliyun-python-sdk-core==2.13.1
 aliyun-python-sdk-kms==2.5.0
 oss2==2.5.0
@@ -38,4 +38,4 @@ django-redis==4.11.0
 redis==3.5.1
 supervisor==4.2.0
 kombu==4.6.8
-mysqlclient==1.4.6
+mysqlclient==2.0.1
