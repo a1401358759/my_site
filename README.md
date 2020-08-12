@@ -1,4 +1,4 @@
-> 当前项目所使用环境：Python3.6.8，Django3.0.8
+> 当前项目所使用环境：Python3.6.8，Django3.1
 
 # 项目介绍
 
@@ -33,7 +33,7 @@ sudo apt-get update  # 检查是否有可用更新
 sudo apt-get upgrade  # 应用更新
 sudo apt-get install python3-pip  # 以下为安装相关依赖包
 sudo apt-get install locales
-sudo apt-get install libmysqlclient-dev
+sudo apt-get install default-libmysqlclient-dev
 sudo apt-get install python3-mysqldb
 sudo apt-get install libssl-dev
 sudo apt-get install libcrypto++-dev
