@@ -20,14 +20,14 @@ body {
 }
 
 /* 页面全部变灰 */
-/*html {
+html {
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
   filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
-}*/
+}
 
 /*a:hover{
   cursor: url("/static/css/arr105.png"), pointer;
