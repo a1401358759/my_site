@@ -655,25 +655,42 @@ def add_carousel_view(request):
         messages.error(request, "</br>".join(form_error(form)))
         return HttpResponseRedirect(reverse('carousel_list'))
     try:
+        img_path = ''
         filestream = request.FILES.get('path')
-        key, img_path = upload_data(filestream, 'blog')
+        if filestream:
+            _, img_path = upload_data(filestream, 'blog')
         img_type = int(form.cleaned_data.get('img_type'))
-        CarouselImg.objects.create(
-            name=form.cleaned_data.get('name'),
-            description=form.cleaned_data.get('description'),
-            path=img_path,
-            link=form.cleaned_data.get('link'),
-            weights=form.cleaned_data.get('weights'),
-            img_type=img_type,
-        )
-        messages.success(request, '添加成功')
+        edit_id = request.POST.get('edit_id')
+
+        if not edit_id:
+            CarouselImg.objects.create(
+                name=form.cleaned_data.get('name'),
+                description=form.cleaned_data.get('description'),
+                path=img_path,
+                link=form.cleaned_data.get('link'),
+                weights=form.cleaned_data.get('weights'),
+                img_type=img_type,
+            )
+            messages.success(request, '添加成功')
+        else:
+            data = {
+                'name': form.cleaned_data.get('name'),
+                'description': form.cleaned_data.get('description'),
+                'link': form.cleaned_data.get('link'),
+                'weights': form.cleaned_data.get('weights'),
+                'img_type': img_type,
+            }
+            if img_path:
+                data['path'] = img_path
+            CarouselImg.objects.filter(id=edit_id).update(**data)
+            messages.success(request, '编辑成功')
         if img_type == CarouselImgType.BANNER:
             cache.delete_pattern('tmp_carouse_imgs')  # 清除缓存
         elif img_type == CarouselImgType.ADS:
             cache.delete_pattern('tmp_ads_imgs')  # 清除缓存
         return HttpResponseRedirect(reverse('carousel_list'))
     except Exception as e:
-        messages.error(request, '添加失败: %s' % e)
+        messages.error(request, '操作失败: %s' % e)
         return HttpResponseRedirect(reverse('carousel_list'))
 
 

@@ -51,6 +51,7 @@
                 <th>图片预览</th>
                 <th>创建时间</th>
                 <th>最后更新时间</th>
+                <th>操作</th>
               </tr>
             </thead>
             <tbody>
@@ -65,6 +66,11 @@
                 <td><a i="{{ item.path }}" class="Slide One"><img height="30px" width="60px" src="{{ item.path }}" alt="{{ item.description }}"></a></td>
                 <td>{{ item.created_time|date:'Y-m-d H:i' }}</td>
                 <td>{{ item.last_update|date:'Y-m-d H:i' }}</td>
+                <td>
+                  <a class="btn btn-sm btn-info" href="javascript:;"
+                    onclick="edit_modal_show('{{ item.id }}', '{{ item.name }}', '{{ item.link }}', '{{ item.description }}', '{{ item.weights }}', '{{ item.img_type }}')"> 编辑
+                  </a>
+                </td>
               </tr>
               {% endfor %}
               </form>
@@ -139,6 +145,70 @@
         <!-- /.modal-dialog -->
       </div>
 
+      <!-- edit Modal -->
+      <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myLargeModalLabel">编辑轮播图片</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="{% url 'carousel_add' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="edit_id" id="edit_id">
+              <div class="modal-body">
+                <div class="form-group">
+                  <h5>图片名称 <span class="text-danger">*</span></h5>
+                  <div class="controls">
+                    <input name="name" id="edit_name" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>图片 <span class="text-danger">*</span></h5>
+                  <div class="controls">
+                    <input name="path" class="form-control" type="file">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>图片外链 <span class="text-danger"></span></h5>
+                  <div class="controls">
+                    <input name="link" id="edit_link" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>图片介绍 <span class="text-danger">*</span></h5>
+                  <div class="controls">
+                    <input name="description" id="edit_description" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <h5>图片类型 <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                      <select name="img_type" id="edit_img_type" class="form-control">
+                        {% for item in image_types %}
+                          <option value="{{ item.0 }}">{{ item.1 }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                <div class="form-group">
+                  <h5>图片权重 <span class="text-danger">*</span></h5>
+                  <div class="controls">
+                    <input name="weights" id="edit_weights" class="form-control" type="number" value="10">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-inverse" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-success">提交</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- del modal -->
       <div id="del_carousel_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -173,6 +243,18 @@
 
   // 反选和全选
   select_and_reverse();
+
+  // 编辑轮播图片
+  function edit_modal_show(item_id, name, link, description, weights, img_type) {
+    $("#edit_id").val(item_id);
+    $("#edit_name").val(name);
+    $("#edit_link").val(link);
+    $("#edit_description").val(description);
+    $("#edit_weights").val(weights);
+    $("#edit_img_type").val(img_type);
+    $('#editModal #myLargeModalLabel').text('编辑轮播图片');
+    $("#editModal").modal('show');
+  }
 
   // 删除模态框
   function del_modal_show() {

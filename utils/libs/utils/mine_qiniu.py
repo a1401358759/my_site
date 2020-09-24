@@ -10,7 +10,9 @@ secret_key = 'VPLtQM3lwp9arR8qMeVSFKelQWO2tXpeC_yLAdo5'
 domain_prefix = 'https://img.yangsihan.com/'
 
 
-def upload_data(filestream, bucket_name):
+def upload_data(filestream, bucket_name='blog'):
+    if not filestream:
+        return '', ''
     # 生成上传凭证
     q = Auth(access_key, secret_key)
     suffix = filestream.name.split('.')[-1]  # 后缀(jpg, png, gif)
