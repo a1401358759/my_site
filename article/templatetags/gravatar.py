@@ -14,7 +14,8 @@ register = template.Library()
 @register.filter
 def gravatar_url(email, size=40):
     styles = ['identicon', 'monsterid', 'wavatar']
-    url = 'https://www.gravatar.com/avatar/{}?s={}&d={}'.format(hashlib.md5(email.lower()).hexdigest(), size, random.choice(styles))
+    hash_email = hashlib.md5(email.lower()).hexdigest()
+    url = f'https://www.gravatar.com/avatar/{hash_email}?s={size}&d={random.choice(styles)}'
     return url
 
 # return an image tag with the gravatar

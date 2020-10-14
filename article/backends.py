@@ -133,9 +133,6 @@ def get_cache_comments(key):
 
 def gravatar_url(email, size=40):
     styles = ['identicon', 'monsterid', 'wavatar']
-    url = 'https://www.gravatar.com/avatar/{}?s={}&d={}'.format(
-        hashlib.md5(email.lower().encode("utf-8")).hexdigest(),
-        size,
-        random.choice(styles)
-    )
+    hash_email = hashlib.md5(email.lower().encode("utf-8")).hexdigest()
+    url = f'https://www.gravatar.com/avatar/{hash_email}?s={size}&d={random.choice(styles)}'
     return url
