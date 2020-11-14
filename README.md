@@ -141,3 +141,6 @@ supervisord -c etc/supervisor.conf
 2. QQ: 1401358759
 
 **本人博客地址:** [我的博客](http://www.yangsihan.com)
+
+# 致谢
+开发工具由 [Jetbrains <img src="https://img.yangsihan.com/jetbrains-variant-3.png" height="30px" width="30px">](https://www.jetbrains.com/?from=my_site)赞助的 Pycharm
