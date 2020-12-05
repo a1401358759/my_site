@@ -25,7 +25,7 @@
 .codehilite .kr { color: #000000; font-weight: bold } /* Keyword.Reserved */
 .codehilite .kt { color: #445588; font-weight: bold } /* Keyword.Type */
 .codehilite .m { color: #009999 } /* Literal.Number */
-.codehilite .s { color: #d01040 } /* Literal.String */
+.codehilite .s { color: #d01040; padding: 0px 0px 0px 0px!important } /* Literal.String */
 .codehilite .na { color: #008080 } /* Name.Attribute */
 .codehilite .nb { color:#f92672 } /* Name.Builtin */
 .codehilite .nc { color: #88AE35; font-weight: bold } /* Name.Class */
