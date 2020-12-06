@@ -402,7 +402,8 @@ h6 {
   line-height: inherit;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  /*font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;*/
+  font-family: cursive;
 }
 .widget>ul>li>a:hover {
   color: #66ab27;
@@ -2301,6 +2302,8 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   line-height: 1.42857143;
   vertical-align: middle !important;
   border-top: 1px solid #eee;
+  font-size: 14px;
+  font-family: cursive;
 }
 th[align*="center"],
 tr[align*="center"] {
@@ -2352,6 +2355,7 @@ a:focus {
   padding: 5px 10px;
   margin-bottom: 5px;
   color: #fff;
+  font-family: cursive;
 }
 
 #tag_cloud a:hover {
