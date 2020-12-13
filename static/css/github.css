@@ -61,15 +61,15 @@
 .codehilite .vi { color: #008080 } /* Name.Variable.Instance */
 .codehilite .il { color: #009999 } /* Literal.Number.Integer.Long */
 .codehilite span {
-  font-family: "Consolas"!important;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace!important;
 }
 .codehilite p {
-  font-family: "Consolas"!important;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace!important;
 }
 pre.line-numbers {
   background: #f9f9f9;
   border: 1px solid #f0f0f0;
-  font-family: "Source Code Pro",Consolas,Menlo,Monaco,"Courier New",monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 14px;
   line-height: 1.5;
   overflow: auto;
