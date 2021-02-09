@@ -18,6 +18,7 @@ class Author(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "文章作者"
+        db_table = "author"
 
 
 class OwnerMessage(models.Model):
@@ -32,6 +33,7 @@ class OwnerMessage(models.Model):
 
     class Meta:
         verbose_name_plural = "主人寄语"
+        db_table = "owner_message"
 
 
 class TagManager(models.Manager):
@@ -58,6 +60,7 @@ class Tag(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "文章标签"
+        db_table = "tag"
 
 
 class ClassManager(models.Manager):
@@ -82,6 +85,7 @@ class Classification(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "文章分类"
+        db_table = "classification"
 
 
 class ArticleManager(models.Model):
@@ -192,6 +196,7 @@ class Article(models.Model):  # 文章
     class Meta:
         ordering = ['-id']
         verbose_name_plural = "博文管理"
+        db_table = "article"
 
 
 class Links(TimeModelMixin):
@@ -210,6 +215,7 @@ class Links(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "友情链接"
+        db_table = "links"
 
 
 class CarouselImg(TimeModelMixin):
@@ -228,6 +234,7 @@ class CarouselImg(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "轮播管理"
+        db_table = "carousel_img"
 
 
 class Music(TimeModelMixin):
@@ -245,6 +252,7 @@ class Music(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "背景音乐"
+        db_table = "music"
 
 
 class Subscription(TimeModelMixin):
@@ -255,6 +263,7 @@ class Subscription(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "邮件订阅"
+        db_table = "subscription"
 
 
 class Visitor(TimeModelMixin):
@@ -269,6 +278,7 @@ class Visitor(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "访客管理"
+        db_table = "visitor"
 
 
 class Comments(TimeModelMixin):
@@ -291,3 +301,4 @@ class Comments(TimeModelMixin):
 
     class Meta:
         verbose_name_plural = "评论管理"
+        db_table = "comment"
