@@ -19,6 +19,7 @@ from utils.libs.utils.mine_qiniu import upload_data
 from utils.libs.utils.lbs import get_location_by_ip
 from utils.send_email import MailTemplate
 from utils.errorcode import ERRORCODE
+from utils.common import form_error
 from config.common_conf import DOMAIN_NAME, BLOGGER_EMAIL
 from article.models import Article, Classification, OwnerMessage, Tag, Visitor, Comments
 from article.constants import BlogStatus, EditorKind, CarouselImgType
@@ -308,7 +309,7 @@ def add_comments_view(request):
     """
     form = CommentForm(request.POST)
     if not form.is_valid():
-        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR)
+        return http_response(request, statuscode=ERRORCODE.PARAM_ERROR, msg_cn="</br>".join(form_error(form)))
 
     nickname = form.cleaned_data.get('nickname')
     email = form.cleaned_data.get('email')
