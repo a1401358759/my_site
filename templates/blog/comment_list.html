@@ -11,7 +11,7 @@
         <img src="{{ comment.user.avatar }}" style="border:1px solid #eee; border-radius:50%; padding: 5px;">
         <span>
           <strong style="margin-right:5px; font-size:15px;">
-            <a href="{{ comment.user.website }}" target="_blank" style="color:#1abc9c;">
+            <a href="{{ comment.user.website|default_if_none:'' }}" target="_blank" style="color:#1abc9c;">
               {{ comment.user.nickname }}
             </a>
             {% if comment.user.blogger %}
