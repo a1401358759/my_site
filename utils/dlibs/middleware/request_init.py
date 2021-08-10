@@ -36,9 +36,12 @@ class RequestInitMiddleware(BaseMiddleCls):
                 # application/x-www-form-urlencoded 时不处理request.body
                 elif request.META['CONTENT_TYPE'] == 'application/x-www-form-urlencoded':
                     pass
-                # xml or json 时不处理request.body
-                elif request.body.startswith(b"<") or request.body.startswith(b"{") or request.body.startswith(b"["):
+                # xml 时不处理request.body
+                elif request.body.startswith(b"<"):
                     pass
+                elif request.body.startswith(b"{") or request.body.startswith(b"["):
+                    if request.body:
+                        request.parameters.update(QueryDict(request.body, encoding='utf-8'))
                 # 其他情况更新request.body内的query_string到request.parameters
                 elif b'=' in request.body:
                     request.parameters.update(QueryDict(request.body, encoding='utf-8'))
