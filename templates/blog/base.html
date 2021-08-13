@@ -136,14 +136,14 @@ $(function () {
   </div>
   {% include "blog/verify_user.html" %}
 
-  <script type="text/javascript">
+  <!--<script type="text/javascript">
     const ap = new APlayer({
       container: document.getElementById('player'),
       fixed: true,
       volume: 0.5,
       audio: {{ music_list|safe }}
     });
-  </script>
+  </script>-->
   <script type="text/javascript">
     function verify_user(){
       jQuery('#verify_user_form')[0].reset();
