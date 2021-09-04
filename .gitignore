@@ -8,3 +8,4 @@ dump.rdb
 .qiniu_pythonsdk_hostscache.json
 celerybeat-schedule.db
 .vscode
+.env

@@ -15,8 +15,14 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 from __future__ import absolute_import
 import os
 from django.utils.termcolors import colorize
+from utils.config import (
+    MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD,
+    REDIS_HOST, REDIS_PORT
+)
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -25,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'p-2_9jdgcawck*piav1d(kq-!((g#8#riop01(^5ilnl6f(ram'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', True)
 ALLOWED_HOSTS = ['*']
 LOGIN_URL = '/manager/login/'
 
@@ -67,11 +73,11 @@ DATABASES = {
     'default': {
         'CONN_MAX_AGE': 3600,
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my-site',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': MYSQL_DATABASE,
+        'USER': MYSQL_USER,
+        'PASSWORD': MYSQL_PASSWORD,
+        'HOST': MYSQL_HOST,
+        'port': MYSQL_PORT,
         'TEST': {
             'CHARSET': 'utf8mb4',
             'COLLATION': 'utf8mb4_general_ci'
@@ -90,7 +96,7 @@ SESSION_COOKIE_AGE = 24 * 60 * 60  # 当上例为False时，此项生效，单�
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',  # django-redis==4.11.0支持Django3.0+
-        'LOCATION': 'redis://172.17.0.1:6380/1',
+        'LOCATION': f'redis://{REDIS_HOST}:{REDIS_PORT}/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             'PASSWORD': '',
@@ -134,17 +140,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-
-LANGUAGES = (
-    ('en', ('English')),
-    ('zh-hans', ('中文简体')),
-    # ('zh-hant', ('中文繁體')),
-)
-
-# 翻译文件所在目录，需要手工创建
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
-)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -226,10 +221,3 @@ LOGGING = {
         },
     }
 }
-
-# import local settings
-try:
-    from .local_settings import *
-    print(colorize(text='local_settings imported.', fg='yellow'))
-except ImportError:
-    pass
