@@ -1,5 +1,6 @@
 *.pyc
-logs
+logs/*
+!logs/empty
 .idea
 my_site/*.pyc
 my_site/local_settings.py
