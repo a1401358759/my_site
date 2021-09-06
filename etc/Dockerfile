@@ -6,23 +6,23 @@ RUN sed -i s@/deb.debian.org/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.
     sed -i s@/security.debian.org/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
     vim \
-    cron \
-    gcc \
-    procps \
-    wget \
+    python3-pip \
+    python3-mysqldb \
+    libssl-dev \
+    libcrypto++-dev \
+    default-libmysqlclient-dev \
+    python3.7-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./requirements.txt ./
-
-RUN pip3 install --upgrade pip --index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
-    pip3 install -r requirements.txt --no-cache-dir
+RUN pip3 install --upgrade pip --index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 COPY . /app/
 
-RUN chmod +x /app/run.sh
+RUN chmod +x /app/etc/run.sh
+RUN chmod +x /app/etc/control.sh && ln -s /app/etc/control.sh /bin/control
+RUN chmod +x /app/etc/supervisor-control.sh && ln -s /app/etc/supervisor-control.sh /bin/control
 
 EXPOSE 8000
 

@@ -1,15 +1,54 @@
-version: '3'
+version: "3"
+
 services:
-    my_site:
-        image: ubuntu-django:1.0
-        container_name: my_site
-        restart: always
-        volumes:
-            - /home/data/docker/my_site/project:/opt/django/project
-            - /home/data/docker/my_site/logs:/opt/django/logs
-            - /home/data/docker/my_site/venv:/opt/django/venv
-            - /root/.ssh:/root/.ssh
-        sysctls:
-            - net.core.somaxconn=100
-        ports:
-            - "9000:8000"
+  my_site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my_site:1.0.0
+    container_name: my_site
+    restart: always
+    volumes:
+      - .:/app
+    expose:
+      - "8000"
+    sysctls:
+      - net.core.somaxconn=100
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_HOST=my_site_db
+      - REDIS_HOST={REDIS_HOST}
+      - REDIS_PORT={REDIS_PORT}
+    depends_on:
+      - my_site_db
+
+  my_site_db:
+    image: mysql:8.0.26
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: my_site_db
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_volume:/var/lib/mysql
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_DATABASE=my_site
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+
+  my_site_nginx:
+    restart: always
+    container_name: my_site_nginx
+    image: nginx:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./etc/blog.conf:/etc/nginx/conf.d/blog.conf
+    depends_on:
+      - my_site
+
+volumes:
+  db_volume:
+    driver: local
