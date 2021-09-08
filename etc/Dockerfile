@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl-dev \
     libcrypto++-dev \
     default-libmysqlclient-dev \
-    python3.7-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -22,8 +21,7 @@ COPY . /app/
 
 RUN chmod +x /app/etc/run.sh
 RUN chmod +x /app/etc/control.sh && ln -s /app/etc/control.sh /bin/control
-RUN chmod +x /app/etc/supervisor-control.sh && ln -s /app/etc/supervisor-control.sh /bin/control
 
 EXPOSE 8000
 
-CMD ["sh", "/app/run.sh"]
+CMD ["sh", "/app/etc/run.sh"]
