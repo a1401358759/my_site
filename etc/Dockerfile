@@ -6,7 +6,9 @@ RUN sed -i s@/deb.debian.org/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.
     sed -i s@/security.debian.org/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
     vim \
+    ssh-client \
     python3-pip \
     python3-mysqldb \
     libssl-dev \

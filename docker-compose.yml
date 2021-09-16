@@ -29,7 +29,7 @@ services:
     container_name: mysql
     restart: always
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - db_volume:/var/lib/mysql
     environment:
@@ -43,7 +43,7 @@ services:
     restart: always
     image: redis:latest
     ports:
-      - "6379:6379"
+      - "6380:6379"
     volumes:
       - redis_data:/data
 
