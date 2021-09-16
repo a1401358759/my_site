@@ -9,6 +9,7 @@ services:
     container_name: my_site
     restart: always
     volumes:
+      - /root/.ssh:/root/.ssh
       - .:/app
     ports:
       - "8000:8000"
