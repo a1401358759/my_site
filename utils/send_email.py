@@ -2,6 +2,8 @@
 
 import smtplib
 from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
 
 
 class MailTemplate(object):
@@ -57,14 +59,26 @@ class SendEmailClient(object):
         self.sender = 'yxfblog@qq.com'  # 发送方邮箱
         self.mail_pass = 'xeaxnhwlgdchiaee'  # 邮箱密码或授权码
 
-    def send_email(self, subject, receivers, mail_body):
+    def send_email(self, subject, receivers, mail_body, filepath=None):
         """
         subject: str 邮件主题，
         receivers: list 邮件接收人，
         mail_body: html 邮件内容
         """
-        # 邮件内容设置
-        message = MIMEText(mail_body, _subtype='html', _charset='utf-8')
+        if filepath:
+            message = MIMEMultipart()
+            # 构建正文
+            part_text = MIMEText(mail_body, _subtype='html', _charset='utf-8')
+            # 把正文加到邮件体里面去
+            message.attach(part_text)
+            # 构建邮件附件
+            part_attach = MIMEApplication(open(filepath, 'rb').read())  # 打开附件
+            filename = filepath.split("/")[-1]
+            part_attach.add_header('Content-Disposition', 'attachment', filename=filename)  # 为附件命名
+            message.attach(part_attach)  # 添加附件
+        else:
+            message = MIMEText(mail_body, _subtype='html', _charset='utf-8')  # 邮件内容
+
         message['Subject'] = subject  # 邮件主题
         message['From'] = self.send_user  # 发送方信息
         message['To'] = ','.join(receivers)  # 接受方信息
