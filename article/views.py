@@ -319,7 +319,11 @@ def add_comments_view(request):
     parent_comment_id = form.cleaned_data.get('parent_comment_id')
 
     try:
-        user, created = Visitor.objects.update_or_create(
+        ip_address = get_clientip(request)
+        if ip_address in cache:
+            return http_response(request, statuscode=ERRORCODE.FAILED, msg_cn='您刚提交过评论，请稍后再提交！')
+
+        user, _ = Visitor.objects.update_or_create(
             nickname=nickname,
             email=email,
             defaults={
@@ -329,7 +333,6 @@ def add_comments_view(request):
                 "avatar": gravatar_url(email)
             }
         )
-        ip_address = get_clientip(request)
         country, province, city = get_location_by_ip(ip_address)
         anchor = ''.join(random.sample(string.ascii_lowercase + string.digits, 16))
         comment_data = {
@@ -366,6 +369,8 @@ def add_comments_view(request):
                 anchor='#' + anchor
             )
             send_email_task.delay(BLOGGER_EMAIL, mail_body)
+        # 添加缓存，记录评论IP，防止频繁评论
+        cache.set(ip_address, str(datetime.now()), 60)
         return http_response(request, statuscode=ERRORCODE.SUCCESS)
     except Exception as exp:
         return http_response(request, statuscode=ERRORCODE.FAILED, msg=exp)
