@@ -8,6 +8,7 @@ RUN sed -i s@/deb.debian.org/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     vim \
+    gcc \
     ssh-client \
     python3-pip \
     python3-mysqldb \
@@ -21,9 +22,9 @@ RUN pip3 install --upgrade pip --index-url https://pypi.tuna.tsinghua.edu.cn/sim
 
 COPY . /app/
 
-RUN chmod +x /app/etc/run.sh
-RUN chmod +x /app/etc/control.sh && ln -s /app/etc/control.sh /bin/control
+RUN chmod +x /app/run.sh
+# RUN chmod +x /app/etc/control.sh && ln -s /app/etc/control.sh /bin/control
 
-EXPOSE 8000
+EXPOSE 9000
 
-CMD ["sh", "/app/etc/run.sh"]
+CMD ["sh", "/app/run.sh"]

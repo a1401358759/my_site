@@ -1,6 +1,6 @@
 import multiprocessing
 
-bind = '0.0.0.0:8000'  # 绑定ip和端口号
+bind = '0.0.0.0:9000'  # 绑定ip和端口号
 workers = multiprocessing.cpu_count() * 2 + 1  # 进程数
 worker_class = "gevent"
 worker_connections = 2048

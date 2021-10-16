@@ -12,7 +12,7 @@ services:
       - /root/.ssh:/root/.ssh
       - .:/app
     ports:
-      - "8000:8000"
+      - "9000:9000"
     sysctls:
       - net.core.somaxconn=100
     environment:

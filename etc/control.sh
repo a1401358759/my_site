@@ -41,103 +41,103 @@ fi
 
 # 启动celery-worker
 if [ "$1" == "start_celery_worker" ]; then
-    supervisorctl -c etc/supervisor.conf start celery-worker:*
+    supervisorctl -c supervisor.conf start celery-worker:*
     exit
 fi
 
 # 启动celery-beat
 if [ "$1" == "start_celery_beat" ]; then
-    supervisorctl -c etc/supervisor.conf start celery-beat:*
+    supervisorctl -c supervisor.conf start celery-beat:*
     exit
 fi
 
 # 启动celery-flower
 if [ "$1" == "start_celery_flower" ]; then
-    supervisorctl -c etc/supervisor.conf start sep-flower
+    supervisorctl -c supervisor.conf start sep-flower
     exit
 fi
 
 # 启动python-daemon后台任务
 if [ "$1" == "start_python_daemon" ]; then
-    supervisorctl -c etc/supervisor.conf start python-daemon*
+    supervisorctl -c supervisor.conf start python-daemon*
     exit
 fi
 
 # 启动所有supervisor任务
 if [ "$1" == "start_all" ]; then
-    supervisorctl -c etc/supervisor.conf start all
+    supervisorctl -c supervisor.conf start all
     exit
 fi
 
 # 重启supervisord,重新加载篇配置文件
 if [ "$1" == "restart_supervisord" ]; then
-    supervisorctl -c etc/supervisor.conf reload
+    supervisorctl -c supervisor.conf reload
     exit
 fi
 
 # 重启celery-worker
 if [ "$1" == "restart_celery_worker" ]; then
-    supervisorctl -c etc/supervisor.conf restart celery-worker:*
+    supervisorctl -c supervisor.conf restart celery-worker:*
     exit
 fi
 
 # 重启celery-beat
 if [ "$1" == "restart_celery_beat" ]; then
-    supervisorctl -c etc/supervisor.conf restart celery-beat:*
+    supervisorctl -c supervisor.conf restart celery-beat:*
     exit
 fi
 
 # 重启celery-flower
 if [ "$1" == "restart_celery_flower" ]; then
-    supervisorctl -c etc/supervisor.conf restart sep-flower
+    supervisorctl -c supervisor.conf restart sep-flower
     exit
 fi
 
 # 重启python-daemon后台任务
 if [ "$1" == "restart_python_daemon" ]; then
-    supervisorctl -c etc/supervisor.conf restart python-daemon*
+    supervisorctl -c supervisor.conf restart python-daemon*
     exit
 fi
 
 # 重启所有supervisor任务
 if [ "$1" == "restart_all" ]; then
-    supervisorctl -c etc/supervisor.conf restart all
+    supervisorctl -c supervisor.conf restart all
     exit
 fi
 
 # 停止celery-worker
 if [ "$1" == "stop_celery_worker" ]; then
-    supervisorctl -c etc/supervisor.conf stop celery-worker:*
+    supervisorctl -c supervisor.conf stop celery-worker:*
     exit
 fi
 
 # 停止celery-beat
 if [ "$1" == "stop_celery_beat" ]; then
-    supervisorctl -c etc/supervisor.conf stop celery-beat:*
+    supervisorctl -c supervisor.conf stop celery-beat:*
     exit
 fi
 
 # 停止celery-flower
 if [ "$1" == "stop_celery_flower" ]; then
-    supervisorctl -c etc/supervisor.conf stop sep-flower
+    supervisorctl -c supervisor.conf stop sep-flower
     exit
 fi
 
 # 停止python-daemon后台任务
 if [ "$1" == "stop_python_daemon" ]; then
-    supervisorctl -c etc/supervisor.conf stop python-daemon*
+    supervisorctl -c supervisor.conf stop python-daemon*
     exit
 fi
 
 # 停止所有supervisor任务
 if [ "$1" == "stop_all" ]; then
-    supervisorctl -c etc/supervisor.conf stop all
+    supervisorctl -c supervisor.conf stop all
     exit
 fi
 
 # 查看supervisor-status
 if [ "$1" == "view_supervisor_status" ]; then
-    supervisorctl -c etc/supervisor.conf status
+    supervisorctl -c supervisor.conf status
     exit
 fi
 
@@ -145,7 +145,7 @@ fi
 if [ "$1" == "update_restart_all" ]; then
     git pull
     pip3 install -r requirements.txt | grep -v "Requirement already satisfied"
-    supervisorctl -c etc/supervisor.conf restart all
+    supervisorctl -c supervisor.conf restart all
     exit
 fi
 

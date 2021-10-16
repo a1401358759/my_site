@@ -120,7 +120,7 @@ redis-server &  # 此种方法启动redis-server可能有安全隐患，建议�
 4. 使用supervisor启动celery
 
 ```bash
-supervisord -c etc/supervisor.conf
+supervisord -c supervisor.conf
 ```
 
 # 注意事项
