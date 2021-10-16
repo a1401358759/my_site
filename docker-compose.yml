@@ -18,6 +18,10 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=my_site
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - REDIS_HOST=redis
       - REDIS_PORT=${REDIS_PORT}
     depends_on:
