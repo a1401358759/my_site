@@ -11,8 +11,8 @@ services:
     volumes:
       - /root/.ssh:/root/.ssh
       - .:/app
-    ports:
-      - "9000:9000"
+    expose:
+      - "9000"
     sysctls:
       - net.core.somaxconn=100
     environment:
@@ -52,16 +52,16 @@ services:
     volumes:
       - redis_data:/data
 
-  # nginx:
-  #   restart: always
-  #   container_name: nginx
-  #   image: nginx:latest
-  #   ports:
-  #     - "8000:8000"
-  #   volumes:
-  #     - ./etc/blog.conf:/etc/nginx/conf.d/blog.conf
-  #   depends_on:
-  #     - my_site
+  nginx:
+    restart: always
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./etc/blog.conf:/etc/nginx/conf.d/blog.conf
+    depends_on:
+      - my_site
 
 volumes:
   db_volume:
