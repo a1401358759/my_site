@@ -1,8 +1,7 @@
-*.pyc
 logs/*
 !logs/empty
 .idea
-my_site/*.pyc
+**/*.pyc
 my_site/local_settings.py
 dump.rdb
 .qiniu_pythonsdk_hostscache.json
@@ -10,3 +9,8 @@ celery*
 .vscode
 .env
 **/__pycache__
+.editorconfig
+.env.example
+.gitattributes
+LICENSE
+README.md
