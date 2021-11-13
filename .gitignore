@@ -10,3 +10,5 @@ celery*
 .vscode
 .env
 **/__pycache__
+cert/*
+!cert/.empty
