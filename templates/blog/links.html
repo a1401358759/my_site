@@ -107,7 +107,7 @@
       <p>本站信息如下：</p>
       <p>名称：杨学峰博客</p>
       <p>网址：<a href="{% url 'home' %}">https://www.yangsihan.com</a></p>
-      <p>图标：https://www.yangsihan.com/static/css/logo.png</p>
+      <p>图标：https://www.yangsihan.com/static/images/logo.png</p>
       <p>描述：一个Python程序员的博客。记录和分享学习的心得,感悟生活,留住感动,静静寻觅生活的美好。</p>
       <p style="color: red;">
         注意：如需交换链接请在下方留言，留言格式如本站信息，本站会不定时清理违规友链。
@@ -126,8 +126,8 @@
       {% for link in links %}
         <li class="link">
           <div>
-            <a href="{{ link.link }}" target="_blank">
-              <img src="{{ link.avatar|default:'/static/css/default_icon.jpg' }}" />
+            <a href="{{ link.link|default_if_none:'#' }}" target="_blank">
+              <img src="{{ link.avatar|default:'/static/images/default_icon.jpg' }}" />
               <h3>{{ link.name }}</h3>
               <p>{{ link.desc|default:'' }}</p>
               <span class="link_link">{{ link.link|truncatewords_html:5 }}</span>
