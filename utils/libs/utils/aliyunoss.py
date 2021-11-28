@@ -1,6 +1,5 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
 import oss2
+import urllib.parse
 from uuid import uuid4
 from utils.libs.logger.syslogger import SysLogger
 
@@ -116,7 +115,8 @@ class AliyunOssApi(object):
         '''
         if not filename:
             return ''
-        return self.bucket._make_url(self.bucket.bucket_name, filename)
+        url = self.bucket._make_url(self.bucket.bucket_name, filename)
+        return urllib.parse.unquote(url)
 
     def copy_file(self, old_filename, dirs='', path='', prefix='', name='', suffix='', delete_old=True):
         """
