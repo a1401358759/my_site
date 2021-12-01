@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl-dev \
     libcrypto++-dev \
     default-libmysqlclient-dev \
+    gnutls-bin \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
