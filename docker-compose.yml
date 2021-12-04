@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: etc/Dockerfile
-    image: my_site:1.0.0
+    image: registry.cn-beijing.aliyuncs.com/yxf-blog/my_site:1.0.0
     container_name: my_site
     restart: always
     volumes:

@@ -19,7 +19,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --upgrade pip --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+COPY ./requirements.txt ./
+
+RUN pip3 install --upgrade pip --index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
+    pip install -r requirements.txt --no-cache-dir
 
 COPY . /app/
 
