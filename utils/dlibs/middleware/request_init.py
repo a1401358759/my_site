@@ -1,8 +1,8 @@
-# -*- coding: utf-8  -*-
-'''
+"""
 请求初始化预处理：
-    1. GET、POST参数整合到parameters
-'''
+    1. GET、POST参数整合到params
+"""
+import json
 import django
 from django.http import HttpResponseBadRequest, QueryDict
 
@@ -12,6 +12,7 @@ from utils.libs.logger import SysLogger
 if django.VERSION[:3] >= (1, 10, 0):
     # 新版本中,middle需要继承这个类
     from django.utils.deprecation import MiddlewareMixin
+
     BaseMiddleCls = MiddlewareMixin
 else:
     BaseMiddleCls = object
@@ -22,8 +23,9 @@ class RequestInfo(object):
 
 
 class RequestInitMiddleware(BaseMiddleCls):
-    '''请求初始化预处理'''
-
+    """
+    请求初始化预处理
+    """
     def process_request(self, request):
         try:
             # 1. GET参数整合到parameters
@@ -31,17 +33,17 @@ class RequestInitMiddleware(BaseMiddleCls):
             if request.method == "POST":
                 # 2. 处理request.body内的query_string更新到request.parameters
                 # multipart/form-data 时不处理表单里的参数，因为没有经过nginx的参数签名校验，无法保证参数合法性
-                if request.META['CONTENT_TYPE'].startswith('multipart/form-data'):
+                if request.META.get('CONTENT_TYPE') and request.META.get('CONTENT_TYPE').startswith('multipart/form-data'):
                     return None
                 # application/x-www-form-urlencoded 时不处理request.body
-                elif request.META['CONTENT_TYPE'] == 'application/x-www-form-urlencoded':
+                elif request.META.get('CONTENT_TYPE') == 'application/x-www-form-urlencoded':
                     pass
-                # xml 时不处理request.body
+                # xml or json 时不处理request.body
                 elif request.body.startswith(b"<"):
                     pass
                 elif request.body.startswith(b"{") or request.body.startswith(b"["):
                     if request.body:
-                        request.parameters.update(QueryDict(request.body, encoding='utf-8'))
+                        request.parameters.update(json.loads(request.body))
                 # 其他情况更新request.body内的query_string到request.parameters
                 elif b'=' in request.body:
                     request.parameters.update(QueryDict(request.body, encoding='utf-8'))
