@@ -1,3 +1,4 @@
+-i https://pypi.tuna.tsinghua.edu.cn/simple
 Django==3.2.6
 Pygments==2.10.0
 requests==2.26.0
