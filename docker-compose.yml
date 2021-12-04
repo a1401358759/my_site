@@ -9,8 +9,8 @@ services:
     container_name: my_site
     restart: always
     volumes:
-      - /root/.ssh:/root/.ssh
-      - .:/app
+      - ./logs:/app/logs
+      # - .:/app
     expose:
       - "9000"
     sysctls:
