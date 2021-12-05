@@ -2642,3 +2642,9 @@ img {
   background-color: #2196F3;
   border-radius: 10px;
 }
+
+/* waline */
+.v[data-class=v] .veditor {
+  width: calc(100% - 2em) !important;
+}
+/* waline */
