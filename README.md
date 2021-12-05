@@ -11,7 +11,7 @@
 ##### 1. 未使用Django-admin，自己手写的管理后台, 用于文章、友链和背景音乐等的在线管理
 ##### 2. 实现文章按年月、标签和分类归档
 ##### 3. 实现文章标签云功能
-##### 4. 采用第三方评论插件: [Valine](https://valine.js.org/) + [Leancloud](https://leancloud.cn/)
+##### 4. 采用第三方评论插件: [Waline](https://waline.js.org/)
 ##### 5. 实现文章阅读量统计，12小时内连续访问的IP只记录一次
 ##### 6. 后台引入wangEditor富文本编辑器和editor.md Markdown编辑器，前端使用prism.js进行代码高亮
 ##### 7. Celery + Redis + Supervisor进行异步任务和定时任务的启动和进程管理
