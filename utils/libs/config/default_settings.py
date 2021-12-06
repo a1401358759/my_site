@@ -1,4 +1,7 @@
-# -*- coding: utf-8 -*-
+from .logger_settings import (
+    LOG_ROOT, LOGGING, PROJECT_INFO_LOG, PROJECT_ERROR_LOG,
+    PROJECT_EXCEPTION_LOG, PROJECT_HTTPCLIENT_LOG
+)
 
 """
 注意:
