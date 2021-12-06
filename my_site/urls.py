@@ -1,8 +1,8 @@
+import django
 # from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
 from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from article import views
 
@@ -29,7 +29,7 @@ urlpatterns = [
     path('upload-rich/', views.upload_rich_file, name='upload_rich_file'),
     path('add-comments/', views.add_comments_view, name='add_comments'),
     path('get-comments/', views.get_comments_view, name='get_comments'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += staticfiles_urlpatterns()
+    url(r'^static/(?P<path>.*)$', django.views.static.serve, {'document_root': settings.STATIC_ROOT}),
+]
 
 handler404 = views.page_not_found
