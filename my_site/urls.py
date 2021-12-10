@@ -29,8 +29,7 @@ urlpatterns = [
     path('upload-rich/', views.upload_rich_file, name='upload_rich_file'),
     path('add-comments/', views.add_comments_view, name='add_comments'),
     path('get-comments/', views.get_comments_view, name='get_comments'),
-]
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-# urlpatterns += staticfiles_urlpatterns()
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += staticfiles_urlpatterns()
 
 handler404 = views.page_not_found
