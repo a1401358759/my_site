@@ -1,5 +1,5 @@
 -i https://pypi.tuna.tsinghua.edu.cn/simple
-Django==3.2.6
+Django==3.2.10
 Pygments==2.10.0
 requests==2.26.0
 six==1.16.0
