@@ -18,3 +18,4 @@ supervisor==4.2.2
 kombu==5.1.0
 mysqlclient==2.0.3
 gunicorn[gevent]==20.0.4
+django-cors-headers==3.10.1
