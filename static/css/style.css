@@ -413,8 +413,7 @@ h6 {
   line-height: inherit;
   font-size: 14px;
   font-weight: 400;
-  /* font-family: 'MiSans-Medium', sans-serif; */
-  font-family: cursive;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 .widget>ul>li>a:hover {
   color: #66ab27;
@@ -2314,7 +2313,7 @@ div.syntaxhighlighter .container:before,div.syntaxhighlighter .container:after {
   vertical-align: middle !important;
   border-top: 1px solid #eee;
   font-size: 14px;
-  font-family: cursive;
+  font-family: 'MiSans-Medium';
 }
 th[align*="center"],
 tr[align*="center"] {
@@ -2366,7 +2365,7 @@ a:focus {
   padding: 5px 10px;
   margin-bottom: 5px;
   color: #fff;
-  font-family: cursive;
+  font-family: 'MiSans-Medium';
 }
 
 #tag_cloud a:hover {
