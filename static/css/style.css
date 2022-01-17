@@ -9,19 +9,23 @@
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215
 } */
 
- @font-face {
+@font-face {
   font-family: 'Consolas';
   font-style: normal;
   src: url("/static/font/Consolas.ttf") format('truetype');
 }
 
+@font-face {
+  font-family: 'MiSans-Medium';
+  font-style: normal;
+  src: url("/static/font/MiSans-Medium.ttf") format('truetype');
+}
+
 body {
-  font-family: 'Source Han Serif SC','Source Han Serif','source-han-serif-sc','PT Serif','SongTi SC','MicroSoft Yahei',Georgia,serif;
+  /* font-family: 'Source Han Serif SC','Source Han Serif','source-han-serif-sc','PT Serif','SongTi SC','MicroSoft Yahei',Georgia,serif; */
+  font-family: 'MiSans-Medium';
   color: #6B6B6B;
   font-size: 12px;
-  /*background: url("https://img.yangsihan.com/background.jpg") no-repeat;*/
-  /*background-size: 100% 100% !important;*/
-  /*background-attachment: fixed !important;*/
   cursor: url("/static/images/arr112.png"), default;
   background-color: #FFFFFF;
 }
@@ -47,7 +51,7 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   margin-top: 0;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
   font-weight: normal;
   color: #333;
 }
@@ -337,7 +341,7 @@ body {
   color: #4e4e4e;
   padding: 0;
   margin: 0;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
@@ -355,7 +359,7 @@ h5,
 h6 {
   margin: 1.2em 0;
   line-height: 1.1;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
   font-weight: 300;
   color: #333;
   text-rendering: optimizeLegibility;
@@ -409,7 +413,7 @@ h6 {
   line-height: inherit;
   font-size: 14px;
   font-weight: 400;
-  /*font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;*/
+  /* font-family: 'MiSans-Medium', sans-serif; */
   font-family: cursive;
 }
 .widget>ul>li>a:hover {
@@ -426,11 +430,11 @@ p {
   line-height: 1.8;
   color: #1A1A1A;
   margin: 1.25em 0;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif
+  font-family: 'MiSans-Medium', sans-serif
 }
 
 span {
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif!important;
+  font-family: 'MiSans-Medium', sans-serif!important;
 }
 
 p a,
@@ -706,7 +710,7 @@ sub { bottom: -0.25em; }
   border: 0;
   font-size: 15px;
   font-weight: 600;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 #header ul li a:hover,
@@ -729,7 +733,7 @@ a {
   margin: 0;
   font-size: 2.5em;
   line-height: 55px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 #site-title a {
@@ -983,7 +987,7 @@ a {
 .entry-title, .entry-title a {
   color: #000;
   font-size: 1.75rem;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
   font-weight: 500;
 }
 
@@ -1193,7 +1197,7 @@ position:relative;
 }
 .hentry.format-link .entry-content a {
   font-size: 2.125em;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
   line-height: 1.1;
 }
 
@@ -1715,37 +1719,37 @@ select {
 input::-webkit-input-placeholder { /* WebKit browsers */
   color: #999;
   font-size: 13px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 input::-moz-placeholder { /* Mozilla Firefox 19+ */
   color: #999;
   font-size: 13px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
   color: #999;
   font-size: 13px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 textarea::-webkit-input-placeholder { /* WebKit browsers */
   color: #999;
   font-size: 13px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
   color: #999;
   font-size: 13px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
   color: #999;
   font-size: 13px;
-  font-family: "Play","Microsoft Yahei","Open Sans", sans-serif;
+  font-family: 'MiSans-Medium', sans-serif;
 }
 
 input[type="text"]:focus,
