@@ -83,10 +83,15 @@
   </div>
   {% include "blog/reward.html" %}
 
-  <!-- 评论框 -->
-  <div id="waline" class="widget widget_recent_comments"></div>
+  <!-- 评论框div -->
+  <div id="vcomments" class="widget widget_recent_comments">
+    <!-- 评论表单 -->
+    {% include "blog/comment_form.html" %}
+    <!-- 评论列表 -->
+    {% include "blog/comment_list.html" %}
+  </div>
 
-  <script src="/static/js/waline.js"></script>
+  <script type="text/javascript" src="/static/js/comments.js"></script>
   <script src="/static/js/jquery.sticky.js"></script>
   <script>
     $('img:not(.vsmile-icons img)').zoomify(); // Default settings
