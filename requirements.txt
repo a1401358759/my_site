@@ -9,7 +9,7 @@ qiniu==7.4.1
 aliyun-python-sdk-core==2.13.35
 aliyun-python-sdk-kms==2.15.0
 oss2==2.15.0
-celery==5.1.2
+celery==5.2.2
 mistune==0.8.4
 markdown==3.3.4
 django-redis==5.0.0
