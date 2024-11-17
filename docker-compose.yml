@@ -29,7 +29,7 @@ services:
       - redis
 
   mysql:
-    image: mysql:8.0.26
+    image: registry.cn-beijing.aliyuncs.com/zeroco2/mysql:8.0.26
     command: --default-authentication-plugin=mysql_native_password
     container_name: mysql
     restart: always
@@ -46,7 +46,7 @@ services:
 
   redis:
     restart: always
-    image: redis:latest
+    image: registry.cn-beijing.aliyuncs.com/zeroco2/redis:7.4.2
     ports:
       - "6380:6379"
     volumes:
@@ -55,7 +55,7 @@ services:
   nginx:
     restart: always
     container_name: nginx
-    image: nginx:latest
+    image: registry.cn-beijing.aliyuncs.com/zeroco2/nginx:1.25
     ports:
       - "9000:9000"
       - "80:80"
